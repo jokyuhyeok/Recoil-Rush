@@ -1,98 +1,67 @@
-using System.Collections;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
+    private Vector2 _offset = Vector2.zero;
+    public Vector2 Offset => _offset;
+
     // 진동의 크기
-    [SerializeField] private float _shakeForce = 0.05f;
-    // 진동의 빈도
-    private float _shakeRoughness = 60f;
-    // 진동 지속 시간
-    [SerializeField] private float _shakeDuration = 0.5f;
-    private float _shakeTimer = 0f;
+    private float _force;
+    // 진동 시간 변수
+    private float _timer = 0f;
 
-    private CameraLookAhead _lookAhead;
+    // 진동의 빈도 (Perlin Noise 버전에서만 사용)
+    private float _roughness;
+    // 무작위 틱 (Perlin Noise 버전에서만 사용)
     private float _tick;
-    private Coroutine _shakeCoroutine;
 
-    private void Start()
-    {
-        _lookAhead = GetComponent<CameraLookAhead>();
-        _tick = Random.Range(-100f, 100f);
-    }
+    private bool _isPerlin = false;
+
 
     private void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        _timer -= Time.deltaTime;
+
+        if (_timer <= 0f)
         {
-            StartShakeCamera();
+            _offset = Vector2.zero;
+            return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (_isPerlin)
         {
-            StartShakeCameraWithPerlinNoise();
+            _tick += Time.deltaTime * _roughness;
+
+            // 0 ~ 1 범위를 -1 ~ 1로 조정
+            float x = (Mathf.PerlinNoise(_tick, 0f) - 0.5f) * 2f;
+            float y = (Mathf.PerlinNoise(0f, _tick) - 0.5f) * 2f;
+
+            // 전체 크기 1로 보정
+            Vector2 shake = new Vector2(x, y);
+            shake = Vector2.ClampMagnitude(shake, 1f);
+
+            _offset = shake * _force;
         }
-        */
+
+        else
+        {
+            _offset = Random.insideUnitCircle * _force;
+        }
     }
 
-    public void StartShakeCamera()
+    public void StartShake(float force, float duration)
     {
-        _shakeTimer = _shakeDuration;
-
-        if (_shakeCoroutine != null)
-        {
-            StopCoroutine(_shakeCoroutine);
-        }
-
-        _shakeCoroutine = StartCoroutine(ShakeCamera());
+        _isPerlin = false;
+        _force = force;
+        _timer = duration;
     }
 
-    // 랜덤한 원 위의 점 = 비교적 뚝뚝 끊기는 느낌
-    IEnumerator ShakeCamera()
+    public void StartPerlinShake(float force, float roughness, float duration)
     {
-        while (_shakeTimer > 0)
-        {
-            transform.position = _lookAhead.BasePosition + (Vector3)Random.insideUnitCircle * _shakeForce;
-
-            _shakeTimer -= Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = _lookAhead.BasePosition;
-    }
-
-    public void StartShakeCameraWithPerlinNoise()
-    {
-        _shakeTimer = _shakeDuration;
-
-        if (_shakeCoroutine != null)
-        {
-            StopCoroutine(_shakeCoroutine);
-        }
-
-        _shakeCoroutine = StartCoroutine(ShakeCameraWithPerlinNoise());
-    }
-
-    // Perlin Noise 사용: 더 부드러운 느낌
-    // (Coherent Noise의 특징, 어떤 두 점이든 연속성이 있음)
-    IEnumerator ShakeCameraWithPerlinNoise()
-    {
-        while (_shakeTimer > 0)
-        {
-            _tick += Time.deltaTime * _shakeRoughness;
-
-            // 0 ~ 1 범위를 -0.5 ~ 0.5로 조정
-            float x = Mathf.PerlinNoise(_tick, 0f) - 0.5f;
-            float y = Mathf.PerlinNoise(0f, _tick) - 0.5f;
-
-            Vector3 shakeOffset = new Vector3(x, y, 0f) * _shakeForce;
-            transform.position = _lookAhead.BasePosition + shakeOffset;
-
-            _shakeTimer -= Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = _lookAhead.BasePosition;
+        _isPerlin = true;
+        _tick = Random.Range(-100f, 100f);
+        _force = force;
+        _roughness = roughness;
+        _timer = duration;
     }
 }
