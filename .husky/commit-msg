@@ -19,6 +19,24 @@
 ## or put your custom commands -------------------
 #echo 'Husky.Net is awesome!'
 
-grep -qE '^(asset|build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\(.+\))?!?: .+' "$1" && exit 0
-echo "커밋 메시지는 'type: 설명' 형식이어야 합니다."
-exit 1
+# merge 또는 revert 작업 중에는 Hook을 실행하지 않음
+if [ -f "$(git rev-parse --git-path MERGE_HEAD)" ] ||
+   [ -f "$(git rev-parse --git-path REVERT_HEAD)" ]; then
+    echo "merge/revert 커밋이므로 Husky 검사를 건너뜁니다."
+    exit 0
+fi
+
+# 첫 번째 줄: 커밋 제목 형식 검사
+if ! head -n 1 "$1" | grep -qE '^(asset|build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\(.+\))?!?: .+'; then
+  echo "커밋 메시지는 'type: 설명' 형식이어야 합니다."
+  exit 1
+fi
+
+# 제목을 제외하고 빈 줄과 주석을 뺀 본문 줄 수 계산
+body_lines=$(awk 'NR > 1 && $0 !~ /^[[:space:]]*$/ && $0 !~ /^[[:space:]]*#/ {count++} END {print count + 0}' "$1")
+
+# 본문이 최소 1줄이 있는지 검사
+if [ "$body_lines" -lt 1 ]; then
+    echo "커밋 메시지 본문은 빈 줄과 주석을 제외하고 1줄 이상 작성해야 합니다."
+    exit 1
+fi

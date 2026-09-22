@@ -19,4 +19,23 @@
 ## or put your custom commands -------------------
 #echo 'Husky.Net is awesome!'
 
-dotnet format GA1_2D_Team03.sln --verify-no-changes --severity warn --include Assets/02_Scripts/
+# merge 또는 revert 작업 중에는 Hook을 실행하지 않음
+if [ -f "$(git rev-parse --git-path MERGE_HEAD)" ] ||
+   [ -f "$(git rev-parse --git-path REVERT_HEAD)" ]; then
+    echo "merge/revert 커밋이므로 Husky 검사를 건너뜁니다."
+    exit 0
+fi
+
+if [ -f "GA1_2D_Team03.sln" ]; then
+    solution="GA1_2D_Team03.sln"
+elif [ -f "2d-team03.sln" ]; then
+    solution="2d-team03.sln"
+else
+    echo "지원하는 솔루션 파일을 찾을 수 없습니다. 팀장에게 문의해주세요."
+    exit 1
+fi
+
+dotnet format "$solution" \
+    --verify-no-changes \
+    --severity warn \
+    --include Assets/02_Scripts/
