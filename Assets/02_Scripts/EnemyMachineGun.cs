@@ -91,14 +91,18 @@ public class EnemyMachineGun : EnemyBase
     // x 좌표 비교를 통해 플레이어를 바라보도록 설정합니다. 
     private void LookAtPlayer()
     {
+        Vector3 scale = transform.localScale;
+
         if (playerTransform.position.x < transform.position.x)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            scale.x = -Mathf.Abs(scale.x);
         }
         else
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            scale.x = Mathf.Abs(scale.x);
         }
+
+        transform.localScale = scale;
     }
 
  
