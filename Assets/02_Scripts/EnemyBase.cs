@@ -26,16 +26,7 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        // 플레이어 transform 컴포넌트를 처음에 캐싱해놓고 계속 추적하게 했습니다. 
-        GameObject player = GameObject.FindWithTag("Player");
-        if (player != null)
-        {
-            playerTransform = player.transform;
-        }
-        else
-        {
-            Debug.LogWarning("플레이어가 씬에 없습니다!");
-        }
+        PlayerCaching();
     }
 
     protected virtual void Update()
@@ -99,7 +90,21 @@ public class EnemyBase : MonoBehaviour
             ChangeState(EnemyState.Knockback);
         }
     }
-
+    
+    private void PlayerCaching()
+    {
+        // 플레이어 transform 컴포넌트를 처음에 캐싱해놓고 계속 추적하게 했습니다. 
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            playerTransform = player.transform;
+        }
+        else
+        {
+            Debug.LogWarning("플레이어가 씬에 없습니다!");
+        }
+    }
+    
     // 상태를 변경할 때 이 메서드를 거쳐서 안전하게 변경할게요.
     public void ChangeState(EnemyState newState)
     {
