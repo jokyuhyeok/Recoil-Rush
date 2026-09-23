@@ -64,42 +64,23 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    protected virtual void UpdateIdle()
-    {
-        Debug.Log("이상 무! 휴식 중입니다...");
-    }
+    protected virtual void UpdateIdle(){}
 
-    protected virtual void UpdateAlarm()
-    {
-        Debug.Log("적 발견! 주위에 경고를 울립니다...");
-    }
+    protected virtual void UpdateAlarm(){}
 
-    protected virtual void UpdateTrace()
-    {
-        Debug.Log("적을 향해 이동 중...");
-    }
+    protected virtual void UpdateTrace(){}
 
-    protected virtual void UpdateAttack()
-    {
-        Debug.Log("공격 시작! 적을 섬멸하라...");
-    }
+    protected virtual void UpdateAttack(){}
 
-    protected virtual void UpdateKnockback()
-    {
-        Debug.Log("으악! 날아간다!!");
-    }
+    protected virtual void UpdateKnockback(){}
 
-    protected virtual void UpdateDead()
-    {
-        Debug.Log("사망...");
-    }
+    protected virtual void UpdateDead(){}
 
     // 나중에 public class EnemyBase : MonoBehaviour, IDamageable로 상속 연결할 예정입니다.
     // 총알에 맞으면 총알에 있는 두 매개변수를 받아서 hp에 반영합니다.
     public virtual void TakeDamage(int damage, Vector3 knockbackForce)
     {
-        if (currentState == EnemyState.Dead)
-            return;
+        if (currentState == EnemyState.Dead) return;
 
         hp -= damage;
         Debug.Log($"{gameObject.name} 피격! 남은 HP: {hp}");
@@ -122,8 +103,7 @@ public class EnemyBase : MonoBehaviour
     // 상태를 변경할 때 이 메서드를 거쳐서 안전하게 변경할게요.
     public void ChangeState(EnemyState newState)
     {
-        if (currentState == newState)
-            return;
+        if (currentState == newState) return;
 
         currentState = newState;
         Debug.Log($"{gameObject.name} 상태 변경 -> {currentState}");
