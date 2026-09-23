@@ -4,12 +4,19 @@ using UnityEngine;
 // 이동속도, 감지범위, 공격범위, 경고 시간을 가집니다.
 public class EnemyRifle : EnemyBase
 {
+    // 행동 패턴에 관련된 변수입니다.
     [SerializeField] private float _speed = 3f;
     [SerializeField] private float _detectRange = 8f;
     [SerializeField] private float _attackRange = 5f;
     [SerializeField] private float _alarmTime = 1f;
 
+    // 총알 발사에 관련된 변수입니다.
+    [SerializeField] private EnemyBullet _bulletPrefeb;
+    [SerializeField] private Transform _firePoint;
+    [SerializeField] private float _fireRate = 2f;
+    
     private float _currentAlarmTime = 0f;
+    private float _fireTimer = 0f;
     
     protected override void UpdateIdle()
     {
@@ -42,6 +49,7 @@ public class EnemyRifle : EnemyBase
         // 플레이어가 경고 기간 내에 공격 범위로 들어오면 즉시 Attack으로 진입합니다.
         if (distance <= _attackRange)
         {
+            _fireTimer = _fireRate;     // 빠른 접근 시, 1회 즉시 사격합니다.
             ChangeState(EnemyState.Attack);
             return;
         }
@@ -80,12 +88,29 @@ public class EnemyRifle : EnemyBase
     
     protected override void UpdateAttack()
     {
-        if (playerTransform != null)
+        if (playerTransform == null) return;
+        float distance = Vector2.Distance(transform.position, playerTransform.position);
+
+        // 플레이어가 공격 범위를 벗어나면 Trace 상태로 전환합니다.
+        if (distance > _attackRange)
         {
-            LookAtPlayer();
+            ChangeState(EnemyState.Trace);
+            return;
         }
         
-        Debug.Log("사거리 도달! 총알 장전 중...");
+        LookAtPlayer();
+
+        _fireTimer += Time.deltaTime;
+        
+        if (_fireTimer >= _fireRate)
+        {
+            // 쿨타임 종료 시 총알을 생성 후 플레이어 방향으로 발사합니다.
+            EnemyBullet bullet = Instantiate(_bulletPrefeb, _firePoint.position, Quaternion.identity);
+            Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
+            bullet.FireBullet(direction);
+
+            _fireTimer = 0f;
+        }
     }
     
     // x 좌표 비교를 통해 플레이어를 바라보도록 설정합니다. 
@@ -95,15 +120,13 @@ public class EnemyRifle : EnemyBase
 
         if (playerTransform.position.x < transform.position.x)
         {
-            scale.x = -Mathf.Abs(scale.x);
+            scale.x = Mathf.Abs(scale.x);
         }
         else
         {
-            scale.x = Mathf.Abs(scale.x);
+            scale.x = -Mathf.Abs(scale.x);
         }
 
         transform.localScale = scale;
     }
-
- 
 }
