@@ -14,11 +14,18 @@ public class EnemyBase : MonoBehaviour
     }
 
     [SerializeField] protected EnemyState currentState = EnemyState.Idle;
-    [SerializeField] protected int hp = 1;  // 몬스터 체력 (일반 : 1, 공중 : 2, 보스 : N) (숫자는 변경 예정)
+    [SerializeField] protected int _hp = 1;  // 몬스터 체력 (일반 : 1, 공중 : 2, 보스 : N) (숫자는 변경 예정)
+    
+    // 자식들이 공통으로 사용하는 행동 패턴 관련 변수들입니다.
+    [SerializeField] protected float _speed = 1f;
+    [SerializeField] protected float _detectRange = 1f;
+    [SerializeField] protected float _attackRange = 1f;
+    [SerializeField] protected float _alarmTime = 1f;
     
     protected Rigidbody2D rb;
     protected Transform playerTransform;
-
+    protected float distanceToPlayer;   // 플레이어와의 거리를 저장해 둘 공통 변수입니다.
+    
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,6 +38,9 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (playerTransform == null) return;
+        distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);  // 플레이어와의 거리를 계산합니다.
+        
         // 현재 상태에 맞는 메서드를 실행합니다.
         switch (currentState)
         {
@@ -73,15 +83,15 @@ public class EnemyBase : MonoBehaviour
     {
         if (currentState == EnemyState.Dead) return;
 
-        hp -= damage;
-        Debug.Log($"{gameObject.name} 피격! 남은 HP: {hp}");
+        _hp -= damage;
+        Debug.Log($"{gameObject.name} 피격! 남은 HP: {_hp}");
         
         // 중력은 Collision에서 GetContact로 조정할 예정입니다. 아래 3줄은 임시 물리적용.
         Vector2 safeForce = new Vector2(knockbackForce.x, knockbackForce.y);    // Z축 날아감(화면 밖으로 사라짐) 방지를 위한 Vector3 -> Vector2 변환
         rb.linearVelocity = Vector2.zero; 
         rb.AddForce(safeForce, ForceMode2D.Impulse);                            // 밀려나기 전에 기존에 걸어오던 관성을 0으로 초기화해서 정확한 거리만큼 밀려나게 합니다.
 
-        if (hp <= 0)
+        if (_hp <= 0)
         {
             ChangeState(EnemyState.Dead);
         }
@@ -112,5 +122,22 @@ public class EnemyBase : MonoBehaviour
 
         currentState = newState;
         Debug.Log($"{gameObject.name} 상태 변경 -> {currentState}");
+    }
+    
+    // 공통으로 사용하는 방향 전환 로직입니다. (x 좌표 비교를 통해 플레이어를 바라보도록 설정합니다.)
+    protected virtual void LookAtPlayer()
+    {
+        Vector3 scale = transform.localScale;
+
+        if (playerTransform.position.x < transform.position.x)
+        {
+            scale.x = Mathf.Abs(scale.x);
+        }
+        else
+        {
+            scale.x = -Mathf.Abs(scale.x);
+        }
+
+        transform.localScale = scale;
     }
 }

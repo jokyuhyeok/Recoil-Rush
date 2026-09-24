@@ -4,12 +4,6 @@ using UnityEngine;
 // 이동속도, 감지범위, 공격범위, 경고 시간을 가집니다.
 public class EnemyRifle : EnemyBase
 {
-    // 행동 패턴에 관련된 변수입니다.
-    [SerializeField] private float _speed = 3f;
-    [SerializeField] private float _detectRange = 8f;
-    [SerializeField] private float _attackRange = 5f;
-    [SerializeField] private float _alarmTime = 1f;
-
     // 총알 발사에 관련된 변수입니다.
     [SerializeField] private EnemyBullet _bulletPrefeb;
     [SerializeField] private Transform _firePoint;
@@ -20,11 +14,8 @@ public class EnemyRifle : EnemyBase
     
     protected override void UpdateIdle()
     {
-        if (playerTransform == null) return;
-        float distance = Vector2.Distance(transform.position, playerTransform.position);
-        
         // 플레이어가 감지범위 안으로 들어왔을 시, 경고 단계로 넘어갑니다.
-        if (distance <= _detectRange)
+        if (distanceToPlayer <= _detectRange)
         {
             _currentAlarmTime = 0f;         // 경고 시간 초기화
             ChangeState(EnemyState.Alarm);
@@ -34,20 +25,17 @@ public class EnemyRifle : EnemyBase
     // 경고 단계: "!", "플레이어 바라보기" 등으로 플레이어를 감지함을 알려주는 상태입니다.
     protected override void UpdateAlarm()
     {
-        if (playerTransform == null) return;
-        float distance = Vector2.Distance(transform.position, playerTransform.position);
-
         LookAtPlayer();
         
         // 플레이어가 감지범위를 벗어나면 Idle로 돌아갑니다. 
-        if (distance > _detectRange)
+        if (distanceToPlayer > _detectRange)
         {
             ChangeState(EnemyState.Idle);
             return;
         }
 
         // 플레이어가 경고 기간 내에 공격 범위로 들어오면 즉시 Attack으로 진입합니다.
-        if (distance <= _attackRange)
+        if (distanceToPlayer <= _attackRange)
         {
             _fireTimer = _fireRate;     // 빠른 접근 시, 1회 즉시 사격합니다.
             ChangeState(EnemyState.Attack);
@@ -65,18 +53,15 @@ public class EnemyRifle : EnemyBase
     
     protected override void UpdateTrace()
     {
-        if (playerTransform == null) return;
-        float distance = Vector2.Distance(transform.position, playerTransform.position);
-
         // 플레이어가 감지범위를 벗어나면 Idle 상태로 돌아갑니다.
-        if (distance > _detectRange)
+        if (distanceToPlayer > _detectRange)
         {
             ChangeState(EnemyState.Idle);
             return;
         }
         
         // 공격 범위 안으로 들어오면 Attack으로 전환합니다.
-        if (distance <= _attackRange)
+        if (distanceToPlayer <= _attackRange)
         {
             ChangeState(EnemyState.Attack);
             return;
@@ -88,11 +73,8 @@ public class EnemyRifle : EnemyBase
     
     protected override void UpdateAttack()
     {
-        if (playerTransform == null) return;
-        float distance = Vector2.Distance(transform.position, playerTransform.position);
-
         // 플레이어가 공격 범위를 벗어나면 Trace 상태로 전환합니다.
-        if (distance > _attackRange)
+        if (distanceToPlayer > _attackRange)
         {
             ChangeState(EnemyState.Trace);
             return;
@@ -111,22 +93,5 @@ public class EnemyRifle : EnemyBase
 
             _fireTimer = 0f;
         }
-    }
-    
-    // x 좌표 비교를 통해 플레이어를 바라보도록 설정합니다. 
-    private void LookAtPlayer()
-    {
-        Vector3 scale = transform.localScale;
-
-        if (playerTransform.position.x < transform.position.x)
-        {
-            scale.x = Mathf.Abs(scale.x);
-        }
-        else
-        {
-            scale.x = -Mathf.Abs(scale.x);
-        }
-
-        transform.localScale = scale;
     }
 }
