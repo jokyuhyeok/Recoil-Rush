@@ -136,9 +136,36 @@ public class EnemyDrone : EnemyBase
             }
         }
     }
-    
-    protected override void UpdateKnockback() { }
-    protected override void UpdateDead() { }
+
+    protected override void UpdateKnockback()
+    {
+        // [구현 예정: 드론 넉백] [가이드]
+        // 총의 종류에 따라서 넉백 정도를 다르게 줄 예정입니다. (총 damage가 확정되면 조정하면 될 것 같습니다. 일단 가이드...)
+        // 1. receivedDamage 확인
+        // 2-case.A: (권총, damage == n) 살짝 뒤로 밀렸다가 Trace 복귀
+        // 2-case.B: (샷건, damage >= m) _attackTimer 초기화 및 _isCharging = false (차징 취소)
+        // 2-case.B: 위로 튕기듯 크게 밀려났다가 Trace 복귀
+    }
+
+    protected override void UpdateDead()
+    {
+        // [구현 예정: 드론 추락 사망] [가이드]
+        // 사망할 때, player가 밟고 이동할 수 있게 사망시 지형으로 바꾸겠습니다.
+        // 1. gameObject.layer = LayerMask.NameToLayer("Platform"); (지형으로 변경)
+        // 2. 피격 판정 콜라이더 비활성화
+        // 3. rb.gravityScale = 0.5f; (추락 시작)
+        // 4. transform.Rotate 로 빙글빙글 회전 연출
+        // 5. 폭발 파티클 재생 후 3초 뒤 Destroy
+        
+        // -------------------------------------------------------------
+        // 🎯 [Game Feel: 드론의 폭발 및 추락 연출입니다.]
+        // 1. Impact Flash (인상 섬광)
+        // (추천 구현 방법: 기계가 파괴되는 순간 화면 전체가 짧고 굵게 하얗게 번쩍이게 처리)
+        //
+        // 2. 추락 파티클 및 사운드
+        // (추천 구현 방법: 빙글빙글 추락하는 동안 검은 연기와 스파크 파티클 지속 재생, 고장난 기계음 루프)
+        // -------------------------------------------------------------
+    }
     
     private void FireCannon()
     {
@@ -148,6 +175,15 @@ public class EnemyDrone : EnemyBase
             EnemyBullet bullet = Instantiate(_cannonPrefab, _firePoint.position, Quaternion.identity);
             Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
             bullet.FireBullet(direction);
+            
+            // -------------------------------------------------------------
+            // 🎯 [Game Feel: 거대 대포 발사 연출 삽입 위치]
+            // 1. Camera Shake (카메라 진동)[cite: 3]
+            // (추천 구현 방법: 대포의 폭발감을 플레이어가 직접 느끼도록 화면 전체에 강한 진동 부여)
+            //
+            // 2. Muzzle Flash & Gun SFX[cite: 3, 4]
+            // (추천 구현 방법: 소총보다 훨씬 큰 링 모양의 섬광과 묵직한 대포 사운드 재생)
+            // -------------------------------------------------------------
         }
     }
     
@@ -155,7 +191,7 @@ public class EnemyDrone : EnemyBase
     {
         _attackTimer = 0f;
         _isCharging = true;
-        // 여기에 에너지를 모으는 사운드나 파티클 이펙트를 실행합니다.
+        // 🎯 [Game Feel: 차징 연출 삽입 위치] (추천: 빛이 모이는 파티클과 위잉~ 사운드)
         Debug.Log("<color=cyan>드론: 위이잉... (대포 차징 시작)</color>");
     }
     

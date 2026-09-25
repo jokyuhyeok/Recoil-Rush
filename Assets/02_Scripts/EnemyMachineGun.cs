@@ -116,6 +116,18 @@ public class EnemyMachineGun : EnemyBase
             Vector2 direction = (playerTransform.position - transform.position).normalized;
             bullet.FireBullet(direction);
 
+            // -------------------------------------------------------------
+            // 🎯 [Game Feel: 총을 발사할 때의 연출입니다.]
+            // 1. Muzzle Flash (총구 섬광)
+            // (추천 구현 방법: _firePoint.position에 총구 화염 이펙트를 띄우고 0.1초 뒤 삭제)
+            //
+            // 2. Gun SFX (총기 사운드)
+            // (추천 구현 방법: 권총/소총 특유의 날카롭고 가벼운 발사음 재생)
+            //
+            // 3. Gun Kick Animation (총구 반동 애니메이션)
+            // (추천 구현 방법: 적 스프라이트 전체를 발사 반대 방향으로 아주 짧게 DOShakePosition 하거나 탄피 파티클 배출)
+            // -------------------------------------------------------------
+            
             _currentBulletRemain--;
             _fireTimer = 0f;
 
@@ -127,5 +139,22 @@ public class EnemyMachineGun : EnemyBase
                 Debug.Log("<color=orange>기관총 탄창 방전! 3초간 재장전 시작!</color>");
             }
         }
+    }
+
+    protected override void UpdateKnockback()
+    {
+        // // 해당 적은 1대 맞으면 바로 사망 처리이므로 Knockback 구현은 없습니다.
+    }
+
+    protected override void UpdateDead()
+    {
+        // [구현 예정 : 기관총 사수 사망] [가이드]
+        // player 무기에 따라 다른 로직을 적용할지는 미정입니다. (샷건이랑 권총에 맞은 리액션이 같으면 좀... 그렇긴 해서...)
+        // 1. 콜라이더 판정 끄기 (길막 방지)
+        // 2. receivedKnockback(총알 방향) 벡터에 Y축(위쪽) 힘을 섞어 포물선 궤도 생성
+        // 3. 해당 벡터로 AddForce 적용 및 AddTorque로 회전
+        // 4. 바닥에 떨어지고 n초 후 파괴 (Destroy)
+        
+        Destroy(gameObject);
     }
 }

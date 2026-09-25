@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : MonoBehaviour, IDamageable
 {
     // 적 상태를 6종류로 구분
     public enum EnemyState
@@ -25,6 +25,10 @@ public class EnemyBase : MonoBehaviour
     protected Rigidbody2D rb;
     protected Transform playerTransform;
     protected float distanceToPlayer;   // 플레이어와의 거리를 저장해 둘 공통 변수입니다.
+
+    // 자식들의 피격 게임필 연출에 사용할 데미지와 벡터 힘 데이터를 보관하는 변수입니다.
+    protected Vector2 receivedKnockbackForce;
+    protected int receivedDamage;
     
     protected virtual void Awake()
     {
@@ -81,10 +85,24 @@ public class EnemyBase : MonoBehaviour
         _hp -= damage;
         Debug.Log($"{gameObject.name} 피격! 남은 HP: {_hp}");
         
-        // 중력은 Collision에서 GetContact로 조정할 예정입니다. 아래 3줄은 임시 물리적용.
-        Vector2 safeForce = new Vector2(knockbackForce.x, knockbackForce.y);    // Z축 날아감(화면 밖으로 사라짐) 방지를 위한 Vector3 -> Vector2 변환
-        rb.linearVelocity = Vector2.zero; 
-        rb.AddForce(safeForce, ForceMode2D.Impulse);                            // 밀려나기 전에 기존에 걸어오던 관성을 0으로 초기화해서 정확한 거리만큼 밀려나게 합니다.
+        // -------------------------------------------------------------
+        // 🎯 [Game Feel: 적이 맞았을 때의 연출 효과들입니다.]
+        // 1. Hit Flash & Hit Particle (적이 맞았을 때 나올 섬광 및 파티클입니다.)
+        // (추천 구현 방법: 적 스프라이트의 Material을 0.05초간 하얗게 변경(코루틴) 및 타격 지점에 불꽃/먼지 파티클 Instantiate)
+        // 
+        // 2. Hit SFX (피격 사운드입니다.)
+        // (추천 구현 방법: AudioSource.PlayClipAtPoint()로 쇳소리나 둔탁한 살점 타격음 재생)
+        // 
+        // 3. Hit Stop (피격 시 잠시 멈춤)
+        // (추천 구현 방법: Time.timeScale = 0.05f 등으로 게임을 아주 짧게 느리게 만들었다가 되돌리는 글로벌 코루틴 호출)
+        //
+        // 4. Camera Shake (카메라 진동)
+        // (추천 구현 방법: 데미지가 3 이상(샷건 등)일 때만 Cinemachine Impulse Source를 호출해 화면을 강하게 떪)
+        // -------------------------------------------------------------
+        
+        // 물리 적용을 위해 넘어온 데이터들을 캐싱합니다.
+        receivedDamage = damage;
+        receivedKnockbackForce = new Vector2(knockbackForce.x, knockbackForce.y);
 
         if (_hp <= 0)
         {
