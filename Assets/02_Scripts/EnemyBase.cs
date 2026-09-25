@@ -66,15 +66,10 @@ public class EnemyBase : MonoBehaviour
     }
 
     protected virtual void UpdateIdle(){}
-
     protected virtual void UpdateAlarm(){}
-
     protected virtual void UpdateTrace(){}
-
     protected virtual void UpdateAttack(){}
-
     protected virtual void UpdateKnockback(){}
-
     protected virtual void UpdateDead(){}
 
     // 나중에 public class EnemyBase : MonoBehaviour, IDamageable로 상속 연결할 예정입니다.
