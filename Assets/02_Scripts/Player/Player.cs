@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float _gravity = 9f;
+
     [SerializeField] private float _reloadTime = 2f;
 
-    private bool _isGrounded;
     private bool _isReloading;
     private float _reloadTimer;
 
     private Weapon[] _weapons;
     private Rigidbody2D _rigidbody;
+
+    public bool IsReloading => _isReloading;
 
     private void Awake()
     {
@@ -21,6 +24,25 @@ public class Player : MonoBehaviour
     private void Update()
     {
         ReloadUpdate();
+    }
+
+    private void FixedUpdate()
+    {
+        ApplyGravity();
+    }
+
+    private void ApplyGravity()
+    {
+        Vector2 velocity = _rigidbody.linearVelocity;
+
+        velocity.y -= _gravity * Time.fixedDeltaTime;
+
+        _rigidbody.linearVelocity = velocity;
+    }
+
+    public void AddRecoil(Vector2 recoil)
+    {
+        _rigidbody.linearVelocity += recoil;
     }
 
     private void ReloadUpdate()
@@ -47,7 +69,7 @@ public class Player : MonoBehaviour
 
     private void TryReload()
     {
-        if (!_isGrounded || _isReloading)
+        if (_isReloading)
         {
             return;
         }
@@ -67,17 +89,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            _isGrounded = true;
-
             TryReload();
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            _isGrounded = false;
         }
     }
 }
