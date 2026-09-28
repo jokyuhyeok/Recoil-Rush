@@ -26,11 +26,11 @@ public abstract class Weapon : MonoBehaviour
     public int Damage => _damage;
     public bool AmmoReload => _currentAmmo < _magazine;
 
-	private Player _player;
+    private Player _player;
 
     protected virtual void Awake()
     {
-		_player = GetComponentInParent<Player>();
+        _player = GetComponentInParent<Player>();
 
         _currentAmmo = _magazine;
     }
@@ -57,13 +57,13 @@ public abstract class Weapon : MonoBehaviour
         _fireCooldown = _fireSpeed;
     }
 
-	private void AddRecoil()
-	{
-		// .right: X축 방향
-		Vector2 recoil = -(Vector2)_firePoint.right * _recoilPower;
+    private void AddRecoil()
+    {
+        // .right: X축 방향
+        Vector2 recoil = -(Vector2)_firePoint.right * _recoilPower;
 
-		_player.AddRecoil(recoil);
-	}
+        _player.AddRecoil(recoil);
+    }
 
     public void Reload()
     {
