@@ -4,6 +4,7 @@ using UnityEngine;
 public class TestPlayer : MonoBehaviour, IDamageable
 {
     [Header("테스트용 스탯")]
+
     public int health = 100;
     public float speed = 5f;
 
@@ -12,7 +13,7 @@ public class TestPlayer : MonoBehaviour, IDamageable
         // WASD 또는 방향키로 움직일 수 있는 간단한 이동 로직
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
-        
+
         Vector3 moveDirection = new Vector3(moveX, moveY, 0).normalized;
         transform.position += moveDirection * speed * Time.deltaTime;
     }
@@ -21,7 +22,7 @@ public class TestPlayer : MonoBehaviour, IDamageable
     public void TakeDamage(int damage, Vector3 knockbackForce)
     {
         health -= damage;
-        
+
         // 콘솔창에 빨간색 글씨로 피격 상황을 확실하게 띄워줍니다.
         Debug.Log($"<color=red>윽! 플레이어 피격! 데미지: {damage} / 남은 체력: {health}</color>");
 

@@ -11,29 +11,29 @@ public class EnemyDrone : EnemyBase
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _chargeTime = 2f;
     [SerializeField] private float _attackCooldown = 2f;
-    
+
     private float _hoverStart_X;
     private float _hoverStart_Y;
     private float _currentAlarmTime = 0f;
     private bool _isReturning = false;
     private float _attackTimer = 0f;
     private bool _isCharging = false;
-    
+
     protected override void Start()
     {
         base.Start();
         if (rb != null)
         {
-            rb.gravityScale = 0f;   // 공중 적이므로 중력을 0으로 만듭니다.
+            rb.gravityScale = 0f; // 공중 적이므로 중력을 0으로 만듭니다.
         }
-        
+
         _hoverStart_X = transform.position.x;
         _hoverStart_Y = transform.position.y;
     }
 
     protected override void UpdateIdle()
     {
-        if (_isReturning)   // 플레이어가 감지범위 밖으로 벗어나면 생성위치로 복귀합니다.
+        if (_isReturning) // 플레이어가 감지범위 밖으로 벗어나면 생성위치로 복귀합니다.
         {
             Hovering();
             Vector2 backToFirstPosition = new Vector2(_hoverStart_X, _hoverStart_Y);
@@ -48,7 +48,7 @@ public class EnemyDrone : EnemyBase
         }
 
         Hovering();
-        
+
         // 플레이어가 감지범위 내로 들어오면 Alarm 상태로 전환합니다.
         if (distanceToPlayer <= _detectRange)
         {
@@ -69,6 +69,7 @@ public class EnemyDrone : EnemyBase
             ChangeState(EnemyState.Idle);
             return;
         }
+
         // 플레이어가 공격범위 안으로 들어오면 Attack 상태로 전환합니다.
         if (distanceToPlayer <= _attackRange)
         {
@@ -76,7 +77,7 @@ public class EnemyDrone : EnemyBase
             ChangeState(EnemyState.Attack);
             return;
         }
-        
+
         _currentAlarmTime += Time.deltaTime;
         // 경고 시간이 끝나면 Trace 상태로 전환합니다.
         if (_currentAlarmTime >= _alarmTime)
@@ -85,7 +86,6 @@ public class EnemyDrone : EnemyBase
         }
     }
 
-    
 
     protected override void UpdateTrace()
     {
@@ -95,13 +95,13 @@ public class EnemyDrone : EnemyBase
             ChangeState(EnemyState.Idle);
             return;
         }
-        
+
         if (distanceToPlayer <= _attackRange)
         {
             StartCharging();
             ChangeState(EnemyState.Attack);
         }
-        
+
         Hovering();
         transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, _speed * Time.deltaTime);
         LookAtPlayer();
@@ -131,7 +131,7 @@ public class EnemyDrone : EnemyBase
                     ChangeState(EnemyState.Trace);
                     return;
                 }
-                
+
                 StartCharging();
             }
         }
@@ -156,7 +156,7 @@ public class EnemyDrone : EnemyBase
         // 3. rb.gravityScale = 0.5f; (추락 시작)
         // 4. transform.Rotate 로 빙글빙글 회전 연출
         // 5. 폭발 파티클 재생 후 3초 뒤 Destroy
-        
+
         // -------------------------------------------------------------
         // 🎯 [Game Feel: 드론의 폭발 및 추락 연출입니다.]
         // 1. Impact Flash (인상 섬광)
@@ -166,7 +166,7 @@ public class EnemyDrone : EnemyBase
         // (추천 구현 방법: 빙글빙글 추락하는 동안 검은 연기와 스파크 파티클 지속 재생, 고장난 기계음 루프)
         // -------------------------------------------------------------
     }
-    
+
     private void FireCannon()
     {
         Debug.Log("<color=red>드론: 쾅! (대포 발사)</color>");
@@ -175,7 +175,7 @@ public class EnemyDrone : EnemyBase
             EnemyBullet bullet = Instantiate(_cannonPrefab, _firePoint.position, Quaternion.identity);
             Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
             bullet.FireBullet(direction);
-            
+
             // -------------------------------------------------------------
             // 🎯 [Game Feel: 거대 대포 발사 연출 삽입 위치]
             // 1. Camera Shake (카메라 진동)[cite: 3]
@@ -186,7 +186,7 @@ public class EnemyDrone : EnemyBase
             // -------------------------------------------------------------
         }
     }
-    
+
     private void StartCharging()
     {
         _attackTimer = 0f;
@@ -194,7 +194,7 @@ public class EnemyDrone : EnemyBase
         // 🎯 [Game Feel: 차징 연출 삽입 위치] (추천: 빛이 모이는 파티클과 위잉~ 사운드)
         Debug.Log("<color=cyan>드론: 위이잉... (대포 차징 시작)</color>");
     }
-    
+
     private void Hovering()
     {
         float newY = _hoverStart_Y + Mathf.Sin(Time.time * _hoverSpeed) * _hoverHeight;
