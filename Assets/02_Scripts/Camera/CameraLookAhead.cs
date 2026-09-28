@@ -6,8 +6,11 @@ public class CameraLookAhead : MonoBehaviour
     [SerializeField] private float _maxDistance = 4f;
     // 해당 위치까지 카메라가 도달할 시간 (높을 수록 느리지만 부드러움)
     [SerializeField] private float _smoothTime = 0.3f;
+    // 플레이어 진행 방향과 마우스 위치 간의 가중치
+    // 0이면 플레이어의 진행 방향만 참고하고, 1이면 마우스 위치만 참고한다.
+    [SerializeField, Range(0, 1)] private float _mouseWeightRatio = 0.65f;
     // 마우스 위치 참고 시 마우스가 최소한으로 움직여야 하는 거리
-    [SerializeField, Range(0, 1)] private float _minMouseDistance = 0.2f;
+    [SerializeField, Range(0, 1)] private float _minMouseDistance = 0.15f;
 
     // 최종 Look ahead 오프셋 저장하는 변수
     private Vector2 _offset = Vector2.zero;
@@ -24,6 +27,11 @@ public class CameraLookAhead : MonoBehaviour
 
     private void LookAhead()
     {
+        // 플레이어 진행 방향, 임시로 Input 그대로 가져오기
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+        Vector2 playerDirection = Vector2.ClampMagnitude(new Vector2(h, v), 1f);
+
         // 마우스의 위치를 받고 화면 중앙점 기준 -1 ~ 1 범위로 변환
         float mouseX = (Input.mousePosition.x - Screen.width / 2f) / (Screen.width / 2f);
         float mouseY = (Input.mousePosition.y - Screen.height / 2f) / (Screen.height / 2f);
@@ -48,7 +56,10 @@ public class CameraLookAhead : MonoBehaviour
             mousePosition = mousePosition.normalized * magnitude;
         }
 
+        // 플레이어 진행 방향과 마우스 위치를 비율에 맞게 더하여 최종 벡터 계산 (크기는 -1 ~ 1 사이)
+        Vector2 lookAheadVector = playerDirection * (1 - _mouseWeightRatio) + mousePosition * _mouseWeightRatio;
+
         // 실제로 Look ahead하는 거리 계산
-        _offset = Vector2.SmoothDamp(_offset, mousePosition * _maxDistance, ref _lookVelocity, _smoothTime);
+        _offset = Vector2.SmoothDamp(_offset, lookAheadVector * _maxDistance, ref _lookVelocity, _smoothTime);
     }
 }
