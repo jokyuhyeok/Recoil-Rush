@@ -26,6 +26,9 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+            return;
+
         // GetContact(0): 첫 번째 충돌 지점
         // .point: 그 지점의 월드 좌표
         Vector2 impactPoint = collision.GetContact(0).point;

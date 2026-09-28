@@ -69,18 +69,30 @@ public class EnemyBase : MonoBehaviour, IDamageable
         }
     }
 
-    protected virtual void UpdateIdle() {}
+    protected virtual void UpdateIdle()
+    {
+    }
 
-    protected virtual void UpdateAlarm() {}
+    protected virtual void UpdateAlarm()
+    {
+    }
 
-    protected virtual void UpdateTrace() {}
+    protected virtual void UpdateTrace()
+    {
+    }
 
-    protected virtual void UpdateAttack() {}
+    protected virtual void UpdateAttack()
+    {
+    }
 
-    protected virtual void UpdateKnockback() {}
+    protected virtual void UpdateKnockback()
+    {
+    }
 
-    protected virtual void UpdateDead() {}
-    
+    protected virtual void UpdateDead()
+    {
+    }
+
     // 총알에 맞으면 총알에 있는 두 매개변수를 받아서 hp에 반영합니다.
     public virtual void TakeDamage(int damage, Vector3 knockbackForce)
     {
