@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 519420035}
   - component: {fileID: 519420034}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -285,7 +286,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraLookAhead
   _maxDistance: 4
   _smoothTime: 0.3
-  _mouseWeightRatio: 1
   _minMouseDistance: 0.2
 --- !u!114 &519420035
 MonoBehaviour:
@@ -300,6 +300,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   _target: {fileID: 0}
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c080b23ec615ba04997959cee10a456c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestCameraShake
+  _shakeDuration: 1
+  _shakeForce: 0.2
+  _perlinShakeForce: 0.5
+  _perlinShakeRoughness: 60
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585857342}
   - component: {fileID: 1585857341}
+  - component: {fileID: 1585857343}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Player
@@ -475,6 +492,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1585857343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585857340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1928ab8efebea2942a6c579b3b0adec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestPlayer
+  health: 100
+  speed: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
