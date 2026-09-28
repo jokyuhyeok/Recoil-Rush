@@ -6,10 +6,6 @@ public class EnemyMachineGun : EnemyBase
 {
     [SerializeField] private EnemyBullet _bulletPrefab;
     [SerializeField] private Transform _firePoint;
-    [SerializeField] private float _fireRate = 2f;
-
-    [SerializeField] private int _magazineSize = 8;
-    [SerializeField] private float _reloadTime = 2f;
 
     private float _currentAlarmTime = 0f;
     private float _fireTimer = 0f;
@@ -17,16 +13,17 @@ public class EnemyMachineGun : EnemyBase
     private int _currentBulletRemain;
     private bool _isReloading = false;
 
+    private MachineGunStatDataSO _machineGunStatDataSo => _baseStatData as MachineGunStatDataSO;
     protected override void Start()
     {
         base.Start();
-        _currentBulletRemain = _magazineSize; // 초기에 바로 공격할 수 있게 장전을 해놓습니다.
+        _currentBulletRemain = _machineGunStatDataSo.magazineSize; // 초기에 바로 공격할 수 있게 장전을 해놓습니다.
     }
 
     protected override void UpdateIdle()
     {
         // 플레이어가 감지범위 안으로 들어왔을 시, 경고 단계로 넘어갑니다.
-        if (distanceToPlayer <= _detectRange)
+        if (distanceToPlayer <= _baseStatData.detectRange)
         {
             _currentAlarmTime = 0f; // 경고 시간 초기화
             ChangeState(EnemyState.Alarm);
@@ -39,14 +36,14 @@ public class EnemyMachineGun : EnemyBase
         LookAtPlayer();
 
         // 플레이어가 감지범위를 벗어나면 Idle로 돌아갑니다. 
-        if (distanceToPlayer > _detectRange)
+        if (distanceToPlayer > _baseStatData.detectRange)
         {
             ChangeState(EnemyState.Idle);
             return;
         }
 
         // 플레이어가 경고 기간 내에 공격 범위로 들어오면 즉시 Attack으로 진입합니다.
-        if (distanceToPlayer <= _attackRange)
+        if (distanceToPlayer <= _baseStatData.attackRange)
         {
             ChangeState(EnemyState.Attack);
             return;
@@ -55,7 +52,7 @@ public class EnemyMachineGun : EnemyBase
         _currentAlarmTime += Time.deltaTime;
 
         // 경고 시간이 끝나면 Trace로 진입합니다.
-        if (_currentAlarmTime >= _alarmTime)
+        if (_currentAlarmTime >= _baseStatData.alarmTime)
         {
             ChangeState(EnemyState.Trace);
         }
@@ -64,27 +61,27 @@ public class EnemyMachineGun : EnemyBase
     protected override void UpdateTrace()
     {
         // 플레이어가 감지범위를 벗어나면 Idle 상태로 돌아갑니다.
-        if (distanceToPlayer > _detectRange)
+        if (distanceToPlayer > _baseStatData.detectRange)
         {
             ChangeState(EnemyState.Idle);
             return;
         }
 
         // 공격 범위 안으로 들어오면 Attack으로 전환합니다.
-        if (distanceToPlayer <= _attackRange)
+        if (distanceToPlayer <= _baseStatData.attackRange)
         {
             ChangeState(EnemyState.Attack);
             return;
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, _speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, _baseStatData.speed * Time.deltaTime);
         LookAtPlayer();
     }
 
     protected override void UpdateAttack()
     {
         // 플레이어가 공격 범위를 벗어나면 Trace 상태로 전환합니다.
-        if (distanceToPlayer > _attackRange)
+        if (distanceToPlayer > _baseStatData.attackRange)
         {
             ChangeState(EnemyState.Trace);
             return;
@@ -97,11 +94,11 @@ public class EnemyMachineGun : EnemyBase
         {
             _reloadTimer += Time.deltaTime;
 
-            if (_reloadTimer >= _reloadTime)
+            if (_reloadTimer >= _machineGunStatDataSo.reloadTime)
             {
                 _isReloading = false;
-                _currentBulletRemain = _magazineSize;
-                _fireTimer = _fireRate;
+                _currentBulletRemain = _machineGunStatDataSo.magazineSize;
+                _fireTimer = _machineGunStatDataSo.fireRate;
                 Debug.Log("<color=yellow>기관총 장전 완료! 다시 쏜다!</color>");
             }
 
@@ -111,7 +108,7 @@ public class EnemyMachineGun : EnemyBase
         _fireTimer += Time.deltaTime;
 
         // 총알 연사 로직입니다.
-        if (_fireTimer >= _fireRate)
+        if (_fireTimer >= _machineGunStatDataSo.fireRate)
         {
             EnemyBullet bullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
             Vector2 direction = (playerTransform.position - transform.position).normalized;
