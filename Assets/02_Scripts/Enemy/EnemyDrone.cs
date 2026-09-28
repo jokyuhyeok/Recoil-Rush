@@ -3,14 +3,8 @@ using UnityEngine;
 // 공중 적 (드론)
 public class EnemyDrone : EnemyBase
 {
-    // 제자리에서 둥둥 떠다니는 Hovering 연출을 위한 변수입니다.
-    [SerializeField] private float _hoverHeight = 0.5f;
-    [SerializeField] private float _hoverSpeed = 2f;
-
     [SerializeField] private EnemyBullet _cannonPrefab;
     [SerializeField] private Transform _firePoint;
-    [SerializeField] private float _chargeTime = 2f;
-    [SerializeField] private float _attackCooldown = 2f;
 
     private float _hoverStart_X;
     private float _hoverStart_Y;
@@ -19,6 +13,8 @@ public class EnemyDrone : EnemyBase
     private float _attackTimer = 0f;
     private bool _isCharging = false;
 
+    private DroneStatDataSO _droneStatDataSo => _baseStatData as DroneStatDataSO;
+    
     protected override void Start()
     {
         base.Start();
@@ -37,7 +33,7 @@ public class EnemyDrone : EnemyBase
         {
             Hovering();
             Vector2 backToFirstPosition = new Vector2(_hoverStart_X, _hoverStart_Y);
-            transform.position = Vector2.MoveTowards(transform.position, backToFirstPosition, _speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, backToFirstPosition, _baseStatData.speed * Time.deltaTime);
 
             if (Vector2.Distance(transform.position, backToFirstPosition) < 0.001f)
             {
@@ -50,7 +46,7 @@ public class EnemyDrone : EnemyBase
         Hovering();
 
         // 플레이어가 감지범위 내로 들어오면 Alarm 상태로 전환합니다.
-        if (distanceToPlayer <= _detectRange)
+        if (distanceToPlayer <= _baseStatData.detectRange)
         {
             _currentAlarmTime = 0f;
             ChangeState(EnemyState.Alarm);
@@ -63,7 +59,7 @@ public class EnemyDrone : EnemyBase
         LookAtPlayer();
 
         // 플레이어가 감지범위 밖으로 나가면 Idle 상태로 전환합니다. (생성 위치로 복귀) 
-        if (distanceToPlayer > _detectRange)
+        if (distanceToPlayer > _baseStatData.detectRange)
         {
             _isReturning = true;
             ChangeState(EnemyState.Idle);
@@ -71,7 +67,7 @@ public class EnemyDrone : EnemyBase
         }
 
         // 플레이어가 공격범위 안으로 들어오면 Attack 상태로 전환합니다.
-        if (distanceToPlayer <= _attackRange)
+        if (distanceToPlayer <= _baseStatData.attackRange)
         {
             StartCharging();
             ChangeState(EnemyState.Attack);
@@ -80,7 +76,7 @@ public class EnemyDrone : EnemyBase
 
         _currentAlarmTime += Time.deltaTime;
         // 경고 시간이 끝나면 Trace 상태로 전환합니다.
-        if (_currentAlarmTime >= _alarmTime)
+        if (_currentAlarmTime >= _baseStatData.alarmTime)
         {
             ChangeState(EnemyState.Trace);
         }
@@ -89,21 +85,21 @@ public class EnemyDrone : EnemyBase
 
     protected override void UpdateTrace()
     {
-        if (distanceToPlayer > _detectRange)
+        if (distanceToPlayer > _baseStatData.detectRange)
         {
             _isReturning = true;
             ChangeState(EnemyState.Idle);
             return;
         }
 
-        if (distanceToPlayer <= _attackRange)
+        if (distanceToPlayer <= _baseStatData.attackRange)
         {
             StartCharging();
             ChangeState(EnemyState.Attack);
         }
 
         Hovering();
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, _speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, _baseStatData.speed * Time.deltaTime);
         LookAtPlayer();
     }
 
@@ -115,7 +111,7 @@ public class EnemyDrone : EnemyBase
 
         if (_isCharging)
         {
-            if (_attackTimer > _chargeTime)
+            if (_attackTimer > _droneStatDataSo.chargeTime)
             {
                 FireCannon();
                 _isCharging = false;
@@ -124,9 +120,9 @@ public class EnemyDrone : EnemyBase
         }
         else
         {
-            if (_attackTimer >= _attackCooldown)
+            if (_attackTimer >= _droneStatDataSo.attackCooldown)
             {
-                if (distanceToPlayer > _attackRange)
+                if (distanceToPlayer > _baseStatData.attackRange)
                 {
                     ChangeState(EnemyState.Trace);
                     return;
@@ -197,7 +193,7 @@ public class EnemyDrone : EnemyBase
 
     private void Hovering()
     {
-        float newY = _hoverStart_Y + Mathf.Sin(Time.time * _hoverSpeed) * _hoverHeight;
+        float newY = _hoverStart_Y + Mathf.Sin(Time.time * _droneStatDataSo.hoverSpeed) * _droneStatDataSo.hoverHeight;
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
 }
