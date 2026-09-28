@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float _gravity = 9f;
+
     [SerializeField] private float _reloadTime = 2f;
 
     private bool _isGrounded;
@@ -21,6 +23,25 @@ public class Player : MonoBehaviour
     private void Update()
     {
         ReloadUpdate();
+    }
+
+    private void FixedUpdate()
+    {
+        ApplyGravity();
+    }
+
+    private void ApplyGravity()
+    {
+        Vector2 velocity = _rigidbody.linearVelocity;
+
+        velocity.y -= _gravity * Time.fixedDeltaTime;
+
+        _rigidbody.linearVelocity = velocity;
+    }
+
+    public void AddRecoil(Vector2 recoil)
+    {
+        _rigidbody.linearVelocity += recoil;
     }
 
     private void ReloadUpdate()
