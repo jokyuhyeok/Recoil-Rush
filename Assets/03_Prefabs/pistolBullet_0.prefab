@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2913331342264732492}
   - component: {fileID: 345748555446831825}
   - component: {fileID: 7849644931718223171}
-  - component: {fileID: 7230179335667092454}
-  - component: {fileID: 1284324818766274444}
+  - component: {fileID: 8939785229658613692}
+  - component: {fileID: 1664829295320747369}
   m_Layer: 0
   m_Name: pistolBullet_0
   m_TagString: Untagged
@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   _recoilRadius: 2
   _recoilPower: 3
---- !u!50 &7230179335667092454
+--- !u!50 &8939785229658613692
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &1284324818766274444
+--- !u!70 &1664829295320747369
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,6 +169,6 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.08, y: 0.08}
+  m_Offset: {x: -0.005136173, y: 0.00031825528}
+  m_Size: {x: 0.041260563, y: 0.07108877}
   m_Direction: 0

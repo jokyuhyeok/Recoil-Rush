@@ -2,15 +2,25 @@ using UnityEngine;
 
 public class PlayerAim : MonoBehaviour
 {
-    [SerializeField] private Weapon _weapon;
     [SerializeField] private Transform _aimPoint;
     // [SerializeField] private LineRenderer _aimLine;
+
+    private Player _player;
+    private Weapon _weapon;
+    private SpriteRenderer _weaponSprite;
 
     private Camera _camera;
 
     private void Awake()
     {
         _camera = Camera.main;
+        _player = GetComponent<Player>();
+    }
+
+    private void Start()
+    {
+        _weapon = _player.CurrentWeapon;
+        _weaponSprite = _weapon.GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update()
@@ -39,6 +49,8 @@ public class PlayerAim : MonoBehaviour
 
         // Quaternion.Euler: X, Y, Z 회전 각도를 Unity가 사용하는 회전값인 Quaternion으로 변환
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
+        _weaponSprite.flipY = direction.x < 0f;
 
         _aimPoint.position = mousePosition;
 
