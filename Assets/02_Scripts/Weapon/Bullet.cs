@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
     private Weapon _weapon;
-    
+
     private int _damage;
 
     private void Awake()

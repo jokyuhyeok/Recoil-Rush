@@ -1,0 +1,767 @@
+fileFormatVersion: 2
+guid: a22bdd81164ce0c45a4cdf45e57f4671
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8320124501527290973
+    second: BackgroundLayerNightSky_0
+  - first:
+      213: -9136092393658522635
+    second: BackgroundLayerNightSky_1
+  - first:
+      213: -8268141063099067526
+    second: BackgroundLayerNightSky_2
+  - first:
+      213: 742088711675533681
+    second: BackgroundLayerNightSky_3
+  - first:
+      213: 3429122797780155095
+    second: BackgroundLayerNightSky_4
+  - first:
+      213: -5631061601140659197
+    second: BackgroundLayerNightSky_5
+  - first:
+      213: 8874852393353166796
+    second: BackgroundLayerNightSky_6
+  - first:
+      213: -3708995117352805717
+    second: BackgroundLayerNightSky_7
+  - first:
+      213: 7649088310668722164
+    second: BackgroundLayerNightSky_8
+  - first:
+      213: 7590917252065971211
+    second: BackgroundLayerNightSky_9
+  - first:
+      213: -5849436663101114583
+    second: BackgroundLayerNightSky_10
+  - first:
+      213: 2683516201396397237
+    second: BackgroundLayerNightSky_11
+  - first:
+      213: -3274292884168766802
+    second: BackgroundLayerNightSky_12
+  - first:
+      213: 4494068281048721983
+    second: BackgroundLayerNightSky_13
+  - first:
+      213: 4801695094724135155
+    second: BackgroundLayerNightSky_14
+  - first:
+      213: -4939171536814576444
+    second: BackgroundLayerNightSky_15
+  - first:
+      213: 5894305615689339755
+    second: BackgroundLayerNightSky_16
+  - first:
+      213: -6655278140138980606
+    second: BackgroundLayerNightSky_17
+  - first:
+      213: 4745631705268859739
+    second: BackgroundLayerNightSky_18
+  - first:
+      213: -833141622656192165
+    second: BackgroundLayerNightSky_19
+  - first:
+      213: 8533116891799331416
+    second: BackgroundLayerNightSky_20
+  - first:
+      213: -9088519576268406856
+    second: BackgroundLayerNightSky_21
+  - first:
+      213: 2417572750083065831
+    second: BackgroundLayerNightSky_22
+  - first:
+      213: -6468939745359111358
+    second: BackgroundLayerNightSky_23
+  - first:
+      213: 3385886219607853643
+    second: BackgroundLayerNightSky_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 56
+        width: 1672
+        height: 885
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d54ee88f625077370800000000000000
+      internalID: 8320124501527290973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 461
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f3e5d08f54163180800000000000000
+      internalID: -9136092393658522635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_2
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 504
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a73d8257289a14d80800000000000000
+      internalID: -8268141063099067526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 465
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1795f3360cd6c4a00800000000000000
+      internalID: 742088711675533681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_4
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 459
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7da31ec2401b69f20800000000000000
+      internalID: 3429122797780155095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_5
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 469
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30c2ba3fe437ad1b0800000000000000
+      internalID: -5631061601140659197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_6
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 453
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccf37d31b3fc92b70800000000000000
+      internalID: 8874852393353166796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_7
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 501
+        width: 57
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baa17848790078cc0800000000000000
+      internalID: -3708995117352805717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_8
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 534
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ff700dba45072a60800000000000000
+      internalID: 7649088310668722164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_9
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 477
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0cc6c8b50b585960800000000000000
+      internalID: 7590917252065971211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_10
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 509
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92736b7b850a2dea0800000000000000
+      internalID: -5849436663101114583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_11
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 506
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b4ec3d64c3cd3520800000000000000
+      internalID: 2683516201396397237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_12
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 445
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaa088448ff5f82d0800000000000000
+      internalID: -3274292884168766802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_13
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 520
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3a62408a432e5e30800000000000000
+      internalID: 4494068281048721983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_14
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 518
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f884c88f3c03a240800000000000000
+      internalID: 4801695094724135155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_15
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 512
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cc6277f7a9847bb0800000000000000
+      internalID: -4939171536814576444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_16
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 517
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b63d0c46ab7ccc150800000000000000
+      internalID: 5894305615689339755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_17
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 504
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20bf79feac3b3a3a0800000000000000
+      internalID: -6655278140138980606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_18
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 511
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b53b16b74eedbd140800000000000000
+      internalID: 4745631705268859739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_19
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 504
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b513cfdbb161074f0800000000000000
+      internalID: -833141622656192165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_20
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 512
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 852a59a4a98bb6670800000000000000
+      internalID: 8533116891799331416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_21
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 486
+        width: 33
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bf765239971fd180800000000000000
+      internalID: -9088519576268406856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_22
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 516
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e78d5b7b91fc8120800000000000000
+      internalID: 2417572750083065831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_23
+      rect:
+        serializedVersion: 2
+        x: 1447
+        y: 518
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24bd6745395b936a0800000000000000
+      internalID: -6468939745359111358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerNightSky_24
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 21
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4acd99d3951dfe20800000000000000
+      internalID: 3385886219607853643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BackgroundLayerNightSky_0: 8320124501527290973
+      BackgroundLayerNightSky_1: -9136092393658522635
+      BackgroundLayerNightSky_10: -5849436663101114583
+      BackgroundLayerNightSky_11: 2683516201396397237
+      BackgroundLayerNightSky_12: -3274292884168766802
+      BackgroundLayerNightSky_13: 4494068281048721983
+      BackgroundLayerNightSky_14: 4801695094724135155
+      BackgroundLayerNightSky_15: -4939171536814576444
+      BackgroundLayerNightSky_16: 5894305615689339755
+      BackgroundLayerNightSky_17: -6655278140138980606
+      BackgroundLayerNightSky_18: 4745631705268859739
+      BackgroundLayerNightSky_19: -833141622656192165
+      BackgroundLayerNightSky_2: -8268141063099067526
+      BackgroundLayerNightSky_20: 8533116891799331416
+      BackgroundLayerNightSky_21: -9088519576268406856
+      BackgroundLayerNightSky_22: 2417572750083065831
+      BackgroundLayerNightSky_23: -6468939745359111358
+      BackgroundLayerNightSky_24: 3385886219607853643
+      BackgroundLayerNightSky_3: 742088711675533681
+      BackgroundLayerNightSky_4: 3429122797780155095
+      BackgroundLayerNightSky_5: -5631061601140659197
+      BackgroundLayerNightSky_6: 8874852393353166796
+      BackgroundLayerNightSky_7: -3708995117352805717
+      BackgroundLayerNightSky_8: 7649088310668722164
+      BackgroundLayerNightSky_9: 7590917252065971211
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
