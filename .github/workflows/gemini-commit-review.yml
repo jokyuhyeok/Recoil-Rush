@@ -66,7 +66,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
-          gemini_model: gemini-3.7-flash
+          gemini_model: gemini-3.1-flash-lite
           prompt: |
             현재 저장소의 최신 커밋을 코드 리뷰하세요.
 
