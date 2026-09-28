@@ -6,8 +6,9 @@ public class CameraController : MonoBehaviour
     public static CameraController Instance => _instance;
 
     [SerializeField] private Transform _target;
-    [SerializeField] private CameraLookAhead _lookAhead;
-    [SerializeField] private CameraShake _shake;
+
+    private CameraLookAhead _lookAhead;
+    private CameraShake _shake;
 
     private Vector3 _baseOffset;
 
@@ -35,11 +36,29 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        if (_target == null)
+        {
+            if (transform.parent != null)
+            {
+                _target = transform.parent;
+            }
+            else
+            {
+                _target = GameObject.FindGameObjectWithTag("Player").transform;
+
+                transform.SetParent(_target);
+                transform.position = _target.position + new Vector3(0f, 0f, transform.position.z);
+            }
+        }
+
         _baseOffset = transform.position - _target.position;
     }
 
     private void LateUpdate()
     {
+        if (_target == null)
+            return;
+
         transform.position = _target.position + _baseOffset + (Vector3)_lookAhead.Offset + (Vector3)_shake.Offset;
     }
 
