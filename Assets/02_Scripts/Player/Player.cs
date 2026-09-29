@@ -136,6 +136,20 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void Reset()
+    {
+        _reloadTimer = 0f;
+        _reloadGroundTimer = 0f;
+        _isReloading = false;
+
+        _rigidbody.linearVelocity = Vector2.zero;
+
+        foreach (Weapon weapon in _weapons)
+        {
+            weapon.Reload();
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))

@@ -6,40 +6,24 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _recoilPower = 3f;
 
     private Rigidbody2D _rigidbody;
-    private Collider2D _collider;
 
     private Weapon _weapon;
-    private Player _player;
 
     private int _damage;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _collider = GetComponent<Collider2D>();
     }
 
     public void SetWeapon(Weapon weapon)
     {
         _weapon = weapon;
-        _player = weapon.GetComponentInParent<Player>();
 
         // linearVelocity: Rigidbody2D 현재 이동 속도 및 방향
         // transform.right: 오브젝트 방향
         _rigidbody.linearVelocity = transform.right * _weapon.BulletSpeed;
         _damage = _weapon.Damage;
-
-        IgnorePlayerCollision();
-    }
-
-    private void IgnorePlayerCollision()
-    {
-        Collider2D[] playerColliders = _player.GetComponentsInChildren<Collider2D>();
-
-        foreach (Collider2D playerCollider in playerColliders)
-        {
-            Physics2D.IgnoreCollision(_collider, playerCollider);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
