@@ -14,6 +14,9 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private float _bulletSpeed = 20f;
     [SerializeField] private int _damage = 1;
 
+    [Header("Recoil")]
+    [SerializeField] private float _recoilPower = 5f;
+
     private int _currentAmmo;
     private float _fireCooldown;
 
@@ -23,8 +26,12 @@ public abstract class Weapon : MonoBehaviour
     public int Damage => _damage;
     public bool AmmoReload => _currentAmmo < _magazine;
 
+    private Player _player;
+
     protected virtual void Awake()
     {
+        _player = GetComponentInParent<Player>();
+
         _currentAmmo = _magazine;
     }
 
@@ -38,15 +45,24 @@ public abstract class Weapon : MonoBehaviour
 
     public void TryFire()
     {
-        if (_currentAmmo <= 0 || _fireCooldown > 0f)
+        if (_currentAmmo <= 0 || _fireCooldown > 0f || _player.IsReloading)
         {
             return;
         }
 
         Fire();
+        AddRecoil();
 
         _currentAmmo--;
         _fireCooldown = _fireSpeed;
+    }
+
+    private void AddRecoil()
+    {
+        // .right: X축 방향
+        Vector2 recoil = -(Vector2)_firePoint.right * _recoilPower;
+
+        _player.AddRecoil(recoil);
     }
 
     public void Reload()
