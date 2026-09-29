@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraLookAhead
   _maxDistance: 2
   _smoothTime: 0.3
-  _minMouseDistance: 0.99
+  _minMouseDistance: 0.999
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
