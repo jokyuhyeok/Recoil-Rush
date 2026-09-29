@@ -7,7 +7,7 @@ public class CameraLookAhead : MonoBehaviour
     // 해당 위치까지 카메라가 도달할 시간 (높을 수록 느리지만 부드러움)
     [SerializeField] private float _smoothTime = 0.3f;
     // 마우스 위치 참고 시 마우스가 최소한으로 움직여야 하는 거리
-    [SerializeField, Range(0, 1)] private float _minMouseDistance = 0.2f;
+    [SerializeField, Range(0, 0.999f)] private float _minMouseDistance = 0.2f;
 
     // 최종 Look ahead 오프셋 저장하는 변수
     private Vector2 _offset = Vector2.zero;
