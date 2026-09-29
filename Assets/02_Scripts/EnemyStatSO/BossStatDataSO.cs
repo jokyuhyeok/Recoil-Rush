@@ -1,0 +1,55 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "BossStatData", menuName = "Enemy/Stat/Boss")]
+public class BossStatDataSO : ScriptableObject
+{
+    [Header("보스 기본 이동 및 대기")]
+    [Tooltip("패턴과 패턴 사이에 보스가 가만히 있는 대기 시간입니다.")]
+    public float waitTime = 1.0f;
+    [Tooltip("전방/후방으로 돌진할 때의 이동 속도 입니다.")]
+    public float dashSpeed = 1.0f;
+    [Tooltip("전방/후방으로 대시를 유지하는 시간입니다. (몇 초간 달리는가?)")]
+    public float dashDuration = 1.0f;
+    [Tooltip("보스에게만 적용되는 중력입니다. 묵직한 느낌을 위함.")]
+    public float heavyGravity = 5f;
+
+    [Header("앞 쪽에 부채꼴로 총알 뿌리기 공격(SpreadShoot)")]
+    [Tooltip("앞쪽에 발사할 총알의 개수입니다.")]
+    public int spreadBulletCount = 10;
+    [Tooltip("사격이 시작되는 첫 각도입니다. (아래서 위로 올리면서 사격합니다. 음수(-) 추천)")]
+    public float spreadStartAngle = -30f;
+    [Tooltip("사격이 끝나는 마지막 각도입니다. (양수(+) 추천)")]
+    public float spreadEndAngle = 30f;
+    [Tooltip("총알을 쏘는 각도와 각도 사이의 발사 간격입니다. (추천: 0.1f)")]
+    public float spreadFireDelay = 0.1f;
+    [Tooltip("총알들의 이동속도입니다.")]
+    public float spreadBulletSpeed = 15f;
+
+    [Header("레이저 공격과 드론 소환(LaserAndDrone)")]
+    [Tooltip("레이저를 쏘기전 기를 모으는 장전 시간입니다.")]
+    public float laserChargeTime = 1.5f;
+    [Tooltip("레이저를 몇 초간 쏠 것인가.(공격 유지시간)")]
+    public float laserDuration = 5.0f;
+    [Tooltip("레이저가 쏘아지고 드론이 생성되기까지의 틈입니다. (레이저를 쏜 다음에 드론이 나온답니다.)")]
+    public float droneSpawnDelay = 0.5f;
+    [Tooltip("생성될 드론의 개수입니다. (생성 포인트 5개 중에 몇 개에서 나올 것인가?)")]
+    public int droneSpawnCount = 3;
+    
+    [Header("이리저리 튕기는 고무폭탄 공격(ThrowBomb)")]
+    [Tooltip("수류탄을 던지기 위해 맵 중앙으로 슬라이딩하는 속도입니다.")]
+    public float centerMoveSpeed = 5f;
+    [Tooltip("앞으로 난사할 수류탄의 총 개수입니다.")]
+    public int numOfCountBomb = 5;
+    [Tooltip("수류탄이 통통 튀어나가는 초기 발사 힘(Impulse)입니다.")]
+    public float bouncePower = 10f;
+    [Tooltip("보스가 이동할 중앙 좌표입니다. (기본값 0)")]
+    public float bombTargetX = 0f;
+    [Tooltip("중앙에 도착했다고 판정할 오차 범위입니다.")]
+    public float bombStopThreshold = 0.2f;
+    [Tooltip("수류탄이 겹치지 않게 퍼지는 위아래 랜덤 각도 오차입니다.")]
+    public float bombSpreadAngle = 15f;
+    [Tooltip("수류탄을 다다닥 던지는 발사 간격입니다.")]
+    public float bombFireDelay = 0.1f;
+    [Tooltip("수류탄 패턴이 완전히 끝난 뒤 쉬는 후딜레이 시간입니다.")]
+    public float bombPostDelay = 1.0f;
+}
