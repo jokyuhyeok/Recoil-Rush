@@ -6,6 +6,8 @@ public class CameraController : MonoBehaviour
     public static CameraController Instance => _instance;
 
     [SerializeField] private Transform _target;
+    [Tooltip("카메라 최소/최대 높이 제한. 음수일 경우 제한이 없습니다.")] [SerializeField]
+    private Vector2 _yLimit = new Vector2(2.5f, -1f);
 
     private CameraLookAhead _lookAhead;
     private CameraShake _shake;
@@ -41,7 +43,7 @@ public class CameraController : MonoBehaviour
             _target = transform.parent ?? GameObject.FindGameObjectWithTag("Player").transform;
         }
 
-        transform.position = _target.position + new Vector3(0f, 0f, transform.position.z);
+        //transform.position = _target.position + new Vector3(0f, 0f, transform.position.z);
         _baseOffset = transform.position - _target.position;
     }
 
@@ -50,7 +52,21 @@ public class CameraController : MonoBehaviour
         if (_target == null)
             return;
 
-        transform.position = _target.position + _baseOffset + (Vector3)_lookAhead.Offset + (Vector3)_shake.Offset;
+        Vector3 nextPosition = _target.position + _baseOffset + (Vector3)_lookAhead.Offset + (Vector3)_shake.Offset;
+
+        // 최소 높이 제한이 걸려있고, 최소 높이 제한보다 낮으면 Clamp
+        if (_yLimit.x >= 0 && nextPosition.y < -_yLimit.x)
+        {
+            nextPosition.y = -_yLimit.x;
+        }
+
+        // 최대 높이 제한이 걸려있고, 최대 높이 제한보다 높으면 Clamp
+        if (_yLimit.y >= 0 && nextPosition.y > _yLimit.y)
+        {
+            nextPosition.y = _yLimit.y;
+        }
+
+        transform.position = nextPosition;
     }
 
     public void StartShake(float force, float duration)

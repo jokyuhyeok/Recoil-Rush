@@ -254,7 +254,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.72, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -284,9 +284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa82e723951829b459683573cb96eaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraLookAhead
-  _maxDistance: 4
+  _maxDistance: 2
   _smoothTime: 0.3
-  _minMouseDistance: 0.2
+  _minMouseDistance: 0.99
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   _target: {fileID: 0}
+  _yLimit: {x: 2.5, y: 2.5}
 --- !u!114 &519420036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,10 +313,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c080b23ec615ba04997959cee10a456c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestCameraShake
-  _shakeDuration: 1
-  _shakeForce: 0.2
-  _perlinShakeForce: 0.5
-  _perlinShakeFrequency: 60
+  _shakeDuration: 0.5
+  _shakeForce: 0.15
+  _perlinShakeForce: 0.15
+  _perlinShakeFrequency: 15
 --- !u!1 &568834775
 GameObject:
   m_ObjectHideFlags: 0
