@@ -14,7 +14,7 @@ public class EnemyDrone : EnemyBase
     private bool _isCharging = false;
 
     private DroneStatDataSO _droneStatDataSo => _baseStatData as DroneStatDataSO;
-    
+
     protected override void Start()
     {
         base.Start();
