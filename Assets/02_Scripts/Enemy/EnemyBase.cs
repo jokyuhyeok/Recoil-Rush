@@ -14,13 +14,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
     }
 
     [SerializeField] protected EnemyState currentState = EnemyState.Idle;
-    [SerializeField] protected int _hp = 1; // 몬스터 체력 (일반 : 1, 공중 : 2, 보스 : N) (숫자는 변경 예정)
-
-    // 자식들이 공통으로 사용하는 행동 패턴 관련 변수들입니다.
-    [SerializeField] protected float _speed = 1f;
-    [SerializeField] protected float _detectRange = 1f;
-    [SerializeField] protected float _attackRange = 1f;
-    [SerializeField] protected float _alarmTime = 1f;
+    [SerializeField] protected EnemyStatDataSO _baseStatData;
 
     protected Rigidbody2D rb;
     protected Transform playerTransform;
@@ -29,6 +23,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
     // 자식들의 피격 게임필 연출에 사용할 데미지와 벡터 힘 데이터를 보관하는 변수입니다.
     protected Vector2 receivedKnockbackForce;
     protected int receivedDamage;
+    protected int _currentHP;
 
     protected virtual void Awake()
     {
@@ -38,6 +33,11 @@ public class EnemyBase : MonoBehaviour, IDamageable
     protected virtual void Start()
     {
         PlayerCaching();
+
+        if (_baseStatData != null)
+        {
+            _currentHP = _baseStatData.maxHp;
+        }
     }
 
     protected virtual void Update()
@@ -69,38 +69,25 @@ public class EnemyBase : MonoBehaviour, IDamageable
         }
     }
 
-    protected virtual void UpdateIdle()
-    {
-    }
+    protected virtual void UpdateIdle() {}
 
-    protected virtual void UpdateAlarm()
-    {
-    }
+    protected virtual void UpdateAlarm() {}
 
-    protected virtual void UpdateTrace()
-    {
-    }
+    protected virtual void UpdateTrace() {}
 
-    protected virtual void UpdateAttack()
-    {
-    }
+    protected virtual void UpdateAttack() {}
 
-    protected virtual void UpdateKnockback()
-    {
-    }
+    protected virtual void UpdateKnockback() {}
 
-    protected virtual void UpdateDead()
-    {
-    }
-
-    // 나중에 public class EnemyBase : MonoBehaviour, IDamageable로 상속 연결할 예정입니다.
+    protected virtual void UpdateDead() {}
+    
     // 총알에 맞으면 총알에 있는 두 매개변수를 받아서 hp에 반영합니다.
     public virtual void TakeDamage(int damage, Vector3 knockbackForce)
     {
         if (currentState == EnemyState.Dead) return;
 
-        _hp -= damage;
-        Debug.Log($"{gameObject.name} 피격! 남은 HP: {_hp}");
+        _currentHP -= damage;
+        Debug.Log($"{gameObject.name} 피격! 남은 HP: {_currentHP}");
 
         // -------------------------------------------------------------
         // 🎯 [Game Feel: 적이 맞았을 때의 연출 효과들입니다.]
@@ -121,7 +108,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
         receivedDamage = damage;
         receivedKnockbackForce = new Vector2(knockbackForce.x, knockbackForce.y);
 
-        if (_hp <= 0)
+        if (_currentHP <= 0)
         {
             ChangeState(EnemyState.Dead);
         }
