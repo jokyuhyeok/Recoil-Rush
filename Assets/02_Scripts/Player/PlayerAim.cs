@@ -64,7 +64,7 @@ public class PlayerAim : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Quaternion.Euler: X, Y, Z 회전 각도를 Unity가 사용하는 회전값인 Quaternion으로 변환
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        _weapon.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
         _weaponSprite.flipY = direction.x < 0f;
 
