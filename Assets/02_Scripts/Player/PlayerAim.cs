@@ -14,7 +14,7 @@ public class PlayerAim : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
-        _player = GetComponent<Player>();
+        _player = GetComponent<Player>() ?? GetComponentInParent<Player>();
     }
 
     private void Start()
