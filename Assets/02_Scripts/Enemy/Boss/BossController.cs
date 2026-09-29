@@ -4,6 +4,14 @@ using System.Collections.Generic; // Queue를 사용하기 위해 추가
 
 public class BossController : MonoBehaviour
 {
+    [SerializeField] private int _spreadBulletCount = 10;      // 총알 발사 수
+    [SerializeField] private float _spreadStartAngle = -30f;   // 시작 각도
+    [SerializeField] private float _spreadEndAngle = 30f;      // 끝 각도
+    [SerializeField] private float _spreadFireDelay = 0.1f;    // 발사 간격(딜레이)
+    [SerializeField] private float _spreadBulletSpeed = 15f;
+    
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _firePoint;
     [SerializeField] private float _waitTime = 1.0f;
     [SerializeField] private float _dashSpeed = 1.0f;
     [SerializeField] private float _dashDuration = 1.0f;
@@ -14,6 +22,8 @@ public class BossController : MonoBehaviour
     
     public Rigidbody2D rb;
     public Transform playerTransform;
+    public GameObject BulletPrefab => _bulletPrefab;
+    public Transform FirePoint => _firePoint;
     public bool isHittingLeftWall = false;
     public bool isHittingRightWall = false;
     
@@ -33,6 +43,11 @@ public class BossController : MonoBehaviour
         EnqueueCommand(new Cmd_Wait(_waitTime));
         EnqueueCommand(new Cmd_BackwardDash(_dashSpeed, _dashDuration));
         EnqueueCommand(new Cmd_Wait(_waitTime));
+        EnqueueCommand(new Cmd_SpreadShoot(_spreadBulletCount, 
+            _spreadStartAngle, 
+            _spreadEndAngle, 
+            _spreadFireDelay, 
+            _spreadBulletSpeed));
     }
 
     // 새로운 패턴을 queue에 줄 세울 때 사용하는 메서드입니다. 
