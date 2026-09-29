@@ -24,6 +24,9 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Player") == false)
+            return;
+
         // 부딪힌 오브젝트가 맞을 수 있는 대상(IDamageable)인지 확인합니다.
         IDamageable damageable = collision.GetComponent<IDamageable>();
 
