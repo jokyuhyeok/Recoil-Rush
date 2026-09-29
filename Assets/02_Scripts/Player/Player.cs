@@ -131,11 +131,21 @@ public class Player : MonoBehaviour
         _reloadGroundTimer = 0f;
     }
 
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             _isGrounded = true;
+        }
+
+        if (collision.gameObject.CompareTag("EnemyBullet") && collision.gameObject.CompareTag("Enemy"))
+        {
+            Die();
         }
     }
 
