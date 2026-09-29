@@ -24,7 +24,7 @@ public class Cmd_ForwardDash : IBossCommand
         float timer = 0f;
         while (timer < _dashDuration)
         {
-            if (boss.isHittingWall)
+            if (boss.isHittingLeftWall)
             {
                 Debug.Log("쾅! 벽에 부딪혀서 돌진을 멈춥니다.");
                 break;

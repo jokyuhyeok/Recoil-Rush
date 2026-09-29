@@ -13,7 +13,8 @@ public class BossController : MonoBehaviour
     
     public Rigidbody2D rb;
     public Transform playerTransform;
-    public bool isHittingWall = false;
+    public bool isHittingLeftWall = false;
+    public bool isHittingRightWall = false;
     
     private void Awake()
     {
@@ -27,6 +28,8 @@ public class BossController : MonoBehaviour
         
         EnqueueCommand(new Cmd_Wait(_waitTime));
         EnqueueCommand(new Cmd_ForwardDash(_dashSpeed, _dashDuration));
+        EnqueueCommand(new Cmd_Wait(_waitTime));
+        EnqueueCommand(new Cmd_BackwardDash(_dashSpeed, _dashDuration));
         EnqueueCommand(new Cmd_Wait(_waitTime));
     }
 
@@ -62,7 +65,14 @@ public class BossController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            isHittingWall = true;
+            if (collision.transform.position.x < transform.position.x)
+            {
+                isHittingLeftWall = true;
+            }
+            else
+            {
+                isHittingRightWall = true;
+            }
         }
     }
 
@@ -70,7 +80,14 @@ public class BossController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            isHittingWall = false;
+            if (collision.transform.position.x < transform.position.x)
+            {
+                isHittingLeftWall = false;
+            }
+            else
+            {
+                isHittingRightWall = false;
+            }
         }
     }
     
