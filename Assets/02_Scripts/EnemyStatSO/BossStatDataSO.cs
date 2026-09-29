@@ -3,6 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BossStatData", menuName = "Enemy/Stat/Boss")]
 public class BossStatDataSO : ScriptableObject
 {
+    [Header("체력 및 페이즈 설정")]
+    [Tooltip("보스의 Hp입니다.")]
+    public int maxHp = 100;
+    [Tooltip("체력이 이 비율 이하가 되면 공격 페이즈 2로 넘어갑니다.")]
+    public float phase2Threshold = 0.6f;
+    [Tooltip("체력이 이 비율 이하가 되면 공격 페이즈 3으로 넘어갑니다.")]
+    public float phase3Threshold = 0.3f;
+    
+    
     [Header("보스 기본 이동 및 대기")]
     [Tooltip("패턴과 패턴 사이에 보스가 가만히 있는 대기 시간입니다.")]
     public float waitTime = 1.0f;

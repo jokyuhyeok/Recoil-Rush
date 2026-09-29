@@ -12,15 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1852757fb612acf46b45cd46f7cc2e83, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: Assembly-CSharp::BossStatDataSO
+  maxHp: 100
+  phase2Threshold: 0.6
+  phase3Threshold: 0.3
   waitTime: 1
-  dashSpeed: 1
-  dashDuration: 1
+  dashSpeed: 20
+  dashDuration: 3
   heavyGravity: 5
-  spreadBulletCount: 10
-  spreadStartAngle: -30
-  spreadEndAngle: 30
+  spreadBulletCount: 15
+  spreadStartAngle: 30
+  spreadEndAngle: -60
   spreadFireDelay: 0.1
-  spreadBulletSpeed: 15
+  spreadBulletSpeed: 5
   laserChargeTime: 1.5
   laserDuration: 5
   droneSpawnDelay: 0.5
