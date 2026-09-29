@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        RespawnManager.Instance.OnRespawnEvent += OnRespawn;
+        //RespawnManager.Instance.OnRespawnEvent += OnRespawn;
     }
 
     private void Update()
@@ -136,11 +136,35 @@ public class Player : MonoBehaviour
         _reloadGroundTimer = 0f;
     }
 
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    public void Reset()
+    {
+        _reloadTimer = 0f;
+        _reloadGroundTimer = 0f;
+        _isReloading = false;
+
+        _rigidbody.linearVelocity = Vector2.zero;
+
+        foreach (Weapon weapon in _weapons)
+        {
+            weapon.Reload();
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             _isGrounded = true;
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Dangerous"))
+        {
+            Die();
         }
     }
 
