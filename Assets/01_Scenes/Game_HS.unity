@@ -689,6 +689,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAim
   _aimPoint: {fileID: 568834776}
+  _normalAimPoint: {fileID: 568834775}
+  _fireAimPoint: {fileID: 568834775}
+  _fireAimDuration: 0.1
 --- !u!1 &853769594
 GameObject:
   m_ObjectHideFlags: 0
