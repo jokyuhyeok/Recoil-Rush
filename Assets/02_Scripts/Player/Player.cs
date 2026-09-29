@@ -35,6 +35,11 @@ public class Player : MonoBehaviour
         FindCurrentWeapon();
     }
 
+    private void Start()
+    {
+        RespawnManager.Instance.OnRespawnEvent += OnRespawn;
+    }
+
     private void Update()
     {
         ReloadUpdate();
@@ -170,5 +175,15 @@ public class Player : MonoBehaviour
             _isGrounded = false;
             _reloadGroundTimer = 0f;
         }
+    }
+
+    private void OnRespawn(Vector3 respawnPosition)
+    {
+        foreach (Weapon weapon in _weapons)
+        {
+            weapon.Reload();
+        }
+
+        transform.position = respawnPosition;
     }
 }

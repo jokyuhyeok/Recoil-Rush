@@ -10,7 +10,7 @@ public class EnemyRifle : EnemyBase
 
     private float _currentAlarmTime = 0f;
     private float _fireTimer = 0f;
-    
+
     private RifleStatDataSO _rifleStatData => _baseStatData as RifleStatDataSO;
 
     protected override void UpdateIdle()

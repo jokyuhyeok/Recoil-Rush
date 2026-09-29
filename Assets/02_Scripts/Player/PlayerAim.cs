@@ -22,7 +22,9 @@ public class PlayerAim : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
-        _player = GetComponent<Player>();
+
+        // HS: ??부터는 테스트용 방어 코드로 넣어놨습니다. 추후 제거 예정입니다.
+        _player = GetComponent<Player>() ?? GetComponentInParent<Player>();
 
         _normalAimPoint.SetActive(true);
         _fireAimPoint.SetActive(false);
@@ -62,7 +64,7 @@ public class PlayerAim : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Quaternion.Euler: X, Y, Z 회전 각도를 Unity가 사용하는 회전값인 Quaternion으로 변환
-        _weapon.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
         _weaponSprite.flipY = direction.x < 0f;
 
