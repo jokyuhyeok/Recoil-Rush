@@ -21,7 +21,7 @@ public class TimeBombDrone : MonoBehaviour
         if (!_isTriggered && collision.gameObject.CompareTag("Player"))
         {
             // 플레이어가 위에서 밟았는지 Y축 계산으로 확인하는 로직이 들어갈 곳입니다.
-            if (collision.transform.position.y > transform.position.y + 0.1f)
+            if (collision.collider.bounds.min.y >= GetComponent<Collider2D>().bounds.max.y)
             {
                 _isTriggered = true;
                 Debug.Log("<color=red>드론: 밟혔다! 1초 뒤 폭발 카운트다운 시작!</color>");

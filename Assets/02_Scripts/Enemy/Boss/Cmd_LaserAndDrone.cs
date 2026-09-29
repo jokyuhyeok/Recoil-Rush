@@ -71,9 +71,9 @@ public class Cmd_LaserAndDrone : IBossCommand
         for (int i = 0; i < spawnCount; i++)
         {
             int randomIndex = UnityEngine.Random.Range(0, availableIndexes.Count);
-            int selectedIndexes = availableIndexes[randomIndex];
+            int selectedIndex = availableIndexes[randomIndex];
 
-            Transform spawnPoint = spawnPoints[selectedIndexes];
+            Transform spawnPoint = spawnPoints[selectedIndex];
             Object.Instantiate(boss.DronePrefab, spawnPoint.position, Quaternion.identity);
             
             availableIndexes.RemoveAt(randomIndex);

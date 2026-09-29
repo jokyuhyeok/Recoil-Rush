@@ -36,20 +36,20 @@ public class BossStatDataSO : ScriptableObject
     public int droneSpawnCount = 3;
     
     [Header("이리저리 튕기는 고무폭탄 공격(ThrowBomb)")]
-    [Tooltip("수류탄을 던지기 위해 맵 중앙으로 슬라이딩하는 속도입니다.")]
+    [Tooltip("공격 전에 맵 가운데로 이동할 떄의 속도입니다.")]
     public float centerMoveSpeed = 5f;
-    [Tooltip("앞으로 난사할 수류탄의 총 개수입니다.")]
+    [Tooltip("앞으로 발사할 폭탄의 개수입니다.")]
     public int numOfCountBomb = 5;
-    [Tooltip("수류탄이 통통 튀어나가는 초기 발사 힘(Impulse)입니다.")]
+    [Tooltip("폭탄이 나가는 속도입니다.")]
     public float bouncePower = 10f;
     [Tooltip("보스가 이동할 중앙 좌표입니다. (기본값 0)")]
     public float bombTargetX = 0f;
     [Tooltip("중앙에 도착했다고 판정할 오차 범위입니다.")]
     public float bombStopThreshold = 0.2f;
-    [Tooltip("수류탄이 겹치지 않게 퍼지는 위아래 랜덤 각도 오차입니다.")]
+    [Tooltip("폭탄이 발사되는 랜덤각도의 위아래 범위입니다.")]
     public float bombSpreadAngle = 15f;
-    [Tooltip("수류탄을 다다닥 던지는 발사 간격입니다.")]
+    [Tooltip("폭탄을 던지는 발사 간격입니다.")]
     public float bombFireDelay = 0.1f;
-    [Tooltip("수류탄 패턴이 완전히 끝난 뒤 쉬는 후딜레이 시간입니다.")]
+    [Tooltip("공격이 끝난 후 대기 시간입니다.")]
     public float bombPostDelay = 1.0f;
 }

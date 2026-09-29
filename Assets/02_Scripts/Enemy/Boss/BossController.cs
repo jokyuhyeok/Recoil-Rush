@@ -4,51 +4,28 @@ using System.Collections.Generic; // Queue를 사용하기 위해 추가
 
 public class BossController : MonoBehaviour
 {
-    [SerializeField] private int _spreadBulletCount = 10;      // 총알 발사 수
-    [SerializeField] private float _spreadStartAngle = -30f;   // 시작 각도
-    [SerializeField] private float _spreadEndAngle = 30f;      // 끝 각도
-    [SerializeField] private float _spreadFireDelay = 0.1f;    // 발사 간격(딜레이)
-    [SerializeField] private float _spreadBulletSpeed = 15f;
+    [SerializeField] private BossStatDataSO _stat;
     
     [SerializeField] private GameObject _bulletPrefab;
-    [SerializeField] private Transform _firePoint;
-    [SerializeField] private float _waitTime = 1.0f;
-    [SerializeField] private float _dashSpeed = 1.0f;
-    [SerializeField] private float _dashDuration = 1.0f;
-    [SerializeField] private float _heavyGravity = 5f;
-
-    [Header("레이저, 드론 기믹 세팅")]
     [SerializeField] private GameObject _laserBeamObject;
     [SerializeField] private GameObject _dronePrefab;
-    [SerializeField] private Transform[] _droneSpawnPoints;
-    [SerializeField] private float _laserChargeTime = 1.5f;
-    [SerializeField] private float _laserDuration = 5.0f;
-    [SerializeField] private float _droneSpawnDelay = 0.5f;
-    [SerializeField] private int _droneSpawnCount = 3;
-
-    [Header("수류탄 투척 기믹 세팅")]
     [SerializeField] private GameObject _BombPrefab;
-    [SerializeField] private float _centerMoveSpeed = 5f;
-    [SerializeField] private int _numOfCountBomb = 5;
-    [SerializeField] private float _bouncePower = 10f;
-
-    [SerializeField] private float _bombTargetX = 0f;
-    [SerializeField] private float _bombStopThreshold = 0.2f;
-    [SerializeField] private float _bombSpreadAngle = 15f;
-    [SerializeField] private float _bombFireDelay = 0.1f;
-    [SerializeField] private float _bombPostDelay = 1.0f;
+    [SerializeField] private Transform[] _droneSpawnPoints;
+    [SerializeField] private Transform _firePoint;
     
     private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>();  // 패턴들을 순서대로 담아놓을 대기열입니다. 
     private bool _isExecuting = false;  // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
     
     public Rigidbody2D rb;
     public Transform playerTransform;
+    
+    // 프로퍼티 - Command에서 프리팹에 접근할 수 있게 열어줍니다.
     public GameObject BulletPrefab => _bulletPrefab;
-    public Transform FirePoint => _firePoint;
     public GameObject LaserBeamObject => _laserBeamObject;
     public GameObject DronePrefab => _dronePrefab;
-    public Transform[] DroneSpawnPoints => _droneSpawnPoints;
     public GameObject BombPrefab => _BombPrefab;
+    public Transform[] DroneSpawnPoints => _droneSpawnPoints;
+    public Transform FirePoint => _firePoint;
     
     public bool isHittingLeftWall = false;
     public bool isHittingRightWall = false;
@@ -56,7 +33,7 @@ public class BossController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = _heavyGravity;
+        rb.gravityScale = _stat.heavyGravity;
         PlayerCaching();
     }
     
@@ -64,17 +41,7 @@ public class BossController : MonoBehaviour
     {
         StartCoroutine(ProcessCommands());
         
-        EnqueueCommand(new Cmd_Wait(_waitTime));
-        EnqueueCommand(new Cmd_ThrowBomb(
-            _centerMoveSpeed, 
-            _numOfCountBomb, 
-            _bouncePower,
-            _bombTargetX,
-            _bombStopThreshold,
-            _bombSpreadAngle,
-            _bombFireDelay,
-            _bombPostDelay
-        ));
+        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
     }
 
     // 새로운 패턴을 queue에 줄 세울 때 사용하는 메서드입니다. 

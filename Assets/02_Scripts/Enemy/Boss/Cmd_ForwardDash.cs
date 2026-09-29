@@ -6,7 +6,6 @@ public class Cmd_ForwardDash : IBossCommand
 {
     private float _dashSpeed;
     private float _dashDuration;
-    private float timer = 0f;
 
     // 생성자입니다.
     public Cmd_ForwardDash(float dashSpeed, float dashDuration)
@@ -20,6 +19,7 @@ public class Cmd_ForwardDash : IBossCommand
         Debug.Log("<color=red>보스: 전방 돌진 시작!</color>");
 
         float directionX = -1f;
+        float timer = 0f;
         
         while (timer < _dashDuration)
         {

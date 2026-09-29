@@ -5,7 +5,6 @@ public class Cmd_BackwardDash : IBossCommand
 {
     private float _dashSpeed;
     private float _dashDuration;
-    private float timer = 0f;
     
     // 생성자입니다.
     public Cmd_BackwardDash(float dashSpeed, float dashDuration)
@@ -19,6 +18,7 @@ public class Cmd_BackwardDash : IBossCommand
         Debug.Log("<color=cyan>보스: 후방 돌진 시작! [잔상 효과 발동]</color>");
 
         float directionX = 1f;
+        float timer = 0f;
         
         // [연출] 여기에 잔상을 남기는 코드를 추가할 예정입니다.
         

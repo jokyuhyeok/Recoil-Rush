@@ -24,7 +24,8 @@ public class Cmd_SpreadShoot : IBossCommand
 
         for (int i = 0; i < _bulletCount; i++)
         {
-            float t = (float)i / (_bulletCount - 1);
+            float count = Mathf.Max(1f, _bulletCount - 1);
+            float t = (float)i / count;
             float currentAngle = Mathf.Lerp(_startAngle,  _endAngle, t);
 
             GameObject bullet = Object.Instantiate(boss.BulletPrefab, boss.FirePoint.position, Quaternion.identity);
