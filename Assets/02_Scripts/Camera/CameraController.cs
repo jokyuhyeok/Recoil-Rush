@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour
     public static CameraController Instance => _instance;
 
     [SerializeField] private Transform _target;
-    [Tooltip("카메라 최소/최대 높이 제한. 음수일 경우 제한이 없습니다.")]
-    [SerializeField] private Vector2 _yLimit = new Vector2(2.5f, -1f);
+    [SerializeField] private float _minY = -2.5f;
+    [SerializeField] private float _maxY = 4f;
 
     private CameraLookAhead _lookAhead;
     private CameraShake _shake;
@@ -64,16 +64,16 @@ public class CameraController : MonoBehaviour
             nextPosition += (Vector3)_shake.Offset;
         }
 
-        // 최소 높이 제한이 걸려있고, 최소 높이 제한보다 낮으면 Clamp
-        if (_yLimit.x >= 0 && nextPosition.y < -_yLimit.x)
+        // 최소 높이 제한보다 낮으면 Clamp
+        if (nextPosition.y < _minY)
         {
-            nextPosition.y = -_yLimit.x;
+            nextPosition.y = _minY;
         }
 
-        // 최대 높이 제한이 걸려있고, 최대 높이 제한보다 높으면 Clamp
-        if (_yLimit.y >= 0 && nextPosition.y > _yLimit.y)
+        // 최대 높이 제한보다 높으면 Clamp
+        if (nextPosition.y > _maxY)
         {
-            nextPosition.y = _yLimit.y;
+            nextPosition.y = _maxY;
         }
 
         transform.position = nextPosition;
@@ -81,11 +81,11 @@ public class CameraController : MonoBehaviour
 
     public void StartShake(float force, float duration)
     {
-        _shake.StartShake(force, duration);
+        _shake?.StartShake(force, duration);
     }
 
     public void StartPerlinShake(float force, float roughness, float duration)
     {
-        _shake.StartPerlinShake(force, roughness, duration);
+        _shake?.StartPerlinShake(force, roughness, duration);
     }
 }
