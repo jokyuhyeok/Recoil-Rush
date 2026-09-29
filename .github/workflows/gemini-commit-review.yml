@@ -1,4 +1,4 @@
-name: Gemini Commit Review
+name: Gemini PR Review
 
 on:
   pull_request:
@@ -10,7 +10,6 @@ on:
       - dev-main
     paths:
       - 'Assets/02_Scripts/**/*.cs'
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -35,21 +34,21 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Create PR diff
-          shell: bash
-          env:
-            BASE_SHA: ${{ github.event.pull_request.base.sha }}
-            HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-          run: |
-            git diff \
-              --no-ext-diff \
-              --unified=80 \
-              "${BASE_SHA}...${HEAD_SHA}" \
-              -- ':(glob)Assets/02_Scripts/**/*.cs' > pr.diff
-            
-            if [[ ! -s pr.diff ]]; then
-              echo "Assets/02_Scripts에서 리뷰할 C# 변경사항이 없습니다."
-              exit 1
-            fi
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git diff \
+            --no-ext-diff \
+            --unified=80 \
+            "${BASE_SHA}...${HEAD_SHA}" \
+            -- ':(glob)Assets/02_Scripts/**/*.cs' > pr.diff
+
+          if [[ ! -s pr.diff ]]; then
+            echo "Assets/02_Scripts에서 리뷰할 C# 변경사항이 없습니다."
+            exit 1
+          fi
 
       - name: Run Gemini review
         id: gemini_review
@@ -103,45 +102,21 @@ jobs:
             fi
           } >> "${GITHUB_STEP_SUMMARY}"
 
-      - name: Add review to Actions summary
-          if: always()
-          shell: bash
-          env:
-            REVIEW_BODY: ${{ steps.gemini_review.outputs.summary }}
-            REVIEW_ERROR: ${{ steps.gemini_review.outputs.error }}
-          run: |
-            {
+      - name: Post review on Pull Request
+        if: steps.gemini_review.outputs.summary != ''
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REVIEW_BODY: ${{ steps.gemini_review.outputs.summary }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          {
             echo "## Gemini PR Review"
             echo
-            
-            if [[ -n "${REVIEW_BODY}" ]]; then
-             printf '%s\n' "${REVIEW_BODY}"
-            else
-             echo "Gemini 리뷰 결과가 생성되지 않았습니다."
-            fi
-            
-            if [[ -n "${REVIEW_ERROR}" ]]; then
-             echo
-             echo "### Error"
-             printf '%s\n' "${REVIEW_ERROR}"
-            fi
-            } >> "${GITHUB_STEP_SUMMARY}"
+            printf '%s\n' "${REVIEW_BODY}"
+          } > review.md
 
-            - name: Post review on Pull Request
-              if: ${{ steps.gemini_review.outputs.summary != '' }}
-              shell: bash
-              env:
-                GH_TOKEN: ${{ github.token }}
-                REVIEW_BODY: ${{ steps.gemini_review.outputs.summary }}
-                PR_NUMBER: ${{ github.event.pull_request.number }}
-                REPOSITORY: ${{ github.repository }}
-              run: |
-                {
-                  echo "## Gemini PR Review"
-                  echo
-                  printf '%s\n' "${REVIEW_BODY}"
-                } > review.md
-                
-                gh pr comment "${PR_NUMBER}" \
-                  --repo "${REPOSITORY}" \
-                  --body-file review.md
+          gh pr comment "${PR_NUMBER}" \
+            --repo "${REPOSITORY}" \
+            --body-file review.md
