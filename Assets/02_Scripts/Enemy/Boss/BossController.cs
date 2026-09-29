@@ -25,6 +25,18 @@ public class BossController : MonoBehaviour
     [SerializeField] private float _laserDuration = 5.0f;
     [SerializeField] private float _droneSpawnDelay = 0.5f;
     [SerializeField] private int _droneSpawnCount = 3;
+
+    [Header("수류탄 투척 기믹 세팅")]
+    [SerializeField] private GameObject _BombPrefab;
+    [SerializeField] private float _centerMoveSpeed = 5f;
+    [SerializeField] private int _numOfCountBomb = 5;
+    [SerializeField] private float _bouncePower = 10f;
+
+    [SerializeField] private float _bombTargetX = 0f;
+    [SerializeField] private float _bombStopThreshold = 0.2f;
+    [SerializeField] private float _bombSpreadAngle = 15f;
+    [SerializeField] private float _bombFireDelay = 0.1f;
+    [SerializeField] private float _bombPostDelay = 1.0f;
     
     private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>();  // 패턴들을 순서대로 담아놓을 대기열입니다. 
     private bool _isExecuting = false;  // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
@@ -36,6 +48,7 @@ public class BossController : MonoBehaviour
     public GameObject LaserBeamObject => _laserBeamObject;
     public GameObject DronePrefab => _dronePrefab;
     public Transform[] DroneSpawnPoints => _droneSpawnPoints;
+    public GameObject BombPrefab => _BombPrefab;
     
     public bool isHittingLeftWall = false;
     public bool isHittingRightWall = false;
@@ -52,45 +65,16 @@ public class BossController : MonoBehaviour
         StartCoroutine(ProcessCommands());
         
         EnqueueCommand(new Cmd_Wait(_waitTime));
-        EnqueueCommand(new Cmd_ForwardDash(_dashSpeed, _dashDuration));
-        EnqueueCommand(new Cmd_Wait(_waitTime));
-        EnqueueCommand(new Cmd_BackwardDash(_dashSpeed, _dashDuration));
-        EnqueueCommand(new Cmd_Wait(_waitTime));
-        EnqueueCommand(new Cmd_SpreadShoot(_spreadBulletCount, 
-            _spreadStartAngle, 
-            _spreadEndAngle, 
-            _spreadFireDelay, 
-            _spreadBulletSpeed));
-        EnqueueCommand(new Cmd_Wait(_waitTime));
-        EnqueueCommand(new Cmd_SpreadShoot(_spreadBulletCount, 
-            _spreadStartAngle, 
-            _spreadEndAngle, 
-            _spreadFireDelay, 
-            _spreadBulletSpeed));
-        EnqueueCommand(new Cmd_Wait(_waitTime));
-        EnqueueCommand(new Cmd_SpreadShoot(_spreadBulletCount, 
-            _spreadStartAngle, 
-            _spreadEndAngle, 
-            _spreadFireDelay, 
-            _spreadBulletSpeed));
-        EnqueueCommand(new Cmd_Wait(_waitTime));
-        EnqueueCommand(new Cmd_SpreadShoot(_spreadBulletCount, 
-            _spreadStartAngle, 
-            _spreadEndAngle, 
-            _spreadFireDelay, 
-            _spreadBulletSpeed));
-        EnqueueCommand(new Cmd_Wait(_waitTime));
-        EnqueueCommand(new Cmd_SpreadShoot(_spreadBulletCount, 
-            _spreadStartAngle, 
-            _spreadEndAngle, 
-            _spreadFireDelay, 
-            _spreadBulletSpeed));
-        EnqueueCommand(new Cmd_LaserAndDrone(_laserChargeTime, 
-            _laserDuration, 
-            _droneSpawnDelay, 
-            _droneSpawnCount));
-        EnqueueCommand(new Cmd_Wait(_waitTime));
-        EnqueueCommand(new Cmd_ForwardDash(_dashSpeed, _dashDuration));
+        EnqueueCommand(new Cmd_ThrowBomb(
+            _centerMoveSpeed, 
+            _numOfCountBomb, 
+            _bouncePower,
+            _bombTargetX,
+            _bombStopThreshold,
+            _bombSpreadAngle,
+            _bombFireDelay,
+            _bombPostDelay
+        ));
     }
 
     // 새로운 패턴을 queue에 줄 세울 때 사용하는 메서드입니다. 
