@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
             _isGrounded = true;
         }
 
-        if (collision.gameObject.CompareTag("EnemyBullet") && collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("Enemy"))
         {
             Die();
         }
