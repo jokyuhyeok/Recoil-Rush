@@ -1,8 +1,16 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAim : MonoBehaviour
 {
+    [Header("Aim Point")]
     [SerializeField] private Transform _aimPoint;
+    [SerializeField] private GameObject _normalAimPoint;
+    [SerializeField] private GameObject _fireAimPoint;
+    [SerializeField] private float _fireAimDuration = 0.1f;
+
+    private Coroutine _fireAimCoroutine;
+
     // [SerializeField] private LineRenderer _aimLine;
 
     private Player _player;
@@ -14,7 +22,12 @@ public class PlayerAim : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
+
+        // HS: ??부터는 테스트용 방어 코드로 넣어놨습니다. 추후 제거 예정입니다.
         _player = GetComponent<Player>() ?? GetComponentInParent<Player>();
+
+        _normalAimPoint.SetActive(true);
+        _fireAimPoint.SetActive(false);
     }
 
     private void Start()
@@ -29,7 +42,10 @@ public class PlayerAim : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            _weapon.TryFire();
+            if (_weapon.TryFire())
+            {
+                FireAimPoint();
+            }
         }
     }
 
@@ -48,7 +64,7 @@ public class PlayerAim : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Quaternion.Euler: X, Y, Z 회전 각도를 Unity가 사용하는 회전값인 Quaternion으로 변환
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        _weapon.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
         _weaponSprite.flipY = direction.x < 0f;
 
@@ -57,5 +73,28 @@ public class PlayerAim : MonoBehaviour
         // SetPosition 0 - 1 사이에 레이저를 연결시킨다
         // _aimLine.SetPosition(0, _weapon.FirePoint.position);
         // _aimLine.SetPosition(1, mousePosition);
+    }
+
+    private void FireAimPoint()
+    {
+        if (_fireAimCoroutine != null)
+        {
+            StopCoroutine(_fireAimCoroutine);
+        }
+
+        _fireAimCoroutine = StartCoroutine(FireAimPointRoutine());
+    }
+
+    private IEnumerator FireAimPointRoutine()
+    {
+        _normalAimPoint.SetActive(false);
+        _fireAimPoint.SetActive(true);
+
+        yield return new WaitForSeconds(_fireAimDuration);
+
+        _normalAimPoint.SetActive(true);
+        _fireAimPoint.SetActive(false);
+
+        _fireAimCoroutine = null;
     }
 }

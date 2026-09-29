@@ -43,11 +43,11 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    public void TryFire()
+    public bool TryFire()
     {
         if (_currentAmmo <= 0 || _fireCooldown > 0f || _player.IsReloading)
         {
-            return;
+            return false;
         }
 
         Fire();
@@ -55,6 +55,8 @@ public abstract class Weapon : MonoBehaviour
 
         _currentAmmo--;
         _fireCooldown = _fireSpeed;
+
+        return true;
     }
 
     private void AddRecoil()
