@@ -7,6 +7,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private float _waitTime = 1.0f;
     [SerializeField] private float _dashSpeed = 1.0f;
     [SerializeField] private float _dashDuration = 1.0f;
+    [SerializeField] private float _heavyGravity = 5f;
     
     private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>();  // 패턴들을 순서대로 담아놓을 대기열입니다. 
     private bool _isExecuting = false;  // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
@@ -19,6 +20,7 @@ public class BossController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = _heavyGravity;
         PlayerCaching();
     }
     

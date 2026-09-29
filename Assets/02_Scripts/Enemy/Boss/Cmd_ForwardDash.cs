@@ -6,6 +6,7 @@ public class Cmd_ForwardDash : IBossCommand
 {
     private float _dashSpeed;
     private float _dashDuration;
+    private float timer = 0f;
 
     // 생성자입니다.
     public Cmd_ForwardDash(float dashSpeed, float dashDuration)
@@ -19,9 +20,7 @@ public class Cmd_ForwardDash : IBossCommand
         Debug.Log("<color=red>보스: 전방 돌진 시작!</color>");
 
         float directionX = -1f;
-        boss.rb.linearVelocity = new Vector2(directionX * _dashSpeed, boss.rb.linearVelocity.y);
-
-        float timer = 0f;
+        
         while (timer < _dashDuration)
         {
             if (boss.isHittingLeftWall)
@@ -30,9 +29,11 @@ public class Cmd_ForwardDash : IBossCommand
                 break;
             }
             
+            boss.rb.linearVelocity = new Vector2(directionX * _dashSpeed, boss.rb.linearVelocity.y);
+            
             timer += Time.deltaTime;
-            yield return null;
-    }
+            yield return null; 
+        }
 
         boss.rb.linearVelocity = new Vector2(0f, boss.rb.linearVelocity.y);
         Debug.Log("<color=red>보스: 전진 돌진 종료!</color>");

@@ -21,8 +21,6 @@ public class Cmd_BackwardDash : IBossCommand
         float directionX = 1f;
         
         // [연출] 여기에 잔상을 남기는 코드를 추가할 예정입니다.
-
-        boss.rb.linearVelocity = new Vector2(directionX * _dashSpeed, boss.rb.linearVelocity.y);
         
         while (timer < _dashDuration)
         {
@@ -31,6 +29,9 @@ public class Cmd_BackwardDash : IBossCommand
                 Debug.Log("쾅! 등 뒤의 벽에 부딪혀서 후진을 멈춥니다.");
                 break;
             }
+            
+            boss.rb.linearVelocity = new Vector2(directionX * _dashSpeed, boss.rb.linearVelocity.y);
+            
             timer += Time.deltaTime;
             yield return null;
         }
