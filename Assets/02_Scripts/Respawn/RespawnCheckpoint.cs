@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RespawnCheckpoint : MonoBehaviour
 {
-    [SerializeField] private EnemyBullet _bulletPrefab;
+    [SerializeField] private TestBullet _bulletPrefab;
 
     private bool _isActive = false;
     private Animator _animator;
@@ -36,7 +36,7 @@ public class RespawnCheckpoint : MonoBehaviour
     // 애니메이션 이벤트, Checkpoint_Revenge 클립에서 제어
     private void OnRevenge()
     {
-        EnemyBullet bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
+        TestBullet bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
         bullet.FireBullet(_target.position - transform.position);
     }
 }
