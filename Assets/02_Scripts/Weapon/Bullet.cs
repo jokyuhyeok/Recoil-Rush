@@ -37,7 +37,6 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log("Player or bullet");
             return;
         }
 
@@ -53,9 +52,9 @@ public class Bullet : MonoBehaviour
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider == null || hit.collider != other)
+            {
                 continue;
-
-            Debug.Log($"Raycast hit point: {hit.point}");
+            }
 
             AddImpactRecoil(hit.point);
         }
@@ -99,8 +98,6 @@ public class Bullet : MonoBehaviour
             if (player != null)
             {
                 player.AddRecoil(recoil);
-
-                Debug.Log($"Impact point: {impactPoint}\nRecoil: {recoil}");
             }
         }
     }
