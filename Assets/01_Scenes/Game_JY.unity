@@ -215,7 +215,7 @@ MonoBehaviour:
   _magazine: 4
   _firePoint: {fileID: 1063094642}
   _fireSpeed: 0.2
-  _bulletPrefab: {fileID: 230382440396546226, guid: 38669219c07275044b2a9edcb30b8b23, type: 3}
+  _bulletPrefab: {fileID: 7849644931718223171, guid: 2df353b7e596b6f469841e1726b6db8f, type: 3}
   _bulletSpeed: 20
   _damage: 1
   _recoilPower: 6
@@ -896,7 +896,7 @@ MonoBehaviour:
   _magazine: 6
   _firePoint: {fileID: 901249133}
   _fireSpeed: 0.2
-  _bulletPrefab: {fileID: 230382440396546226, guid: 38669219c07275044b2a9edcb30b8b23, type: 3}
+  _bulletPrefab: {fileID: 7849644931718223171, guid: 2df353b7e596b6f469841e1726b6db8f, type: 3}
   _bulletSpeed: 20
   _damage: 1
   _recoilPower: 5
