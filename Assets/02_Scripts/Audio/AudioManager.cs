@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource _bgmSource;
 
     [Header("SFX Settings")]
-    [SerializeField] SoundEffectData[] _sfxDatas;
+    [SerializeField] private SoundEffectData[] _sfxDatas;
     private Dictionary<SoundEffectType, AudioClip> _sfxClips;
 
     [SerializeField] private int _initPoolSize = 10;
@@ -122,7 +122,8 @@ public class AudioManager : MonoBehaviour
         audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
         audioSource.Play();
 
-        StartCoroutine(WaitAndReturnToPool(audioSource, audioClip.length));
+        float playTime = audioClip.length / audioSource.pitch;
+        StartCoroutine(WaitAndReturnToPool(audioSource, playTime));
     }
 
     // 실행 시간 기다렸다가 다시 풀에 넣기
