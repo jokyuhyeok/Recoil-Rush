@@ -19,6 +19,10 @@ public class BossStatDataSO : ScriptableObject
     public float dashSpeed = 1.0f;
     [Tooltip("전방/후방으로 대시를 유지하는 시간입니다. (몇 초간 달리는가?)")]
     public float dashDuration = 1.0f;
+    [Tooltip("돌진 전 제트팩 엔진을 뿜으며 장전하는 시간입니다.")]
+    public float dashChargeTime = 0.5f;
+    [Tooltip("돌진 시에 보스 뒤에 남을 잔상의 간격입니다.")] 
+    public float dashGhostInterval = 0.05f;
     [Tooltip("보스에게만 적용되는 중력입니다. 묵직한 느낌을 위함.")]
     public float heavyGravity = 5f;
 
