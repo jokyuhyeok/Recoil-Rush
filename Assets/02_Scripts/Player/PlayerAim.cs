@@ -5,13 +5,15 @@ public class PlayerAim : MonoBehaviour
 {
     [Header("Aim Point")]
     [SerializeField] private Transform _aimPoint;
-    [SerializeField] private GameObject _normalAimPoint;
-    [SerializeField] private GameObject _fireAimPoint;
+    [SerializeField] private Sprite _fireAimPoint;
     [SerializeField] private float _fireAimDuration = 0.1f;
 
     private Coroutine _fireAimCoroutine;
 
     // [SerializeField] private LineRenderer _aimLine;
+
+    private Sprite _normalAimPoint;
+    private SpriteRenderer _aimPointSprite;
 
     private Player _player;
     private Weapon _weapon;
@@ -23,11 +25,11 @@ public class PlayerAim : MonoBehaviour
     {
         _camera = Camera.main;
 
+        _aimPointSprite = _aimPoint.GetComponent<SpriteRenderer>();
+        _normalAimPoint = _aimPointSprite.sprite;
+
         // HS: ??부터는 테스트용 방어 코드로 넣어놨습니다. 추후 제거 예정입니다.
         _player = GetComponent<Player>() ?? GetComponentInParent<Player>();
-
-        _normalAimPoint.SetActive(true);
-        _fireAimPoint.SetActive(false);
     }
 
     private void Start()
@@ -87,13 +89,11 @@ public class PlayerAim : MonoBehaviour
 
     private IEnumerator FireAimPointRoutine()
     {
-        _normalAimPoint.SetActive(false);
-        _fireAimPoint.SetActive(true);
+        _aimPointSprite.sprite = _fireAimPoint;
 
         yield return new WaitForSeconds(_fireAimDuration);
 
-        _normalAimPoint.SetActive(true);
-        _fireAimPoint.SetActive(false);
+        _aimPointSprite.sprite = _normalAimPoint;
 
         _fireAimCoroutine = null;
     }
