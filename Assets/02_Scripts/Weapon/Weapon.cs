@@ -24,6 +24,8 @@ public abstract class Weapon : MonoBehaviour
 
     public float BulletSpeed => _bulletSpeed;
     public int Damage => _damage;
+
+    public int Magazine => _magazine;
     public int CurrentAmmo => _currentAmmo;
     public bool AmmoReload => _currentAmmo < _magazine;
 
