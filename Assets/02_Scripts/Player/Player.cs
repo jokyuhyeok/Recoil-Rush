@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     private List<Weapon> _weapons = new List<Weapon>();
     private Weapon _currentWeapon;
+    private PlayerAim _playerAIm;
 
     private float _reloadTimer;
     private float _reloadGroundTimer;
@@ -32,6 +33,8 @@ public class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.gravityScale = 0f;
 
+        _playerAIm = GetComponent<PlayerAim>();
+
         FindCurrentWeapon();
     }
 
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour
     {
         ReloadUpdate();
         ReloadGroundCheck();
+        WeaponChangeUpdate();
     }
 
     private void FixedUpdate()
@@ -140,6 +144,39 @@ public class Player : MonoBehaviour
         _reloadTimer = _reloadTime;
         _reloadGroundTimer = 0f;
     }
+
+    private void ChangeWeapon(Weapon changeWeapon)
+    {
+        if (changeWeapon == null)
+        {
+            return;
+        }
+
+        foreach (Weapon weapon in _weapons)
+        {
+            weapon.gameObject.SetActive(weapon == changeWeapon);
+        }
+
+        _currentWeapon = changeWeapon;
+        _playerAIm.ChangeWeapon(_currentWeapon);
+    }
+
+    private void WeaponChangeUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            // =>: 람다식, weapon은 _weapon의 변수(즉 Weapon)
+            // Find로 _weapon을 돌며 is로 true가 나오면 반환, 나오지 않으면 마저 검사, 만약 true가 없다면 null 반환
+            // Find로 weapon에 _weapon의 값을 하나씩 넣어줌
+            ChangeWeapon(_weapons.Find(weapon => weapon is Pistol));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ChangeWeapon(_weapons.Find(weapon => weapon is Shotgun));
+        }
+    }
+
 
     private void Die()
     {
