@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        //RespawnManager.Instance.OnRespawnEvent += OnRespawn;
+        RespawnManager.Instance.OnRespawnEvent += OnRespawn;
     }
 
     private void Update()
@@ -53,6 +53,11 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         ApplyGravity();
+    }
+
+    private void OnDestroy()
+    {
+        RespawnManager.Instance.OnRespawnEvent -= OnRespawn;
     }
 
     private void FindCurrentWeapon()
@@ -175,10 +180,10 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
-    public void Reset()
+    private void Reset()
     {
         _reloadTimer = 0f;
         _reloadGroundTimer = 0f;
@@ -216,11 +221,12 @@ public class Player : MonoBehaviour
 
     private void OnRespawn(Vector3 respawnPosition)
     {
-        foreach (Weapon weapon in _weapons)
-        {
-            weapon.Reload();
-        }
-
+        // 변수 및 물리 연산 초기화, 재장전
+        Reset();
+        // 리스폰 위치로 플레이어 이동
         transform.position = respawnPosition;
+
+        // 부활 처리
+        gameObject.SetActive(true);
     }
 }
