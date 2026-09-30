@@ -36,11 +36,16 @@ public class Player : MonoBehaviour
         _playerAIm = GetComponent<PlayerAim>();
 
         FindCurrentWeapon();
+
+        foreach (Weapon weapon in _weapons)
+        {
+            weapon.Reload();
+        }
     }
 
     private void Start()
     {
-        //RespawnManager.Instance.OnRespawnEvent += OnRespawn;
+        RespawnManager.Instance.OnRespawnEvent += OnRespawn;
     }
 
     private void Update()
@@ -53,6 +58,11 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         ApplyGravity();
+    }
+
+    private void OnDestroy()
+    {
+        RespawnManager.Instance.OnRespawnEvent -= OnRespawn;
     }
 
     private void FindCurrentWeapon()
@@ -158,27 +168,44 @@ public class Player : MonoBehaviour
 
     private void WeaponChangeUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        float scroll = Input.mouseScrollDelta.y;
+
+        if (scroll == 0f)
         {
-            // =>: 람다식, weapon은 _weapon의 변수(즉 Weapon)
-            // Find로 _weapon을 돌며 is로 true가 나오면 반환, 나오지 않으면 마저 검사, 만약 true가 없다면 null 반환
-            // Find로 weapon에 _weapon의 값을 하나씩 넣어줌
-            ChangeWeapon(_weapons.Find(weapon => weapon is Pistol));
+            return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        int currentIndex = _weapons.IndexOf(_currentWeapon);
+
+        if (scroll > 0f)
         {
-            ChangeWeapon(_weapons.Find(weapon => weapon is Shotgun));
+            currentIndex++;
         }
+        else
+        {
+            currentIndex--;
+        }
+
+        if (currentIndex >= _weapons.Count)
+        {
+            currentIndex = 0;
+        }
+        else if (currentIndex < 0)
+        {
+            // Count는 총 개수를 알려주는 프로퍼티기 때문에 -1로 최대값을 수정해 줌
+            currentIndex = _weapons.Count - 1;
+        }
+
+        ChangeWeapon(_weapons[currentIndex]);
     }
 
 
     private void Die()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
-    public void Reset()
+    private void Reset()
     {
         _reloadTimer = 0f;
         _reloadGroundTimer = 0f;
@@ -216,11 +243,12 @@ public class Player : MonoBehaviour
 
     private void OnRespawn(Vector3 respawnPosition)
     {
-        foreach (Weapon weapon in _weapons)
-        {
-            weapon.Reload();
-        }
-
+        // 변수 및 물리 연산 초기화, 재장전
+        Reset();
+        // 리스폰 위치로 플레이어 이동
         transform.position = respawnPosition;
+
+        // 부활 처리
+        gameObject.SetActive(true);
     }
 }

@@ -21,14 +21,15 @@ public class RespawnCheckpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (_isActive)
-            return;
-
         if (collider.CompareTag("PlayerBullet") == false)
             return;
 
-        _isActive = true;
-        RespawnManager.Instance.UpdateCheckpoint(transform.position);
+        if (_isActive == false)
+        {
+            _isActive = true;
+            RespawnManager.Instance.UpdateCheckpoint(transform.position);
+            _animator.SetTrigger("Activate");
+        }
 
         _animator.SetTrigger("Revenge");
     }
@@ -38,5 +39,7 @@ public class RespawnCheckpoint : MonoBehaviour
     {
         TestBullet bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
         bullet.FireBullet(_target.position - transform.position);
+
+        _animator.ResetTrigger("Revenge");
     }
 }
