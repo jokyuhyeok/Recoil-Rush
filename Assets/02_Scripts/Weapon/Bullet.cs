@@ -56,6 +56,14 @@ public class Bullet : MonoBehaviour
                 continue;
             }
 
+            // 부딪힌 게 적이면 데미지를 입힌다.
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                // Todo: 이중 넉백 수정
+                // 넉백은 임시로 hit.normal 사용
+                hit.collider.GetComponent<IDamageable>().TakeDamage(_damage, hit.point * _recoilPower);
+            }
+
             AddImpactRecoil(hit.point);
         }
 
