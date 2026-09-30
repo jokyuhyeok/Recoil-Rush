@@ -11,9 +11,16 @@ public class Bullet : MonoBehaviour
 
     private int _damage;
 
+    private Vector2 _previousPosition;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        _previousPosition = _rigidbody.position;
     }
 
     public void SetWeapon(Weapon weapon)
@@ -26,18 +33,31 @@ public class Bullet : MonoBehaviour
         _damage = _weapon.Damage;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("PlayerBullet"))
         {
             return;
         }
 
-        // GetContact(0): 첫 번째 충돌 지점
-        // .point: 그 지점의 월드 좌표
-        Vector2 impactPoint = collision.GetContact(0).point;
+        Vector2 currentPosition = _rigidbody.position;
+        Vector2 move = currentPosition - _previousPosition;
 
-        AddImpactRecoil(impactPoint);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            _previousPosition,
+            move.normalized,
+            move.magnitude
+        );
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider == null || hit.collider != other)
+            {
+                continue;
+            }
+
+            AddImpactRecoil(hit.point);
+        }
 
         Destroy(gameObject);
     }
