@@ -26,6 +26,7 @@ public class Cmd_ThrowBomb : IBossCommand
 
     public IEnumerator Execute(BossController boss)
     {
+        boss.anim.Play("Fire");
         Debug.Log("<color=orange>보스: 맵 중앙으로 이동!</color>");
 
         float direction = Mathf.Sign(_targetX - boss.transform.position.x);

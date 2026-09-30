@@ -16,8 +16,10 @@ MonoBehaviour:
   phase2Threshold: 0.6
   phase3Threshold: 0.3
   waitTime: 1
-  dashSpeed: 20
+  dashSpeed: 30
   dashDuration: 3
+  dashChargeTime: 1.5
+  dashGhostInterval: 0.02
   heavyGravity: 5
   spreadBulletCount: 15
   spreadStartAngle: 30

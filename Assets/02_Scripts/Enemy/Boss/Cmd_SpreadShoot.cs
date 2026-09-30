@@ -20,6 +20,7 @@ public class Cmd_SpreadShoot : IBossCommand
 
     public IEnumerator Execute(BossController boss)
     {
+        boss.anim.Play("Fire");
         Debug.Log($"<color=yellow>보스: 기본 사격 시작! {_bulletCount}발</color>");
 
         for (int i = 0; i < _bulletCount; i++)

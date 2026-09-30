@@ -13,6 +13,7 @@ public class Cmd_Wait : IBossCommand
 
     public IEnumerator Execute(BossController boss)
     {
+        boss.anim.Play("Idle");
         Debug.Log($"<color=green>보스 : {_waitTime}초 동안 대기합니다....</color>");
 
         yield return new WaitForSeconds(_waitTime);

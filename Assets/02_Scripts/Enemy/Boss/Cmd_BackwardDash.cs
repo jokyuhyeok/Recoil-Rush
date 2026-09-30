@@ -15,6 +15,7 @@ public class Cmd_BackwardDash : IBossCommand
 
     public IEnumerator Execute(BossController boss)
     {
+        boss.anim.Play("BackMove");
         Debug.Log("<color=cyan>보스: 후방 돌진 시작! [잔상 효과 발동]</color>");
 
         float directionX = 1f;
@@ -24,10 +25,15 @@ public class Cmd_BackwardDash : IBossCommand
         
         while (timer < _dashDuration)
         {
-            if (boss.isHittingRightWall)
+            if ((directionX < 0 && boss.isHittingLeftWall) || (directionX > 0 && boss.isHittingRightWall))
             {
-                Debug.Log("쾅! 등 뒤의 벽에 부딪혀서 후진을 멈춥니다.");
-                break;
+                Debug.Log("쾅! 등 뒤의 벽에 박고 앞으로 통통 튕겨납니다!");
+                
+                // 역방향으로 튕겨나가는 힘 적용
+                boss.rb.linearVelocity = new Vector2(directionX * _dashSpeed, boss.rb.linearVelocity.y);
+                
+                yield return new WaitForSeconds(0.5f);
+                break; 
             }
             
             boss.rb.linearVelocity = new Vector2(directionX * _dashSpeed, boss.rb.linearVelocity.y);

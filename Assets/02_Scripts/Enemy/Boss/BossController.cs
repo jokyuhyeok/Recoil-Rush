@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections; // 코루틴을 사용하기 위해 추가
-using System.Collections.Generic; // Queue를 사용하기 위해 추가
+using System.Collections.Generic;
+using Unity.VisualScripting; // Queue를 사용하기 위해 추가
 
 public class BossController : MonoBehaviour
 {
@@ -12,13 +13,16 @@ public class BossController : MonoBehaviour
     [SerializeField] private GameObject _BombPrefab;
     [SerializeField] private Transform[] _droneSpawnPoints;
     [SerializeField] private Transform _firePoint;
+    [SerializeField] private GameObject _ghostPrefab;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     
     private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>();  // 패턴들을 순서대로 담아놓을 대기열입니다. 
     private bool _isExecuting = false;  // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
     private int _currentPhase = 1;
     
-    public Rigidbody2D rb;
     public Transform playerTransform;
+    public Rigidbody2D rb;
+    public Animator anim;
     
     // 프로퍼티 - Command에서 프리팹에 접근할 수 있게 열어줍니다.
     public GameObject BulletPrefab => _bulletPrefab;
@@ -34,6 +38,7 @@ public class BossController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         rb.gravityScale = _stat.heavyGravity;
         PlayerCaching();
     }
@@ -78,36 +83,6 @@ public class BossController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            if (collision.transform.position.x < transform.position.x)
-            {
-                isHittingLeftWall = true;
-            }
-            else
-            {
-                isHittingRightWall = true;
-            }
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            if (collision.transform.position.x < transform.position.x)
-            {
-                isHittingLeftWall = false;
-            }
-            else
-            {
-                isHittingRightWall = false;
-            }
-        }
-    }
-
     public void SetPhase(int phaseIndex)
     {
         Debug.Log($"<color=red>보스: {phaseIndex}페이즈 돌입!!</color>");
@@ -148,13 +123,9 @@ public class BossController : MonoBehaviour
     private void EnqueuePhase1()
     {
         EnqueueCommand(new Cmd_Wait(_stat.waitTime));
-        
-        EnqueueCommand(new Cmd_SpreadShoot(
-            _stat.spreadBulletCount, _stat.spreadStartAngle, _stat.spreadEndAngle, 
-            _stat.spreadFireDelay, _stat.spreadBulletSpeed));
-        EnqueueCommand(new Cmd_SpreadShoot(
-            _stat.spreadBulletCount, _stat.spreadStartAngle, _stat.spreadEndAngle, 
-            _stat.spreadFireDelay, _stat.spreadBulletSpeed));
+        EnqueueCommand(new Cmd_ForwardDash(_stat.dashSpeed, _stat.dashDuration, _stat.dashChargeTime, _stat.dashGhostInterval));
+        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
+        EnqueueCommand(new Cmd_BackwardDash(_stat.dashSpeed, _stat.dashDuration));
     }
 
     private void EnqueuePhase2()
@@ -189,6 +160,28 @@ public class BossController : MonoBehaviour
         _commandQueue.Clear();
         rb.linearVelocity = Vector2.zero; 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // 부딪힌 지점들의 정보를 하나씩 꺼내봅니다.
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            if (contact.normal.x > 0.7f)
+            {
+                isHittingLeftWall = true;
+            }
+            else if (contact.normal.x < -0.7f)
+            {
+                isHittingRightWall = true;
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isHittingLeftWall = false;
+        isHittingRightWall = false;
+    }
     
     private void PlayerCaching()
     {
@@ -201,6 +194,21 @@ public class BossController : MonoBehaviour
         else
         {
             Debug.LogWarning("플레이어가 씬에 없습니다!");
+        }
+    }
+
+    // 잔상 생성을 전담하는 메서드입니다. 
+    public void SpawnGhost()
+    {
+        if (_ghostPrefab == null || _spriteRenderer == null) return;
+        
+        // 프리팹 생성 및 세팅입니다.
+        GameObject ghostobject = Instantiate(_ghostPrefab, transform.position, Quaternion.identity);
+        BossGhostEffect ghost = ghostobject.GetComponent<BossGhostEffect>();
+
+        if (ghost != null)
+        {
+            ghost.Setup(_spriteRenderer.sprite, transform);
         }
     }
 }
