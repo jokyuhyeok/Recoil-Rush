@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5900652784292653235}
   - component: {fileID: 4124727050361655744}
-  - component: {fileID: 4885222955160260575}
+  - component: {fileID: -958707892746743258}
   m_Layer: 0
   m_Name: BossGhost
   m_TagString: Untagged
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
---- !u!114 &4885222955160260575
+--- !u!114 &-958707892746743258
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,4 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8133fc200930f474e9c688821e5b229c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossGhostEffect
-  _fadeSpeed: 3
+  _fadeSpeed: 5

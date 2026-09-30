@@ -125,7 +125,10 @@ public class BossController : MonoBehaviour
         EnqueueCommand(new Cmd_Wait(_stat.waitTime));
         EnqueueCommand(new Cmd_ForwardDash(_stat.dashSpeed, _stat.dashDuration, _stat.dashChargeTime, _stat.dashGhostInterval));
         EnqueueCommand(new Cmd_Wait(_stat.waitTime));
-        EnqueueCommand(new Cmd_BackwardDash(_stat.dashSpeed, _stat.dashDuration));
+        EnqueueCommand(new Cmd_BackwardDash(_stat.backDashSpeed, 
+            _stat.backDashDuration,
+            _stat.backDashChargeTime, 
+            _stat.backDashGhostInterval));
     }
 
     private void EnqueuePhase2()
@@ -137,7 +140,10 @@ public class BossController : MonoBehaviour
             _stat.bombTargetX, _stat.bombStopThreshold, _stat.bombSpreadAngle, 
             _stat.bombFireDelay, _stat.bombPostDelay));
             
-        EnqueueCommand(new Cmd_BackwardDash(_stat.dashSpeed, _stat.dashDuration));
+        EnqueueCommand(new Cmd_BackwardDash(_stat.backDashSpeed, 
+            _stat.backDashDuration,
+            _stat.backDashChargeTime, 
+            _stat.backDashGhostInterval));
     }
 
     private void EnqueuePhase3()

@@ -46,7 +46,6 @@ public class Cmd_ForwardDash : IBossCommand
             }
 
             boss.rb.linearVelocity = new Vector2(directionX * _dashSpeed, boss.rb.linearVelocity.y);
-            
             ghostTimer += Time.deltaTime;
             if (ghostTimer >= _ghostInterval)
             {
