@@ -158,18 +158,35 @@ public class Player : MonoBehaviour
 
     private void WeaponChangeUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        float scroll = Input.mouseScrollDelta.y;
+
+        if (scroll == 0f)
         {
-            // =>: 람다식, weapon은 _weapon의 변수(즉 Weapon)
-            // Find로 _weapon을 돌며 is로 true가 나오면 반환, 나오지 않으면 마저 검사, 만약 true가 없다면 null 반환
-            // Find로 weapon에 _weapon의 값을 하나씩 넣어줌
-            ChangeWeapon(_weapons.Find(weapon => weapon is Pistol));
+            return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        int currentIndex = _weapons.IndexOf(_currentWeapon);
+
+        if (scroll > 0f)
         {
-            ChangeWeapon(_weapons.Find(weapon => weapon is Shotgun));
+            currentIndex++;
         }
+        else
+        {
+            currentIndex--;
+        }
+
+        if (currentIndex >= _weapons.Count)
+        {
+            currentIndex = 0;
+        }
+        else if (currentIndex < 0)
+        {
+            // Count는 총 개수를 알려주는 프로퍼티기 때문에 -1로 최대값을 수정해 줌
+            currentIndex = _weapons.Count - 1;
+        }
+
+        ChangeWeapon(_weapons[currentIndex]);
     }
 
 
