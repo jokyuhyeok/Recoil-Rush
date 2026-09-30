@@ -21,6 +21,10 @@ public class Cmd_SpreadShoot : IBossCommand
     public IEnumerator Execute(BossController boss)
     {
         boss.anim.Play("Fire");
+        boss.rb.linearVelocity = Vector2.zero;
+        Debug.Log("<color=yellow>보스: 사격 폼 잡기</color>");
+        yield return new WaitForSeconds(0.8f);
+        
         Debug.Log($"<color=yellow>보스: 기본 사격 시작! {_bulletCount}발</color>");
 
         for (int i = 0; i < _bulletCount; i++)
@@ -28,14 +32,18 @@ public class Cmd_SpreadShoot : IBossCommand
             float count = Mathf.Max(1f, _bulletCount - 1);
             float t = (float)i / count;
             float currentAngle = Mathf.Lerp(_startAngle,  _endAngle, t);
-
-            GameObject bullet = Object.Instantiate(boss.BulletPrefab, boss.FirePoint.position, Quaternion.identity);
-            Vector2 fireDirection = Quaternion.Euler(0, 0, currentAngle) * Vector2.left;
             
-            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-            if (bulletRb != null)
+            Vector2 fireDirection = Quaternion.Euler(0, 0, currentAngle) * Vector2.left;
+
+            foreach (Transform firePoint in boss.FirePoints)
             {
-                bulletRb.linearVelocity = fireDirection * _bulletSpeed;
+                GameObject bullet = Object.Instantiate(boss.BulletPrefab, firePoint.position, Quaternion.identity);
+
+                BossBullet bossBullet = bullet.GetComponent<BossBullet>();
+                if (bossBullet != null)
+                {
+                    bossBullet.FireBullet(fireDirection, _bulletSpeed);
+                }
             }
 
             yield return new WaitForSeconds(_fireDelay);

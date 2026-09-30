@@ -45,15 +45,18 @@ public class Cmd_ThrowBomb : IBossCommand
 
         for (int i = 0; i < _bombCount; i++)
         {
-            GameObject bomb = Object.Instantiate(boss.BombPrefab, boss.FirePoint.position, Quaternion.identity);
-            Rigidbody2D bombRb = bomb.GetComponent<Rigidbody2D>();
-
-            if (bombRb != null)
+            foreach (Transform firePoint in boss.FirePoints)
             {
-                float randomAngle = UnityEngine.Random.Range(-_spreadAngle, _spreadAngle);
-                Vector2 forceDirection = Quaternion.Euler(0, 0, randomAngle) * Vector2.left;
-                
-                bombRb.AddForce(forceDirection * _shootPower, ForceMode2D.Impulse);
+                GameObject bomb = Object.Instantiate(boss.BombPrefab, firePoint.position, Quaternion.identity);
+                Rigidbody2D bombRb = bomb.GetComponent<Rigidbody2D>();
+
+                if (bombRb != null)
+                {
+                    float randomAngle = UnityEngine.Random.Range(-_spreadAngle, _spreadAngle);
+                    Vector2 forceDirection = Quaternion.Euler(0, 0, randomAngle) * Vector2.left;
+                    
+                    bombRb.AddForce(forceDirection * _shootPower, ForceMode2D.Impulse);
+                }
             }
 
             yield return new WaitForSeconds(_fireDelay);

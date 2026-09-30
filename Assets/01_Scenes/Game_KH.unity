@@ -1124,8 +1124,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 429732867}
-  m_Layer: 0
-  m_Name: FirePoint
+  m_Layer: 7
+  m_Name: FirePointLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1140,7 +1140,7 @@ Transform:
   m_GameObject: {fileID: 429732866}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.7726874, y: -0.34000003, z: 0}
+  m_LocalPosition: {x: -2.84, y: -0.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1401,6 +1401,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &751217419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 751217420}
+  m_Layer: 7
+  m_Name: FirePointRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &751217420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751217419}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.28, y: -0.37, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1259169626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &805186309
 GameObject:
@@ -1695,7 +1726,7 @@ GameObject:
   - component: {fileID: 1259169628}
   - component: {fileID: 1259169631}
   - component: {fileID: 1259169630}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1775,6 +1806,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 429732867}
+  - {fileID: 751217420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1259169627
@@ -1890,14 +1922,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossController
   _stat: {fileID: 11400000, guid: f7a2362c13c08d342b77ad7d32544fe7, type: 2}
-  _bulletPrefab: {fileID: 2653959786419680889, guid: c8b027ed93d7ec34fa2961d04600b580, type: 3}
   _laserBeamObject: {fileID: 0}
   _dronePrefab: {fileID: 5217622483549423106, guid: 42f601c24c0662e4aa9dcc90802d89a6, type: 3}
-  _BombPrefab: {fileID: 2653959786419680889, guid: c8b027ed93d7ec34fa2961d04600b580, type: 3}
+  _BombPrefab: {fileID: 1353503040259925186, guid: b42d3df310d103448a44482489b363a3, type: 3}
   _droneSpawnPoints: []
-  _firePoint: {fileID: 429732867}
   _ghostPrefab: {fileID: 2523284707451859810, guid: 1d2e5fbc62c324845a8ffe5dad006fbf, type: 3}
   _spriteRenderer: {fileID: 1259169625}
+  _firePoints:
+  - {fileID: 429732867}
+  - {fileID: 751217420}
+  _bulletPrefab: {fileID: 1353503040259925186, guid: b42d3df310d103448a44482489b363a3, type: 3}
   playerTransform: {fileID: 1381569473}
   rb: {fileID: 0}
   anim: {fileID: 0}
@@ -1953,7 +1987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAim
   _aimPoint: {fileID: 911807646}
-  _normalAimPoint: {fileID: 911807645}
   _fireAimPoint: {fileID: 911807645}
   _fireAimDuration: 0.1
 --- !u!50 &1381569469

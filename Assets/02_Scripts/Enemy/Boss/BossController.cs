@@ -7,14 +7,14 @@ public class BossController : MonoBehaviour
 {
     [SerializeField] private BossStatDataSO _stat;
     
-    [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private GameObject _laserBeamObject;
     [SerializeField] private GameObject _dronePrefab;
     [SerializeField] private GameObject _BombPrefab;
     [SerializeField] private Transform[] _droneSpawnPoints;
-    [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _ghostPrefab;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    public Transform[] _firePoints;
+    public GameObject _bulletPrefab;
     
     private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>();  // 패턴들을 순서대로 담아놓을 대기열입니다. 
     private bool _isExecuting = false;  // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
@@ -30,7 +30,7 @@ public class BossController : MonoBehaviour
     public GameObject DronePrefab => _dronePrefab;
     public GameObject BombPrefab => _BombPrefab;
     public Transform[] DroneSpawnPoints => _droneSpawnPoints;
-    public Transform FirePoint => _firePoint;
+    public Transform[] FirePoints => _firePoints;
     
     public bool isHittingLeftWall = false;
     public bool isHittingRightWall = false;
@@ -123,12 +123,12 @@ public class BossController : MonoBehaviour
     private void EnqueuePhase1()
     {
         EnqueueCommand(new Cmd_Wait(_stat.waitTime));
-        EnqueueCommand(new Cmd_ForwardDash(_stat.dashSpeed, _stat.dashDuration, _stat.dashChargeTime, _stat.dashGhostInterval));
-        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
         EnqueueCommand(new Cmd_BackwardDash(_stat.backDashSpeed, 
             _stat.backDashDuration,
             _stat.backDashChargeTime, 
             _stat.backDashGhostInterval));
+        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
+        EnqueueCommand(new Cmd_SpreadShoot(_stat.spreadBulletCount, _stat.spreadStartAngle, _stat.spreadEndAngle, _stat.spreadFireDelay, _stat.spreadBulletSpeed));
     }
 
     private void EnqueuePhase2()

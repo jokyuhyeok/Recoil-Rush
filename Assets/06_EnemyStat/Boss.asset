@@ -26,9 +26,9 @@ MonoBehaviour:
   backDashGhostInterval: 0.05
   heavyGravity: 5
   spreadBulletCount: 15
-  spreadStartAngle: 30
-  spreadEndAngle: -60
-  spreadFireDelay: 0.1
+  spreadStartAngle: -60
+  spreadEndAngle: 60
+  spreadFireDelay: 0.05
   spreadBulletSpeed: 5
   laserChargeTime: 1.5
   laserDuration: 5
