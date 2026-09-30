@@ -133,11 +133,11 @@ GameObject:
   - component: {fileID: 105639821}
   m_Layer: 0
   m_Name: Shotgun
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &105639820
 Transform:
   m_ObjectHideFlags: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
   _magazine: 4
   _firePoint: {fileID: 1063094642}
   _fireSpeed: 0.2
-  _bulletPrefab: {fileID: 980808037}
+  _bulletPrefab: {fileID: 7849644931718223171, guid: 2df353b7e596b6f469841e1726b6db8f, type: 3}
   _bulletSpeed: 20
   _damage: 1
   _recoilPower: 6
@@ -477,7 +477,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 285859639}
   m_Layer: 0
   m_Name: AimPoint
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1068,7 +1068,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1268,11 +1268,11 @@ GameObject:
   - component: {fileID: 1348325033}
   m_Layer: 0
   m_Name: Pistol
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1348325031
 Transform:
   m_ObjectHideFlags: 0
@@ -1304,7 +1304,7 @@ MonoBehaviour:
   _magazine: 6
   _firePoint: {fileID: 901249133}
   _fireSpeed: 0.2
-  _bulletPrefab: {fileID: 221968235}
+  _bulletPrefab: {fileID: 7849644931718223171, guid: 2df353b7e596b6f469841e1726b6db8f, type: 3}
   _bulletSpeed: 20
   _damage: 1
   _recoilPower: 5
