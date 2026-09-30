@@ -197,7 +197,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -226113057
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: c552a4dc62dadbd4bbebf378e524fae5, type: 3}
@@ -273,8 +273,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -514988207
-  m_SortingLayer: 2
+  m_SortingLayerID: 2102887003
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 674fa3fdcd2b32e4da44002a9dc4d9f6, type: 3}
@@ -480,8 +480,8 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -514988207
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -1113,7 +1113,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -226113057
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 1089af8a382855743ad5ab8e3288d6dc, type: 3}
@@ -1204,7 +1204,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -226113057
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: -20
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a22bdd81164ce0c45a4cdf45e57f4671, type: 3}
@@ -1314,8 +1314,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -514988207
-  m_SortingLayer: 2
+  m_SortingLayerID: 2102887003
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2240994688644343673, guid: 674fa3fdcd2b32e4da44002a9dc4d9f6, type: 3}
@@ -1539,8 +1539,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3761a9bb50c83da4abaa9aea7c5a7519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAim
-  _weapon: {fileID: 995391601}
   _aimPoint: {fileID: 438705216}
+  _fireAimPoint: {fileID: 0}
+  _fireAimDuration: 0.1
 --- !u!114 &1343307515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1555,6 +1556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   _gravity: 9
   _reloadTime: 2
+  _reloadGroundDelay: 0.2
 --- !u!1 &1514003023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,7 +1894,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -226113057
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: -70
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 51d4b09f76a1b0343834a484fe195d37, type: 3}
@@ -1967,8 +1969,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -514988207
-  m_SortingLayer: 2
+  m_SortingLayerID: 2102887003
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4058690790203430685, guid: 6f40198c4b8396a4f8c72afd9ed231ca, type: 3}

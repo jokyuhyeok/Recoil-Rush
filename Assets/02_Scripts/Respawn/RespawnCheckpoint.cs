@@ -24,7 +24,7 @@ public class RespawnCheckpoint : MonoBehaviour
         if (_isActive)
             return;
 
-        if (collider.CompareTag("Bullet") == false)
+        if (collider.CompareTag("PlayerBullet") == false)
             return;
 
         _isActive = true;
