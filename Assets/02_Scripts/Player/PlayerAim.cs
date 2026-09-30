@@ -97,4 +97,11 @@ public class PlayerAim : MonoBehaviour
 
         _fireAimCoroutine = null;
     }
+
+    public void ChangeWeapon(Weapon weapon)
+    {
+        _weapon = weapon;
+        // 무기가 변경되면서 각도 때문에
+        _weaponSprite = weapon.GetComponentInChildren<SpriteRenderer>();
+    }
 }
