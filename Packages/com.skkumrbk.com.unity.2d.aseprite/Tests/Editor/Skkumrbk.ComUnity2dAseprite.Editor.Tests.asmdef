@@ -1,0 +1,14 @@
+{
+    "name": "Skkumrbk.ComUnity2dAseprite.Editor.Tests",
+    "references": [
+        "Skkumrbk.ComUnity2dAseprite.Editor",
+        "Skkumrbk.ComUnity2dAseprite"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}

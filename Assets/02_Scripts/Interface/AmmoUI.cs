@@ -3,89 +3,123 @@ using UnityEngine;
 
 public class AmmoUI : MonoBehaviour
 {
-    [SerializeField] private Transform _container;
+    [Header("UI")]
+    [SerializeField] private Transform _bulletContainer;
 
-    private Weapon _weapon;
-    private GameObject _bulletUIPrefab;
+    [Header("Test")]
+    [SerializeField] private Weapon _testWeapon;
+    [SerializeField] private BulletsAmountUI _testBulletPrefab;
+
+    private Weapon _currentWeapon;
+    private BulletsAmountUI _currentBulletPrefab;
 
     private readonly List<BulletsAmountUI> _bullets
         = new List<BulletsAmountUI>();
 
-    public void SetWeapon(
-        Weapon weapon,
-        GameObject bulletUIPrefab)
+    private int _previousAmmo = -1;
+
+    private void Start()
     {
-        // 이전 총 이벤트 해제
-        if (_weapon != null)
+        SetWeapon(_testWeapon, _testBulletPrefab);
+    }
+
+    private void Update()
+    {
+        if (_currentWeapon == null)
+            return;
+
+        int currentAmmo = _currentWeapon.CurrentAmmo;
+
+        if (currentAmmo == _previousAmmo)
+            return;
+
+        // 총알 감소 = 발사
+        if (currentAmmo < _previousAmmo)
         {
-            _weapon.OnAmmoFired -= HandleFire;
-            _weapon.OnReloaded -= HandleReload;
+            HandleAmmoDecrease(_previousAmmo, currentAmmo);
         }
 
-        _weapon = weapon;
-        _bulletUIPrefab = bulletUIPrefab;
+        // 총알 증가 = 재장전
+        else
+        {
+            RefreshAmmoState();
+        }
 
-        // 새 총 이벤트 연결
-        _weapon.OnAmmoFired += HandleFire;
-        _weapon.OnReloaded += HandleReload;
+        _previousAmmo = currentAmmo;
+    }
+
+    public void SetWeapon(
+        Weapon weapon,
+        BulletsAmountUI bulletPrefab)
+    {
+        if (weapon == null || bulletPrefab == null)
+            return;
+
+        _currentWeapon = weapon;
+        _currentBulletPrefab = bulletPrefab;
 
         CreateAmmoUI();
+
+        _previousAmmo = _currentWeapon.CurrentAmmo;
     }
 
     private void CreateAmmoUI()
     {
         foreach (BulletsAmountUI bullet in _bullets)
         {
-            Destroy(bullet.gameObject);
+            if (bullet != null)
+                Destroy(bullet.gameObject);
         }
 
         _bullets.Clear();
 
-        for (int i = 0; i < _weapon.Magazine; i++)
+        for (int i = 0; i < _currentWeapon.Magazine; i++)
         {
-            GameObject obj = Instantiate(
-                _bulletUIPrefab,
-                _container
+            BulletsAmountUI bullet = Instantiate(
+                _currentBulletPrefab,
+                _bulletContainer
             );
-
-            BulletsAmountUI bullet =
-                obj.GetComponent<BulletsAmountUI>();
 
             _bullets.Add(bullet);
         }
 
-        // 이미 사용한 탄이 있다면 상태 맞추기
-        int usedAmmo =
-            _weapon.Magazine - _weapon.CurrentAmmo;
+        RefreshAmmoState();
+    }
 
-        for (int i = 0; i < usedAmmo; i++)
+    private void HandleAmmoDecrease(
+        int previousAmmo,
+        int currentAmmo)
+    {
+        int magazine = _currentWeapon.Magazine;
+
+        int usedBefore = magazine - previousAmmo;
+        int usedNow = magazine - currentAmmo;
+
+        for (int i = usedBefore; i < usedNow; i++)
         {
+            if (i < 0 || i >= _bullets.Count)
+                continue;
+
             _bullets[i].Fire();
         }
     }
 
-    private void HandleFire(int index)
+    private void RefreshAmmoState()
     {
-        if (index < 0 || index >= _bullets.Count)
-            return;
+        int usedAmmo =
+            _currentWeapon.Magazine -
+            _currentWeapon.CurrentAmmo;
 
-        _bullets[index].Fire();
-    }
-
-    private void HandleReload()
-    {
-        foreach (BulletsAmountUI bullet in _bullets)
+        for (int i = 0; i < _bullets.Count; i++)
         {
-            bullet.ResetBullet();
+            if (i < usedAmmo)
+            {
+                _bullets[i].SetSpentInstant();
+            }
+            else
+            {
+                _bullets[i].ResetBullet();
+            }
         }
-    }
-
-    private void OnDestroy()
-    {
-        if (_weapon == null)
-            return;
-
-        _weapon.OnAmmoFired -= HandleFire;
-        _weapon.OnReloaded -= HandleReload;
     }
 }
