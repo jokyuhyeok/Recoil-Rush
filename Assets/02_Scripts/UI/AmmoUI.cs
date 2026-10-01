@@ -92,7 +92,7 @@ public class AmmoUI : MonoBehaviour
         // 새 무기의 탄약 변경 이벤트 구독
         _currentWeapon.OnAmmoChanged += HandleAmmoChanged;
     }
-    
+
     private WeaponAmmoUI FindWeaponData(Weapon weapon)
     {
         foreach (WeaponAmmoUI data in _weaponAmmoUIList)
@@ -160,7 +160,7 @@ public class AmmoUI : MonoBehaviour
 
         _previousAmmo = _currentWeapon.CurrentAmmo;
     }
-    
+
     // 탄약 변경 이벤트
 
     private void HandleAmmoChanged(int currentAmmo)
@@ -195,7 +195,7 @@ public class AmmoUI : MonoBehaviour
 
         _previousAmmo = currentAmmo;
     }
-    
+
     // 현재 탄약 상태 전체 반영
     private void RefreshAmmoState()
     {
