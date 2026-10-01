@@ -7,8 +7,8 @@ public class AmmoUI : MonoBehaviour
     [Serializable]
     private class WeaponAmmoUI
     {
-        public Weapon _weapon;
-        public BulletsAmountUI _bulletPrefab;
+        public Weapon weapon;
+        public BulletsAmountUI bulletPrefab;
     }
 
     [Header("UI")]
@@ -32,26 +32,26 @@ public class AmmoUI : MonoBehaviour
     
     private void CreateBulletsUI(WeaponAmmoUI data)
     {
-        if (data._weapon == null || data._bulletPrefab == null)
+        if (data.weapon == null || data.bulletPrefab == null)
             return;
 
         // 이미 만들어져 있으면 재생성 안 함
-        if (_bulletPools.ContainsKey(data._weapon))
+        if (_bulletPools.ContainsKey(data.weapon))
             return;
 
         List<BulletsAmountUI> bullets =
             new List<BulletsAmountUI>();
 
-        for (int i = 0; i < data._weapon.Magazine; i++)
+        for (int i = 0; i < data.weapon.Magazine; i++)
         {
-            BulletsAmountUI bullet = Instantiate(data._bulletPrefab, _bulletContainer);
+            BulletsAmountUI bullet = Instantiate(data.bulletPrefab, _bulletContainer);
 
             bullet.gameObject.SetActive(false);
 
             bullets.Add(bullet);
         }
 
-        _bulletPools.Add(data._weapon, bullets);
+        _bulletPools.Add(data.weapon, bullets);
     }
 
     // 현재 활성화된 총 체크
@@ -59,15 +59,15 @@ public class AmmoUI : MonoBehaviour
     {
         foreach (WeaponAmmoUI data in _weaponAmmoUIList)
         {
-            if (data._weapon == null)
+            if (data.weapon == null)
                 continue;
 
             // 현재 활성화된 총이 아니면 패스
-            if (!data._weapon.gameObject.activeSelf)
+            if (!data.weapon.gameObject.activeSelf)
                 continue;
 
             // 이미 현재 총이면 아무것도 안 함
-            if (_currentWeapon == data._weapon)
+            if (_currentWeapon == data.weapon)
                 return;
 
             // 이 총의 UI Pool이 아직 없으면 최초 1회 생성
@@ -91,7 +91,7 @@ public class AmmoUI : MonoBehaviour
             }
         }
 
-        _currentWeapon = data._weapon;
+        _currentWeapon = data.weapon;
 
         if (!_bulletPools.TryGetValue(_currentWeapon, out _currentBullets))
         {

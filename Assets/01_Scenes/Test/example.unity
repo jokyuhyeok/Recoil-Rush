@@ -420,10 +420,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmmoUI
   _bulletContainer: {fileID: 605618530}
   _weaponAmmoUIList:
-  - _weapon: {fileID: 995391604}
-    _bulletPrefab: {fileID: 978490909054430104, guid: 38c403f88957c9345b3f5a7f61e38a90, type: 3}
-  - _weapon: {fileID: 60260466}
-    _bulletPrefab: {fileID: 435600539749710098, guid: 77e61cbf6804d0449ada262c39438bef, type: 3}
+  - weapon: {fileID: 995391604}
+    bulletPrefab: {fileID: 978490909054430104, guid: 38c403f88957c9345b3f5a7f61e38a90, type: 3}
+  - weapon: {fileID: 60260466}
+    bulletPrefab: {fileID: 435600539749710098, guid: 77e61cbf6804d0449ada262c39438bef, type: 3}
 --- !u!1 &438705215
 GameObject:
   m_ObjectHideFlags: 0
