@@ -1,58 +1,51 @@
-name: Gemini Commit Review
+name: Gemini PR Review
 
 on:
-  push:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
     branches:
-      - dev-hs
-      - dev-jy
-      - dev-kh
-      - dev-bg
+      - dev-main
     paths:
       - 'Assets/02_Scripts/**/*.cs'
-  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pull-requests: write
 
 concurrency:
-  group: gemini-commit-review-${{ github.ref }}
-  cancel-in-progress: false
+  group: gemini-pr-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   review:
-    name: Review C# commit
+    name: Review C# Pull Request
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
-      - name: Checkout repository
+      - name: Checkout PR head
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Create commit diff
+      - name: Create PR diff
         shell: bash
         env:
-          COMMIT_SHA: ${{ github.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          if git rev-parse "${COMMIT_SHA}^" > /dev/null 2>&1; then
-            git diff \
-              --no-ext-diff \
-              --unified=80 \
-              "${COMMIT_SHA}^" \
-              "${COMMIT_SHA}" \
-              -- ':(glob)Assets/02_Scripts/**/*.cs' > commit.diff
-          else
-            git show \
-              --format= \
-              --no-ext-diff \
-              --unified=80 \
-              "${COMMIT_SHA}" \
-              -- ':(glob)Assets/02_Scripts/**/*.cs' > commit.diff
-          fi
+          git diff \
+            --no-ext-diff \
+            --unified=80 \
+            "${BASE_SHA}...${HEAD_SHA}" \
+            -- ':(glob)Assets/02_Scripts/**/*.cs' > pr.diff
 
-          if [[ ! -s commit.diff ]]; then
+          if [[ ! -s pr.diff ]]; then
             echo "Assets/02_Scripts에서 리뷰할 C# 변경사항이 없습니다."
             exit 1
           fi
@@ -66,11 +59,11 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
-          gemini_model: gemini-3.7-flash
+          gemini_model: gemini-3.1-flash-lite
           prompt: |
-            현재 저장소의 최신 커밋을 코드 리뷰하세요.
+            현재 Pull Request의 변경사항을 코드 리뷰하세요.
 
-            반드시 먼저 commit.diff 파일을 읽고,
+            반드시 먼저 pr.diff 파일을 읽고,
             Assets/02_Scripts 폴더에 포함된 C# 변경사항을 검토하세요.
 
             저장소의 GEMINI.md와 GEMINI.md에서 가져온
@@ -93,7 +86,7 @@ jobs:
           REVIEW_ERROR: ${{ steps.gemini_review.outputs.error }}
         run: |
           {
-            echo "## Gemini Commit Review"
+            echo "## Gemini PR Review"
             echo
 
             if [[ -n "${REVIEW_BODY}" ]]; then
@@ -109,22 +102,21 @@ jobs:
             fi
           } >> "${GITHUB_STEP_SUMMARY}"
 
-      - name: Post review on commit
-        if: ${{ steps.gemini_review.outputs.summary != '' }}
+      - name: Post review on Pull Request
+        if: steps.gemini_review.outputs.summary != ''
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
           REVIEW_BODY: ${{ steps.gemini_review.outputs.summary }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
           REPOSITORY: ${{ github.repository }}
-          COMMIT_SHA: ${{ github.sha }}
         run: |
-          jq -n \
-            --arg body "## Gemini Commit Review
+          {
+            echo "## Gemini PR Review"
+            echo
+            printf '%s\n' "${REVIEW_BODY}"
+          } > review.md
 
-          ${REVIEW_BODY}" \
-            '{body: $body}' > comment.json
-
-          gh api \
-            --method POST \
-            "/repos/${REPOSITORY}/commits/${COMMIT_SHA}/comments" \
-            --input comment.json
+          gh pr comment "${PR_NUMBER}" \
+            --repo "${REPOSITORY}" \
+            --body-file review.md

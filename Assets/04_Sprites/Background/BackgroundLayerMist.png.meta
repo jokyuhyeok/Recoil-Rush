@@ -1,0 +1,2119 @@
+fileFormatVersion: 2
+guid: 1089af8a382855743ad5ab8e3288d6dc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3677058452357614600
+    second: BackgroundLayerMist_0
+  - first:
+      213: -7506912141269030669
+    second: BackgroundLayerMist_1
+  - first:
+      213: -2669688151006712080
+    second: BackgroundLayerMist_2
+  - first:
+      213: 4302762204192098912
+    second: BackgroundLayerMist_3
+  - first:
+      213: 523741418174219964
+    second: BackgroundLayerMist_4
+  - first:
+      213: 431533631580824316
+    second: BackgroundLayerMist_5
+  - first:
+      213: 1900455777115448355
+    second: BackgroundLayerMist_6
+  - first:
+      213: 783911438890563239
+    second: BackgroundLayerMist_7
+  - first:
+      213: 7827545556349377042
+    second: BackgroundLayerMist_8
+  - first:
+      213: -8753903353071573238
+    second: BackgroundLayerMist_9
+  - first:
+      213: 4836611765352451341
+    second: BackgroundLayerMist_10
+  - first:
+      213: -3911376809304755381
+    second: BackgroundLayerMist_11
+  - first:
+      213: -7899467962473172169
+    second: BackgroundLayerMist_12
+  - first:
+      213: -7966149443241733044
+    second: BackgroundLayerMist_13
+  - first:
+      213: -2667550523091507019
+    second: BackgroundLayerMist_14
+  - first:
+      213: 7604352812156031334
+    second: BackgroundLayerMist_15
+  - first:
+      213: 1252296529114817838
+    second: BackgroundLayerMist_16
+  - first:
+      213: 5359050936790945091
+    second: BackgroundLayerMist_17
+  - first:
+      213: -6109966961569721818
+    second: BackgroundLayerMist_18
+  - first:
+      213: 1485765026252621959
+    second: BackgroundLayerMist_19
+  - first:
+      213: -6416257867045455936
+    second: BackgroundLayerMist_20
+  - first:
+      213: -2026213545651607063
+    second: BackgroundLayerMist_21
+  - first:
+      213: 3701672332711606740
+    second: BackgroundLayerMist_22
+  - first:
+      213: -7933346380120305832
+    second: BackgroundLayerMist_23
+  - first:
+      213: -8829145762003987736
+    second: BackgroundLayerMist_24
+  - first:
+      213: -3471547453144439678
+    second: BackgroundLayerMist_25
+  - first:
+      213: 4792415219156307716
+    second: BackgroundLayerMist_26
+  - first:
+      213: -4365426801145133584
+    second: BackgroundLayerMist_27
+  - first:
+      213: 4688299392903305296
+    second: BackgroundLayerMist_28
+  - first:
+      213: -2786822413931464080
+    second: BackgroundLayerMist_29
+  - first:
+      213: -2197147984389387028
+    second: BackgroundLayerMist_30
+  - first:
+      213: -3035626005374917789
+    second: BackgroundLayerMist_31
+  - first:
+      213: -2912871778461194532
+    second: BackgroundLayerMist_32
+  - first:
+      213: -8587729999733584374
+    second: BackgroundLayerMist_33
+  - first:
+      213: 4192067762218005807
+    second: BackgroundLayerMist_34
+  - first:
+      213: -8935941583520207165
+    second: BackgroundLayerMist_35
+  - first:
+      213: 1059689246903041956
+    second: BackgroundLayerMist_36
+  - first:
+      213: 5578320720837353006
+    second: BackgroundLayerMist_37
+  - first:
+      213: -1319613234751907092
+    second: BackgroundLayerMist_38
+  - first:
+      213: -5689082387251055980
+    second: BackgroundLayerMist_39
+  - first:
+      213: -7229647605014092477
+    second: BackgroundLayerMist_40
+  - first:
+      213: -334505291436878598
+    second: BackgroundLayerMist_41
+  - first:
+      213: -3875622777055011229
+    second: BackgroundLayerMist_42
+  - first:
+      213: 5359848216418728815
+    second: BackgroundLayerMist_43
+  - first:
+      213: -2706626366577554571
+    second: BackgroundLayerMist_44
+  - first:
+      213: -5870801516458363099
+    second: BackgroundLayerMist_45
+  - first:
+      213: 1477164943732632149
+    second: BackgroundLayerMist_46
+  - first:
+      213: 6953184811846285564
+    second: BackgroundLayerMist_47
+  - first:
+      213: -150698698002889008
+    second: BackgroundLayerMist_48
+  - first:
+      213: 1775113839580162618
+    second: BackgroundLayerMist_49
+  - first:
+      213: 3099280743653218238
+    second: BackgroundLayerMist_50
+  - first:
+      213: 8084349276010775458
+    second: BackgroundLayerMist_51
+  - first:
+      213: -7493860675399996927
+    second: BackgroundLayerMist_52
+  - first:
+      213: -3696108042642218728
+    second: BackgroundLayerMist_53
+  - first:
+      213: 7964494484858572258
+    second: BackgroundLayerMist_54
+  - first:
+      213: 2315743779231011597
+    second: BackgroundLayerMist_55
+  - first:
+      213: -4036088237658790246
+    second: BackgroundLayerMist_56
+  - first:
+      213: 5135656159799080914
+    second: BackgroundLayerMist_57
+  - first:
+      213: 7593550893170321766
+    second: BackgroundLayerMist_58
+  - first:
+      213: 2615065446047480451
+    second: BackgroundLayerMist_59
+  - first:
+      213: -1797174412660436681
+    second: BackgroundLayerMist_60
+  - first:
+      213: 3728069926774613099
+    second: BackgroundLayerMist_61
+  - first:
+      213: 6291964022148317748
+    second: BackgroundLayerMist_62
+  - first:
+      213: 3328415061110680820
+    second: BackgroundLayerMist_63
+  - first:
+      213: 3604381423514933462
+    second: BackgroundLayerMist_64
+  - first:
+      213: 4270267523492839713
+    second: BackgroundLayerMist_65
+  - first:
+      213: -6528754425339151233
+    second: BackgroundLayerMist_66
+  - first:
+      213: 7676445144069090463
+    second: BackgroundLayerMist_67
+  - first:
+      213: 9211701616173369156
+    second: BackgroundLayerMist_68
+  - first:
+      213: 2581560558144694632
+    second: BackgroundLayerMist_69
+  - first:
+      213: 6121436059340557927
+    second: BackgroundLayerMist_70
+  - first:
+      213: -1179086392286761292
+    second: BackgroundLayerMist_71
+  - first:
+      213: 3642311081979305967
+    second: BackgroundLayerMist_72
+  - first:
+      213: 8735502397762675259
+    second: BackgroundLayerMist_73
+  - first:
+      213: -60343027578525780
+    second: BackgroundLayerMist_74
+  - first:
+      213: -6103941370278685548
+    second: BackgroundLayerMist_75
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BackgroundLayerMist_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 693
+        width: 576
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f370e8c1d678fcc0800000000000000
+      internalID: -3677058452357614600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 843
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f8a79b4e2712d790800000000000000
+      internalID: -7506912141269030669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_2
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 893
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0feec2275cc53fad0800000000000000
+      internalID: -2669688151006712080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_3
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 857
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06ac8dd7d6b76bb30800000000000000
+      internalID: 4302762204192098912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_4
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 849
+        width: 45
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb60f608b04b44700800000000000000
+      internalID: 523741418174219964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_5
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 845
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf262033d8d1df500800000000000000
+      internalID: 431533631580824316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_6
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 867
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3242e42d576cf5a10800000000000000
+      internalID: 1900455777115448355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_7
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 898
+        width: 29
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a6ff62ec4301ea00800000000000000
+      internalID: 783911438890563239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_8
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 867
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21a546d163701ac60800000000000000
+      internalID: 7827545556349377042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_9
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 800
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a076112d743e38680800000000000000
+      internalID: -8753903353071573238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_10
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 776
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0dce4e66c81f1340800000000000000
+      internalID: 4836611765352451341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_11
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 794
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4370bae38ff7b9c0800000000000000
+      internalID: -3911376809304755381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_12
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 776
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7333536cdb37f5290800000000000000
+      internalID: -7899467962473172169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_13
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 784
+        width: 83
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4496efa94d827190800000000000000
+      internalID: -7966149443241733044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_14
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 865
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b829babee4fafad0800000000000000
+      internalID: -2667550523091507019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_15
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 877
+        width: 58
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6619d43d796188960800000000000000
+      internalID: 7604352812156031334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_16
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 806
+        width: 36
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e25e75bee0d016110800000000000000
+      internalID: 1252296529114817838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_17
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 875
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34d06acfe6c2f5a40800000000000000
+      internalID: 5359050936790945091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_18
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 834
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6229342ab69053ba0800000000000000
+      internalID: -6109966961569721818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_19
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 859
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7888c716b6f7e9410800000000000000
+      internalID: 1485765026252621959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_20
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 784
+        width: 84
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c73377f67fd4f6a0800000000000000
+      internalID: -6416257867045455936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_21
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 778
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e9e95cf38171e3e0800000000000000
+      internalID: -2026213545651607063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_22
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 843
+        width: 26
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d9ba22df5bfe5330800000000000000
+      internalID: 3701672332711606740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_23
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 834
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85f4cccff7717e190800000000000000
+      internalID: -7933346380120305832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_24
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 810
+        width: 19
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e25b9155b2987580800000000000000
+      internalID: -8829145762003987736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_25
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 896
+        width: 35
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 284e9620cf592dfc0800000000000000
+      internalID: -3471547453144439678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_26
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 764
+        width: 140
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40fccf12044128240800000000000000
+      internalID: 4792415219156307716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_27
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 794
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f546c01473ea63c0800000000000000
+      internalID: -4365426801145133584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_28
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 769
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0585eaa457f201140800000000000000
+      internalID: 4688299392903305296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_29
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 719
+        width: 79
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07ab48d97c73359d0800000000000000
+      internalID: -2786822413931464080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_30
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 746
+        width: 90
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cec41879c892281e0800000000000000
+      internalID: -2197147984389387028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_31
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 875
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 363a0b64b3a4fd5d0800000000000000
+      internalID: -3035626005374917789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_32
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 780
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd66f80fc866397d0800000000000000
+      internalID: -2912871778461194532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_33
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 699
+        width: 166
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0e0ae2a01142d880800000000000000
+      internalID: -8587729999733584374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_34
+      rect:
+        serializedVersion: 2
+        x: 1451
+        y: 847
+        width: 91
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f25fe515b673d2a30800000000000000
+      internalID: 4192067762218005807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_35
+      rect:
+        serializedVersion: 2
+        x: 1501
+        y: 794
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cee2a479782df380800000000000000
+      internalID: -8935941583520207165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_36
+      rect:
+        serializedVersion: 2
+        x: 1541
+        y: 875
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4aff4fd61c5c4be00800000000000000
+      internalID: 1059689246903041956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_37
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 843
+        width: 108
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2e16b0f32d2a6d40800000000000000
+      internalID: 5578320720837353006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_38
+      rect:
+        serializedVersion: 2
+        x: 1612
+        y: 699
+        width: 60
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cea55bd21cacfade0800000000000000
+      internalID: -1319613234751907092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_39
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 692
+        width: 254
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49238f9f5b15c01b0800000000000000
+      internalID: -5689082387251055980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_40
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 761
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 345a1ebbec12bab90800000000000000
+      internalID: -7229647605014092477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_41
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 772
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af49a60b5399b5bf0800000000000000
+      internalID: -334505291436878598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_42
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 771
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36e19324e95073ac0800000000000000
+      internalID: -3875622777055011229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_43
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 741
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6b36ad1e81026a40800000000000000
+      internalID: 5359848216418728815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_44
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 752
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57b4070f8a1207ad0800000000000000
+      internalID: -2706626366577554571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_45
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 747
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 527bca82029b68ea0800000000000000
+      internalID: -5870801516458363099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_46
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 656
+        width: 192
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55ae7d1a0b1ff7410800000000000000
+      internalID: 1477164943732632149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_47
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 752
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf83dbf2fbcae7060800000000000000
+      internalID: 6953184811846285564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_48
+      rect:
+        serializedVersion: 2
+        x: 1381
+        y: 730
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d68c65255c98edf0800000000000000
+      internalID: -150698698002889008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_49
+      rect:
+        serializedVersion: 2
+        x: 1397
+        y: 705
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3a2e04d1a872a810800000000000000
+      internalID: 1775113839580162618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_50
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 710
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb798a86a6bd20b20800000000000000
+      internalID: 3099280743653218238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_51
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 660
+        width: 194
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a30fc475d0613070800000000000000
+      internalID: 8084349276010775458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_52
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 713
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10aa38e7b65700890800000000000000
+      internalID: -7493860675399996927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_53
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 678
+        width: 77
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 811a8da6159c4bcc0800000000000000
+      internalID: -3696108042642218728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_54
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 713
+        width: 11
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ed8d894981978e60800000000000000
+      internalID: 7964494484858572258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_55
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 711
+        width: 38
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0392e7a2bc232020800000000000000
+      internalID: 2315743779231011597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_56
+      rect:
+        serializedVersion: 2
+        x: 1477
+        y: 715
+        width: 41
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a962738c12fecf7c0800000000000000
+      internalID: -4036088237658790246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_57
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 713
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d7fe554114854740800000000000000
+      internalID: 5135656159799080914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_58
+      rect:
+        serializedVersion: 2
+        x: 1606
+        y: 727
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66964431e46b16960800000000000000
+      internalID: 7593550893170321766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_59
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 719
+        width: 8
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38afe000b249a4420800000000000000
+      internalID: 2615065446047480451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_60
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 697
+        width: 29
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73114fdb4672f07e0800000000000000
+      internalID: -1797174412660436681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_61
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 700
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b64a733a8d3ccb330800000000000000
+      internalID: 3728069926774613099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_62
+      rect:
+        serializedVersion: 2
+        x: 1545
+        y: 715
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43240bf11fb815750800000000000000
+      internalID: 6291964022148317748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 250
+        width: 1672
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fcef860dd7e03e20800000000000000
+      internalID: 3328415061110680820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_64
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 679
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d8df9fcec5550230800000000000000
+      internalID: 3604381423514933462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_65
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 678
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1218da110b9034b30800000000000000
+      internalID: 4270267523492839713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_66
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 680
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7c76e3e0743565a0800000000000000
+      internalID: -6528754425339151233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_67
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 705
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9ca20edf26388a60800000000000000
+      internalID: 7676445144069090463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_68
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 686
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 447c7e070d986df70800000000000000
+      internalID: 9211701616173369156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_69
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 684
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 869af5266ab83d320800000000000000
+      internalID: 2581560558144694632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_70
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 674
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76ec248c9a5b3f450800000000000000
+      internalID: 6121436059340557927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_71
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 664
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4be204c5c2b03afe0800000000000000
+      internalID: -1179086392286761292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_72
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 674
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fef58da91a61c8230800000000000000
+      internalID: 3642311081979305967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_73
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 666
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b32a739e52dba3970800000000000000
+      internalID: 8735502397762675259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_74
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1672
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca7a28c065e992ff0800000000000000
+      internalID: -60343027578525780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLayerMist_75
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 249
+        width: 57
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4945abee9a17a4ba0800000000000000
+      internalID: -6103941370278685548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BackgroundLayerMist_0: -3677058452357614600
+      BackgroundLayerMist_1: -7506912141269030669
+      BackgroundLayerMist_10: 4836611765352451341
+      BackgroundLayerMist_11: -3911376809304755381
+      BackgroundLayerMist_12: -7899467962473172169
+      BackgroundLayerMist_13: -7966149443241733044
+      BackgroundLayerMist_14: -2667550523091507019
+      BackgroundLayerMist_15: 7604352812156031334
+      BackgroundLayerMist_16: 1252296529114817838
+      BackgroundLayerMist_17: 5359050936790945091
+      BackgroundLayerMist_18: -6109966961569721818
+      BackgroundLayerMist_19: 1485765026252621959
+      BackgroundLayerMist_2: -2669688151006712080
+      BackgroundLayerMist_20: -6416257867045455936
+      BackgroundLayerMist_21: -2026213545651607063
+      BackgroundLayerMist_22: 3701672332711606740
+      BackgroundLayerMist_23: -7933346380120305832
+      BackgroundLayerMist_24: -8829145762003987736
+      BackgroundLayerMist_25: -3471547453144439678
+      BackgroundLayerMist_26: 4792415219156307716
+      BackgroundLayerMist_27: -4365426801145133584
+      BackgroundLayerMist_28: 4688299392903305296
+      BackgroundLayerMist_29: -2786822413931464080
+      BackgroundLayerMist_3: 4302762204192098912
+      BackgroundLayerMist_30: -2197147984389387028
+      BackgroundLayerMist_31: -3035626005374917789
+      BackgroundLayerMist_32: -2912871778461194532
+      BackgroundLayerMist_33: -8587729999733584374
+      BackgroundLayerMist_34: 4192067762218005807
+      BackgroundLayerMist_35: -8935941583520207165
+      BackgroundLayerMist_36: 1059689246903041956
+      BackgroundLayerMist_37: 5578320720837353006
+      BackgroundLayerMist_38: -1319613234751907092
+      BackgroundLayerMist_39: -5689082387251055980
+      BackgroundLayerMist_4: 523741418174219964
+      BackgroundLayerMist_40: -7229647605014092477
+      BackgroundLayerMist_41: -334505291436878598
+      BackgroundLayerMist_42: -3875622777055011229
+      BackgroundLayerMist_43: 5359848216418728815
+      BackgroundLayerMist_44: -2706626366577554571
+      BackgroundLayerMist_45: -5870801516458363099
+      BackgroundLayerMist_46: 1477164943732632149
+      BackgroundLayerMist_47: 6953184811846285564
+      BackgroundLayerMist_48: -150698698002889008
+      BackgroundLayerMist_49: 1775113839580162618
+      BackgroundLayerMist_5: 431533631580824316
+      BackgroundLayerMist_50: 3099280743653218238
+      BackgroundLayerMist_51: 8084349276010775458
+      BackgroundLayerMist_52: -7493860675399996927
+      BackgroundLayerMist_53: -3696108042642218728
+      BackgroundLayerMist_54: 7964494484858572258
+      BackgroundLayerMist_55: 2315743779231011597
+      BackgroundLayerMist_56: -4036088237658790246
+      BackgroundLayerMist_57: 5135656159799080914
+      BackgroundLayerMist_58: 7593550893170321766
+      BackgroundLayerMist_59: 2615065446047480451
+      BackgroundLayerMist_6: 1900455777115448355
+      BackgroundLayerMist_60: -1797174412660436681
+      BackgroundLayerMist_61: 3728069926774613099
+      BackgroundLayerMist_62: 6291964022148317748
+      BackgroundLayerMist_63: 3328415061110680820
+      BackgroundLayerMist_64: 3604381423514933462
+      BackgroundLayerMist_65: 4270267523492839713
+      BackgroundLayerMist_66: -6528754425339151233
+      BackgroundLayerMist_67: 7676445144069090463
+      BackgroundLayerMist_68: 9211701616173369156
+      BackgroundLayerMist_69: 2581560558144694632
+      BackgroundLayerMist_7: 783911438890563239
+      BackgroundLayerMist_70: 6121436059340557927
+      BackgroundLayerMist_71: -1179086392286761292
+      BackgroundLayerMist_72: 3642311081979305967
+      BackgroundLayerMist_73: 8735502397762675259
+      BackgroundLayerMist_74: -60343027578525780
+      BackgroundLayerMist_75: -6103941370278685548
+      BackgroundLayerMist_8: 7827545556349377042
+      BackgroundLayerMist_9: -8753903353071573238
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
