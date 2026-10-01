@@ -1,0 +1,11 @@
+{
+    "name": "Skkumrbk.ComUnity2dAseprite.Tests",
+    "references": [
+        "Skkumrbk.ComUnity2dAseprite"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}
