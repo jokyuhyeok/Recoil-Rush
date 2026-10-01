@@ -3266,8 +3266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   _target: {fileID: 0}
-  _minY: -2.5
-  _maxY: 9
+  _minPosition: {x: -7, y: -2.5}
+  _maxPosition: {x: 14, y: 8}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
