@@ -134,15 +134,15 @@ TextureImporter:
         width: 36
         height: 15
       alignment: 9
-      pivot: {x: 0.0012345677, y: 0.26888895}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba23c24266a433420800000000000000
-      internalID: 2608510411731645099
+      spriteID: 
+      internalID: 0
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2b7978ca1d4e8a341b4f4812a9f34b2a
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      PlayerWithShotGun_0: 2608510411731645099
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

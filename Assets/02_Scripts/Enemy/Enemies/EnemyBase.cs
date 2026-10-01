@@ -15,6 +15,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
 
     [SerializeField] protected EnemyState currentState = EnemyState.Idle;
     [SerializeField] protected EnemyStatDataSO _baseStatData;
+    protected Animator anim;
 
     protected Rigidbody2D rb;
     protected Transform playerTransform;
@@ -28,6 +29,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     protected virtual void Start()
@@ -149,8 +151,23 @@ public class EnemyBase : MonoBehaviour, IDamageable
     {
         if (currentState == newState) return;
 
+        if (currentState == EnemyState.Trace)
+        {
+            anim.SetBool("isMove", false);
+        }
+
         currentState = newState;
         Debug.Log($"{gameObject.name} 상태 변경 -> {currentState}");
+
+        switch (currentState)
+        {
+            case EnemyState.Trace:
+                anim.SetBool("isMove", true);
+                break;
+            case EnemyState.Dead:
+                anim.SetTrigger("Die");
+                break;
+        }
     }
 
     // 공통으로 사용하는 방향 전환 로직입니다. (x 좌표 비교를 통해 플레이어를 바라보도록 설정합니다.)

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299959c1399bb8e4298f9f1f88f69f37, type: 3}
   m_Name: Drone
   m_EditorClassIdentifier: Assembly-CSharp::DroneStatDataSO
-  maxHp: 4
+  maxHp: 2
   speed: 1
   detectRange: 10
-  attackRange: 6
+  attackRange: 8
   alarmTime: 1
   hoverHeight: 0.5
   hoverSpeed: 2
