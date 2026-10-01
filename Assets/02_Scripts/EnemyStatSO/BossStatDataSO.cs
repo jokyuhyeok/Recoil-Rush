@@ -72,15 +72,20 @@ public class BossStatDataSO : ScriptableObject
     [Tooltip("총알들의 이동속도입니다.")] public float RightBulletSpeed = 15f;
 
     [Header("레이저 공격과 드론 소환(LaserAndDrone)")]
-    [Tooltip("레이저를 쏘기전 기를 모으는 장전 시간입니다.")] public float LaserChargeTime = 1.5f;
+    [Header("3단 위치 랜덤 레이저 공격")]
+    [Tooltip("상단 레이저 발사 시 Y축 오프셋입니다.(보스 중앙 기준)")]
+    public float LaserTopOffsetY = 2.0f;
 
-    [Tooltip("레이저를 몇 초간 쏠 것인가.(공격 유지시간)")] public float LaserDuration = 5.0f;
+    [Tooltip("중단 레이저 발사 시 Y축 오프셋입니다. (보스 중앙 기준)")]
+    public float LaserMidOffsetY = 0.0f;
 
-    [Tooltip("레이저가 쏘아지고 드론이 생성되기까지의 틈입니다. (레이저를 쏜 다음에 드론이 나온답니다.)")]
-    public float DroneSpawnDelay = 0.5f;
+    [Tooltip("하단 레이저 발사 시 Y축 오프셋입니다. (보스 중앙 기준)")]
+    public float LaserBottomOffsetY = -2.0f;
 
-    [Tooltip("생성될 드론의 개수입니다. (생성 포인트 5개 중에 몇 개에서 나올 것인가?)")]
-    public int DroneSpawnCount = 3;
+    [Tooltip("레이저 발사 전 얇은 경고선이 표시되는 시간입니다.")]
+    public float LaserWarningTime = 1.0f;
+
+    [Tooltip("경고 후 발사하는 레이저의 지속 시간입니다.")] public float LaserBeamTime = 0.5f;
 
     [Header("이리저리 튕기는 고무폭탄 공격(ThrowBomb)")]
     [Tooltip("공격 전에 맵 가운데로 이동할 떄의 속도입니다.")]
@@ -90,8 +95,10 @@ public class BossStatDataSO : ScriptableObject
     [Tooltip("폭탄이 나가는 속도입니다.")] public float BouncePower = 10f;
     [Tooltip("보스가 이동할 중앙 좌표입니다. (기본값 0)")] public float BombTargetX = 0f;
     [Tooltip("중앙에 도착했다고 판정할 오차 범위입니다.")] public float BombStopThreshold = 0.2f;
+
     [Tooltip("폭탄이 발사되는 랜덤 각도의 위아래 범위입니다.")]
     public float BombSpreadAngle = 15f;
+
     [Tooltip("폭탄을 던지는 발사 간격입니다.")] public float BombFireDelay = 0.1f;
     [Tooltip("공격이 끝난 후 대기 시간입니다.")] public float BombPostDelay = 1.0f;
 }

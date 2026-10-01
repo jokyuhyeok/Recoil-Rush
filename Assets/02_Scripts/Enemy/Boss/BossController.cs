@@ -15,6 +15,8 @@ public class BossController : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Transform[] _firePoints;
     [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _laserFirePoint;
+    [SerializeField] private GameObject _bossLaserPrefab;
 
     private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>(); // 패턴들을 순서대로 담아놓을 대기열입니다. 
     private bool _isExecuting = false; // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
@@ -32,6 +34,8 @@ public class BossController : MonoBehaviour
     public Transform[] DroneSpawnPoints => _droneSpawnPoints;
     public Transform[] FirePoints => _firePoints;
 
+    public bool IsLaserFinished { get; set; } = false;
+    public int LaserSequenceIndex { get; set; } = 0;
     public bool IsHittingLeftWall = false;
     public bool IsHittingRightWall = false;
 
@@ -134,33 +138,13 @@ public class BossController : MonoBehaviour
             _stat.BackDashChargeTime,
             _stat.BackDashGhostInterval));
         EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
-        EnqueueCommand(new Cmd_SpreadShoot(
-            _stat.LeftBulletCount, _stat.LeftStartAngle, _stat.LeftEndAngle, _stat.LeftFireDelay, _stat.LeftBulletSpeed,
-            _stat.RightBulletCount, _stat.RightStartAngle, _stat.RightEndAngle, _stat.RightFireDelay,
-            _stat.RightBulletSpeed
-        ));
+        EnqueueCommand(new Cmd_LaserAndDrone());
         EnqueueCommand(new Cmd_Wait(0.1f));
-        EnqueueCommand(new Cmd_SpreadShoot(
-            _stat.LeftBulletCount, _stat.LeftStartAngle, _stat.LeftEndAngle, _stat.LeftFireDelay, _stat.LeftBulletSpeed,
-            _stat.RightBulletCount, _stat.RightStartAngle, _stat.RightEndAngle, _stat.RightFireDelay,
-            _stat.RightBulletSpeed
-        ));
-        EnqueueCommand(new Cmd_Wait(0.1f));
-        EnqueueCommand(new Cmd_SpreadShoot(
-            _stat.LeftBulletCount, _stat.LeftStartAngle, _stat.LeftEndAngle, _stat.LeftFireDelay, _stat.LeftBulletSpeed,
-            _stat.RightBulletCount, _stat.RightStartAngle, _stat.RightEndAngle, _stat.RightFireDelay,
-            _stat.RightBulletSpeed
-        ));
     }
 
     private void EnqueuePhase2()
     {
         EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
-
-        EnqueueCommand(new Cmd_ThrowBomb(
-            _stat.CenterMoveSpeed, _stat.NumOfCountBomb, _stat.BouncePower,
-            _stat.BombTargetX, _stat.BombStopThreshold, _stat.BombSpreadAngle,
-            _stat.BombFireDelay, _stat.BombPostDelay));
 
         EnqueueCommand(new Cmd_BackwardDash(_stat.BackDashSpeed,
             _stat.BackDashDuration,
@@ -171,15 +155,6 @@ public class BossController : MonoBehaviour
     private void EnqueuePhase3()
     {
         EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
-
-        EnqueueCommand(new Cmd_ThrowBomb(
-            _stat.CenterMoveSpeed, _stat.NumOfCountBomb, _stat.BouncePower,
-            _stat.BombTargetX, _stat.BombStopThreshold, _stat.BombSpreadAngle,
-            _stat.BombFireDelay, _stat.BombPostDelay));
-
-        EnqueueCommand(new Cmd_LaserAndDrone(
-            _stat.LaserChargeTime, _stat.LaserDuration,
-            _stat.DroneSpawnDelay, _stat.DroneSpawnCount));
     }
 
     public void StopAllAttacks()
@@ -187,6 +162,42 @@ public class BossController : MonoBehaviour
         StopAllCoroutines();
         _commandQueue.Clear();
         Rigidbody.linearVelocity = Vector2.zero;
+    }
+
+    public void ShootLaserEvent()
+    {
+        if (_bossLaserPrefab == null || _laserFirePoint == null) return;
+
+        float offsetY = 0f;
+
+        if (LaserSequenceIndex == 0)
+        {
+            offsetY = _stat.LaserBottomOffsetY;
+        }
+        else if (LaserSequenceIndex == 1)
+        {
+            offsetY = _stat.LaserTopOffsetY;
+        }
+        else
+        {
+            offsetY = _stat.LaserMidOffsetY;
+        }
+
+        LaserSequenceIndex++;
+
+        Vector3 spawnPosition = _laserFirePoint.position + new Vector3(0, offsetY, 0);
+        GameObject laserObject = Instantiate(_bossLaserPrefab, spawnPosition, Quaternion.identity);
+        BossLaser laser = laserObject.GetComponent<BossLaser>();
+
+        if (laser != null)
+        {
+            laser.FireLaser(_stat.LaserWarningTime, _stat.LaserBeamTime);
+        }
+    }
+
+    public void FinishLaserEvent()
+    {
+        IsLaserFinished = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
