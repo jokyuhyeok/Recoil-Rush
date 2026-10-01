@@ -36,6 +36,11 @@ public class Player : MonoBehaviour
         _playerAIm = GetComponent<PlayerAim>();
 
         FindCurrentWeapon();
+
+        foreach (Weapon weapon in _weapons)
+        {
+            weapon.Reload();
+        }
     }
 
     private void Start()
