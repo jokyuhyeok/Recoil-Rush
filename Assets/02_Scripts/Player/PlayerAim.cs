@@ -62,11 +62,14 @@ public class PlayerAim : MonoBehaviour
         mousePosition.z = 0f;
 
         Vector2 playerDirection = mousePosition - transform.position;
-        _playerSprite.flipX = playerDirection.x > 0f;
+        bool isRight = playerDirection.x > 0f;
+
+        _playerSprite.flipX = isRight;
 
         Vector3 weaponPosition = _weapon.transform.localPosition;
+
         // Mathf.Abs(값): 값을 절대값으로 바꿈
-        weaponPosition.x = playerDirection.x < 0f ? -Mathf.Abs(weaponPosition.x) : Mathf.Abs(weaponPosition.x);
+        weaponPosition.x = !isRight ? -Mathf.Abs(weaponPosition.x) : Mathf.Abs(weaponPosition.x);
         _weapon.transform.localPosition = weaponPosition;
 
         // 목표로 향하는 방향 = 목표 위치 - 현재 위치
@@ -77,9 +80,7 @@ public class PlayerAim : MonoBehaviour
 
         // Quaternion.Euler: X, Y, Z 회전 각도를 Unity가 사용하는 회전값인 Quaternion으로 변환
         _weapon.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-        _weaponSprite.flipY = direction.x < 0f;
-
-        _weapon.transform.localPosition = weaponPosition;
+        _weaponSprite.flipY = !isRight;
 
         _aimPoint.position = mousePosition;
 
