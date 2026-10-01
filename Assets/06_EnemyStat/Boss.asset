@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1852757fb612acf46b45cd46f7cc2e83, type: 3}
+  m_Name: Boss
+  m_EditorClassIdentifier: Assembly-CSharp::BossStatDataSO
+  maxHp: 100
+  phase2Threshold: 0.6
+  phase3Threshold: 0.3
+  waitTime: 1
+  dashSpeed: 30
+  dashDuration: 1.5
+  dashChargeTime: 1.5
+  dashGhostInterval: 0.02
+  backDashSpeed: 30
+  backDashDuration: 1.5
+  backDashChargeTime: 0.5
+  backDashGhostInterval: 0.05
+  heavyGravity: 5
+  spreadBulletCount: 15
+  spreadStartAngle: -60
+  spreadEndAngle: 60
+  spreadFireDelay: 0.05
+  spreadBulletSpeed: 5
+  laserChargeTime: 1.5
+  laserDuration: 5
+  droneSpawnDelay: 0.5
+  droneSpawnCount: 3
+  centerMoveSpeed: 5
+  numOfCountBomb: 5
+  bouncePower: 10
+  bombTargetX: 0
+  bombStopThreshold: 0.2
+  bombSpreadAngle: 15
+  bombFireDelay: 0.1
+  bombPostDelay: 1
