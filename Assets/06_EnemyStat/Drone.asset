@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHp: 4
   speed: 1
   detectRange: 10
-  attackRange: 6
+  attackRange: 8
   alarmTime: 1
   hoverHeight: 0.5
   hoverSpeed: 2

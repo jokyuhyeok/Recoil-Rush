@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MachineGunStatDataSO
   maxHp: 1
   speed: 2
-  detectRange: 15
-  attackRange: 10
+  detectRange: 10
+  attackRange: 9
   alarmTime: 2
-  fireRate: 0.15
-  magazineSize: 8
+  fireRate: 0.05
+  magazineSize: 10
   reloadTime: 2
