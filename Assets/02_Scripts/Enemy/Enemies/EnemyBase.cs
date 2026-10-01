@@ -38,7 +38,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
 
         if (_baseStatData != null)
         {
-            _currentHP = _baseStatData.maxHp;
+            _currentHP = _baseStatData.MaxHp;
         }
     }
 

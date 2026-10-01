@@ -6,43 +6,43 @@ using Unity.VisualScripting; // Queue를 사용하기 위해 추가
 public class BossController : MonoBehaviour
 {
     [SerializeField] private BossStatDataSO _stat;
-    
+
     [SerializeField] private GameObject _laserBeamObject;
     [SerializeField] private GameObject _dronePrefab;
-    [SerializeField] private GameObject _BombPrefab;
+    [SerializeField] private GameObject _bombPrefab;
     [SerializeField] private Transform[] _droneSpawnPoints;
     [SerializeField] private GameObject _ghostPrefab;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    public Transform[] _firePoints;
-    public GameObject _bulletPrefab;
-    
-    private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>();  // 패턴들을 순서대로 담아놓을 대기열입니다. 
-    private bool _isExecuting = false;  // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
+    [SerializeField] private Transform[] _firePoints;
+    [SerializeField] private GameObject _bulletPrefab;
+
+    private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>(); // 패턴들을 순서대로 담아놓을 대기열입니다. 
+    private bool _isExecuting = false; // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
     private int _currentPhase = 1;
-    
-    public Transform playerTransform;
-    public Rigidbody2D rb;
-    public Animator anim;
-    
+
+    public Transform PlayerTransform;
+    public Rigidbody2D Rigidbody;
+    public Animator Anim;
+
     // 프로퍼티 - Command에서 프리팹에 접근할 수 있게 열어줍니다.
     public GameObject BulletPrefab => _bulletPrefab;
     public GameObject LaserBeamObject => _laserBeamObject;
     public GameObject DronePrefab => _dronePrefab;
-    public GameObject BombPrefab => _BombPrefab;
+    public GameObject BombPrefab => _bombPrefab;
     public Transform[] DroneSpawnPoints => _droneSpawnPoints;
     public Transform[] FirePoints => _firePoints;
-    
-    public bool isHittingLeftWall = false;
-    public bool isHittingRightWall = false;
-    
+
+    public bool IsHittingLeftWall = false;
+    public bool IsHittingRightWall = false;
+
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        rb.gravityScale = _stat.heavyGravity;
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Anim = GetComponent<Animator>();
+        Rigidbody.gravityScale = _stat.HeavyGravity;
         PlayerCaching();
     }
-    
+
     private void Start()
     {
         SetPhase(1);
@@ -78,6 +78,7 @@ public class BossController : MonoBehaviour
                     LoadPhaseCommands();
                 }
             }
+
             // queue가 비어있거나 패턴이 실행 중이라면 다음 프레임까지 대기합니다. 
             yield return null;
         }
@@ -87,9 +88,9 @@ public class BossController : MonoBehaviour
     {
         Debug.Log($"<color=red>보스: {phaseIndex}페이즈 돌입!!</color>");
         _currentPhase = phaseIndex;
-        
+
         StopAllCoroutines();
-        
+
         _commandQueue.Clear();
         _isExecuting = false;
 
@@ -118,53 +119,74 @@ public class BossController : MonoBehaviour
                 }
         }
     }
-    
+
     // 각 페이즈별 패턴 조립만 전담하는 메서드들로 쪼갰습니다.
     private void EnqueuePhase1()
     {
-        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
-        EnqueueCommand(new Cmd_BackwardDash(_stat.backDashSpeed, 
-            _stat.backDashDuration,
-            _stat.backDashChargeTime, 
-            _stat.backDashGhostInterval));
-        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
-        EnqueueCommand(new Cmd_SpreadShoot(_stat.spreadBulletCount, _stat.spreadStartAngle, _stat.spreadEndAngle, _stat.spreadFireDelay, _stat.spreadBulletSpeed));
+        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
+        EnqueueCommand(new Cmd_ForwardDash(_stat.DashSpeed,
+            _stat.DashDuration,
+            _stat.DashChargeTime,
+            _stat.DashGhostInterval));
+        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
+        EnqueueCommand(new Cmd_BackwardDash(_stat.BackDashSpeed,
+            _stat.BackDashDuration,
+            _stat.BackDashChargeTime,
+            _stat.BackDashGhostInterval));
+        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
+        EnqueueCommand(new Cmd_SpreadShoot(
+            _stat.LeftBulletCount, _stat.LeftStartAngle, _stat.LeftEndAngle, _stat.LeftFireDelay, _stat.LeftBulletSpeed,
+            _stat.RightBulletCount, _stat.RightStartAngle, _stat.RightEndAngle, _stat.RightFireDelay,
+            _stat.RightBulletSpeed
+        ));
+        EnqueueCommand(new Cmd_Wait(0.1f));
+        EnqueueCommand(new Cmd_SpreadShoot(
+            _stat.LeftBulletCount, _stat.LeftStartAngle, _stat.LeftEndAngle, _stat.LeftFireDelay, _stat.LeftBulletSpeed,
+            _stat.RightBulletCount, _stat.RightStartAngle, _stat.RightEndAngle, _stat.RightFireDelay,
+            _stat.RightBulletSpeed
+        ));
+        EnqueueCommand(new Cmd_Wait(0.1f));
+        EnqueueCommand(new Cmd_SpreadShoot(
+            _stat.LeftBulletCount, _stat.LeftStartAngle, _stat.LeftEndAngle, _stat.LeftFireDelay, _stat.LeftBulletSpeed,
+            _stat.RightBulletCount, _stat.RightStartAngle, _stat.RightEndAngle, _stat.RightFireDelay,
+            _stat.RightBulletSpeed
+        ));
     }
 
     private void EnqueuePhase2()
     {
-        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
-        
+        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
+
         EnqueueCommand(new Cmd_ThrowBomb(
-            _stat.centerMoveSpeed, _stat.numOfCountBomb, _stat.bouncePower, 
-            _stat.bombTargetX, _stat.bombStopThreshold, _stat.bombSpreadAngle, 
-            _stat.bombFireDelay, _stat.bombPostDelay));
-            
-        EnqueueCommand(new Cmd_BackwardDash(_stat.backDashSpeed, 
-            _stat.backDashDuration,
-            _stat.backDashChargeTime, 
-            _stat.backDashGhostInterval));
+            _stat.CenterMoveSpeed, _stat.NumOfCountBomb, _stat.BouncePower,
+            _stat.BombTargetX, _stat.BombStopThreshold, _stat.BombSpreadAngle,
+            _stat.BombFireDelay, _stat.BombPostDelay));
+
+        EnqueueCommand(new Cmd_BackwardDash(_stat.BackDashSpeed,
+            _stat.BackDashDuration,
+            _stat.BackDashChargeTime,
+            _stat.BackDashGhostInterval));
     }
 
     private void EnqueuePhase3()
     {
-        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
-        
+        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
+
         EnqueueCommand(new Cmd_ThrowBomb(
-            _stat.centerMoveSpeed, _stat.numOfCountBomb, _stat.bouncePower, 
-            _stat.bombTargetX, _stat.bombStopThreshold, _stat.bombSpreadAngle, 
-            _stat.bombFireDelay, _stat.bombPostDelay));
-            
+            _stat.CenterMoveSpeed, _stat.NumOfCountBomb, _stat.BouncePower,
+            _stat.BombTargetX, _stat.BombStopThreshold, _stat.BombSpreadAngle,
+            _stat.BombFireDelay, _stat.BombPostDelay));
+
         EnqueueCommand(new Cmd_LaserAndDrone(
-            _stat.laserChargeTime, _stat.laserDuration, 
-            _stat.droneSpawnDelay, _stat.droneSpawnCount));
+            _stat.LaserChargeTime, _stat.LaserDuration,
+            _stat.DroneSpawnDelay, _stat.DroneSpawnCount));
     }
-    
+
     public void StopAllAttacks()
     {
         StopAllCoroutines();
         _commandQueue.Clear();
-        rb.linearVelocity = Vector2.zero; 
+        Rigidbody.linearVelocity = Vector2.zero;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -174,28 +196,28 @@ public class BossController : MonoBehaviour
         {
             if (contact.normal.x > 0.7f)
             {
-                isHittingLeftWall = true;
+                IsHittingLeftWall = true;
             }
             else if (contact.normal.x < -0.7f)
             {
-                isHittingRightWall = true;
+                IsHittingRightWall = true;
             }
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        isHittingLeftWall = false;
-        isHittingRightWall = false;
+        IsHittingLeftWall = false;
+        IsHittingRightWall = false;
     }
-    
+
     private void PlayerCaching()
     {
         // 플레이어 transform 컴포넌트를 처음에 캐싱해놓고 계속 추적하게 했습니다. 
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
-            playerTransform = player.transform;
+            PlayerTransform = player.transform;
         }
         else
         {
@@ -207,7 +229,7 @@ public class BossController : MonoBehaviour
     public void SpawnGhost()
     {
         if (_ghostPrefab == null || _spriteRenderer == null) return;
-        
+
         // 프리팹 생성 및 세팅입니다.
         GameObject ghostobject = Instantiate(_ghostPrefab, transform.position, Quaternion.identity);
         BossGhostEffect ghost = ghostobject.GetComponent<BossGhostEffect>();

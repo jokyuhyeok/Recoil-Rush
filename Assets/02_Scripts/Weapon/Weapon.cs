@@ -8,10 +8,12 @@ public abstract class Weapon : MonoBehaviour
 
     [Header("Fire")]
     [SerializeField] protected Transform _firePoint;
+
     [SerializeField] private float _fireSpeed = 0.2f;
 
     [Header("Bullet")]
     [SerializeField] protected Bullet _bulletPrefab;
+
     [SerializeField] private float _bulletSpeed = 20f;
     [SerializeField] private int _damage = 1;
 
@@ -29,7 +31,8 @@ public abstract class Weapon : MonoBehaviour
     public int Magazine => _magazine;
     public int CurrentAmmo => _currentAmmo;
     public bool AmmoReload => _currentAmmo < _magazine;
-    
+    public bool IsEmptyMagazine => _currentAmmo <= 0;
+
     //UI 연동할 이벤트 추가
     public event Action<int> OnAmmoChanged;
     public static event Action<Weapon> OnWeaponActivated;
@@ -48,7 +51,7 @@ public abstract class Weapon : MonoBehaviour
     {
         OnWeaponActivated?.Invoke(this);
     }
-    
+
     protected virtual void Update()
     {
         if (_fireCooldown > 0f)
@@ -68,9 +71,9 @@ public abstract class Weapon : MonoBehaviour
         AddRecoil();
 
         _currentAmmo--;
-        
+
         OnAmmoChanged?.Invoke(_currentAmmo);
-        
+
         _fireCooldown = _fireSpeed;
 
         return true;
@@ -87,7 +90,7 @@ public abstract class Weapon : MonoBehaviour
     public void Reload()
     {
         _currentAmmo = _magazine;
-        
+
         OnAmmoChanged?.Invoke(_currentAmmo);
     }
 

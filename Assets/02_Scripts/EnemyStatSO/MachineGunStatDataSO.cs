@@ -4,7 +4,8 @@ using UnityEngine;
 public class MachineGunStatDataSO : EnemyStatDataSO
 {
     [Header("기관총 전용 데이터")]
-    public float fireRate = 1f;
-    public int magazineSize = 1;
-    public float reloadTime = 1f;
+    public float FireRate = 1f;
+
+    public int MagazineSize = 1;
+    public float ReloadTime = 1f;
 }

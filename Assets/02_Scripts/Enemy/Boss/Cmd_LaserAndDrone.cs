@@ -20,31 +20,31 @@ public class Cmd_LaserAndDrone : IBossCommand
 
     public IEnumerator Execute(BossController boss)
     {
-        boss.anim.Play("SpecialAttack");
+        boss.Anim.Play("SpecialAttack");
         Debug.Log("<color=magenta>보스: 레이저 포신 장전 (경고!)</color>");
-        
+
         // [연출] 경고선을 켜는 코드 자리입니다.
-        
-        yield return new WaitForSeconds(_chargeDuration);   // 장전 시간동안 대기합니다.
-        
+
+        yield return new WaitForSeconds(_chargeDuration); // 장전 시간동안 대기합니다.
+
         // [연출] 경고선을 끕니다.
-        
+
         Debug.Log("<color=magenta>보스: 레이저 발사!</color>");
 
         if (boss.LaserBeamObject != null)
         {
             boss.LaserBeamObject.SetActive(true);
         }
-        
+
         Debug.Log($"<color=magenta>보스: 레이저 발사 유지 중.. {_droneSpawnDelay}초 뒤에 드론이 등장합니다.</color>");
 
         yield return new WaitForSeconds(_droneSpawnDelay);
-        
+
         SpawnRandomDrones(boss);
 
         float remainingLaserTime = Mathf.Max(0, _laserDuration - _droneSpawnDelay);
         yield return new WaitForSeconds(remainingLaserTime);
-        
+
         Debug.Log("<color=magenta>보스: 레이저 발사 종료 후 잠시 쉽니다.</color>");
 
         if (boss.LaserBeamObject != null)
@@ -76,10 +76,10 @@ public class Cmd_LaserAndDrone : IBossCommand
 
             Transform spawnPoint = spawnPoints[selectedIndex];
             Object.Instantiate(boss.DronePrefab, spawnPoint.position, Quaternion.identity);
-            
+
             availableIndexes.RemoveAt(randomIndex);
         }
-        
+
         Debug.Log($"<color=magenta>보스: {spawnCount}개의 드론 랜덤 생성 완료</color>");
     }
 }

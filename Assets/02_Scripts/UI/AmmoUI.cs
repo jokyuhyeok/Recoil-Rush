@@ -8,8 +8,8 @@ public class AmmoUI : MonoBehaviour
     [Serializable]
     private class WeaponAmmoUI
     {
-        public Weapon weapon;
-        public BulletsAmountUI bulletPrefab;
+        public Weapon WeaponData;
+        public BulletsAmountUI BulletPrefab;
     }
 
     //출력 위치
@@ -41,12 +41,12 @@ public class AmmoUI : MonoBehaviour
         // OnEnable 이벤트를 먼저 발생시켰을 수도 있으므로 최초 1회 확인
         foreach (WeaponAmmoUI data in _weaponAmmoUIList)
         {
-            if (data.weapon == null)
+            if (data.WeaponData == null)
                 continue;
 
-            if (data.weapon.gameObject.activeSelf)
+            if (data.WeaponData.gameObject.activeSelf)
             {
-                HandleWeaponActivated(data.weapon);
+                HandleWeaponActivated(data.WeaponData);
                 break;
             }
         }
@@ -92,12 +92,12 @@ public class AmmoUI : MonoBehaviour
         // 새 무기의 탄약 변경 이벤트 구독
         _currentWeapon.OnAmmoChanged += HandleAmmoChanged;
     }
-    
+
     private WeaponAmmoUI FindWeaponData(Weapon weapon)
     {
         foreach (WeaponAmmoUI data in _weaponAmmoUIList)
         {
-            if (data.weapon == weapon)
+            if (data.WeaponData == weapon)
             {
                 return data;
             }
@@ -109,25 +109,25 @@ public class AmmoUI : MonoBehaviour
     // UI Pool 생성
     private void CreateBulletsUI(WeaponAmmoUI data)
     {
-        if (data.weapon == null || data.bulletPrefab == null)
+        if (data.WeaponData == null || data.BulletPrefab == null)
             return;
 
         // 이미 생성한 무기면 다시 Instantiate 하지 않음
-        if (_bulletPools.ContainsKey(data.weapon))
+        if (_bulletPools.ContainsKey(data.WeaponData))
             return;
 
         List<BulletsAmountUI> bullets = new List<BulletsAmountUI>();
 
-        for (int i = 0; i < data.weapon.Magazine; i++)
+        for (int i = 0; i < data.WeaponData.Magazine; i++)
         {
-            BulletsAmountUI bullet = Instantiate(data.bulletPrefab, _bulletContainer);
+            BulletsAmountUI bullet = Instantiate(data.BulletPrefab, _bulletContainer);
 
             bullet.gameObject.SetActive(false);
 
             bullets.Add(bullet);
         }
 
-        _bulletPools.Add(data.weapon, bullets);
+        _bulletPools.Add(data.WeaponData, bullets);
     }
 
     // 무기 UI 교체
@@ -143,7 +143,7 @@ public class AmmoUI : MonoBehaviour
             }
         }
 
-        _currentWeapon = data.weapon;
+        _currentWeapon = data.WeaponData;
 
         if (!_bulletPools.TryGetValue(_currentWeapon, out _currentBullets))
         {
@@ -160,7 +160,7 @@ public class AmmoUI : MonoBehaviour
 
         _previousAmmo = _currentWeapon.CurrentAmmo;
     }
-    
+
     // 탄약 변경 이벤트
 
     private void HandleAmmoChanged(int currentAmmo)
@@ -195,7 +195,7 @@ public class AmmoUI : MonoBehaviour
 
         _previousAmmo = currentAmmo;
     }
-    
+
     // 현재 탄약 상태 전체 반영
     private void RefreshAmmoState()
     {
