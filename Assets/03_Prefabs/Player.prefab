@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 2330848054973217185}
   - component: {fileID: 8028626588938666662}
   m_Layer: 0
-  m_Name: Void
+  m_Name: AimPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 3479828004130504960}
   - component: {fileID: 2949447460592847076}
   m_Layer: 0
-  m_Name: PlayerWithPistol_0
+  m_Name: Pistol
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,7 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2999767159277550126}
   m_Layer: 0
-  m_Name: PistolFireTest
+  m_Name: PistolFirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -443,7 +443,7 @@ Transform:
   m_GameObject: {fileID: 5392422330045942802}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.19500017, y: 0.052000046, z: 0}
+  m_LocalPosition: {x: 0.183, y: 0.079, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 1054442426041457698}
   - component: {fileID: 3145751671586403668}
   m_Layer: 0
-  m_Name: PlayerWithShotGun
+  m_Name: Shotgun
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -573,7 +573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6438602270447389132}
   m_Layer: 0
-  m_Name: ShotGunFireTest
+  m_Name: ShotgunFirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -588,7 +588,7 @@ Transform:
   m_GameObject: {fileID: 7443420862067944273}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.19500017, y: 0.052000046, z: 0}
+  m_LocalPosition: {x: 0.354, y: 0.064, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
