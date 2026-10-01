@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0c2cf2b44336440a37025a60657288, type: 3}
   m_Name: MachineGun
   m_EditorClassIdentifier: Assembly-CSharp::MachineGunStatDataSO
-  maxHp: 1
+  maxHp: 5
   speed: 2
   detectRange: 10
   attackRange: 9
