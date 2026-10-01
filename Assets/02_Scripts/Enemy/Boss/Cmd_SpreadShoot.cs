@@ -27,8 +27,8 @@ public class Cmd_SpreadShoot : IBossCommand
 
     public IEnumerator Execute(BossController boss)
     {
-        boss.anim.Play("Fire");
-        boss.rb.linearVelocity = Vector2.zero;
+        boss.Anim.Play("Fire");
+        boss.Rigidbody.linearVelocity = Vector2.zero;
         Debug.Log("<color=yellow>보스: 사격 폼 잡기</color>");
 
         yield return new WaitForSeconds(0.8f);

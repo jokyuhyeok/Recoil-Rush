@@ -18,13 +18,13 @@ public class EnemyMachineGun : EnemyBase
     protected override void Start()
     {
         base.Start();
-        _currentBulletRemain = _machineGunStatDataSo.magazineSize; // 초기에 바로 공격할 수 있게 장전을 해놓습니다.
+        _currentBulletRemain = _machineGunStatDataSo.MagazineSize; // 초기에 바로 공격할 수 있게 장전을 해놓습니다.
     }
 
     protected override void UpdateIdle()
     {
         // 플레이어가 감지범위 안으로 들어왔을 시, 경고 단계로 넘어갑니다.
-        if (distanceToPlayer <= _baseStatData.detectRange)
+        if (distanceToPlayer <= _baseStatData.DetectRange)
         {
             _currentAlarmTime = 0f; // 경고 시간 초기화
             ChangeState(EnemyState.Alarm);
@@ -37,14 +37,14 @@ public class EnemyMachineGun : EnemyBase
         LookAtPlayer();
 
         // 플레이어가 감지범위를 벗어나면 Idle로 돌아갑니다. 
-        if (distanceToPlayer > _baseStatData.detectRange)
+        if (distanceToPlayer > _baseStatData.DetectRange)
         {
             ChangeState(EnemyState.Idle);
             return;
         }
 
         // 플레이어가 경고 기간 내에 공격 범위로 들어오면 즉시 Attack으로 진입합니다.
-        if (distanceToPlayer <= _baseStatData.attackRange)
+        if (distanceToPlayer <= _baseStatData.AttackRange)
         {
             ChangeState(EnemyState.Attack);
             return;
@@ -53,7 +53,7 @@ public class EnemyMachineGun : EnemyBase
         _currentAlarmTime += Time.deltaTime;
 
         // 경고 시간이 끝나면 Trace로 진입합니다.
-        if (_currentAlarmTime >= _baseStatData.alarmTime)
+        if (_currentAlarmTime >= _baseStatData.AlarmTime)
         {
             ChangeState(EnemyState.Trace);
         }
@@ -62,28 +62,28 @@ public class EnemyMachineGun : EnemyBase
     protected override void UpdateTrace()
     {
         // 플레이어가 감지범위를 벗어나면 Idle 상태로 돌아갑니다.
-        if (distanceToPlayer > _baseStatData.detectRange)
+        if (distanceToPlayer > _baseStatData.DetectRange)
         {
             ChangeState(EnemyState.Idle);
             return;
         }
 
         // 공격 범위 안으로 들어오면 Attack으로 전환합니다.
-        if (distanceToPlayer <= _baseStatData.attackRange)
+        if (distanceToPlayer <= _baseStatData.AttackRange)
         {
             ChangeState(EnemyState.Attack);
             return;
         }
 
         transform.position = Vector2.MoveTowards(transform.position, playerTransform.position,
-            _baseStatData.speed * Time.deltaTime);
+            _baseStatData.Speed * Time.deltaTime);
         LookAtPlayer();
     }
 
     protected override void UpdateAttack()
     {
         // 플레이어가 공격 범위를 벗어나면 Trace 상태로 전환합니다.
-        if (distanceToPlayer > _baseStatData.attackRange)
+        if (distanceToPlayer > _baseStatData.AttackRange)
         {
             ChangeState(EnemyState.Trace);
             return;
@@ -96,11 +96,11 @@ public class EnemyMachineGun : EnemyBase
         {
             _reloadTimer += Time.deltaTime;
 
-            if (_reloadTimer >= _machineGunStatDataSo.reloadTime)
+            if (_reloadTimer >= _machineGunStatDataSo.ReloadTime)
             {
                 _isReloading = false;
-                _currentBulletRemain = _machineGunStatDataSo.magazineSize;
-                _fireTimer = _machineGunStatDataSo.fireRate;
+                _currentBulletRemain = _machineGunStatDataSo.MagazineSize;
+                _fireTimer = _machineGunStatDataSo.FireRate;
                 Debug.Log("<color=yellow>기관총 장전 완료! 다시 쏜다!</color>");
             }
 
@@ -110,7 +110,7 @@ public class EnemyMachineGun : EnemyBase
         _fireTimer += Time.deltaTime;
 
         // 총알 연사 로직입니다.
-        if (_fireTimer >= _machineGunStatDataSo.fireRate)
+        if (_fireTimer >= _machineGunStatDataSo.FireRate)
         {
             // 사격 애니메이션 실행
             if (anim != null)

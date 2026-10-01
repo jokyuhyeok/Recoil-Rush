@@ -39,7 +39,7 @@ public class EnemyDrone : EnemyBase
             Hovering();
             Vector2 backToFirstPosition = new Vector2(_hoverStart_X, _hoverStart_Y);
             transform.position = Vector2.MoveTowards(transform.position, backToFirstPosition,
-                _baseStatData.speed * Time.deltaTime);
+                _baseStatData.Speed * Time.deltaTime);
 
             if (Vector2.Distance(transform.position, backToFirstPosition) < 0.001f)
             {
@@ -52,7 +52,7 @@ public class EnemyDrone : EnemyBase
         Hovering();
 
         // 플레이어가 감지범위 내로 들어오면 Alarm 상태로 전환합니다.
-        if (distanceToPlayer <= _baseStatData.detectRange)
+        if (distanceToPlayer <= _baseStatData.DetectRange)
         {
             _currentAlarmTime = 0f;
             ChangeState(EnemyState.Alarm);
@@ -65,7 +65,7 @@ public class EnemyDrone : EnemyBase
         LookAtPlayer();
 
         // 플레이어가 감지범위 밖으로 나가면 Idle 상태로 전환합니다. (생성 위치로 복귀) 
-        if (distanceToPlayer > _baseStatData.detectRange)
+        if (distanceToPlayer > _baseStatData.DetectRange)
         {
             _isReturning = true;
             ChangeState(EnemyState.Idle);
@@ -73,7 +73,7 @@ public class EnemyDrone : EnemyBase
         }
 
         // 플레이어가 공격범위 안으로 들어오면 Attack 상태로 전환합니다.
-        if (distanceToPlayer <= _baseStatData.attackRange)
+        if (distanceToPlayer <= _baseStatData.AttackRange)
         {
             StartCharging();
             ChangeState(EnemyState.Attack);
@@ -82,7 +82,7 @@ public class EnemyDrone : EnemyBase
 
         _currentAlarmTime += Time.deltaTime;
         // 경고 시간이 끝나면 Trace 상태로 전환합니다.
-        if (_currentAlarmTime >= _baseStatData.alarmTime)
+        if (_currentAlarmTime >= _baseStatData.AlarmTime)
         {
             ChangeState(EnemyState.Trace);
         }
@@ -91,14 +91,14 @@ public class EnemyDrone : EnemyBase
 
     protected override void UpdateTrace()
     {
-        if (distanceToPlayer > _baseStatData.detectRange)
+        if (distanceToPlayer > _baseStatData.DetectRange)
         {
             _isReturning = true;
             ChangeState(EnemyState.Idle);
             return;
         }
 
-        if (distanceToPlayer <= _baseStatData.attackRange)
+        if (distanceToPlayer <= _baseStatData.AttackRange)
         {
             StartCharging();
             ChangeState(EnemyState.Attack);
@@ -106,7 +106,7 @@ public class EnemyDrone : EnemyBase
 
         Hovering();
         transform.position = Vector2.MoveTowards(transform.position, playerTransform.position,
-            _baseStatData.speed * Time.deltaTime);
+            _baseStatData.Speed * Time.deltaTime);
         LookAtPlayer();
     }
 
@@ -118,7 +118,7 @@ public class EnemyDrone : EnemyBase
 
         if (_isCharging)
         {
-            if (_attackTimer > _droneStatDataSo.chargeTime)
+            if (_attackTimer > _droneStatDataSo.ChargeTime)
             {
                 if (anim != null)
                 {
@@ -131,9 +131,9 @@ public class EnemyDrone : EnemyBase
         }
         else
         {
-            if (_attackTimer >= _droneStatDataSo.attackCooldown)
+            if (_attackTimer >= _droneStatDataSo.AttackCooldown)
             {
-                if (distanceToPlayer > _baseStatData.attackRange)
+                if (distanceToPlayer > _baseStatData.AttackRange)
                 {
                     ChangeState(EnemyState.Trace);
                     return;
@@ -260,7 +260,7 @@ public class EnemyDrone : EnemyBase
 
     private void Hovering()
     {
-        float newY = _hoverStart_Y + Mathf.Sin(Time.time * _droneStatDataSo.hoverSpeed) * _droneStatDataSo.hoverHeight;
+        float newY = _hoverStart_Y + Mathf.Sin(Time.time * _droneStatDataSo.HoverSpeed) * _droneStatDataSo.HoverHeight;
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
 }

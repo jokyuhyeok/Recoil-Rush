@@ -19,8 +19,8 @@ public class Cmd_BackwardDash : IBossCommand
 
     public IEnumerator Execute(BossController boss)
     {
-        boss.anim.Play("BackMove");
-        boss.rb.linearVelocity = Vector2.zero; // 멈춰서 기를 모읍니다.
+        boss.Anim.Play("BackMove");
+        boss.Rigidbody.linearVelocity = Vector2.zero; // 멈춰서 기를 모읍니다.
 
         Debug.Log($"<color=orange>보스: {_chargeTime}초 동안 후방 돌진 준비...</color>");
         yield return new WaitForSeconds(_chargeTime);
@@ -35,18 +35,18 @@ public class Cmd_BackwardDash : IBossCommand
 
         while (timer < _dashDuration)
         {
-            if ((directionX < 0 && boss.isHittingLeftWall) || (directionX > 0 && boss.isHittingRightWall))
+            if ((directionX < 0 && boss.IsHittingLeftWall) || (directionX > 0 && boss.IsHittingRightWall))
             {
                 Debug.Log("쾅! 등 뒤의 벽에 박고 앞으로 통통 튕겨납니다!");
 
                 // 역방향으로 튕겨나가는 힘 적용
-                boss.rb.linearVelocity = new Vector2(directionX * _dashSpeed, boss.rb.linearVelocity.y);
+                boss.Rigidbody.linearVelocity = new Vector2(directionX * _dashSpeed, boss.Rigidbody.linearVelocity.y);
 
                 yield return new WaitForSeconds(0.2f);
                 break;
             }
 
-            boss.rb.linearVelocity = new Vector2(directionX * _dashSpeed, boss.rb.linearVelocity.y);
+            boss.Rigidbody.linearVelocity = new Vector2(directionX * _dashSpeed, boss.Rigidbody.linearVelocity.y);
 
             ghostTimer += Time.deltaTime;
             if (ghostTimer >= _ghostInterval)
@@ -59,7 +59,7 @@ public class Cmd_BackwardDash : IBossCommand
             yield return null;
         }
 
-        boss.rb.linearVelocity = new Vector2(0f, boss.rb.linearVelocity.y);
+        boss.Rigidbody.linearVelocity = new Vector2(0f, boss.Rigidbody.linearVelocity.y);
         Debug.Log("<color=cyan>보스: 후방 돌진 종료... [잔상 효과 끄기]");
     }
 }

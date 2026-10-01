@@ -27,20 +27,20 @@ public class Cmd_ThrowBomb : IBossCommand
 
     public IEnumerator Execute(BossController boss)
     {
-        boss.anim.Play("Fire");
+        boss.Anim.Play("Fire");
         Debug.Log("<color=orange>보스: 맵 중앙으로 이동!</color>");
 
         float direction = Mathf.Sign(_targetX - boss.transform.position.x);
 
         while (Mathf.Abs(boss.transform.position.x - _targetX) > _stopThreshold)
         {
-            boss.rb.linearVelocity = new Vector2(direction * _moveSpeed, boss.rb.linearVelocity.y);
+            boss.Rigidbody.linearVelocity = new Vector2(direction * _moveSpeed, boss.Rigidbody.linearVelocity.y);
             yield return null;
 
             if (Mathf.Sign(_targetX - boss.transform.position.x) != direction) break;
         }
 
-        boss.rb.linearVelocity = new Vector2(0f, boss.rb.linearVelocity.y);
+        boss.Rigidbody.linearVelocity = new Vector2(0f, boss.Rigidbody.linearVelocity.y);
 
         Debug.Log("<color=orange>보스: 목표 도착! 전방으로 수류탄 난사!!</color>");
 

@@ -13,16 +13,16 @@ public class BossController : MonoBehaviour
     [SerializeField] private Transform[] _droneSpawnPoints;
     [SerializeField] private GameObject _ghostPrefab;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    public Transform[] _firePoints;
-    public GameObject _bulletPrefab;
+    [SerializeField] private Transform[] _firePoints;
+    [SerializeField] private GameObject _bulletPrefab;
 
     private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>(); // 패턴들을 순서대로 담아놓을 대기열입니다. 
     private bool _isExecuting = false; // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
     private int _currentPhase = 1;
 
-    public Transform playerTransform;
-    public Rigidbody2D rb;
-    public Animator anim;
+    public Transform PlayerTransform;
+    public Rigidbody2D Rigidbody;
+    public Animator Anim;
 
     // 프로퍼티 - Command에서 프리팹에 접근할 수 있게 열어줍니다.
     public GameObject BulletPrefab => _bulletPrefab;
@@ -32,14 +32,14 @@ public class BossController : MonoBehaviour
     public Transform[] DroneSpawnPoints => _droneSpawnPoints;
     public Transform[] FirePoints => _firePoints;
 
-    public bool isHittingLeftWall = false;
-    public bool isHittingRightWall = false;
+    public bool IsHittingLeftWall = false;
+    public bool IsHittingRightWall = false;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        rb.gravityScale = _stat.heavyGravity;
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Anim = GetComponent<Animator>();
+        Rigidbody.gravityScale = _stat.HeavyGravity;
         PlayerCaching();
     }
 
@@ -123,70 +123,70 @@ public class BossController : MonoBehaviour
     // 각 페이즈별 패턴 조립만 전담하는 메서드들로 쪼갰습니다.
     private void EnqueuePhase1()
     {
-        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
-        EnqueueCommand(new Cmd_ForwardDash(_stat.dashSpeed,
-            _stat.dashDuration,
-            _stat.dashChargeTime,
-            _stat.dashGhostInterval));
-        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
-        EnqueueCommand(new Cmd_BackwardDash(_stat.backDashSpeed,
-            _stat.backDashDuration,
-            _stat.backDashChargeTime,
-            _stat.backDashGhostInterval));
-        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
+        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
+        EnqueueCommand(new Cmd_ForwardDash(_stat.DashSpeed,
+            _stat.DashDuration,
+            _stat.DashChargeTime,
+            _stat.DashGhostInterval));
+        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
+        EnqueueCommand(new Cmd_BackwardDash(_stat.BackDashSpeed,
+            _stat.BackDashDuration,
+            _stat.BackDashChargeTime,
+            _stat.BackDashGhostInterval));
+        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
         EnqueueCommand(new Cmd_SpreadShoot(
-            _stat.leftBulletCount, _stat.leftStartAngle, _stat.leftEndAngle, _stat.leftFireDelay, _stat.leftBulletSpeed,
-            _stat.rightBulletCount, _stat.rightStartAngle, _stat.rightEndAngle, _stat.rightFireDelay,
-            _stat.rightBulletSpeed
+            _stat.LeftBulletCount, _stat.LeftStartAngle, _stat.LeftEndAngle, _stat.LeftFireDelay, _stat.LeftBulletSpeed,
+            _stat.RightBulletCount, _stat.RightStartAngle, _stat.RightEndAngle, _stat.RightFireDelay,
+            _stat.RightBulletSpeed
         ));
         EnqueueCommand(new Cmd_Wait(0.1f));
         EnqueueCommand(new Cmd_SpreadShoot(
-            _stat.leftBulletCount, _stat.leftStartAngle, _stat.leftEndAngle, _stat.leftFireDelay, _stat.leftBulletSpeed,
-            _stat.rightBulletCount, _stat.rightStartAngle, _stat.rightEndAngle, _stat.rightFireDelay,
-            _stat.rightBulletSpeed
+            _stat.LeftBulletCount, _stat.LeftStartAngle, _stat.LeftEndAngle, _stat.LeftFireDelay, _stat.LeftBulletSpeed,
+            _stat.RightBulletCount, _stat.RightStartAngle, _stat.RightEndAngle, _stat.RightFireDelay,
+            _stat.RightBulletSpeed
         ));
         EnqueueCommand(new Cmd_Wait(0.1f));
         EnqueueCommand(new Cmd_SpreadShoot(
-            _stat.leftBulletCount, _stat.leftStartAngle, _stat.leftEndAngle, _stat.leftFireDelay, _stat.leftBulletSpeed,
-            _stat.rightBulletCount, _stat.rightStartAngle, _stat.rightEndAngle, _stat.rightFireDelay,
-            _stat.rightBulletSpeed
+            _stat.LeftBulletCount, _stat.LeftStartAngle, _stat.LeftEndAngle, _stat.LeftFireDelay, _stat.LeftBulletSpeed,
+            _stat.RightBulletCount, _stat.RightStartAngle, _stat.RightEndAngle, _stat.RightFireDelay,
+            _stat.RightBulletSpeed
         ));
     }
 
     private void EnqueuePhase2()
     {
-        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
+        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
 
         EnqueueCommand(new Cmd_ThrowBomb(
-            _stat.centerMoveSpeed, _stat.numOfCountBomb, _stat.bouncePower,
-            _stat.bombTargetX, _stat.bombStopThreshold, _stat.bombSpreadAngle,
-            _stat.bombFireDelay, _stat.bombPostDelay));
+            _stat.CenterMoveSpeed, _stat.NumOfCountBomb, _stat.BouncePower,
+            _stat.BombTargetX, _stat.BombStopThreshold, _stat.BombSpreadAngle,
+            _stat.BombFireDelay, _stat.BombPostDelay));
 
-        EnqueueCommand(new Cmd_BackwardDash(_stat.backDashSpeed,
-            _stat.backDashDuration,
-            _stat.backDashChargeTime,
-            _stat.backDashGhostInterval));
+        EnqueueCommand(new Cmd_BackwardDash(_stat.BackDashSpeed,
+            _stat.BackDashDuration,
+            _stat.BackDashChargeTime,
+            _stat.BackDashGhostInterval));
     }
 
     private void EnqueuePhase3()
     {
-        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
+        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
 
         EnqueueCommand(new Cmd_ThrowBomb(
-            _stat.centerMoveSpeed, _stat.numOfCountBomb, _stat.bouncePower,
-            _stat.bombTargetX, _stat.bombStopThreshold, _stat.bombSpreadAngle,
-            _stat.bombFireDelay, _stat.bombPostDelay));
+            _stat.CenterMoveSpeed, _stat.NumOfCountBomb, _stat.BouncePower,
+            _stat.BombTargetX, _stat.BombStopThreshold, _stat.BombSpreadAngle,
+            _stat.BombFireDelay, _stat.BombPostDelay));
 
         EnqueueCommand(new Cmd_LaserAndDrone(
-            _stat.laserChargeTime, _stat.laserDuration,
-            _stat.droneSpawnDelay, _stat.droneSpawnCount));
+            _stat.LaserChargeTime, _stat.LaserDuration,
+            _stat.DroneSpawnDelay, _stat.DroneSpawnCount));
     }
 
     public void StopAllAttacks()
     {
         StopAllCoroutines();
         _commandQueue.Clear();
-        rb.linearVelocity = Vector2.zero;
+        Rigidbody.linearVelocity = Vector2.zero;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -196,19 +196,19 @@ public class BossController : MonoBehaviour
         {
             if (contact.normal.x > 0.7f)
             {
-                isHittingLeftWall = true;
+                IsHittingLeftWall = true;
             }
             else if (contact.normal.x < -0.7f)
             {
-                isHittingRightWall = true;
+                IsHittingRightWall = true;
             }
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        isHittingLeftWall = false;
-        isHittingRightWall = false;
+        IsHittingLeftWall = false;
+        IsHittingRightWall = false;
     }
 
     private void PlayerCaching()
@@ -217,7 +217,7 @@ public class BossController : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
-            playerTransform = player.transform;
+            PlayerTransform = player.transform;
         }
         else
         {

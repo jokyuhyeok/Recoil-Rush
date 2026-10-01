@@ -20,7 +20,7 @@ public class Cmd_LaserAndDrone : IBossCommand
 
     public IEnumerator Execute(BossController boss)
     {
-        boss.anim.Play("SpecialAttack");
+        boss.Anim.Play("SpecialAttack");
         Debug.Log("<color=magenta>보스: 레이저 포신 장전 (경고!)</color>");
 
         // [연출] 경고선을 켜는 코드 자리입니다.
