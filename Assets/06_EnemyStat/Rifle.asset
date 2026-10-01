@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c6c4f4529277d41977321851a5bfb8, type: 3}
   m_Name: Rifle
   m_EditorClassIdentifier: Assembly-CSharp::RifleStatDataSO
-  maxHp: 1
-  speed: 2
-  detectRange: 8
-  attackRange: 7
-  alarmTime: 1
-  fireRate: 0.5
+  MaxHp: 1
+  Speed: 2
+  DetectRange: 8
+  AttackRange: 7
+  AlarmTime: 1
+  FireRate: 0.5
