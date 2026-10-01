@@ -60,8 +60,8 @@ public class Bullet : MonoBehaviour
             if (hit.collider.CompareTag("Enemy"))
             {
                 // Todo: 이중 넉백 수정
-                // 넉백은 임시로 hit.normal 사용
-                hit.collider.GetComponent<IDamageable>().TakeDamage(_damage, hit.point * _recoilPower);
+                // 넉백은 임시로 사용
+                hit.collider.GetComponent<IDamageable>().TakeDamage(_damage, move.normalized * _recoilPower);
             }
 
             AddImpactRecoil(hit.point);
