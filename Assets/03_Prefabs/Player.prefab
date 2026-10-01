@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 187334104475443003}
   - component: {fileID: 6173003760259362280}
   - component: {fileID: 712902371655090222}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2330848054973217185}
   - component: {fileID: 8028626588938666662}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AimPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 6520759025709264146}
   - component: {fileID: 3479828004130504960}
   - component: {fileID: 2949447460592847076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pistol
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2999767159277550126}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PistolFirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 2201892847365875605}
   - component: {fileID: 1054442426041457698}
   - component: {fileID: 3145751671586403668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shotgun
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6438602270447389132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShotgunFirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
