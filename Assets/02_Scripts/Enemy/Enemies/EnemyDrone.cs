@@ -12,6 +12,11 @@ public class EnemyDrone : EnemyBase
     private bool _isReturning = false;
     private float _attackTimer = 0f;
     private bool _isCharging = false;
+    
+    // 매 프레임 실행되는 Update 안에서 물리력을 1번만 주도록 제어하는 자물쇠 변수들입니다.
+    private bool _isKnockbackProcessed = false;
+    private float _knockbackTimer = 0f;
+    private bool _isDeadProcessed = false;
 
     private DroneStatDataSO _droneStatDataSo => _baseStatData as DroneStatDataSO;
 
@@ -113,7 +118,10 @@ public class EnemyDrone : EnemyBase
         {
             if (_attackTimer > _droneStatDataSo.chargeTime)
             {
-                FireCannon();
+                if (anim != null)
+                {
+                    anim.SetTrigger("Attack");
+                }
                 _isCharging = false;
                 _attackTimer = 0f;
             }
@@ -141,6 +149,32 @@ public class EnemyDrone : EnemyBase
         // 2-case.A: (권총, damage == n) 살짝 뒤로 밀렸다가 Trace 복귀
         // 2-case.B: (샷건, damage >= m) _attackTimer 초기화 및 _isCharging = false (차징 취소)
         // 2-case.B: 위로 튕기듯 크게 밀려났다가 Trace 복귀
+        
+        // 1. 상태 진입 첫 프레임에 딱 한 번만 뒤로 밀어냅니다.
+        if (!_isKnockbackProcessed)
+        {
+            // 플레이어 반대 방향(뒤) 계산
+            Vector2 pushDir = (transform.position - playerTransform.position).normalized;
+            
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero; // 기존 속도 초기화
+                rb.AddForce(pushDir * 5f, ForceMode2D.Impulse); // 뒤로 휙! 밀려남
+            }
+
+            _isKnockbackProcessed = true;
+            _knockbackTimer = 0f;
+        }
+
+        _knockbackTimer += Time.deltaTime;
+
+        // 2. 0.2초(짧은 시간) 뒤에 넉백을 끝내고 다시 추적 상태로 돌아갑니다.
+        if (_knockbackTimer >= 0.2f)
+        {
+            if (rb != null) rb.linearVelocity = Vector2.zero; // 밀리던 것 멈춤
+            _isKnockbackProcessed = false; // 다음 피격을 위해 자물쇠 초기화
+            ChangeState(EnemyState.Trace);
+        }
     }
 
     protected override void UpdateDead()
@@ -161,9 +195,39 @@ public class EnemyDrone : EnemyBase
         // 2. 추락 파티클 및 사운드
         // (추천 구현 방법: 빙글빙글 추락하는 동안 검은 연기와 스파크 파티클 지속 재생, 고장난 기계음 루프)
         // -------------------------------------------------------------
+        
+        // 상태 진입 첫 프레임에 딱 한 번만 애니메이션과 추락 물리력을 줍니다.
+        if (!_isDeadProcessed)
+        {
+            // 1. 사망 애니메이션 트리거
+            if (anim != null) anim.SetTrigger("Die");
+
+            // 2. 콜라이더 끄기 (시체 길막 방지)
+            Collider2D coll = GetComponent<Collider2D>();
+            if (coll != null) coll.enabled = false;
+
+            // 3. 중력 켜기 및 추락 연출
+            if (rb != null)
+            {
+                rb.gravityScale = 2f; 
+                
+                // 맞은 방향(receivedKnockbackForce)으로 살짝 튕기며 떨어지게
+                Vector2 pushForce = new Vector2(receivedKnockbackForce.x, 0.5f).normalized * 5f;
+                rb.AddForce(pushForce, ForceMode2D.Impulse);
+                
+                // 고장나서 빙글빙글 돌기
+                rb.AddTorque(720f); 
+            }
+
+            // 4. 2초 뒤 삭제
+            Destroy(gameObject, 2f);
+            Debug.Log("<color=red>드론: 끼기긱... (빙글빙글 추락)</color>");
+
+            _isDeadProcessed = true; // 이후 이 블록은 다시 실행되지 않음
+        }
     }
 
-    private void FireCannon()
+    private void ShootBulletEvent()
     {
         Debug.Log("<color=red>드론: 쾅! (대포 발사)</color>");
         if (_cannonPrefab != null && _firePoint != null)

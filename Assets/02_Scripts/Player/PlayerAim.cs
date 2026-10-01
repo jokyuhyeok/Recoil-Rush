@@ -16,6 +16,7 @@ public class PlayerAim : MonoBehaviour
     private SpriteRenderer _aimPointSprite;
 
     private Player _player;
+    private SpriteRenderer _playerSprite;
     private Weapon _weapon;
     private SpriteRenderer _weaponSprite;
 
@@ -30,6 +31,7 @@ public class PlayerAim : MonoBehaviour
 
         // HS: ??부터는 테스트용 방어 코드로 넣어놨습니다. 추후 제거 예정입니다.
         _player = GetComponent<Player>() ?? GetComponentInParent<Player>();
+        _playerSprite = _player.GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -59,6 +61,17 @@ public class PlayerAim : MonoBehaviour
         // 보통 Camera는 Z -10 이기 때문에 이 값을 0으로 바꿔줌
         mousePosition.z = 0f;
 
+        Vector2 playerDirection = mousePosition - transform.position;
+        bool isRight = playerDirection.x > 0f;
+
+        _playerSprite.flipX = isRight;
+
+        Vector3 weaponPosition = _weapon.transform.localPosition;
+
+        // Mathf.Abs(값): 값을 절대값으로 바꿈
+        weaponPosition.x = !isRight ? -Mathf.Abs(weaponPosition.x) : Mathf.Abs(weaponPosition.x);
+        _weapon.transform.localPosition = weaponPosition;
+
         // 목표로 향하는 방향 = 목표 위치 - 현재 위치
         Vector2 direction = mousePosition - _weapon.transform.position;
 
@@ -67,8 +80,7 @@ public class PlayerAim : MonoBehaviour
 
         // Quaternion.Euler: X, Y, Z 회전 각도를 Unity가 사용하는 회전값인 Quaternion으로 변환
         _weapon.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-
-        _weaponSprite.flipY = direction.x < 0f;
+        _weaponSprite.flipY = !isRight;
 
         _aimPoint.position = mousePosition;
 

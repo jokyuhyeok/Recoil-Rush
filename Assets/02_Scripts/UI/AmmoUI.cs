@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AmmoUI : MonoBehaviour
 {
+    //출력할 무기 값 확인
     [Serializable]
     private class WeaponAmmoUI
     {
@@ -11,36 +12,111 @@ public class AmmoUI : MonoBehaviour
         public BulletsAmountUI bulletPrefab;
     }
 
+    //출력 위치
     [Header("UI")]
     [SerializeField] private Transform _bulletContainer;
 
+    // 집어넣는 곳
     [Header("Weapon UI")]
     [SerializeField] private List<WeaponAmmoUI> _weaponAmmoUIList;
 
+    // 무기별로 최초 한 번 생성한 총알 UI 저장
     private readonly Dictionary<Weapon, List<BulletsAmountUI>> _bulletPools
         = new Dictionary<Weapon, List<BulletsAmountUI>>();
 
     private Weapon _currentWeapon;
     private List<BulletsAmountUI> _currentBullets;
+
     private int _previousAmmo = -1;
-    
-    private void Update()
+
+
+    private void OnEnable()
     {
-        CheckCurrentWeapon();
-        CheckAmmo();
+        Weapon.OnWeaponActivated += HandleWeaponActivated;
+    }
+
+    private void Start()
+    {
+        // 시작 시 이미 활성화되어 있던 무기가
+        // OnEnable 이벤트를 먼저 발생시켰을 수도 있으므로 최초 1회 확인
+        foreach (WeaponAmmoUI data in _weaponAmmoUIList)
+        {
+            if (data.weapon == null)
+                continue;
+
+            if (data.weapon.gameObject.activeSelf)
+            {
+                HandleWeaponActivated(data.weapon);
+                break;
+            }
+        }
+    }
+
+    private void OnDisable()
+    {
+        Weapon.OnWeaponActivated -= HandleWeaponActivated;
+
+        if (_currentWeapon != null)
+        {
+            _currentWeapon.OnAmmoChanged -= HandleAmmoChanged;
+        }
+    }
+
+    // 무기 활성화
+
+    private void HandleWeaponActivated(Weapon weapon)
+    {
+        if (weapon == null)
+            return;
+
+        if (_currentWeapon == weapon)
+            return;
+
+        WeaponAmmoUI data = FindWeaponData(weapon);
+
+        if (data == null)
+            return;
+
+        // 이전 무기의 탄약 이벤트 구독 해제
+        if (_currentWeapon != null)
+        {
+            _currentWeapon.OnAmmoChanged -= HandleAmmoChanged;
+        }
+
+        // 해당 무기의 UI가 아직 없으면 최초 1회 생성
+        CreateBulletsUI(data);
+
+        // 현재 UI 변경
+        ChangeWeapon(data);
+
+        // 새 무기의 탄약 변경 이벤트 구독
+        _currentWeapon.OnAmmoChanged += HandleAmmoChanged;
     }
     
+    private WeaponAmmoUI FindWeaponData(Weapon weapon)
+    {
+        foreach (WeaponAmmoUI data in _weaponAmmoUIList)
+        {
+            if (data.weapon == weapon)
+            {
+                return data;
+            }
+        }
+
+        return null;
+    }
+
+    // UI Pool 생성
     private void CreateBulletsUI(WeaponAmmoUI data)
     {
         if (data.weapon == null || data.bulletPrefab == null)
             return;
 
-        // 이미 만들어져 있으면 재생성 안 함
+        // 이미 생성한 무기면 다시 Instantiate 하지 않음
         if (_bulletPools.ContainsKey(data.weapon))
             return;
 
-        List<BulletsAmountUI> bullets =
-            new List<BulletsAmountUI>();
+        List<BulletsAmountUI> bullets = new List<BulletsAmountUI>();
 
         for (int i = 0; i < data.weapon.Magazine; i++)
         {
@@ -54,35 +130,11 @@ public class AmmoUI : MonoBehaviour
         _bulletPools.Add(data.weapon, bullets);
     }
 
-    // 현재 활성화된 총 체크
-    private void CheckCurrentWeapon()
-    {
-        foreach (WeaponAmmoUI data in _weaponAmmoUIList)
-        {
-            if (data.weapon == null)
-                continue;
-
-            // 현재 활성화된 총이 아니면 패스
-            if (!data.weapon.gameObject.activeSelf)
-                continue;
-
-            // 이미 현재 총이면 아무것도 안 함
-            if (_currentWeapon == data.weapon)
-                return;
-
-            // 이 총의 UI Pool이 아직 없으면 최초 1회 생성
-            CreateBulletsUI(data);
-
-            // UI 교체
-            ChangeWeapon(data);
-
-            return;
-        }
-    }
+    // 무기 UI 교체
 
     private void ChangeWeapon(WeaponAmmoUI data)
     {
-        // 이전 무기 총알 UI 끄기
+        // 이전 무기 UI 끄기
         if (_currentBullets != null)
         {
             foreach (BulletsAmountUI bullet in _currentBullets)
@@ -98,56 +150,53 @@ public class AmmoUI : MonoBehaviour
             return;
         }
 
-        // 현재 무기 총알 UI 켜기
+        // 현재 무기 UI 켜기
         foreach (BulletsAmountUI bullet in _currentBullets)
         {
             bullet.gameObject.SetActive(true);
         }
 
-        // 현재 남아있는 탄약 상태 반영
         RefreshAmmoState();
 
         _previousAmmo = _currentWeapon.CurrentAmmo;
     }
+    
+    // 탄약 변경 이벤트
 
-    // 발사 및 재장전 확인
-    private void CheckAmmo()
+    private void HandleAmmoChanged(int currentAmmo)
     {
         if (_currentWeapon == null || _currentBullets == null)
         {
             return;
         }
 
-        int currentAmmo = _currentWeapon.CurrentAmmo;
-
-        if (currentAmmo == _previousAmmo)
-            return;
-
-        // 탄 감소 = 발사
-        if (currentAmmo < _previousAmmo)
+        // 정상적인 1발 발사
+        if (currentAmmo == _previousAmmo - 1)
         {
-            int usedBefore = _currentWeapon.Magazine - _previousAmmo;
+            int firedIndex =
+                _currentWeapon.Magazine - currentAmmo - 1;
 
-            int usedNow = _currentWeapon.Magazine - currentAmmo;
-
-            for (int i = usedBefore; i < usedNow; i++)
+            if (firedIndex >= 0 &&
+                firedIndex < _currentBullets.Count)
             {
-                if (i < 0 || i >= _currentBullets.Count)
-                    continue;
-
-                _currentBullets[i].Fire();
+                _currentBullets[firedIndex].Fire();
+            }
+            else
+            {
+                // 예상하지 못한 값이면 전체 상태 재동기화
+                RefreshAmmoState();
             }
         }
-
-        // 탄 증가 = 재장전
         else
         {
+            // 재장전 또는 한 번에 여러 발 변화한 예외 상황
             RefreshAmmoState();
         }
 
         _previousAmmo = currentAmmo;
     }
-
+    
+    // 현재 탄약 상태 전체 반영
     private void RefreshAmmoState()
     {
         if (_currentWeapon == null || _currentBullets == null)
@@ -156,6 +205,8 @@ public class AmmoUI : MonoBehaviour
         }
 
         int usedAmmo = _currentWeapon.Magazine - _currentWeapon.CurrentAmmo;
+
+        usedAmmo = Mathf.Clamp(usedAmmo, 0, _currentBullets.Count);
 
         for (int i = 0; i < _currentBullets.Count; i++)
         {
