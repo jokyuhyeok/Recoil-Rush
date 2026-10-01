@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private float _reloadGroundTimer;
     private bool _isReloading;
     private bool _isGrounded;
+    private bool _groundReloading;
 
     private Rigidbody2D _rigidbody;
 
@@ -121,6 +122,28 @@ public class Player : MonoBehaviour
             return;
         }
 
+        bool allMagazineEmpty = true;
+
+        foreach (Weapon weapon in _weapons)
+        {
+            if (!weapon.IsEmptyMagazine)
+            {
+                allMagazineEmpty = false;
+                break;
+            }
+        }
+
+        if (allMagazineEmpty)
+        {
+            StartReload();
+            return;
+        }
+
+        if (!_groundReloading)
+        {
+            return;
+        }
+
         bool ammoReload = false;
 
         foreach (Weapon weapon in _weapons)
@@ -134,6 +157,7 @@ public class Player : MonoBehaviour
 
         if (!ammoReload)
         {
+            _groundReloading = false;
             _reloadGroundTimer = 0f;
             return;
         }
@@ -145,9 +169,15 @@ public class Player : MonoBehaviour
             return;
         }
 
+        StartReload();
+    }
+
+    private void StartReload()
+    {
         _isReloading = true;
         _reloadTimer = _reloadTime;
         _reloadGroundTimer = 0f;
+        _groundReloading = false;
     }
 
     private void ChangeWeapon(Weapon changeWeapon)
@@ -210,6 +240,7 @@ public class Player : MonoBehaviour
         _reloadTimer = 0f;
         _reloadGroundTimer = 0f;
         _isReloading = false;
+        _groundReloading = false;
 
         _rigidbody.linearVelocity = Vector2.zero;
 
@@ -231,6 +262,11 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            if (!_isGrounded)
+            {
+                _groundReloading = true;
+            }
+
             _isGrounded = true;
         }
 
@@ -245,6 +281,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             _isGrounded = false;
+            _groundReloading = false;
             _reloadGroundTimer = 0f;
         }
     }
