@@ -4,10 +4,10 @@ using UnityEngine;
 public class TestPlayer : MonoBehaviour, IDamageable
 {
     [Header("▶ 테스트용 스탯")]
-    public int health = 100;
+    public int Health = 100;
 
-    public float speed = 5f;
-    public int damage = 1; // 적에게 줄 데미지
+    public float Speed = 5f;
+    public int Damage = 1; // 적에게 줄 데미지
 
     private void Update()
     {
@@ -16,7 +16,7 @@ public class TestPlayer : MonoBehaviour, IDamageable
         float moveY = Input.GetAxisRaw("Vertical");
 
         Vector3 moveDirection = new Vector3(moveX, moveY, 0).normalized;
-        transform.position += moveDirection * speed * Time.deltaTime;
+        transform.position += moveDirection * Speed * Time.deltaTime;
 
         // 2. 즉발 사격 로직 (마우스 왼쪽 버튼 클릭 시)
         if (Input.GetMouseButtonDown(0))
@@ -51,7 +51,7 @@ public class TestPlayer : MonoBehaviour, IDamageable
             if (target != null)
             {
                 // 적 발견! 데미지와 방향을 전달하며 즉시 타격!
-                target.TakeDamage(damage, direction);
+                target.TakeDamage(Damage, direction);
                 Debug.Log($"<color=cyan>탕! {hit.collider.name} 명중!</color>");
 
                 // 관통형 총알이 아니라면 한 명 맞추고 break로 멈춤
@@ -66,7 +66,7 @@ public class TestPlayer : MonoBehaviour, IDamageable
     // 적의 총알에 맞았을 때
     public void TakeDamage(int damage, Vector3 knockbackForce)
     {
-        health -= damage;
-        Debug.Log($"<color=red>윽! 플레이어 피격! 데미지: {damage} / 남은 체력: {health}</color>");
+        Health -= damage;
+        Debug.Log($"<color=red>윽! 플레이어 피격! 데미지: {damage} / 남은 체력: {Health}</color>");
     }
 }

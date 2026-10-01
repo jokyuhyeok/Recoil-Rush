@@ -20,10 +20,10 @@ public class Cmd_ForwardDash : IBossCommand
 
     public IEnumerator Execute(BossController boss)
     {
-        boss.anim.Play("FrontMove");
+        boss.Anim.Play("FrontMove");
 
         Debug.Log($"<color=red>보스: 제트팩 충전 중 {_chargeTime}초 후 발사합니다!</color>");
-        boss.rb.linearVelocity = Vector2.zero;
+        boss.Rigidbody.linearVelocity = Vector2.zero;
 
         // 여기에 장전 중인 파티클을 넣으면 됩니다. 
 
@@ -37,15 +37,15 @@ public class Cmd_ForwardDash : IBossCommand
 
         while (timer < _dashDuration)
         {
-            if ((directionX < 0 && boss.isHittingLeftWall) || (directionX > 0 && boss.isHittingRightWall))
+            if ((directionX < 0 && boss.IsHittingLeftWall) || (directionX > 0 && boss.IsHittingRightWall))
             {
                 Debug.Log("앞쪽 벽에 박았다!");
-                boss.rb.linearVelocity = new Vector2(-directionX * _dashSpeed * 0.2f, boss.rb.linearVelocity.y);
+                boss.Rigidbody.linearVelocity = new Vector2(-directionX * _dashSpeed * 0.2f, boss.Rigidbody.linearVelocity.y);
                 yield return new WaitForSeconds(0.5f);
                 break;
             }
 
-            boss.rb.linearVelocity = new Vector2(directionX * _dashSpeed, boss.rb.linearVelocity.y);
+            boss.Rigidbody.linearVelocity = new Vector2(directionX * _dashSpeed, boss.Rigidbody.linearVelocity.y);
             ghostTimer += Time.deltaTime;
             if (ghostTimer >= _ghostInterval)
             {
@@ -57,7 +57,7 @@ public class Cmd_ForwardDash : IBossCommand
             yield return null;
         }
 
-        boss.rb.linearVelocity = new Vector2(0f, boss.rb.linearVelocity.y);
+        boss.Rigidbody.linearVelocity = new Vector2(0f, boss.Rigidbody.linearVelocity.y);
         Debug.Log("<color=red>보스: 전진 돌진 종료!</color>");
     }
 }

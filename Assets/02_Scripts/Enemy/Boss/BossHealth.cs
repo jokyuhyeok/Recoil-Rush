@@ -10,13 +10,13 @@ public class BossHealth : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        _currentHp = _stat.maxHp;
+        _currentHp = _stat.MaxHp;
     }
 
     public void TakeDamage(int damage, Vector3 knockbackForce)
     {
         _currentHp -= damage;
-        Debug.Log($"보스 피격! 데미지: {damage} | 현재 체력: {_currentHp}/{_stat.maxHp}");
+        Debug.Log($"보스 피격! 데미지: {damage} | 현재 체력: {_currentHp}/{_stat.MaxHp}");
 
         if (_currentHp <= 0)
         {
@@ -29,14 +29,14 @@ public class BossHealth : MonoBehaviour, IDamageable
 
     private void CheckPhase()
     {
-        float hpPercentage = (float)_currentHp / _stat.maxHp;
+        float hpPercentage = (float)_currentHp / _stat.MaxHp;
 
-        if (_currentPhase == 1 && (hpPercentage <= _stat.phase2Threshold))
+        if (_currentPhase == 1 && (hpPercentage <= _stat.Phase2Threshold))
         {
             _currentPhase = 2;
             _controller.SetPhase(2);
         }
-        else if (_currentPhase == 2 && hpPercentage <= _stat.phase3Threshold)
+        else if (_currentPhase == 2 && hpPercentage <= _stat.Phase3Threshold)
         {
             _currentPhase = 3;
             _controller.SetPhase(3); // "컨트롤러야! 당장 3페이즈로 바꿔!" 라고 찌르기

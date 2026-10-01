@@ -4,9 +4,9 @@ using UnityEngine;
 public class DroneStatDataSO : EnemyStatDataSO
 {
     [Header("드론 전용 데이터")]
-    public float hoverHeight = 0.5f;
+    public float HoverHeight = 0.5f;
 
-    public float hoverSpeed = 2f;
-    public float chargeTime = 1f;
-    public float attackCooldown = 2f;
+    public float HoverSpeed = 2f;
+    public float ChargeTime = 1f;
+    public float AttackCooldown = 2f;
 }
