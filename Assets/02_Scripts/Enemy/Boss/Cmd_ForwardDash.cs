@@ -21,20 +21,20 @@ public class Cmd_ForwardDash : IBossCommand
     public IEnumerator Execute(BossController boss)
     {
         boss.anim.Play("FrontMove");
-        
+
         Debug.Log($"<color=red>보스: 제트팩 충전 중 {_chargeTime}초 후 발사합니다!</color>");
         boss.rb.linearVelocity = Vector2.zero;
-        
+
         // 여기에 장전 중인 파티클을 넣으면 됩니다. 
-        
+
         yield return new WaitForSeconds(_chargeTime);
-        
+
         Debug.Log("<color=red>보스: 전방 돌진 시작!</color>");
 
         float directionX = -1f;
         float timer = 0f;
         float ghostTimer = 0f;
-        
+
         while (timer < _dashDuration)
         {
             if ((directionX < 0 && boss.isHittingLeftWall) || (directionX > 0 && boss.isHittingRightWall))
@@ -52,7 +52,7 @@ public class Cmd_ForwardDash : IBossCommand
                 boss.SpawnGhost();
                 ghostTimer = 0f;
             }
-            
+
             timer += Time.deltaTime;
             yield return null;
         }

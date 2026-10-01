@@ -25,11 +25,16 @@ MonoBehaviour:
   backDashChargeTime: 0.5
   backDashGhostInterval: 0.05
   heavyGravity: 5
-  spreadBulletCount: 15
-  spreadStartAngle: -60
-  spreadEndAngle: 60
-  spreadFireDelay: 0.05
-  spreadBulletSpeed: 5
+  leftBulletCount: 10
+  leftStartAngle: -60
+  leftEndAngle: 60
+  leftFireDelay: 0.1
+  leftBulletSpeed: 5
+  rightBulletCount: 12
+  rightStartAngle: -45
+  rightEndAngle: 45
+  rightFireDelay: 0.05
+  rightBulletSpeed: 8
   laserChargeTime: 1.5
   laserDuration: 5
   droneSpawnDelay: 0.5

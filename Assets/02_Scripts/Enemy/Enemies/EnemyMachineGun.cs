@@ -14,6 +14,7 @@ public class EnemyMachineGun : EnemyBase
     private bool _isReloading = false;
 
     private MachineGunStatDataSO _machineGunStatDataSo => _baseStatData as MachineGunStatDataSO;
+
     protected override void Start()
     {
         base.Start();
@@ -74,7 +75,8 @@ public class EnemyMachineGun : EnemyBase
             return;
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, _baseStatData.speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position,
+            _baseStatData.speed * Time.deltaTime);
         LookAtPlayer();
     }
 
@@ -111,7 +113,7 @@ public class EnemyMachineGun : EnemyBase
         if (_fireTimer >= _machineGunStatDataSo.fireRate)
         {
             // 사격 애니메이션 실행
-            if(anim != null)
+            if (anim != null)
             {
                 anim.SetTrigger("Attack");
                 ShootBulletEvent();
@@ -124,7 +126,7 @@ public class EnemyMachineGun : EnemyBase
     {
         // 총알 즉시 생성 및 발사
         if (_bulletPrefab == null || _firePoint == null || playerTransform == null) return;
-            
+
         EnemyBullet bullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
         Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
         bullet.FireBullet(direction);
@@ -142,7 +144,7 @@ public class EnemyMachineGun : EnemyBase
         // -------------------------------------------------------------
 
         _currentBulletRemain--;
-            
+
         // 남은 총알이 0발일 때, 재장전에 들어갑니다.
         if (_currentBulletRemain <= 0)
         {

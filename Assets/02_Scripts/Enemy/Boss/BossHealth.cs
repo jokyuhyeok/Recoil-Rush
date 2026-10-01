@@ -39,16 +39,16 @@ public class BossHealth : MonoBehaviour, IDamageable
         else if (_currentPhase == 2 && hpPercentage <= _stat.phase3Threshold)
         {
             _currentPhase = 3;
-            _controller.SetPhase(3);  // "컨트롤러야! 당장 3페이즈로 바꿔!" 라고 찌르기
+            _controller.SetPhase(3); // "컨트롤러야! 당장 3페이즈로 바꿔!" 라고 찌르기
         }
     }
-    
+
     private void Die()
     {
         Debug.Log("<color=black>보스 처치 완료! 게임 클리어!</color>");
 
         _controller.StopAllAttacks();
-        
+
         // 여기에 보스 사망 폭발 파티클, 사운드 등을 넣으면 됩니다.
         Destroy(gameObject);
     }

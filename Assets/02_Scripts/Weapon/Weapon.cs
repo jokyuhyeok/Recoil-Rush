@@ -8,10 +8,12 @@ public abstract class Weapon : MonoBehaviour
 
     [Header("Fire")]
     [SerializeField] protected Transform _firePoint;
+
     [SerializeField] private float _fireSpeed = 0.2f;
 
     [Header("Bullet")]
     [SerializeField] protected Bullet _bulletPrefab;
+
     [SerializeField] private float _bulletSpeed = 20f;
     [SerializeField] private int _damage = 1;
 
