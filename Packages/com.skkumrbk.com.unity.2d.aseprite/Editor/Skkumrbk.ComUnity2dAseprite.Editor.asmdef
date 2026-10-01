@@ -1,0 +1,10 @@
+{
+    "name": "Skkumrbk.ComUnity2dAseprite.Editor",
+    "references": [
+      "Skkumrbk.ComUnity2dAseprite"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}
