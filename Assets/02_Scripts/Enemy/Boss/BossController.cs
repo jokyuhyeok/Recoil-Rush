@@ -123,12 +123,30 @@ public class BossController : MonoBehaviour
     private void EnqueuePhase1()
     {
         EnqueueCommand(new Cmd_Wait(_stat.waitTime));
+        EnqueueCommand(new Cmd_ForwardDash(_stat.dashSpeed, 
+            _stat.dashDuration,
+            _stat.dashChargeTime, 
+            _stat.dashGhostInterval));
+        EnqueueCommand(new Cmd_Wait(_stat.waitTime));
         EnqueueCommand(new Cmd_BackwardDash(_stat.backDashSpeed, 
             _stat.backDashDuration,
             _stat.backDashChargeTime, 
             _stat.backDashGhostInterval));
         EnqueueCommand(new Cmd_Wait(_stat.waitTime));
-        EnqueueCommand(new Cmd_SpreadShoot(_stat.spreadBulletCount, _stat.spreadStartAngle, _stat.spreadEndAngle, _stat.spreadFireDelay, _stat.spreadBulletSpeed));
+        EnqueueCommand(new Cmd_SpreadShoot(
+            _stat.leftBulletCount, _stat.leftStartAngle, _stat.leftEndAngle, _stat.leftFireDelay, _stat.leftBulletSpeed,
+            _stat.rightBulletCount, _stat.rightStartAngle, _stat.rightEndAngle, _stat.rightFireDelay, _stat.rightBulletSpeed
+        ));
+        EnqueueCommand(new Cmd_Wait(0.1f));
+        EnqueueCommand(new Cmd_SpreadShoot(
+            _stat.leftBulletCount, _stat.leftStartAngle, _stat.leftEndAngle, _stat.leftFireDelay, _stat.leftBulletSpeed,
+            _stat.rightBulletCount, _stat.rightStartAngle, _stat.rightEndAngle, _stat.rightFireDelay, _stat.rightBulletSpeed
+        ));
+        EnqueueCommand(new Cmd_Wait(0.1f));
+        EnqueueCommand(new Cmd_SpreadShoot(
+            _stat.leftBulletCount, _stat.leftStartAngle, _stat.leftEndAngle, _stat.leftFireDelay, _stat.leftBulletSpeed,
+            _stat.rightBulletCount, _stat.rightStartAngle, _stat.rightEndAngle, _stat.rightFireDelay, _stat.rightBulletSpeed
+        ));
     }
 
     private void EnqueuePhase2()

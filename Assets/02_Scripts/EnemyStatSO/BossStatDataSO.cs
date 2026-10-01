@@ -12,7 +12,7 @@ public class BossStatDataSO : ScriptableObject
     public float phase3Threshold = 0.3f;
     
     
-    [Header("보스 기본 이동 및 대기")]
+    [Header("보스 전방 돌진 및 대기")]
     [Tooltip("패턴과 패턴 사이에 보스가 가만히 있는 대기 시간입니다.")]
     public float waitTime = 1.0f;
     [Tooltip("전방으로 돌진할 때의 이동 속도 입니다.")]
@@ -23,6 +23,8 @@ public class BossStatDataSO : ScriptableObject
     public float dashChargeTime = 0.5f;
     [Tooltip("돌진 시에 보스 뒤에 남을 잔상의 간격입니다.")] 
     public float dashGhostInterval = 0.05f;
+    
+    [Header("후방 돌진")]
     [Tooltip("후방 돌진 시에의 이동 속도입니다.")]
     public float backDashSpeed = 30f;
     [Tooltip("후방 돌진 시에 대시를 유지하는 시간입니다. (몇 초동안 뒤로 대시하는가?")]
@@ -35,17 +37,30 @@ public class BossStatDataSO : ScriptableObject
     public float heavyGravity = 5f;
 
     [Header("앞 쪽에 부채꼴로 총알 뿌리기 공격(SpreadShoot)")]
-    [Tooltip("앞쪽에 발사할 총알의 개수입니다.")]
-    public int spreadBulletCount = 10;
+    [Header("왼쪽 팔 부채꼴 사격 세팅")]
+    [Tooltip("발사할 총알의 개수입니다.")]
+    public int leftBulletCount = 10;
     [Tooltip("사격이 시작되는 첫 각도입니다. (아래서 위로 올리면서 사격합니다. 음수(-) 추천)")]
-    public float spreadStartAngle = -30f;
+    public float leftStartAngle = -30f;
     [Tooltip("사격이 끝나는 마지막 각도입니다. (양수(+) 추천)")]
-    public float spreadEndAngle = 30f;
+    public float leftEndAngle = 30f;
     [Tooltip("총알을 쏘는 각도와 각도 사이의 발사 간격입니다. (추천: 0.1f)")]
-    public float spreadFireDelay = 0.1f;
+    public float leftFireDelay = 0.1f;
     [Tooltip("총알들의 이동속도입니다.")]
-    public float spreadBulletSpeed = 15f;
-
+    public float leftBulletSpeed = 15f;
+    
+    [Header("오른쪽 팔 부채꼴 사격 세팅")]
+    [Tooltip("발사할 총알의 개수입니다.")]
+    public int rightBulletCount = 10;
+    [Tooltip("사격이 시작되는 첫 각도입니다. (위에서 아래로 내리면서 사격합니다. 양수 (+) 추천)")]
+    public float rightStartAngle = -30f;
+    [Tooltip("사격이 끝나는 마지막 각도입니다. (음수 (-) 추천)")]
+    public float rightEndAngle = 30f;
+    [Tooltip("총알을 쏘는 각도와 각도 사이의 발사 간격입니다. (추천: 0.1f)")]
+    public float rightFireDelay = 0.1f;
+    [Tooltip("총알들의 이동속도입니다.")]
+    public float rightBulletSpeed = 15f;
+    
     [Header("레이저 공격과 드론 소환(LaserAndDrone)")]
     [Tooltip("레이저를 쏘기전 기를 모으는 장전 시간입니다.")]
     public float laserChargeTime = 1.5f;
