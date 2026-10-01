@@ -5,6 +5,7 @@ public class TestPlayer : MonoBehaviour, IDamageable
 {
     [Header("▶ 테스트용 스탯")]
     public int health = 100;
+
     public float speed = 5f;
     public int damage = 1; // 적에게 줄 데미지
 
@@ -37,7 +38,7 @@ public class TestPlayer : MonoBehaviour, IDamageable
         // 플레이어 위치에서 레이저(Raycast)를 쏩니다! (자기 자신을 맞추지 않도록 살짝 띄워서 쏠 수도 있지만 테스트니 바로 쏩니다)
         // 주의: 플레이어 콜라이더를 무시하려면 자기 콜라이더를 잠깐 끄거나 레이어 마스크를 써야 합니다.
         // 가장 쉬운 방법은 RaycastAll로 다 뚫고 지나가면서 적만 찾는 것입니다.
-        
+
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, direction, 20f);
 
         foreach (RaycastHit2D hit in hits)
@@ -52,9 +53,9 @@ public class TestPlayer : MonoBehaviour, IDamageable
                 // 적 발견! 데미지와 방향을 전달하며 즉시 타격!
                 target.TakeDamage(damage, direction);
                 Debug.Log($"<color=cyan>탕! {hit.collider.name} 명중!</color>");
-                
+
                 // 관통형 총알이 아니라면 한 명 맞추고 break로 멈춤
-                break; 
+                break;
             }
         }
 

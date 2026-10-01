@@ -68,7 +68,8 @@ public class EnemyRifle : EnemyBase
             return;
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, _baseStatData.speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position,
+            _baseStatData.speed * Time.deltaTime);
         LookAtPlayer();
     }
 

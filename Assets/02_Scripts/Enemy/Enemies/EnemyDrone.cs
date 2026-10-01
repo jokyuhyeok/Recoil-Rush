@@ -12,7 +12,7 @@ public class EnemyDrone : EnemyBase
     private bool _isReturning = false;
     private float _attackTimer = 0f;
     private bool _isCharging = false;
-    
+
     // 매 프레임 실행되는 Update 안에서 물리력을 1번만 주도록 제어하는 자물쇠 변수들입니다.
     private bool _isKnockbackProcessed = false;
     private float _knockbackTimer = 0f;
@@ -38,7 +38,8 @@ public class EnemyDrone : EnemyBase
         {
             Hovering();
             Vector2 backToFirstPosition = new Vector2(_hoverStart_X, _hoverStart_Y);
-            transform.position = Vector2.MoveTowards(transform.position, backToFirstPosition, _baseStatData.speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, backToFirstPosition,
+                _baseStatData.speed * Time.deltaTime);
 
             if (Vector2.Distance(transform.position, backToFirstPosition) < 0.001f)
             {
@@ -104,7 +105,8 @@ public class EnemyDrone : EnemyBase
         }
 
         Hovering();
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, _baseStatData.speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position,
+            _baseStatData.speed * Time.deltaTime);
         LookAtPlayer();
     }
 
@@ -122,6 +124,7 @@ public class EnemyDrone : EnemyBase
                 {
                     anim.SetTrigger("Attack");
                 }
+
                 _isCharging = false;
                 _attackTimer = 0f;
             }
@@ -149,13 +152,13 @@ public class EnemyDrone : EnemyBase
         // 2-case.A: (권총, damage == n) 살짝 뒤로 밀렸다가 Trace 복귀
         // 2-case.B: (샷건, damage >= m) _attackTimer 초기화 및 _isCharging = false (차징 취소)
         // 2-case.B: 위로 튕기듯 크게 밀려났다가 Trace 복귀
-        
+
         // 1. 상태 진입 첫 프레임에 딱 한 번만 뒤로 밀어냅니다.
         if (!_isKnockbackProcessed)
         {
             // 플레이어 반대 방향(뒤) 계산
             Vector2 pushDir = (transform.position - playerTransform.position).normalized;
-            
+
             if (rb != null)
             {
                 rb.linearVelocity = Vector2.zero; // 기존 속도 초기화
@@ -195,7 +198,7 @@ public class EnemyDrone : EnemyBase
         // 2. 추락 파티클 및 사운드
         // (추천 구현 방법: 빙글빙글 추락하는 동안 검은 연기와 스파크 파티클 지속 재생, 고장난 기계음 루프)
         // -------------------------------------------------------------
-        
+
         // 상태 진입 첫 프레임에 딱 한 번만 애니메이션과 추락 물리력을 줍니다.
         if (!_isDeadProcessed)
         {
@@ -209,14 +212,14 @@ public class EnemyDrone : EnemyBase
             // 3. 중력 켜기 및 추락 연출
             if (rb != null)
             {
-                rb.gravityScale = 2f; 
-                
+                rb.gravityScale = 2f;
+
                 // 맞은 방향(receivedKnockbackForce)으로 살짝 튕기며 떨어지게
                 Vector2 pushForce = new Vector2(receivedKnockbackForce.x, 0.5f).normalized * 5f;
                 rb.AddForce(pushForce, ForceMode2D.Impulse);
-                
+
                 // 고장나서 빙글빙글 돌기
-                rb.AddTorque(720f); 
+                rb.AddTorque(720f);
             }
 
             // 4. 2초 뒤 삭제

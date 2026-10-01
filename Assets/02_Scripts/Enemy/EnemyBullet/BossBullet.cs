@@ -20,7 +20,7 @@ public class BossBullet : MonoBehaviour
         // 총알이 날아가는 방향과 바라보는 방향을 일치시킵니다. 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
-        
+
         Destroy(gameObject, _bulletLifeTime);
     }
 

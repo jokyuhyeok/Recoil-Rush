@@ -12,7 +12,8 @@ public class Cmd_ThrowBomb : IBossCommand
     private float _fireDelay;
     private float _postDelay;
 
-    public Cmd_ThrowBomb(float moveSpeed, int bombCount, float shootPower, float targetX, float stopThreshold, float spreadAngle, float fireDelay, float postDelay)
+    public Cmd_ThrowBomb(float moveSpeed, int bombCount, float shootPower, float targetX, float stopThreshold,
+        float spreadAngle, float fireDelay, float postDelay)
     {
         _moveSpeed = moveSpeed;
         _bombCount = bombCount;
@@ -38,9 +39,9 @@ public class Cmd_ThrowBomb : IBossCommand
 
             if (Mathf.Sign(_targetX - boss.transform.position.x) != direction) break;
         }
-        
+
         boss.rb.linearVelocity = new Vector2(0f, boss.rb.linearVelocity.y);
-        
+
         Debug.Log("<color=orange>보스: 목표 도착! 전방으로 수류탄 난사!!</color>");
 
         for (int i = 0; i < _bombCount; i++)
@@ -54,13 +55,14 @@ public class Cmd_ThrowBomb : IBossCommand
                 {
                     float randomAngle = UnityEngine.Random.Range(-_spreadAngle, _spreadAngle);
                     Vector2 forceDirection = Quaternion.Euler(0, 0, randomAngle) * Vector2.left;
-                    
+
                     bombRb.AddForce(forceDirection * _shootPower, ForceMode2D.Impulse);
                 }
             }
 
             yield return new WaitForSeconds(_fireDelay);
         }
+
         yield return new WaitForSeconds(_postDelay);
     }
 }
