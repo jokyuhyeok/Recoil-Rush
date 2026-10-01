@@ -7,16 +7,15 @@ public class BossController : MonoBehaviour
 {
     [SerializeField] private BossStatDataSO _stat;
 
-    [SerializeField] private GameObject _laserBeamObject;
-    [SerializeField] private GameObject _dronePrefab;
     [SerializeField] private GameObject _bombPrefab;
-    [SerializeField] private Transform[] _droneSpawnPoints;
     [SerializeField] private GameObject _ghostPrefab;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Transform[] _firePoints;
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _laserFirePoint;
     [SerializeField] private GameObject _bossLaserPrefab;
+    [SerializeField] private GameObject _dronePrefab;
+    [SerializeField] private Transform[] _droneSpawnPoints;
 
     private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>(); // 패턴들을 순서대로 담아놓을 대기열입니다. 
     private bool _isExecuting = false; // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
@@ -28,10 +27,7 @@ public class BossController : MonoBehaviour
 
     // 프로퍼티 - Command에서 프리팹에 접근할 수 있게 열어줍니다.
     public GameObject BulletPrefab => _bulletPrefab;
-    public GameObject LaserBeamObject => _laserBeamObject;
-    public GameObject DronePrefab => _dronePrefab;
     public GameObject BombPrefab => _bombPrefab;
-    public Transform[] DroneSpawnPoints => _droneSpawnPoints;
     public Transform[] FirePoints => _firePoints;
 
     public bool IsLaserFinished { get; set; } = false;
@@ -192,6 +188,27 @@ public class BossController : MonoBehaviour
         if (laser != null)
         {
             laser.FireLaser(_stat.LaserWarningTime, _stat.LaserBeamTime);
+        }
+    }
+
+    // 드론들의 SpawnPoint들에 드론을 소환하는 이벤트 함수입니다.
+    public void SpawnDroneEvent()
+    {
+        if (_dronePrefab == null || _droneSpawnPoints == null || _droneSpawnPoints.Length == 0)
+        {
+            Debug.LogWarning("드론 프리팹 또는 스폰 포인트가 없습니다!");
+            return;
+        }
+
+        Debug.Log("<color=green>보스: 발판용 시한폭탄 드론 3대 공중 소환!</color>");
+
+        // 지정된 스폰 위치 배열을 돌면서 드론을 각각 하나씩 생성합니다.
+        foreach (Transform spawnPoint in _droneSpawnPoints)
+        {
+            if (spawnPoint != null)
+            {
+                Instantiate(_dronePrefab, spawnPoint.position, Quaternion.identity);
+            }
         }
     }
 
