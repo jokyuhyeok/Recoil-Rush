@@ -31,6 +31,7 @@ public abstract class Weapon : MonoBehaviour
     public int Magazine => _magazine;
     public int CurrentAmmo => _currentAmmo;
     public bool AmmoReload => _currentAmmo < _magazine;
+    public bool IsEmptyMagazine => _currentAmmo <= 0;
 
     //UI 연동할 이벤트 추가
     public event Action<int> OnAmmoChanged;
