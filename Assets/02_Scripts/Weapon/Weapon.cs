@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public abstract class Weapon : MonoBehaviour
     public int Magazine => _magazine;
     public int CurrentAmmo => _currentAmmo;
     public bool AmmoReload => _currentAmmo < _magazine;
+    
+    //UI 연동할 이벤트 추가
+    public event Action<int> OnAmmoChanged;
+    public static event Action<Weapon> OnWeaponActivated;
 
     private Player _player;
 
@@ -38,6 +43,12 @@ public abstract class Weapon : MonoBehaviour
         _currentAmmo = _magazine;
     }
 
+    // 무기 활성화 시 이벤트
+    protected virtual void OnEnable()
+    {
+        OnWeaponActivated?.Invoke(this);
+    }
+    
     protected virtual void Update()
     {
         if (_fireCooldown > 0f)
@@ -57,6 +68,9 @@ public abstract class Weapon : MonoBehaviour
         AddRecoil();
 
         _currentAmmo--;
+        
+        OnAmmoChanged?.Invoke(_currentAmmo);
+        
         _fireCooldown = _fireSpeed;
 
         return true;
@@ -73,6 +87,8 @@ public abstract class Weapon : MonoBehaviour
     public void Reload()
     {
         _currentAmmo = _magazine;
+        
+        OnAmmoChanged?.Invoke(_currentAmmo);
     }
 
     protected abstract void Fire();
