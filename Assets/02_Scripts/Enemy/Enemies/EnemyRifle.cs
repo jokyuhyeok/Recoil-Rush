@@ -87,6 +87,7 @@ public class EnemyRifle : EnemyBase
 
         if (_fireTimer >= _rifleStatData.fireRate)
         {
+            anim.SetTrigger("Attack");
             // 쿨타임 종료 시 총알을 생성 후 플레이어 방향으로 발사합니다.
             EnemyBullet bullet = Instantiate(_bulletPrefeb, _firePoint.position, Quaternion.identity);
             Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
@@ -123,5 +124,6 @@ public class EnemyRifle : EnemyBase
         // 4. 바닥에 떨어지고 n초 후 파괴 (Destroy)
 
         Destroy(gameObject);
+        Debug.Log("<color=red>소총수: 으아악! (사망)</color>");
     }
 }

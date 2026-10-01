@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Rifle
   m_EditorClassIdentifier: Assembly-CSharp::RifleStatDataSO
   maxHp: 1
-  speed: 4
-  detectRange: 10
-  attackRange: 8
+  speed: 2
+  detectRange: 8
+  attackRange: 7
   alarmTime: 1
-  fireRate: 2
+  fireRate: 0.5

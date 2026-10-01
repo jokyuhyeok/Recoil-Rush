@@ -110,32 +110,45 @@ public class EnemyMachineGun : EnemyBase
         // 총알 연사 로직입니다.
         if (_fireTimer >= _machineGunStatDataSo.fireRate)
         {
-            EnemyBullet bullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
-            Vector2 direction = (playerTransform.position - transform.position).normalized;
-            bullet.FireBullet(direction);
-
-            // -------------------------------------------------------------
-            // 🎯 [Game Feel: 총을 발사할 때의 연출입니다.]
-            // 1. Muzzle Flash (총구 섬광)
-            // (추천 구현 방법: _firePoint.position에 총구 화염 이펙트를 띄우고 0.1초 뒤 삭제)
-            //
-            // 2. Gun SFX (총기 사운드)
-            // (추천 구현 방법: 권총/소총 특유의 날카롭고 가벼운 발사음 재생)
-            //
-            // 3. Gun Kick Animation (총구 반동 애니메이션)
-            // (추천 구현 방법: 적 스프라이트 전체를 발사 반대 방향으로 아주 짧게 DOShakePosition 하거나 탄피 파티클 배출)
-            // -------------------------------------------------------------
-
-            _currentBulletRemain--;
-            _fireTimer = 0f;
-
-            // 남은 총알이 0발일 때, 재장전에 들어갑니다.
-            if (_currentBulletRemain <= 0)
+            // 사격 애니메이션 실행
+            if(anim != null)
             {
-                _isReloading = true;
-                _reloadTimer = 0f;
-                Debug.Log("<color=orange>기관총 탄창 방전! 3초간 재장전 시작!</color>");
+                anim.SetTrigger("Attack");
+                ShootBulletEvent();
+                _fireTimer = 0f;
             }
+        }
+    }
+
+    private void ShootBulletEvent()
+    {
+        // 총알 즉시 생성 및 발사
+        if (_bulletPrefab == null || _firePoint == null || playerTransform == null) return;
+            
+        EnemyBullet bullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
+        Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
+        bullet.FireBullet(direction);
+
+        // -------------------------------------------------------------
+        // 🎯 [Game Feel: 총을 발사할 때의 연출입니다.]
+        // 1. Muzzle Flash (총구 섬광)
+        // (추천 구현 방법: _firePoint.position에 총구 화염 이펙트를 띄우고 0.1초 뒤 삭제)
+        //
+        // 2. Gun SFX (총기 사운드)
+        // (추천 구현 방법: 권총/소총 특유의 날카롭고 가벼운 발사음 재생)
+        //
+        // 3. Gun Kick Animation (총구 반동 애니메이션)
+        // (추천 구현 방법: 적 스프라이트 전체를 발사 반대 방향으로 아주 짧게 DOShakePosition 하거나 탄피 파티클 배출)
+        // -------------------------------------------------------------
+
+        _currentBulletRemain--;
+            
+        // 남은 총알이 0발일 때, 재장전에 들어갑니다.
+        if (_currentBulletRemain <= 0)
+        {
+            _isReloading = true;
+            _reloadTimer = 0f;
+            Debug.Log("<color=orange>기관총 탄창 방전! 3초간 재장전 시작!</color>");
         }
     }
 
@@ -154,5 +167,6 @@ public class EnemyMachineGun : EnemyBase
         // 4. 바닥에 떨어지고 n초 후 파괴 (Destroy)
 
         Destroy(gameObject);
+        Debug.Log("<color=red>기관총 사수: 으아악! (사망)</color>");
     }
 }
