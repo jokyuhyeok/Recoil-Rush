@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 2949447460592847076}
   m_Layer: 6
   m_Name: Pistol
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 3145751671586403668}
   m_Layer: 6
   m_Name: Shotgun
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
