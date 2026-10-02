@@ -7,7 +7,11 @@ public class EnemyRifle : EnemyBase
     // 총알 발사에 관련된 변수입니다.
     [SerializeField] private EnemyBullet _bulletPrefeb;
     [SerializeField] private Transform _firePoint;
+    [SerializeField] private GameObject _deathParticle;
+    [SerializeField] private GameObject _muzzleFlashParticle;
+    [SerializeField] private float _shootRecoilPower = 3f;
 
+    private bool _isDead = false;
     private float _currentAlarmTime = 0f;
     private float _fireTimer = 0f;
 
@@ -89,23 +93,6 @@ public class EnemyRifle : EnemyBase
         if (_fireTimer >= _rifleStatData.FireRate)
         {
             anim.SetTrigger("Attack");
-            // 쿨타임 종료 시 총알을 생성 후 플레이어 방향으로 발사합니다.
-            EnemyBullet bullet = Instantiate(_bulletPrefeb, _firePoint.position, Quaternion.identity);
-            Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
-            bullet.FireBullet(direction);
-
-            // -------------------------------------------------------------
-            // 🎯 [Game Feel: 총을 발사할 때의 연출입니다.]
-            // 1. Muzzle Flash (총구 섬광)
-            // (추천 구현 방법: _firePoint.position에 총구 화염 이펙트를 띄우고 0.1초 뒤 삭제)
-            //
-            // 2. Gun SFX (총기 사운드)
-            // (추천 구현 방법: 권총/소총 특유의 날카롭고 가벼운 발사음 재생)
-            //
-            // 3. Gun Kick Animation (총구 반동 애니메이션)
-            // (추천 구현 방법: 적 스프라이트 전체를 발사 반대 방향으로 아주 짧게 DOShakePosition 하거나 탄피 파티클 배출)
-            // -------------------------------------------------------------
-
             _fireTimer = 0f;
         }
     }
@@ -117,14 +104,39 @@ public class EnemyRifle : EnemyBase
 
     protected override void UpdateDead()
     {
-        // [구현 예정 : 소총수 사망] [가이드]
-        // player 무기에 따라 다른 로직을 적용할지는 미정입니다. (샷건이랑 권총에 맞은 리액션이 같으면 좀... 그렇긴 해서...)
-        // 1. 콜라이더 판정 끄기 (길막 방지)
-        // 2. receivedKnockback(총알 방향) 벡터에 Y축(위쪽) 힘을 섞어 포물선 궤도 생성
-        // 3. 해당 벡터로 AddForce 적용 및 AddTorque로 회전
-        // 4. 바닥에 떨어지고 n초 후 파괴 (Destroy)
+        if (_isDead) return;
+        _isDead = true;
+
+        if (_deathParticle == null) return;
+
+        GameObject effect = Instantiate(_deathParticle, transform.position, Quaternion.identity);
+
+        Rigidbody2D effectRb = effect.GetComponent<Rigidbody2D>();
+
+        if (effectRb == null) return;
+
+        effectRb.AddForce(receivedKnockbackForce, ForceMode2D.Impulse);
 
         Destroy(gameObject);
         Debug.Log("<color=red>소총수: 으아악! (사망)</color>");
+    }
+
+    // 애니메이션에서 호출될 메서드입니다. 
+    public void ExecuteFire()
+    {
+        // 1. 총알 생성 및 발사
+        EnemyBullet bullet = Instantiate(_bulletPrefeb, _firePoint.position, Quaternion.identity);
+        Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
+        bullet.FireBullet(direction);
+
+        // 2. 반동 적용
+        rb.AddForce(-direction * _shootRecoilPower, ForceMode2D.Impulse);
+
+        // 3. 이펙트 생성 (위치 수정 완료)
+        if (_muzzleFlashParticle != null)
+        {
+            // 🚨 하체에서 나오던 연기/화염을 반드시 _firePoint.position에서 나오도록 고정!
+            Instantiate(_muzzleFlashParticle, _firePoint.position, _firePoint.rotation);
+        }
     }
 }

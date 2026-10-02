@@ -54,3 +54,10 @@ public class BossHealth : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 }
+
+//public void BossDeadEvent()
+//{
+//    Debug.Log("말씀하신 public 이벤트입니다.");
+
+//    OnBossDead?.Invoke();
+//}

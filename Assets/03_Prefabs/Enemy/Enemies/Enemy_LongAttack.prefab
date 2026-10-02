@@ -176,6 +176,9 @@ MonoBehaviour:
   _baseStatData: {fileID: 11400000, guid: a6dd1be737c38b2418554e08d4c7a270, type: 2}
   _bulletPrefeb: {fileID: 1441611445395233385, guid: c8b027ed93d7ec34fa2961d04600b580, type: 3}
   _firePoint: {fileID: 6444100825903076648}
+  _deathParticle: {fileID: 0}
+  _muzzleFlashParticle: {fileID: 0}
+  _shootRecoilPower: 2
 --- !u!95 &2227474746717055977
 Animator:
   serializedVersion: 7
@@ -223,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 8973319537142668502}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.123, y: 0.672, z: 0}
+  m_LocalPosition: {x: -0.123, y: 0.678, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

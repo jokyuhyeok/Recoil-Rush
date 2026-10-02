@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections; // 코루틴을 사용하기 위해 추가
 using System.Collections.Generic;
 using Unity.VisualScripting; // Queue를 사용하기 위해 추가
-using System;
 
 public class BossController : MonoBehaviour
 {
@@ -28,7 +27,6 @@ public class BossController : MonoBehaviour
     public Transform PlayerTransform;
     public Rigidbody2D Rigidbody;
     public Animator Anim;
-    public event Action OnBossDead; // Action 이벤트입니다. 
 
     // 프로퍼티 - Command에서 프리팹에 접근할 수 있게 열어줍니다.
     public GameObject BulletPrefab => _bulletPrefab;
@@ -241,12 +239,5 @@ public class BossController : MonoBehaviour
         {
             ghost.Setup(_spriteRenderer.sprite, transform);
         }
-    }
-
-    public void BossDeadEvent()
-    {
-        Debug.Log("말씀하신 public 이벤트입니다.");
-
-        OnBossDead?.Invoke();
     }
 }
