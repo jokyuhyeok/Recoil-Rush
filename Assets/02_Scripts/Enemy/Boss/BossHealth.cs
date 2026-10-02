@@ -50,6 +50,7 @@ public class BossHealth : MonoBehaviour, IDamageable
         _controller.StopAllAttacks();
 
         // 여기에 보스 사망 폭발 파티클, 사운드 등을 넣으면 됩니다.
+        // (예: GameManager.Instance.ShowClearUI(); 등)
         Destroy(gameObject);
     }
 }
