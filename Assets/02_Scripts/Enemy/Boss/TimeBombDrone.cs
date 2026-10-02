@@ -14,6 +14,7 @@ public class TimeBombDrone : MonoBehaviour
     [SerializeField] private Animator _animator;
 
     private Coroutine _autoDestroyCoroutine;
+    private Coroutine _freezeCoroutine;
     private bool _isTriggered = false; // 이미 밟혔는지 체크하는 bool입니다.
     private bool _isFrozen = false; // 감전되어서 멈췄는지 여부입니다.
     private Vector3 _moveDirection;
@@ -28,7 +29,7 @@ public class TimeBombDrone : MonoBehaviour
         else
             _moveDirection = Vector3.left; // 오른쪽에서 태어났으면 왼쪽으로
 
-        StartCoroutine(SelfFreezeTimer());
+        _freezeCoroutine = StartCoroutine(FreezeTimer());
         _autoDestroyCoroutine = StartCoroutine(ExplosionTimer(_autoDestroyTime));
     }
 
@@ -40,7 +41,7 @@ public class TimeBombDrone : MonoBehaviour
         transform.position += _moveDirection * _moveSpeed * Time.deltaTime;
     }
 
-    private IEnumerator SelfFreezeTimer()
+    private IEnumerator FreezeTimer()
     {
         // _freezeTime만큼 날아가면서 대기합니다.
         yield return new WaitForSeconds(_freezeTime);
@@ -77,7 +78,14 @@ public class TimeBombDrone : MonoBehaviour
                 Debug.Log("<color=orange>드론: 플레이어가 밟았다! 폭발 카운트다운에 들어갑니다.</color>");
 
                 if (_autoDestroyCoroutine != null)
+                {
                     StopCoroutine(_autoDestroyCoroutine);
+                }
+
+                if (_freezeCoroutine != null)
+                {
+                    StopCoroutine(_freezeCoroutine);
+                }
 
                 _spriteRenderer.color = Color.red;
                 if (_animator != null)
