@@ -19,6 +19,8 @@ public class BossController : MonoBehaviour
     private bool _isExecuting = false; // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
     private int _currentPhase = 1;
 
+    private IBossPhase[] _phases;
+
     public Transform PlayerTransform;
     public Rigidbody2D Rigidbody;
     public Animator Anim;
@@ -38,6 +40,14 @@ public class BossController : MonoBehaviour
         Anim = GetComponent<Animator>();
         Rigidbody.gravityScale = _stat.HeavyGravity;
         PlayerCaching();
+
+        _phases = new IBossPhase[]
+        {
+            null,
+            new BossPhase1(),
+            new BossPhase2(),
+            new BossPhase3()
+        };
     }
 
     private void Start()
@@ -97,57 +107,20 @@ public class BossController : MonoBehaviour
 
     private void LoadPhaseCommands()
     {
-        switch (_currentPhase)
+        if (_currentPhase >= 1 && _currentPhase < _phases.Length)
         {
-            case 1:
-                {
-                    EnqueuePhase1();
-                    break;
-                }
-            case 2:
-                {
-                    EnqueuePhase2();
-                    break;
-                }
-            case 3:
-                {
-                    EnqueuePhase3();
-                    break;
-                }
+            // 현재 페이즈 객체에게 패턴들을 받아와서 전부 큐에 넣습니다.
+            IEnumerable<IBossCommand> commands = _phases[_currentPhase].PhaseCommands(_stat);
+
+            foreach (IBossCommand cmd in commands)
+            {
+                _commandQueue.Enqueue(cmd);
+            }
         }
-    }
-
-    // 각 페이즈별 패턴 조립만 전담하는 메서드들로 쪼갰습니다.
-    private void EnqueuePhase1()
-    {
-        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
-        EnqueueCommand(new Cmd_ForwardDash(_stat.DashSpeed,
-            _stat.DashDuration,
-            _stat.DashChargeTime,
-            _stat.DashGhostInterval));
-        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
-        EnqueueCommand(new Cmd_BackwardDash(_stat.BackDashSpeed,
-            _stat.BackDashDuration,
-            _stat.BackDashChargeTime,
-            _stat.BackDashGhostInterval));
-        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
-        EnqueueCommand(new Cmd_LaserAndDrone());
-        EnqueueCommand(new Cmd_Wait(0.1f));
-    }
-
-    private void EnqueuePhase2()
-    {
-        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
-
-        EnqueueCommand(new Cmd_BackwardDash(_stat.BackDashSpeed,
-            _stat.BackDashDuration,
-            _stat.BackDashChargeTime,
-            _stat.BackDashGhostInterval));
-    }
-
-    private void EnqueuePhase3()
-    {
-        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
+        else
+        {
+            Debug.LogWarning("잘못된 페이즈 인덱스입니다!");
+        }
     }
 
     public void StopAllAttacks()
