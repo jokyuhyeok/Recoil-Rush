@@ -2,36 +2,40 @@ using UnityEngine;
 using System.Collections; // 코루틴을 사용하기 위해 추가
 using System.Collections.Generic;
 using Unity.VisualScripting; // Queue를 사용하기 위해 추가
+using System;
 
 public class BossController : MonoBehaviour
 {
     [SerializeField] private BossStatDataSO _stat;
-
-    [SerializeField] private GameObject _laserBeamObject;
-    [SerializeField] private GameObject _dronePrefab;
-    [SerializeField] private GameObject _bombPrefab;
-    [SerializeField] private Transform[] _droneSpawnPoints;
     [SerializeField] private GameObject _ghostPrefab;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Transform[] _firePoints;
     [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _laserFirePoint;
+    [SerializeField] private GameObject _bossLaserPrefab;
+    [SerializeField] private GameObject _dronePrefab;
+    [SerializeField] private Transform[] _droneSpawnPoints;
 
+    [Header("파티클 이펙트 프리팹")]
+    // 여기에 파티클 오브젝트들 넣으면 됩니다. 
     private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>(); // 패턴들을 순서대로 담아놓을 대기열입니다. 
+
     private bool _isExecuting = false; // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
     private int _currentPhase = 1;
+
+    private IBossPhase[] _phases;
 
     public Transform PlayerTransform;
     public Rigidbody2D Rigidbody;
     public Animator Anim;
+    public event Action OnBossDead; // Action 이벤트입니다. 
 
     // 프로퍼티 - Command에서 프리팹에 접근할 수 있게 열어줍니다.
     public GameObject BulletPrefab => _bulletPrefab;
-    public GameObject LaserBeamObject => _laserBeamObject;
-    public GameObject DronePrefab => _dronePrefab;
-    public GameObject BombPrefab => _bombPrefab;
-    public Transform[] DroneSpawnPoints => _droneSpawnPoints;
     public Transform[] FirePoints => _firePoints;
 
+    public bool IsLaserFinished { get; set; } = false;
+    public int LaserSequenceIndex { get; set; } = 0;
     public bool IsHittingLeftWall = false;
     public bool IsHittingRightWall = false;
 
@@ -41,6 +45,14 @@ public class BossController : MonoBehaviour
         Anim = GetComponent<Animator>();
         Rigidbody.gravityScale = _stat.HeavyGravity;
         PlayerCaching();
+
+        _phases = new IBossPhase[]
+        {
+            null,
+            new BossPhase1(),
+            new BossPhase2(),
+            new BossPhase3()
+        };
     }
 
     private void Start()
@@ -100,86 +112,20 @@ public class BossController : MonoBehaviour
 
     private void LoadPhaseCommands()
     {
-        switch (_currentPhase)
+        if (_currentPhase >= 1 && _currentPhase < _phases.Length)
         {
-            case 1:
-                {
-                    EnqueuePhase1();
-                    break;
-                }
-            case 2:
-                {
-                    EnqueuePhase2();
-                    break;
-                }
-            case 3:
-                {
-                    EnqueuePhase3();
-                    break;
-                }
+            // 현재 페이즈 객체에게 패턴들을 받아와서 전부 큐에 넣습니다.
+            IEnumerable<IBossCommand> commands = _phases[_currentPhase].PhaseCommands(_stat);
+
+            foreach (IBossCommand cmd in commands)
+            {
+                _commandQueue.Enqueue(cmd);
+            }
         }
-    }
-
-    // 각 페이즈별 패턴 조립만 전담하는 메서드들로 쪼갰습니다.
-    private void EnqueuePhase1()
-    {
-        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
-        EnqueueCommand(new Cmd_ForwardDash(_stat.DashSpeed,
-            _stat.DashDuration,
-            _stat.DashChargeTime,
-            _stat.DashGhostInterval));
-        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
-        EnqueueCommand(new Cmd_BackwardDash(_stat.BackDashSpeed,
-            _stat.BackDashDuration,
-            _stat.BackDashChargeTime,
-            _stat.BackDashGhostInterval));
-        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
-        EnqueueCommand(new Cmd_SpreadShoot(
-            _stat.LeftBulletCount, _stat.LeftStartAngle, _stat.LeftEndAngle, _stat.LeftFireDelay, _stat.LeftBulletSpeed,
-            _stat.RightBulletCount, _stat.RightStartAngle, _stat.RightEndAngle, _stat.RightFireDelay,
-            _stat.RightBulletSpeed
-        ));
-        EnqueueCommand(new Cmd_Wait(0.1f));
-        EnqueueCommand(new Cmd_SpreadShoot(
-            _stat.LeftBulletCount, _stat.LeftStartAngle, _stat.LeftEndAngle, _stat.LeftFireDelay, _stat.LeftBulletSpeed,
-            _stat.RightBulletCount, _stat.RightStartAngle, _stat.RightEndAngle, _stat.RightFireDelay,
-            _stat.RightBulletSpeed
-        ));
-        EnqueueCommand(new Cmd_Wait(0.1f));
-        EnqueueCommand(new Cmd_SpreadShoot(
-            _stat.LeftBulletCount, _stat.LeftStartAngle, _stat.LeftEndAngle, _stat.LeftFireDelay, _stat.LeftBulletSpeed,
-            _stat.RightBulletCount, _stat.RightStartAngle, _stat.RightEndAngle, _stat.RightFireDelay,
-            _stat.RightBulletSpeed
-        ));
-    }
-
-    private void EnqueuePhase2()
-    {
-        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
-
-        EnqueueCommand(new Cmd_ThrowBomb(
-            _stat.CenterMoveSpeed, _stat.NumOfCountBomb, _stat.BouncePower,
-            _stat.BombTargetX, _stat.BombStopThreshold, _stat.BombSpreadAngle,
-            _stat.BombFireDelay, _stat.BombPostDelay));
-
-        EnqueueCommand(new Cmd_BackwardDash(_stat.BackDashSpeed,
-            _stat.BackDashDuration,
-            _stat.BackDashChargeTime,
-            _stat.BackDashGhostInterval));
-    }
-
-    private void EnqueuePhase3()
-    {
-        EnqueueCommand(new Cmd_Wait(_stat.WaitTime));
-
-        EnqueueCommand(new Cmd_ThrowBomb(
-            _stat.CenterMoveSpeed, _stat.NumOfCountBomb, _stat.BouncePower,
-            _stat.BombTargetX, _stat.BombStopThreshold, _stat.BombSpreadAngle,
-            _stat.BombFireDelay, _stat.BombPostDelay));
-
-        EnqueueCommand(new Cmd_LaserAndDrone(
-            _stat.LaserChargeTime, _stat.LaserDuration,
-            _stat.DroneSpawnDelay, _stat.DroneSpawnCount));
+        else
+        {
+            Debug.LogWarning("잘못된 페이즈 인덱스입니다!");
+        }
     }
 
     public void StopAllAttacks()
@@ -187,6 +133,63 @@ public class BossController : MonoBehaviour
         StopAllCoroutines();
         _commandQueue.Clear();
         Rigidbody.linearVelocity = Vector2.zero;
+    }
+
+    public void ShootLaserEvent()
+    {
+        if (_bossLaserPrefab == null || _laserFirePoint == null) return;
+
+        float offsetY = 0f;
+
+        if (LaserSequenceIndex == 0)
+        {
+            offsetY = _stat.LaserBottomOffsetY;
+        }
+        else if (LaserSequenceIndex == 1)
+        {
+            offsetY = _stat.LaserTopOffsetY;
+        }
+        else
+        {
+            offsetY = _stat.LaserMidOffsetY;
+        }
+
+        LaserSequenceIndex++;
+
+        Vector3 spawnPosition = _laserFirePoint.position + new Vector3(0, offsetY, 0);
+        GameObject laserObject = Instantiate(_bossLaserPrefab, spawnPosition, Quaternion.identity);
+        BossLaser laser = laserObject.GetComponent<BossLaser>();
+
+        if (laser != null)
+        {
+            laser.FireLaser(_stat.LaserWarningTime, _stat.LaserBeamTime);
+        }
+    }
+
+    // 드론들의 SpawnPoint들에 드론을 소환하는 이벤트 함수입니다.
+    public void SpawnDroneEvent()
+    {
+        if (_dronePrefab == null || _droneSpawnPoints == null || _droneSpawnPoints.Length == 0)
+        {
+            Debug.LogWarning("드론 프리팹 또는 스폰 포인트가 없습니다!");
+            return;
+        }
+
+        Debug.Log("<color=green>보스: 발판용 시한폭탄 드론 3대 공중 소환!</color>");
+
+        // 지정된 스폰 위치 배열을 돌면서 드론을 각각 하나씩 생성합니다.
+        foreach (Transform spawnPoint in _droneSpawnPoints)
+        {
+            if (spawnPoint != null)
+            {
+                Instantiate(_dronePrefab, spawnPoint.position, Quaternion.identity);
+            }
+        }
+    }
+
+    public void FinishLaserEvent()
+    {
+        IsLaserFinished = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -238,5 +241,12 @@ public class BossController : MonoBehaviour
         {
             ghost.Setup(_spriteRenderer.sprite, transform);
         }
+    }
+
+    public void BossDeadEvent()
+    {
+        Debug.Log("말씀하신 public 이벤트입니다.");
+
+        OnBossDead?.Invoke();
     }
 }

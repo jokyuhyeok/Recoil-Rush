@@ -35,10 +35,11 @@ MonoBehaviour:
   RightEndAngle: 45
   RightFireDelay: 0.05
   RightBulletSpeed: 8
-  LaserChargeTime: 1.5
-  LaserDuration: 5
-  DroneSpawnDelay: 0.5
-  DroneSpawnCount: 3
+  LaserTopOffsetY: 1.6
+  LaserMidOffsetY: 0.8
+  LaserBottomOffsetY: -0.5
+  LaserWarningTime: 1
+  LaserBeamTime: 1
   CenterMoveSpeed: 5
   NumOfCountBomb: 5
   BouncePower: 10

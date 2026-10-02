@@ -1,0 +1,2239 @@
+fileFormatVersion: 2
+guid: 675c206c070fad642b3151abe7f8b67f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3732577096805487512
+    second: vfx-Sheet_0
+  - first:
+      213: 6104298212281704547
+    second: vfx-Sheet_1
+  - first:
+      213: -5177212810717081913
+    second: vfx-Sheet_2
+  - first:
+      213: -2611001964303069354
+    second: vfx-Sheet_3
+  - first:
+      213: 142676196571436650
+    second: vfx-Sheet_4
+  - first:
+      213: -6034079795918820646
+    second: vfx-Sheet_5
+  - first:
+      213: -6905908628291826486
+    second: vfx-Sheet_6
+  - first:
+      213: 6206727273327544836
+    second: vfx-Sheet_7
+  - first:
+      213: 4338116523070093943
+    second: vfx-Sheet_8
+  - first:
+      213: -4347430581333345887
+    second: vfx-Sheet_9
+  - first:
+      213: 6937046970437173393
+    second: vfx-Sheet_10
+  - first:
+      213: 6687366959749537321
+    second: vfx-Sheet_11
+  - first:
+      213: 7702965520754904129
+    second: vfx-Sheet_12
+  - first:
+      213: -6841174430714434693
+    second: vfx-Sheet_13
+  - first:
+      213: -8976489367615530142
+    second: vfx-Sheet_14
+  - first:
+      213: -3560677096637378103
+    second: vfx-Sheet_15
+  - first:
+      213: 784267817469168562
+    second: vfx-Sheet_16
+  - first:
+      213: 3378319218423631446
+    second: vfx-Sheet_17
+  - first:
+      213: 6902107545968664333
+    second: vfx-Sheet_18
+  - first:
+      213: 163235933208009757
+    second: vfx-Sheet_19
+  - first:
+      213: 3104133145318119240
+    second: vfx-Sheet_20
+  - first:
+      213: 3295166772696446647
+    second: vfx-Sheet_21
+  - first:
+      213: 5116027607590644934
+    second: vfx-Sheet_22
+  - first:
+      213: 7359142188264269071
+    second: vfx-Sheet_23
+  - first:
+      213: -2801732177347897899
+    second: vfx-Sheet_24
+  - first:
+      213: 4055678334575133979
+    second: vfx-Sheet_25
+  - first:
+      213: 7668005107592075223
+    second: vfx-Sheet_26
+  - first:
+      213: -4572563999423751612
+    second: vfx-Sheet_27
+  - first:
+      213: -2167634274297253382
+    second: vfx-Sheet_28
+  - first:
+      213: -5428213792294956324
+    second: vfx-Sheet_29
+  - first:
+      213: -1863004190922834886
+    second: vfx-Sheet_30
+  - first:
+      213: 3053653812039306335
+    second: vfx-Sheet_31
+  - first:
+      213: 1306978089707539275
+    second: vfx-Sheet_32
+  - first:
+      213: -6916877182935834347
+    second: vfx-Sheet_33
+  - first:
+      213: 3715205036113916244
+    second: vfx-Sheet_34
+  - first:
+      213: 5436162220533873080
+    second: vfx-Sheet_35
+  - first:
+      213: -600588463423355009
+    second: vfx-Sheet_36
+  - first:
+      213: -6606849272992945120
+    second: vfx-Sheet_37
+  - first:
+      213: -1229039551885504717
+    second: vfx-Sheet_38
+  - first:
+      213: -7123937971141831809
+    second: vfx-Sheet_39
+  - first:
+      213: 4401624882776735903
+    second: vfx-Sheet_40
+  - first:
+      213: -7311337075755299818
+    second: vfx-Sheet_41
+  - first:
+      213: 5445623191855106857
+    second: vfx-Sheet_42
+  - first:
+      213: -239299454418696543
+    second: vfx-Sheet_43
+  - first:
+      213: -1205550134707828508
+    second: vfx-Sheet_44
+  - first:
+      213: 8673250699130512595
+    second: vfx-Sheet_45
+  - first:
+      213: 5629122419250420498
+    second: vfx-Sheet_46
+  - first:
+      213: -6713719454549537519
+    second: vfx-Sheet_47
+  - first:
+      213: 7272979200258434784
+    second: vfx-Sheet_48
+  - first:
+      213: -8161677227057389803
+    second: vfx-Sheet_49
+  - first:
+      213: 182716200502434517
+    second: vfx-Sheet_50
+  - first:
+      213: -733344231117126671
+    second: vfx-Sheet_51
+  - first:
+      213: -5201609177309065241
+    second: vfx-Sheet_52
+  - first:
+      213: 4896057235156512703
+    second: vfx-Sheet_53
+  - first:
+      213: -2457803944414992269
+    second: vfx-Sheet_54
+  - first:
+      213: 8784844537840194816
+    second: vfx-Sheet_55
+  - first:
+      213: -8070970207799099588
+    second: vfx-Sheet_56
+  - first:
+      213: -4846080623343325428
+    second: vfx-Sheet_57
+  - first:
+      213: -4538069683625118075
+    second: vfx-Sheet_58
+  - first:
+      213: 6105518122797080245
+    second: vfx-Sheet_59
+  - first:
+      213: -592702277897405583
+    second: vfx-Sheet_60
+  - first:
+      213: 390632302578580127
+    second: vfx-Sheet_61
+  - first:
+      213: 557488890579793053
+    second: vfx-Sheet_62
+  - first:
+      213: 3269544040217212025
+    second: vfx-Sheet_63
+  - first:
+      213: 1966568524781715036
+    second: vfx-Sheet_64
+  - first:
+      213: 421743188304893930
+    second: vfx-Sheet_65
+  - first:
+      213: 364318949403401814
+    second: vfx-Sheet_66
+  - first:
+      213: 6626509157461867273
+    second: vfx-Sheet_67
+  - first:
+      213: 3027371903198534278
+    second: vfx-Sheet_68
+  - first:
+      213: 4609037158943948040
+    second: vfx-Sheet_69
+  - first:
+      213: -8289608696149471213
+    second: vfx-Sheet_70
+  - first:
+      213: 7554516199501835914
+    second: vfx-Sheet_71
+  - first:
+      213: 3926455085277381946
+    second: vfx-Sheet_72
+  - first:
+      213: -2814322895932133681
+    second: vfx-Sheet_73
+  - first:
+      213: 7282737018509517762
+    second: vfx-Sheet_74
+  - first:
+      213: -7609817310724494689
+    second: vfx-Sheet_75
+  - first:
+      213: 2496207281828686762
+    second: vfx-Sheet_76
+  - first:
+      213: 7477551344570098932
+    second: vfx-Sheet_77
+  - first:
+      213: -2168910601362797353
+    second: vfx-Sheet_78
+  - first:
+      213: -6861896881108730330
+    second: vfx-Sheet_79
+  - first:
+      213: 63288176257290223
+    second: vfx-Sheet_80
+  - first:
+      213: 654848526935691482
+    second: vfx-Sheet_81
+  - first:
+      213: -7180258853687188885
+    second: vfx-Sheet_82
+  - first:
+      213: 7085324635594383335
+    second: vfx-Sheet_83
+  - first:
+      213: -7745386995671471961
+    second: vfx-Sheet_84
+  - first:
+      213: -1742853169121850983
+    second: vfx-Sheet_85
+  - first:
+      213: 1358104165517622277
+    second: vfx-Sheet_86
+  - first:
+      213: 5153250926854100795
+    second: vfx-Sheet_87
+  - first:
+      213: -5144146989438056215
+    second: vfx-Sheet_88
+  - first:
+      213: 4328129984158519294
+    second: vfx-Sheet_89
+  - first:
+      213: 3008983465782729862
+    second: vfx-Sheet_90
+  - first:
+      213: -2387276741748661825
+    second: vfx-Sheet_91
+  - first:
+      213: 6904163793119456912
+    second: vfx-Sheet_92
+  - first:
+      213: -1817595219277718419
+    second: vfx-Sheet_93
+  - first:
+      213: -3562815793655102645
+    second: vfx-Sheet_94
+  - first:
+      213: 8705511976319571623
+    second: vfx-Sheet_95
+  - first:
+      213: 6482292672436283304
+    second: vfx-Sheet_96
+  - first:
+      213: -3327767948426254300
+    second: vfx-Sheet_97
+  - first:
+      213: -7652915486289058235
+    second: vfx-Sheet_98
+  - first:
+      213: 9187949414298563498
+    second: vfx-Sheet_99
+  - first:
+      213: 1688952714324682900
+    second: vfx-Sheet_100
+  - first:
+      213: -1922709301959572783
+    second: vfx-Sheet_101
+  - first:
+      213: -4145533160736107760
+    second: vfx-Sheet_102
+  - first:
+      213: 1591547932486525568
+    second: vfx-Sheet_103
+  - first:
+      213: -5168574076640473921
+    second: vfx-Sheet_104
+  - first:
+      213: -891330020709182482
+    second: vfx-Sheet_105
+  - first:
+      213: -2841918577940314931
+    second: vfx-Sheet_106
+  - first:
+      213: 8949075012812456013
+    second: vfx-Sheet_107
+  - first:
+      213: 3599475620604926230
+    second: vfx-Sheet_108
+  - first:
+      213: -8082009514797002285
+    second: vfx-Sheet_109
+  - first:
+      213: -2043997858571582011
+    second: vfx-Sheet_110
+  - first:
+      213: -7337838204663105405
+    second: vfx-Sheet_111
+  - first:
+      213: -4710786980980815620
+    second: vfx-Sheet_112
+  - first:
+      213: -6999460945415776109
+    second: vfx-Sheet_113
+  - first:
+      213: -2610067192402979596
+    second: vfx-Sheet_114
+  - first:
+      213: -2770169506918368558
+    second: vfx-Sheet_115
+  - first:
+      213: -5962896839274893076
+    second: vfx-Sheet_116
+  - first:
+      213: 7603065174883466618
+    second: vfx-Sheet_117
+  - first:
+      213: -4911527117456770043
+    second: vfx-Sheet_118
+  - first:
+      213: -8663083732875068089
+    second: vfx-Sheet_119
+  - first:
+      213: 6868586671567920562
+    second: vfx-Sheet_120
+  - first:
+      213: 1600286430255637610
+    second: vfx-Sheet_121
+  - first:
+      213: -2431758920916942122
+    second: vfx-Sheet_122
+  - first:
+      213: -6621537093581870706
+    second: vfx-Sheet_123
+  - first:
+      213: 7336211436056326602
+    second: vfx-Sheet_124
+  - first:
+      213: 8627424561465909313
+    second: vfx-Sheet_125
+  - first:
+      213: -8400841440227585305
+    second: vfx-Sheet_126
+  - first:
+      213: 8565174317248307275
+    second: vfx-Sheet_127
+  - first:
+      213: -5362766229484444750
+    second: vfx-Sheet_128
+  - first:
+      213: 1513423050928254635
+    second: vfx-Sheet_129
+  - first:
+      213: 3652143017325797733
+    second: vfx-Sheet_130
+  - first:
+      213: -3098986397176966269
+    second: vfx-Sheet_131
+  - first:
+      213: 2947449168957351541
+    second: vfx-Sheet_132
+  - first:
+      213: 4703955842379373077
+    second: vfx-Sheet_133
+  - first:
+      213: 941833880697194174
+    second: vfx-Sheet_134
+  - first:
+      213: 8113865053745164154
+    second: vfx-Sheet_135
+  - first:
+      213: -6150552832606817452
+    second: vfx-Sheet_136
+  - first:
+      213: -403351756899447312
+    second: vfx-Sheet_137
+  - first:
+      213: -2889021078899973541
+    second: vfx-Sheet_138
+  - first:
+      213: 3435484490899723744
+    second: vfx-Sheet_139
+  - first:
+      213: 1290043750574556321
+    second: vfx-Sheet_140
+  - first:
+      213: 4586089800309733256
+    second: vfx-Sheet_141
+  - first:
+      213: -6664916101807605685
+    second: vfx-Sheet_142
+  - first:
+      213: -7254807311058700657
+    second: vfx-Sheet_143
+  - first:
+      213: -6544139251392661667
+    second: vfx-Sheet_144
+  - first:
+      213: -8277993857055525770
+    second: vfx-Sheet_145
+  - first:
+      213: -4373919603128288504
+    second: vfx-Sheet_146
+  - first:
+      213: 5389402137499052318
+    second: vfx-Sheet_147
+  - first:
+      213: -3399280177088289672
+    second: vfx-Sheet_148
+  - first:
+      213: 1772740550105073287
+    second: vfx-Sheet_149
+  - first:
+      213: 7207633989208011167
+    second: vfx-Sheet_150
+  - first:
+      213: 2253944691421170798
+    second: vfx-Sheet_151
+  - first:
+      213: -1694798991297732766
+    second: vfx-Sheet_152
+  - first:
+      213: -7844583682900847528
+    second: vfx-Sheet_153
+  - first:
+      213: 1866768213723621418
+    second: vfx-Sheet_154
+  - first:
+      213: -3146818462728940209
+    second: vfx-Sheet_155
+  - first:
+      213: 1551484339207303419
+    second: vfx-Sheet_156
+  - first:
+      213: -3138429827744601769
+    second: vfx-Sheet_157
+  - first:
+      213: 8497589494815643586
+    second: vfx-Sheet_158
+  - first:
+      213: 3617749376206873003
+    second: vfx-Sheet_159
+  - first:
+      213: 8342851715142911296
+    second: vfx-Sheet_160
+  - first:
+      213: -6703482240358574680
+    second: vfx-Sheet_161
+  - first:
+      213: 566063898964514346
+    second: vfx-Sheet_162
+  - first:
+      213: -8343397785406871797
+    second: vfx-Sheet_163
+  - first:
+      213: 3124481495818390378
+    second: vfx-Sheet_164
+  - first:
+      213: 7679118955632601300
+    second: vfx-Sheet_165
+  - first:
+      213: -9049849227418787823
+    second: vfx-Sheet_166
+  - first:
+      213: -5862136529023264358
+    second: vfx-Sheet_167
+  - first:
+      213: 5185745398963134867
+    second: vfx-Sheet_168
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86c662018e8333cc0800000000000000
+      internalID: -3732577096805487512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3606a12d1e2d6b450800000000000000
+      internalID: 6104298212281704547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ce4b92f068d628b0800000000000000
+      internalID: -5177212810717081913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65f4ed11c8bd3cbd0800000000000000
+      internalID: -2611001964303069354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a665b8eae33eaf100800000000000000
+      internalID: 142676196571436650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adaa5e14564a24ca0800000000000000
+      internalID: -6034079795918820646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acc4c5f01b84920a0800000000000000
+      internalID: -6905908628291826486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40aca680299b22650800000000000000
+      internalID: 6206727273327544836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77a78df4ef5143c30800000000000000
+      internalID: 4338116523070093943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a9b4f18be2daa3c0800000000000000
+      internalID: -4347430581333345887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1908b1f2777554060800000000000000
+      internalID: 6937046970437173393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92e1e8691dc4ecc50800000000000000
+      internalID: 6687366959749537321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14c8dad345e66ea60800000000000000
+      internalID: 7702965520754904129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7be7c2f9144f01a0800000000000000
+      internalID: -6841174430714434693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26b9439ca7a1d6380800000000000000
+      internalID: -8976489367615530142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c15f0fbb0fe59ec0800000000000000
+      internalID: -3560677096637378103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bb450dbc6742ea00800000000000000
+      internalID: 784267817469168562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65e04081e6332ee20800000000000000
+      internalID: 3378319218423631446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0f510f7e3639cf50800000000000000
+      internalID: 6902107545968664333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1c5175673ee34200800000000000000
+      internalID: 163235933208009757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 847d33636a8141b20800000000000000
+      internalID: 3104133145318119240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b6fd32a8b8cabd20800000000000000
+      internalID: 3295166772696446647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cc2883d008cff640800000000000000
+      internalID: 5116027607590644934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f05251f64dce02660800000000000000
+      internalID: 7359142188264269071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d5956dcd6f3e19d0800000000000000
+      internalID: -2801732177347897899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b15499715f9a84830800000000000000
+      internalID: 4055678334575133979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d718edb40a3a6a60800000000000000
+      internalID: 7668005107592075223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44a9b9dd44dfa80c0800000000000000
+      internalID: -4572563999423751612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af1fc85bc140be1e0800000000000000
+      internalID: -2167634274297253382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd21269d05c1ba4b0800000000000000
+      internalID: -5428213792294956324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3cfaf81f874526e0800000000000000
+      internalID: -1863004190922834886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5cce9d86f1c06a20800000000000000
+      internalID: 3053653812039306335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4b8c3ed5a1532210800000000000000
+      internalID: 1306978089707539275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 511ea1c69d05200a0800000000000000
+      internalID: -6916877182935834347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 451ff4ddb4f0f8330800000000000000
+      internalID: 3715205036113916244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b9f150dcb0217b40800000000000000
+      internalID: 5436162220533873080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f77047d79f74aa7f0800000000000000
+      internalID: -600588463423355009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02c25be3791cf44a0800000000000000
+      internalID: -6606849272992945120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f85fe0a0391fee0800000000000000
+      internalID: -1229039551885504717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f739c24d820b22d90800000000000000
+      internalID: -7123937971141831809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f908d649286b51d30800000000000000
+      internalID: 4401624882776735903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61c467eaaa9e88a90800000000000000
+      internalID: -7311337075755299818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92b072bd07db29b40800000000000000
+      internalID: 5445623191855106857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a6cd600a66ddacf0800000000000000
+      internalID: -239299454418696543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e8c0dd2a86054fe0800000000000000
+      internalID: -1205550134707828508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d42599de839d5870800000000000000
+      internalID: 8673250699130512595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21bdb941409ae1e40800000000000000
+      internalID: 5629122419250420498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11d02f51ab314d2a0800000000000000
+      internalID: -6713719454549537519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e6653a7c00dee460800000000000000
+      internalID: 7272979200258434784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51f59ddedc5ebbe80800000000000000
+      internalID: -8161677227057389803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5da18a19a63298200800000000000000
+      internalID: 182716200502434517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f38e26ae43a2d5f0800000000000000
+      internalID: -733344231117126671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7efc416330c20d7b0800000000000000
+      internalID: -5201609177309065241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbf2c7d6d1a42f340800000000000000
+      internalID: 4896057235156512703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3782795a55024edd0800000000000000
+      internalID: -2457803944414992269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 005def420990ae970800000000000000
+      internalID: 8784844537840194816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3fbf5b9b572eff80800000000000000
+      internalID: -8070970207799099588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0fa7b449534fbcb0800000000000000
+      internalID: -4846080623343325428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5863e8d9aa98501c0800000000000000
+      internalID: -4538069683625118075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5be970f52682bb450800000000000000
+      internalID: 6105518122797080245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17b3c542b6c46c7f0800000000000000
+      internalID: -592702277897405583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_61
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9a3df0720ecb6500800000000000000
+      internalID: 390632302578580127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_62
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d943c3931399cb700800000000000000
+      internalID: 557488890579793053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_63
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97474a65bf0cf5d20800000000000000
+      internalID: 3269544040217212025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_64
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5ef31a67a7aa4b10800000000000000
+      internalID: 1966568524781715036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_65
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae79a5df1355ad500800000000000000
+      internalID: 421743188304893930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_66
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65e122c77225e0500800000000000000
+      internalID: 364318949403401814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_67
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90b336f48f616fb50800000000000000
+      internalID: 6626509157461867273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx-Sheet_68
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68a952dc4b2630a20800000000000000
+      internalID: 3027371903198534278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 53c9f5e062bf9a5448449309079f4b83
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":17.0,"y":5.0},"gridSpriteSize":{"x":96.0,"y":96.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      vfx-Sheet_0: -3732577096805487512
+      vfx-Sheet_1: 6104298212281704547
+      vfx-Sheet_10: 6937046970437173393
+      vfx-Sheet_11: 6687366959749537321
+      vfx-Sheet_12: 7702965520754904129
+      vfx-Sheet_13: -6841174430714434693
+      vfx-Sheet_14: -8976489367615530142
+      vfx-Sheet_15: -3560677096637378103
+      vfx-Sheet_16: 784267817469168562
+      vfx-Sheet_17: 3378319218423631446
+      vfx-Sheet_18: 6902107545968664333
+      vfx-Sheet_19: 163235933208009757
+      vfx-Sheet_2: -5177212810717081913
+      vfx-Sheet_20: 3104133145318119240
+      vfx-Sheet_21: 3295166772696446647
+      vfx-Sheet_22: 5116027607590644934
+      vfx-Sheet_23: 7359142188264269071
+      vfx-Sheet_24: -2801732177347897899
+      vfx-Sheet_25: 4055678334575133979
+      vfx-Sheet_26: 7668005107592075223
+      vfx-Sheet_27: -4572563999423751612
+      vfx-Sheet_28: -2167634274297253382
+      vfx-Sheet_29: -5428213792294956324
+      vfx-Sheet_3: -2611001964303069354
+      vfx-Sheet_30: -1863004190922834886
+      vfx-Sheet_31: 3053653812039306335
+      vfx-Sheet_32: 1306978089707539275
+      vfx-Sheet_33: -6916877182935834347
+      vfx-Sheet_34: 3715205036113916244
+      vfx-Sheet_35: 5436162220533873080
+      vfx-Sheet_36: -600588463423355009
+      vfx-Sheet_37: -6606849272992945120
+      vfx-Sheet_38: -1229039551885504717
+      vfx-Sheet_39: -7123937971141831809
+      vfx-Sheet_4: 142676196571436650
+      vfx-Sheet_40: 4401624882776735903
+      vfx-Sheet_41: -7311337075755299818
+      vfx-Sheet_42: 5445623191855106857
+      vfx-Sheet_43: -239299454418696543
+      vfx-Sheet_44: -1205550134707828508
+      vfx-Sheet_45: 8673250699130512595
+      vfx-Sheet_46: 5629122419250420498
+      vfx-Sheet_47: -6713719454549537519
+      vfx-Sheet_48: 7272979200258434784
+      vfx-Sheet_49: -8161677227057389803
+      vfx-Sheet_5: -6034079795918820646
+      vfx-Sheet_50: 182716200502434517
+      vfx-Sheet_51: -733344231117126671
+      vfx-Sheet_52: -5201609177309065241
+      vfx-Sheet_53: 4896057235156512703
+      vfx-Sheet_54: -2457803944414992269
+      vfx-Sheet_55: 8784844537840194816
+      vfx-Sheet_56: -8070970207799099588
+      vfx-Sheet_57: -4846080623343325428
+      vfx-Sheet_58: -4538069683625118075
+      vfx-Sheet_59: 6105518122797080245
+      vfx-Sheet_6: -6905908628291826486
+      vfx-Sheet_60: -592702277897405583
+      vfx-Sheet_61: 390632302578580127
+      vfx-Sheet_62: 557488890579793053
+      vfx-Sheet_63: 3269544040217212025
+      vfx-Sheet_64: 1966568524781715036
+      vfx-Sheet_65: 421743188304893930
+      vfx-Sheet_66: 364318949403401814
+      vfx-Sheet_67: 6626509157461867273
+      vfx-Sheet_68: 3027371903198534278
+      vfx-Sheet_7: 6206727273327544836
+      vfx-Sheet_8: 4338116523070093943
+      vfx-Sheet_9: -4347430581333345887
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

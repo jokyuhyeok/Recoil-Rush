@@ -1,0 +1,3266 @@
+fileFormatVersion: 2
+guid: f1c84957c1cf6f943a47779a4f73f149
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1649040334675969491
+    second: vfx_electricity_purple-Sheet_0
+  - first:
+      213: 3364148748859151186
+    second: vfx_electricity_purple-Sheet_1
+  - first:
+      213: 1646964886330142930
+    second: vfx_electricity_purple-Sheet_2
+  - first:
+      213: 2624760567950724008
+    second: vfx_electricity_purple-Sheet_3
+  - first:
+      213: -3724575282119328845
+    second: vfx_electricity_purple-Sheet_4
+  - first:
+      213: -779253402887081288
+    second: vfx_electricity_purple-Sheet_5
+  - first:
+      213: 8966067929673752187
+    second: vfx_electricity_purple-Sheet_6
+  - first:
+      213: -4607107001775242307
+    second: vfx_electricity_purple-Sheet_7
+  - first:
+      213: -309286320519270125
+    second: vfx_electricity_purple-Sheet_8
+  - first:
+      213: 1883016030268938234
+    second: vfx_electricity_purple-Sheet_9
+  - first:
+      213: -4627726390390581631
+    second: vfx_electricity_purple-Sheet_10
+  - first:
+      213: 4969791639233748745
+    second: vfx_electricity_purple-Sheet_11
+  - first:
+      213: 3382336605888921936
+    second: vfx_electricity_purple-Sheet_12
+  - first:
+      213: -6123439893718709807
+    second: vfx_electricity_purple-Sheet_13
+  - first:
+      213: 5356620261760774296
+    second: vfx_electricity_purple-Sheet_14
+  - first:
+      213: -1921460912737201913
+    second: vfx_electricity_purple-Sheet_15
+  - first:
+      213: -3997944434864956121
+    second: vfx_electricity_purple-Sheet_16
+  - first:
+      213: -4298946965088312472
+    second: vfx_electricity_purple-Sheet_17
+  - first:
+      213: -6770563159395869171
+    second: vfx_electricity_purple-Sheet_18
+  - first:
+      213: 4402985005856503817
+    second: vfx_electricity_purple-Sheet_19
+  - first:
+      213: 7489538678564955802
+    second: vfx_electricity_purple-Sheet_20
+  - first:
+      213: -8642853248956183902
+    second: vfx_electricity_purple-Sheet_21
+  - first:
+      213: 4924679547362669170
+    second: vfx_electricity_purple-Sheet_22
+  - first:
+      213: -4933015895649179374
+    second: vfx_electricity_purple-Sheet_23
+  - first:
+      213: -1946095778595103567
+    second: vfx_electricity_purple-Sheet_24
+  - first:
+      213: 839653767842613303
+    second: vfx_electricity_purple-Sheet_25
+  - first:
+      213: 2140583029109033550
+    second: vfx_electricity_purple-Sheet_26
+  - first:
+      213: -766140130749166195
+    second: vfx_electricity_purple-Sheet_27
+  - first:
+      213: 4610828412191713546
+    second: vfx_electricity_purple-Sheet_28
+  - first:
+      213: -8645947766029578871
+    second: vfx_electricity_purple-Sheet_29
+  - first:
+      213: 3050638015471331012
+    second: vfx_electricity_purple-Sheet_30
+  - first:
+      213: 2513477290810695480
+    second: vfx_electricity_purple-Sheet_31
+  - first:
+      213: -1351578341349116795
+    second: vfx_electricity_purple-Sheet_32
+  - first:
+      213: 6978291488739537711
+    second: vfx_electricity_purple-Sheet_33
+  - first:
+      213: -685097696840692119
+    second: vfx_electricity_purple-Sheet_34
+  - first:
+      213: -6118547055223883744
+    second: vfx_electricity_purple-Sheet_35
+  - first:
+      213: 9146268887672360897
+    second: vfx_electricity_purple-Sheet_36
+  - first:
+      213: 3754992047558607917
+    second: vfx_electricity_purple-Sheet_37
+  - first:
+      213: -705350973185558757
+    second: vfx_electricity_purple-Sheet_38
+  - first:
+      213: 6908824411861821895
+    second: vfx_electricity_purple-Sheet_39
+  - first:
+      213: -1060578189758161718
+    second: vfx_electricity_purple-Sheet_40
+  - first:
+      213: 1147604292095755092
+    second: vfx_electricity_purple-Sheet_41
+  - first:
+      213: 4867688128007674868
+    second: vfx_electricity_purple-Sheet_42
+  - first:
+      213: 5747053332866926724
+    second: vfx_electricity_purple-Sheet_43
+  - first:
+      213: 479899488432669153
+    second: vfx_electricity_purple-Sheet_44
+  - first:
+      213: -6605939615683407610
+    second: vfx_electricity_purple-Sheet_45
+  - first:
+      213: 2126113653236289361
+    second: vfx_electricity_purple-Sheet_46
+  - first:
+      213: 1312180339401910009
+    second: vfx_electricity_purple-Sheet_47
+  - first:
+      213: -90832556549649360
+    second: vfx_electricity_purple-Sheet_48
+  - first:
+      213: -5688389282698627667
+    second: vfx_electricity_purple-Sheet_49
+  - first:
+      213: -768776870218157370
+    second: vfx_electricity_purple-Sheet_50
+  - first:
+      213: 2221057777412825442
+    second: vfx_electricity_purple-Sheet_51
+  - first:
+      213: -4267148737472194555
+    second: vfx_electricity_purple-Sheet_52
+  - first:
+      213: 3218465709527607354
+    second: vfx_electricity_purple-Sheet_53
+  - first:
+      213: -3789054403373112891
+    second: vfx_electricity_purple-Sheet_54
+  - first:
+      213: -4527453530073331503
+    second: vfx_electricity_purple-Sheet_55
+  - first:
+      213: 5991940647830874137
+    second: vfx_electricity_purple-Sheet_56
+  - first:
+      213: -6875638610777134367
+    second: vfx_electricity_purple-Sheet_57
+  - first:
+      213: 7117699074762004361
+    second: vfx_electricity_purple-Sheet_58
+  - first:
+      213: -504769802134638863
+    second: vfx_electricity_purple-Sheet_59
+  - first:
+      213: -2355576794611772831
+    second: vfx_electricity_purple-Sheet_60
+  - first:
+      213: 7793088272751500462
+    second: vfx_electricity_purple-Sheet_61
+  - first:
+      213: 7135986722417730816
+    second: vfx_electricity_purple-Sheet_62
+  - first:
+      213: 335137441019517316
+    second: vfx_electricity_purple-Sheet_63
+  - first:
+      213: 6441506462154727946
+    second: vfx_electricity_purple-Sheet_64
+  - first:
+      213: 6006567654782056154
+    second: vfx_electricity_purple-Sheet_65
+  - first:
+      213: -607486882864097919
+    second: vfx_electricity_purple-Sheet_66
+  - first:
+      213: 831973114883461075
+    second: vfx_electricity_purple-Sheet_67
+  - first:
+      213: 2150302818156530378
+    second: vfx_electricity_purple-Sheet_68
+  - first:
+      213: 1243412457790413139
+    second: vfx_electricity_purple-Sheet_69
+  - first:
+      213: 8560388063441143802
+    second: vfx_electricity_purple-Sheet_70
+  - first:
+      213: -2266172699117192168
+    second: vfx_electricity_purple-Sheet_71
+  - first:
+      213: -6487655310421841034
+    second: vfx_electricity_purple-Sheet_72
+  - first:
+      213: -1797309869417498203
+    second: vfx_electricity_purple-Sheet_73
+  - first:
+      213: 3307383357514933706
+    second: vfx_electricity_purple-Sheet_74
+  - first:
+      213: 7300612557507924857
+    second: vfx_electricity_purple-Sheet_75
+  - first:
+      213: -3626337259984893216
+    second: vfx_electricity_purple-Sheet_76
+  - first:
+      213: 8329142074146475395
+    second: vfx_electricity_purple-Sheet_77
+  - first:
+      213: -6206167765105238661
+    second: vfx_electricity_purple-Sheet_78
+  - first:
+      213: -6102344164191551818
+    second: vfx_electricity_purple-Sheet_79
+  - first:
+      213: -5913282020808305538
+    second: vfx_electricity_purple-Sheet_80
+  - first:
+      213: -2565307662312764500
+    second: vfx_electricity_purple-Sheet_81
+  - first:
+      213: -329401377497837786
+    second: vfx_electricity_purple-Sheet_82
+  - first:
+      213: -3226318551759520632
+    second: vfx_electricity_purple-Sheet_83
+  - first:
+      213: 6796962191539564619
+    second: vfx_electricity_purple-Sheet_84
+  - first:
+      213: -7741078216709807096
+    second: vfx_electricity_purple-Sheet_85
+  - first:
+      213: 3741414654173683447
+    second: vfx_electricity_purple-Sheet_86
+  - first:
+      213: -4223106567038668066
+    second: vfx_electricity_purple-Sheet_87
+  - first:
+      213: -6891046291633643528
+    second: vfx_electricity_purple-Sheet_88
+  - first:
+      213: 626449951174289047
+    second: vfx_electricity_purple-Sheet_89
+  - first:
+      213: 908113694469940175
+    second: vfx_electricity_purple-Sheet_90
+  - first:
+      213: -5516275694363049486
+    second: vfx_electricity_purple-Sheet_91
+  - first:
+      213: 1386782043080432345
+    second: vfx_electricity_purple-Sheet_92
+  - first:
+      213: -7624811361185553680
+    second: vfx_electricity_purple-Sheet_93
+  - first:
+      213: 1015491250412679384
+    second: vfx_electricity_purple-Sheet_94
+  - first:
+      213: -7209741038854325610
+    second: vfx_electricity_purple-Sheet_95
+  - first:
+      213: 3303532587825531792
+    second: vfx_electricity_purple-Sheet_96
+  - first:
+      213: 2725885805178248821
+    second: vfx_electricity_purple-Sheet_97
+  - first:
+      213: -6000429521980870089
+    second: vfx_electricity_purple-Sheet_98
+  - first:
+      213: 3887370097404438779
+    second: vfx_electricity_purple-Sheet_99
+  - first:
+      213: -7307905747487510182
+    second: vfx_electricity_purple-Sheet_100
+  - first:
+      213: 3580757597733169094
+    second: vfx_electricity_purple-Sheet_101
+  - first:
+      213: -5064026849796292323
+    second: vfx_electricity_purple-Sheet_102
+  - first:
+      213: 1002114906765400029
+    second: vfx_electricity_purple-Sheet_103
+  - first:
+      213: 5979215260483734428
+    second: vfx_electricity_purple-Sheet_104
+  - first:
+      213: -2387146924511936182
+    second: vfx_electricity_purple-Sheet_105
+  - first:
+      213: -79777180503002329
+    second: vfx_electricity_purple-Sheet_106
+  - first:
+      213: -3947566046580048956
+    second: vfx_electricity_purple-Sheet_107
+  - first:
+      213: 1782481374889936412
+    second: vfx_electricity_purple-Sheet_108
+  - first:
+      213: 7421761315862145935
+    second: vfx_electricity_purple-Sheet_109
+  - first:
+      213: -8838699954103153196
+    second: vfx_electricity_purple-Sheet_110
+  - first:
+      213: -529314190582183777
+    second: vfx_electricity_purple-Sheet_111
+  - first:
+      213: -6140059777268825237
+    second: vfx_electricity_purple-Sheet_112
+  - first:
+      213: -4871405230982783706
+    second: vfx_electricity_purple-Sheet_113
+  - first:
+      213: -4230477742356413188
+    second: vfx_electricity_purple-Sheet_114
+  - first:
+      213: 8082749251509758030
+    second: vfx_electricity_purple-Sheet_115
+  - first:
+      213: 3998000505504988726
+    second: vfx_electricity_purple-Sheet_116
+  - first:
+      213: 4681106091089937297
+    second: vfx_electricity_purple-Sheet_117
+  - first:
+      213: -722116452588815421
+    second: vfx_electricity_purple-Sheet_118
+  - first:
+      213: -6579887959367593254
+    second: vfx_electricity_purple-Sheet_119
+  - first:
+      213: -8765595864963184729
+    second: vfx_electricity_purple-Sheet_120
+  - first:
+      213: 3715030068945808255
+    second: vfx_electricity_purple-Sheet_121
+  - first:
+      213: -6293559828678821758
+    second: vfx_electricity_purple-Sheet_122
+  - first:
+      213: 6791079013808795307
+    second: vfx_electricity_purple-Sheet_123
+  - first:
+      213: -8085717226353458611
+    second: vfx_electricity_purple-Sheet_124
+  - first:
+      213: 6430153664212521657
+    second: vfx_electricity_purple-Sheet_125
+  - first:
+      213: 5417675060465001888
+    second: vfx_electricity_purple-Sheet_126
+  - first:
+      213: -4680557893571571145
+    second: vfx_electricity_purple-Sheet_127
+  - first:
+      213: 4001821597489842117
+    second: vfx_electricity_purple-Sheet_128
+  - first:
+      213: -6095484384358030354
+    second: vfx_electricity_purple-Sheet_129
+  - first:
+      213: 3045555477855454010
+    second: vfx_electricity_purple-Sheet_130
+  - first:
+      213: -6277807104224731771
+    second: vfx_electricity_purple-Sheet_131
+  - first:
+      213: -4425159259302862961
+    second: vfx_electricity_purple-Sheet_132
+  - first:
+      213: 7017676631257816731
+    second: vfx_electricity_purple-Sheet_133
+  - first:
+      213: 5033680089927497974
+    second: vfx_electricity_purple-Sheet_134
+  - first:
+      213: 6842864644702505319
+    second: vfx_electricity_purple-Sheet_135
+  - first:
+      213: 5995215997304522144
+    second: vfx_electricity_purple-Sheet_136
+  - first:
+      213: 5364726445030027677
+    second: vfx_electricity_purple-Sheet_137
+  - first:
+      213: -4196684863692544435
+    second: vfx_electricity_purple-Sheet_138
+  - first:
+      213: -6040809829123082736
+    second: vfx_electricity_purple-Sheet_139
+  - first:
+      213: -2346239320037000752
+    second: vfx_electricity_purple-Sheet_140
+  - first:
+      213: -2559497477978055438
+    second: vfx_electricity_purple-Sheet_141
+  - first:
+      213: -7416998503535514038
+    second: vfx_electricity_purple-Sheet_142
+  - first:
+      213: 2009329199719895541
+    second: vfx_electricity_purple-Sheet_143
+  - first:
+      213: -227236841669344610
+    second: vfx_electricity_purple-Sheet_144
+  - first:
+      213: 8067312744149577359
+    second: vfx_electricity_purple-Sheet_145
+  - first:
+      213: -2931925946406467227
+    second: vfx_electricity_purple-Sheet_146
+  - first:
+      213: -5879214879169338432
+    second: vfx_electricity_purple-Sheet_147
+  - first:
+      213: 5105591759603339970
+    second: vfx_electricity_purple-Sheet_148
+  - first:
+      213: -3903395634381308584
+    second: vfx_electricity_purple-Sheet_149
+  - first:
+      213: 3068802313020256524
+    second: vfx_electricity_purple-Sheet_150
+  - first:
+      213: 6353071651282640908
+    second: vfx_electricity_purple-Sheet_151
+  - first:
+      213: -4331098861295365398
+    second: vfx_electricity_purple-Sheet_152
+  - first:
+      213: -3531527896031421065
+    second: vfx_electricity_purple-Sheet_153
+  - first:
+      213: -6236385174725678688
+    second: vfx_electricity_purple-Sheet_154
+  - first:
+      213: -4729420748998899186
+    second: vfx_electricity_purple-Sheet_155
+  - first:
+      213: -2454878943956369523
+    second: vfx_electricity_purple-Sheet_156
+  - first:
+      213: 4431503657368237617
+    second: vfx_electricity_purple-Sheet_157
+  - first:
+      213: 7104543635005519473
+    second: vfx_electricity_purple-Sheet_158
+  - first:
+      213: 4597360570651876315
+    second: vfx_electricity_purple-Sheet_159
+  - first:
+      213: 2533322893663355372
+    second: vfx_electricity_purple-Sheet_160
+  - first:
+      213: -3260700132128162091
+    second: vfx_electricity_purple-Sheet_161
+  - first:
+      213: -1069529879009538426
+    second: vfx_electricity_purple-Sheet_162
+  - first:
+      213: 2242821668824387763
+    second: vfx_electricity_purple-Sheet_163
+  - first:
+      213: 8551711849224690630
+    second: vfx_electricity_purple-Sheet_164
+  - first:
+      213: 6634202987865824471
+    second: vfx_electricity_purple-Sheet_165
+  - first:
+      213: 8047477426129449969
+    second: vfx_electricity_purple-Sheet_166
+  - first:
+      213: -9194747686597181743
+    second: vfx_electricity_purple-Sheet_167
+  - first:
+      213: 5219251778403823051
+    second: vfx_electricity_purple-Sheet_168
+  - first:
+      213: 746856524693611634
+    second: vfx_electricity_purple-Sheet_169
+  - first:
+      213: -9217515621800430993
+    second: vfx_electricity_purple-Sheet_170
+  - first:
+      213: -1223226589635870562
+    second: vfx_electricity_purple-Sheet_171
+  - first:
+      213: -7436187991503472804
+    second: vfx_electricity_purple-Sheet_172
+  - first:
+      213: 6809754201108153913
+    second: vfx_electricity_purple-Sheet_173
+  - first:
+      213: -3594666773978295670
+    second: vfx_electricity_purple-Sheet_174
+  - first:
+      213: -5265795874087469099
+    second: vfx_electricity_purple-Sheet_175
+  - first:
+      213: -3901753665614842810
+    second: vfx_electricity_purple-Sheet_176
+  - first:
+      213: 5822615343012250712
+    second: vfx_electricity_purple-Sheet_177
+  - first:
+      213: -523933983224666287
+    second: vfx_electricity_purple-Sheet_178
+  - first:
+      213: -7222880130316083221
+    second: vfx_electricity_purple-Sheet_179
+  - first:
+      213: -1317954321247586890
+    second: vfx_electricity_purple-Sheet_180
+  - first:
+      213: 7337548231885493240
+    second: vfx_electricity_purple-Sheet_181
+  - first:
+      213: -3126650553746450310
+    second: vfx_electricity_purple-Sheet_182
+  - first:
+      213: -2867640264440200393
+    second: vfx_electricity_purple-Sheet_183
+  - first:
+      213: 4461129731010095341
+    second: vfx_electricity_purple-Sheet_184
+  - first:
+      213: 3625036832779817455
+    second: vfx_electricity_purple-Sheet_185
+  - first:
+      213: -3798007351920114526
+    second: vfx_electricity_purple-Sheet_186
+  - first:
+      213: -8056004265395999759
+    second: vfx_electricity_purple-Sheet_187
+  - first:
+      213: 379537818787202036
+    second: vfx_electricity_purple-Sheet_188
+  - first:
+      213: -196035189779427323
+    second: vfx_electricity_purple-Sheet_189
+  - first:
+      213: -3145833267617962553
+    second: vfx_electricity_purple-Sheet_190
+  - first:
+      213: -3177051931456890826
+    second: vfx_electricity_purple-Sheet_191
+  - first:
+      213: -6881392187740177061
+    second: vfx_electricity_purple-Sheet_192
+  - first:
+      213: 6882282379528516374
+    second: vfx_electricity_purple-Sheet_193
+  - first:
+      213: -7061361200999464259
+    second: vfx_electricity_purple-Sheet_194
+  - first:
+      213: 5560106914254746015
+    second: vfx_electricity_purple-Sheet_195
+  - first:
+      213: -6627817582698069931
+    second: vfx_electricity_purple-Sheet_196
+  - first:
+      213: -7319652104531826962
+    second: vfx_electricity_purple-Sheet_197
+  - first:
+      213: 3178202191890209019
+    second: vfx_electricity_purple-Sheet_198
+  - first:
+      213: -2282708764104186079
+    second: vfx_electricity_purple-Sheet_199
+  - first:
+      213: 2955672461410027883
+    second: vfx_electricity_purple-Sheet_200
+  - first:
+      213: 447978510602921336
+    second: vfx_electricity_purple-Sheet_201
+  - first:
+      213: -883869841702564609
+    second: vfx_electricity_purple-Sheet_202
+  - first:
+      213: -6442130848759874924
+    second: vfx_electricity_purple-Sheet_203
+  - first:
+      213: 2438264860980755848
+    second: vfx_electricity_purple-Sheet_204
+  - first:
+      213: -280263481446361241
+    second: vfx_electricity_purple-Sheet_205
+  - first:
+      213: 5828201736733150719
+    second: vfx_electricity_purple-Sheet_206
+  - first:
+      213: 116565411326628847
+    second: vfx_electricity_purple-Sheet_207
+  - first:
+      213: 1498887541449075608
+    second: vfx_electricity_purple-Sheet_208
+  - first:
+      213: 7908260619173939036
+    second: vfx_electricity_purple-Sheet_209
+  - first:
+      213: -53700277451230674
+    second: vfx_electricity_purple-Sheet_210
+  - first:
+      213: 6988574373721206493
+    second: vfx_electricity_purple-Sheet_211
+  - first:
+      213: 2840648234999235874
+    second: vfx_electricity_purple-Sheet_212
+  - first:
+      213: 7285428857954702066
+    second: vfx_electricity_purple-Sheet_213
+  - first:
+      213: -7379359060723824042
+    second: vfx_electricity_purple-Sheet_214
+  - first:
+      213: -6648961628757573052
+    second: vfx_electricity_purple-Sheet_215
+  - first:
+      213: -6003445456022700003
+    second: vfx_electricity_purple-Sheet_216
+  - first:
+      213: -3706058310908728271
+    second: vfx_electricity_purple-Sheet_217
+  - first:
+      213: 3748478791507905654
+    second: vfx_electricity_purple-Sheet_218
+  - first:
+      213: 7726062208829380199
+    second: vfx_electricity_purple-Sheet_219
+  - first:
+      213: -897093311685520409
+    second: vfx_electricity_purple-Sheet_220
+  - first:
+      213: -2922976328214875878
+    second: vfx_electricity_purple-Sheet_221
+  - first:
+      213: -4197977594739539603
+    second: vfx_electricity_purple-Sheet_222
+  - first:
+      213: -3187148850674554232
+    second: vfx_electricity_purple-Sheet_223
+  - first:
+      213: 7569425024133742285
+    second: vfx_electricity_purple-Sheet_224
+  - first:
+      213: -764376473340932943
+    second: vfx_electricity_purple-Sheet_225
+  - first:
+      213: -1103639279459351550
+    second: vfx_electricity_purple-Sheet_226
+  - first:
+      213: 8324531846847800841
+    second: vfx_electricity_purple-Sheet_227
+  - first:
+      213: -8565079706009729808
+    second: vfx_electricity_purple-Sheet_228
+  - first:
+      213: 7676261309333852712
+    second: vfx_electricity_purple-Sheet_229
+  - first:
+      213: -7930639025724012511
+    second: vfx_electricity_purple-Sheet_230
+  - first:
+      213: -1727924340765581858
+    second: vfx_electricity_purple-Sheet_231
+  - first:
+      213: -3745492418248600190
+    second: vfx_electricity_purple-Sheet_232
+  - first:
+      213: -4919474461503296378
+    second: vfx_electricity_purple-Sheet_233
+  - first:
+      213: -743604192085651109
+    second: vfx_electricity_purple-Sheet_234
+  - first:
+      213: -3749308100302474736
+    second: vfx_electricity_purple-Sheet_235
+  - first:
+      213: 442622060346225681
+    second: vfx_electricity_purple-Sheet_236
+  - first:
+      213: -7013766952676545339
+    second: vfx_electricity_purple-Sheet_237
+  - first:
+      213: -4206023698026202113
+    second: vfx_electricity_purple-Sheet_238
+  - first:
+      213: -6553520720310872628
+    second: vfx_electricity_purple-Sheet_239
+  - first:
+      213: 5990631770092112246
+    second: vfx_electricity_purple-Sheet_240
+  - first:
+      213: 6826886379855673775
+    second: vfx_electricity_purple-Sheet_241
+  - first:
+      213: -3493515455179849616
+    second: vfx_electricity_purple-Sheet_242
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2af8577d8e6d19e0800000000000000
+      internalID: -1649040334675969491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 253135b867bdfae20800000000000000
+      internalID: 3364148748859151186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d0ff3f86d13bd610800000000000000
+      internalID: 1646964886330142930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8abc72974d50d6420800000000000000
+      internalID: 2624760567950724008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bbb31ab386af4cc0800000000000000
+      internalID: -3724575282119328845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b2b6e2a8298f25f0800000000000000
+      internalID: -779253402887081288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7ed93c174fdd6c70800000000000000
+      internalID: 8966067929673752187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db3c8f467944010c0800000000000000
+      internalID: -4607107001775242307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 311bf8beab135bbf0800000000000000
+      internalID: -309286320519270125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af7db865a11d12a10800000000000000
+      internalID: 1883016030268938234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 186911fdd5307cfb0800000000000000
+      internalID: -4627726390390581631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90fdb303a2f38f440800000000000000
+      internalID: 4969791639233748745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0514fc0093970fe20800000000000000
+      internalID: 3382336605888921936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d9c07b2cdb250ba0800000000000000
+      internalID: -6123439893718709807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89039ea5fb9865a40800000000000000
+      internalID: 5356620261760774296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 701508eea799555e0800000000000000
+      internalID: -1921460912737201913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72ddf10f7b27488c0800000000000000
+      internalID: -3997944434864956121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 863eaa513821754c0800000000000000
+      internalID: -4298946965088312472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0edcd2bda02a02a0800000000000000
+      internalID: -6770563159395869171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 908b279e88b8a1d30800000000000000
+      internalID: 4402985005856503817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a96a9633fbf20f760800000000000000
+      internalID: 7489538678564955802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aac22a03ca6e0880800000000000000
+      internalID: -8642853248956183902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 272fe2dc4f9f75440800000000000000
+      internalID: 4924679547362669170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 219a97cdd286a8bb0800000000000000
+      internalID: -4933015895649179374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bc93f143341ef4e0800000000000000
+      internalID: -1946095778595103567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 738c39637ac07ab00800000000000000
+      internalID: 839653767842613303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4a06467ce0e4bd10800000000000000
+      internalID: 2140583029109033550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8d468a3c9f1e55f0800000000000000
+      internalID: -766140130749166195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0927fcf204fcff30800000000000000
+      internalID: 4610828412191713546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98d8933a05c630880800000000000000
+      internalID: -8645947766029578871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c6a872bc1b065a20800000000000000
+      internalID: 3050638015471331012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83f58cd674aa1e220800000000000000
+      internalID: 2513477290810695480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58436c5d8aa3e3de0800000000000000
+      internalID: -1351578341349116795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f23b37de22fd7d060800000000000000
+      internalID: 6978291488739537711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96e4f57464b0e76f0800000000000000
+      internalID: -685097696840692119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0283ed7eedd861ba0800000000000000
+      internalID: -6118547055223883744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cf0be528131eee70800000000000000
+      internalID: 9146268887672360897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d24c5295f596c1430800000000000000
+      internalID: 3754992047558607917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b177c49e6071636f0800000000000000
+      internalID: -705350973185558757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c92294b23311ef50800000000000000
+      internalID: 6908824411861821895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acc10fe61c11841f0800000000000000
+      internalID: -1060578189758161718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 453c41df50c1def00800000000000000
+      internalID: 1147604292095755092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fb9843ff808d8340800000000000000
+      internalID: 4867688128007674868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48802ca9e82a1cf40800000000000000
+      internalID: 5747053332866926724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e1cbe7ca02f8a600800000000000000
+      internalID: 479899488432669153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60192875becf254a0800000000000000
+      internalID: -6605939615683407610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15fc14d5a19718d10800000000000000
+      internalID: 2126113653236289361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f66d43011dc53210800000000000000
+      internalID: 1312180339401910009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03c41d4654c4dbef0800000000000000
+      internalID: -90832556549649360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da5fb94f518ce01b0800000000000000
+      internalID: -5688389282698627667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c23c1b7281c455f0800000000000000
+      internalID: -768776870218157370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2616f48e748c2de10800000000000000
+      internalID: 2221057777412825442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5089633e4da08c4c0800000000000000
+      internalID: -4267148737472194555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a382b2ab2894aac20800000000000000
+      internalID: 3218465709527607354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c1e05c68139a6bc0800000000000000
+      internalID: -3789054403373112891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d804ea70014b21c0800000000000000
+      internalID: -4527453530073331503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 918ee25c546a72350800000000000000
+      internalID: 5991940647830874137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ea2ba8bc13d490a0800000000000000
+      internalID: -6875638610777134367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 987d059e89527c260800000000000000
+      internalID: 7117699074762004361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1feab621a82bef8f0800000000000000
+      internalID: -504769802134638863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 162130cb26f4f4fd0800000000000000
+      internalID: -2355576794611772831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_61
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eac9d989e7c962c60800000000000000
+      internalID: 7793088272751500462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_62
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 005ec9fad1e180360800000000000000
+      internalID: 7135986722417730816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_63
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 489d6ea1ab5a6a400800000000000000
+      internalID: 335137441019517316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_64
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a02ad1faff3d46950800000000000000
+      internalID: 6441506462154727946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_65
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad6b2a6357d9b5350800000000000000
+      internalID: 6006567654782056154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_66
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1851d2d06e5c197f0800000000000000
+      internalID: -607486882864097919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_67
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dfcd47d323cb8b00800000000000000
+      internalID: 831973114883461075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_68
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acacdb3350967dd10800000000000000
+      internalID: 2150302818156530378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_69
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35994efda0d714110800000000000000
+      internalID: 1243412457790413139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_70
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af747ecb69b9cc670800000000000000
+      internalID: 8560388063441143802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_71
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81c7e65dfefec80e0800000000000000
+      internalID: -2266172699117192168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67b21254ed737f5a0800000000000000
+      internalID: -6487655310421841034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_73
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a9f012423cae07e0800000000000000
+      internalID: -1797309869417498203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_74
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac567b0f3af26ed20800000000000000
+      internalID: 3307383357514933706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_75
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9731405d07cf05560800000000000000
+      internalID: 7300612557507924857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_76
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ea46d6a979acadc0800000000000000
+      internalID: -3626337259984893216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_77
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38dc245369e079370800000000000000
+      internalID: 8329142074146475395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_78
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7d1c60ac434fd9a0800000000000000
+      internalID: -6206167765105238661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_79
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6be3f24705e105ba0800000000000000
+      internalID: -6102344164191551818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_80
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e74540df45dcfeda0800000000000000
+      internalID: -5913282020808305538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_81
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cab8240d542366cd0800000000000000
+      internalID: -2565307662312764500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_82
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62f87b1413bbd6bf0800000000000000
+      internalID: -329401377497837786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_83
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88cfe16fe50d933d0800000000000000
+      internalID: -3226318551759520632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_84
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b40f972f919a35e50800000000000000
+      internalID: 6796962191539564619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_85
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8046f7a306a229490800000000000000
+      internalID: -7741078216709807096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_86
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fe967b1ecc2ce330800000000000000
+      internalID: 3741414654173683447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_87
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed27a07c3f28465c0800000000000000
+      internalID: -4223106567038668066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_88
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff576878e51e50a0800000000000000
+      internalID: -6891046291633643528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_89
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 796ed4959e891b800800000000000000
+      internalID: 626449951174289047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_90
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc36c8ef7944a9c00800000000000000
+      internalID: 908113694469940175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_91
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f18e528b704273b0800000000000000
+      internalID: -5516275694363049486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_92
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9da13b2bbe6de3310800000000000000
+      internalID: 1386782043080432345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_93
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f22c29077a3f2690800000000000000
+      internalID: -7624811361185553680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_94
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d07d5579efb71e00800000000000000
+      internalID: 1015491250412679384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_95
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69a388859bad1fb90800000000000000
+      internalID: -7209741038854325610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_96
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09b8441c26188dd20800000000000000
+      internalID: 3303532587825531792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_97
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57eddeb82ba44d520800000000000000
+      internalID: 2725885805178248821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_98
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 732309234213abca0800000000000000
+      internalID: -6000429521980870089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_99
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf86446e186b2f530800000000000000
+      internalID: 3887370097404438779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_100
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a51b8fc017a159a90800000000000000
+      internalID: -7307905747487510182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_101
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c7aaaf301861b130800000000000000
+      internalID: 3580757597733169094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_102
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d110ad41966f8b9b0800000000000000
+      internalID: -5064026849796292323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_electricity_purple-Sheet_103
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd710e1c23a38ed00800000000000000
+      internalID: 1002114906765400029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 94145dfc84288874e91b2d7007d627c9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":11.0,"y":10.0},"gridSpriteSize":{"x":96.0,"y":96.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      vfx_electricity_purple-Sheet_0: -1649040334675969491
+      vfx_electricity_purple-Sheet_1: 3364148748859151186
+      vfx_electricity_purple-Sheet_10: -4627726390390581631
+      vfx_electricity_purple-Sheet_100: -7307905747487510182
+      vfx_electricity_purple-Sheet_101: 3580757597733169094
+      vfx_electricity_purple-Sheet_102: -5064026849796292323
+      vfx_electricity_purple-Sheet_103: 1002114906765400029
+      vfx_electricity_purple-Sheet_11: 4969791639233748745
+      vfx_electricity_purple-Sheet_12: 3382336605888921936
+      vfx_electricity_purple-Sheet_13: -6123439893718709807
+      vfx_electricity_purple-Sheet_14: 5356620261760774296
+      vfx_electricity_purple-Sheet_15: -1921460912737201913
+      vfx_electricity_purple-Sheet_16: -3997944434864956121
+      vfx_electricity_purple-Sheet_17: -4298946965088312472
+      vfx_electricity_purple-Sheet_18: -6770563159395869171
+      vfx_electricity_purple-Sheet_19: 4402985005856503817
+      vfx_electricity_purple-Sheet_2: 1646964886330142930
+      vfx_electricity_purple-Sheet_20: 7489538678564955802
+      vfx_electricity_purple-Sheet_21: -8642853248956183902
+      vfx_electricity_purple-Sheet_22: 4924679547362669170
+      vfx_electricity_purple-Sheet_23: -4933015895649179374
+      vfx_electricity_purple-Sheet_24: -1946095778595103567
+      vfx_electricity_purple-Sheet_25: 839653767842613303
+      vfx_electricity_purple-Sheet_26: 2140583029109033550
+      vfx_electricity_purple-Sheet_27: -766140130749166195
+      vfx_electricity_purple-Sheet_28: 4610828412191713546
+      vfx_electricity_purple-Sheet_29: -8645947766029578871
+      vfx_electricity_purple-Sheet_3: 2624760567950724008
+      vfx_electricity_purple-Sheet_30: 3050638015471331012
+      vfx_electricity_purple-Sheet_31: 2513477290810695480
+      vfx_electricity_purple-Sheet_32: -1351578341349116795
+      vfx_electricity_purple-Sheet_33: 6978291488739537711
+      vfx_electricity_purple-Sheet_34: -685097696840692119
+      vfx_electricity_purple-Sheet_35: -6118547055223883744
+      vfx_electricity_purple-Sheet_36: 9146268887672360897
+      vfx_electricity_purple-Sheet_37: 3754992047558607917
+      vfx_electricity_purple-Sheet_38: -705350973185558757
+      vfx_electricity_purple-Sheet_39: 6908824411861821895
+      vfx_electricity_purple-Sheet_4: -3724575282119328845
+      vfx_electricity_purple-Sheet_40: -1060578189758161718
+      vfx_electricity_purple-Sheet_41: 1147604292095755092
+      vfx_electricity_purple-Sheet_42: 4867688128007674868
+      vfx_electricity_purple-Sheet_43: 5747053332866926724
+      vfx_electricity_purple-Sheet_44: 479899488432669153
+      vfx_electricity_purple-Sheet_45: -6605939615683407610
+      vfx_electricity_purple-Sheet_46: 2126113653236289361
+      vfx_electricity_purple-Sheet_47: 1312180339401910009
+      vfx_electricity_purple-Sheet_48: -90832556549649360
+      vfx_electricity_purple-Sheet_49: -5688389282698627667
+      vfx_electricity_purple-Sheet_5: -779253402887081288
+      vfx_electricity_purple-Sheet_50: -768776870218157370
+      vfx_electricity_purple-Sheet_51: 2221057777412825442
+      vfx_electricity_purple-Sheet_52: -4267148737472194555
+      vfx_electricity_purple-Sheet_53: 3218465709527607354
+      vfx_electricity_purple-Sheet_54: -3789054403373112891
+      vfx_electricity_purple-Sheet_55: -4527453530073331503
+      vfx_electricity_purple-Sheet_56: 5991940647830874137
+      vfx_electricity_purple-Sheet_57: -6875638610777134367
+      vfx_electricity_purple-Sheet_58: 7117699074762004361
+      vfx_electricity_purple-Sheet_59: -504769802134638863
+      vfx_electricity_purple-Sheet_6: 8966067929673752187
+      vfx_electricity_purple-Sheet_60: -2355576794611772831
+      vfx_electricity_purple-Sheet_61: 7793088272751500462
+      vfx_electricity_purple-Sheet_62: 7135986722417730816
+      vfx_electricity_purple-Sheet_63: 335137441019517316
+      vfx_electricity_purple-Sheet_64: 6441506462154727946
+      vfx_electricity_purple-Sheet_65: 6006567654782056154
+      vfx_electricity_purple-Sheet_66: -607486882864097919
+      vfx_electricity_purple-Sheet_67: 831973114883461075
+      vfx_electricity_purple-Sheet_68: 2150302818156530378
+      vfx_electricity_purple-Sheet_69: 1243412457790413139
+      vfx_electricity_purple-Sheet_7: -4607107001775242307
+      vfx_electricity_purple-Sheet_70: 8560388063441143802
+      vfx_electricity_purple-Sheet_71: -2266172699117192168
+      vfx_electricity_purple-Sheet_72: -6487655310421841034
+      vfx_electricity_purple-Sheet_73: -1797309869417498203
+      vfx_electricity_purple-Sheet_74: 3307383357514933706
+      vfx_electricity_purple-Sheet_75: 7300612557507924857
+      vfx_electricity_purple-Sheet_76: -3626337259984893216
+      vfx_electricity_purple-Sheet_77: 8329142074146475395
+      vfx_electricity_purple-Sheet_78: -6206167765105238661
+      vfx_electricity_purple-Sheet_79: -6102344164191551818
+      vfx_electricity_purple-Sheet_8: -309286320519270125
+      vfx_electricity_purple-Sheet_80: -5913282020808305538
+      vfx_electricity_purple-Sheet_81: -2565307662312764500
+      vfx_electricity_purple-Sheet_82: -329401377497837786
+      vfx_electricity_purple-Sheet_83: -3226318551759520632
+      vfx_electricity_purple-Sheet_84: 6796962191539564619
+      vfx_electricity_purple-Sheet_85: -7741078216709807096
+      vfx_electricity_purple-Sheet_86: 3741414654173683447
+      vfx_electricity_purple-Sheet_87: -4223106567038668066
+      vfx_electricity_purple-Sheet_88: -6891046291633643528
+      vfx_electricity_purple-Sheet_89: 626449951174289047
+      vfx_electricity_purple-Sheet_9: 1883016030268938234
+      vfx_electricity_purple-Sheet_90: 908113694469940175
+      vfx_electricity_purple-Sheet_91: -5516275694363049486
+      vfx_electricity_purple-Sheet_92: 1386782043080432345
+      vfx_electricity_purple-Sheet_93: -7624811361185553680
+      vfx_electricity_purple-Sheet_94: 1015491250412679384
+      vfx_electricity_purple-Sheet_95: -7209741038854325610
+      vfx_electricity_purple-Sheet_96: 3303532587825531792
+      vfx_electricity_purple-Sheet_97: 2725885805178248821
+      vfx_electricity_purple-Sheet_98: -6000429521980870089
+      vfx_electricity_purple-Sheet_99: 3887370097404438779
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
