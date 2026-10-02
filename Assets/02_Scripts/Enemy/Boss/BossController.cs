@@ -264,4 +264,9 @@ public class BossController : MonoBehaviour
             ghost.Setup(_spriteRenderer.sprite, transform);
         }
     }
+
+    public void BossDeadEvent()
+    {
+        Debug.Log("말씀하신 public 이벤트입니다.");
+    }
 }
