@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     private bool _isGrounded;
     private bool _groundReloading;
 
-    private event Action OnDeath;
+    public event Action OnDeath;
 
     private Rigidbody2D _rigidbody;
 
