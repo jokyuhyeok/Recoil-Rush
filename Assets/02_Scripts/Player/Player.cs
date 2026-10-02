@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour
     private bool _isReloading;
     private bool _isGrounded;
     private bool _groundReloading;
+
+    public event Action OnDeath;
 
     private Rigidbody2D _rigidbody;
 
@@ -233,7 +236,11 @@ public class Player : MonoBehaviour
     private void Die()
     {
         gameObject.SetActive(false);
+        // ? = !null
+        OnDeath?.Invoke();
     }
+
+
 
     private void Reset()
     {
