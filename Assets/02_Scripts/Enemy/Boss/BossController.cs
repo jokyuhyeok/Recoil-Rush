@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections; // 코루틴을 사용하기 위해 추가
 using System.Collections.Generic;
 using Unity.VisualScripting; // Queue를 사용하기 위해 추가
+using System;
 
 public class BossController : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class BossController : MonoBehaviour
     [SerializeField] private GameObject _dronePrefab;
     [SerializeField] private Transform[] _droneSpawnPoints;
 
+    [Header("파티클 이펙트 프리팹")]
+    // 여기에 파티클 오브젝트들 넣으면 됩니다. 
     private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>(); // 패턴들을 순서대로 담아놓을 대기열입니다. 
+
     private bool _isExecuting = false; // 현재 보스가 패턴 하나를 실행 중인지 확인용 변수입니다.
     private int _currentPhase = 1;
 
@@ -24,6 +28,7 @@ public class BossController : MonoBehaviour
     public Transform PlayerTransform;
     public Rigidbody2D Rigidbody;
     public Animator Anim;
+    public event Action OnBossDead; // Action 이벤트입니다. 
 
     // 프로퍼티 - Command에서 프리팹에 접근할 수 있게 열어줍니다.
     public GameObject BulletPrefab => _bulletPrefab;
@@ -241,5 +246,7 @@ public class BossController : MonoBehaviour
     public void BossDeadEvent()
     {
         Debug.Log("말씀하신 public 이벤트입니다.");
+
+        OnBossDead?.Invoke();
     }
 }
