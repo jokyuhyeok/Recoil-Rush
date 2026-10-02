@@ -86,19 +86,4 @@ public class BossStatDataSO : ScriptableObject
     public float LaserWarningTime = 1.0f;
 
     [Tooltip("경고 후 발사하는 레이저의 지속 시간입니다.")] public float LaserBeamTime = 0.5f;
-
-    [Header("이리저리 튕기는 고무폭탄 공격(ThrowBomb)")]
-    [Tooltip("공격 전에 맵 가운데로 이동할 떄의 속도입니다.")]
-    public float CenterMoveSpeed = 5f;
-
-    [Tooltip("앞으로 발사할 폭탄의 개수입니다.")] public int NumOfCountBomb = 5;
-    [Tooltip("폭탄이 나가는 속도입니다.")] public float BouncePower = 10f;
-    [Tooltip("보스가 이동할 중앙 좌표입니다. (기본값 0)")] public float BombTargetX = 0f;
-    [Tooltip("중앙에 도착했다고 판정할 오차 범위입니다.")] public float BombStopThreshold = 0.2f;
-
-    [Tooltip("폭탄이 발사되는 랜덤 각도의 위아래 범위입니다.")]
-    public float BombSpreadAngle = 15f;
-
-    [Tooltip("폭탄을 던지는 발사 간격입니다.")] public float BombFireDelay = 0.1f;
-    [Tooltip("공격이 끝난 후 대기 시간입니다.")] public float BombPostDelay = 1.0f;
 }

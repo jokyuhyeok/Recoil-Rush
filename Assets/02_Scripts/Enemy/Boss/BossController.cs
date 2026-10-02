@@ -6,8 +6,6 @@ using Unity.VisualScripting; // Queue를 사용하기 위해 추가
 public class BossController : MonoBehaviour
 {
     [SerializeField] private BossStatDataSO _stat;
-
-    [SerializeField] private GameObject _bombPrefab;
     [SerializeField] private GameObject _ghostPrefab;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Transform[] _firePoints;
@@ -27,7 +25,6 @@ public class BossController : MonoBehaviour
 
     // 프로퍼티 - Command에서 프리팹에 접근할 수 있게 열어줍니다.
     public GameObject BulletPrefab => _bulletPrefab;
-    public GameObject BombPrefab => _bombPrefab;
     public Transform[] FirePoints => _firePoints;
 
     public bool IsLaserFinished { get; set; } = false;

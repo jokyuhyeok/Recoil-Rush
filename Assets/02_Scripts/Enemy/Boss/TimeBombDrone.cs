@@ -5,15 +5,9 @@ public class TimeBombDrone : MonoBehaviour
 {
     [SerializeField] private float _autoDestroyTime = 6.0f;
     [SerializeField] private float _touchedDestroyTime = 1.0f;
-
-    [Tooltip("Layer가 Dangerous로 유지되는 시간입니다.")] [SerializeField]
-    private float _layerOnTime = 0.2f;
-
-    [Tooltip("드론이 이동하는 속도입니다.")] [SerializeField]
-    private float _moveSpeed = 2.0f;
-
+    [SerializeField] private float _layerOnTime = 0.2f;
+    [SerializeField] private float _moveSpeed = 2.0f;
     [SerializeField] private float _freezeTime = 1.5f;
-
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private GameObject _explosionArea;
     [SerializeField] private GameObject _sparkVFX; // 드론들이 멈출 때 넣을 번개 파티클입니다.
