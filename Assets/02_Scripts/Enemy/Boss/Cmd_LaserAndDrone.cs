@@ -13,8 +13,11 @@ public class Cmd_LaserAndDrone : IBossCommand
 
         boss.Anim.Play("SpecialAttack");
 
-        while (!boss.IsLaserFinished)
+        float timeout = 10f;
+        float elapsed = 0f;
+        while (!boss.IsLaserFinished && (elapsed < timeout))
         {
+            elapsed += Time.deltaTime;
             yield return null;
         }
 
