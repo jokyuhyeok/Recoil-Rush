@@ -72,7 +72,7 @@ public class TimeBombDrone : MonoBehaviour
             // 플레이어가 위에서 밟았는지 확인합니다.
             // collision.contacts[0].normal.y => 충돌한 면의 방향이랍니다. 
             // 누르는 힘을 받으면 -1에 가까워진대요. 어느정도 밟으면 발동하게 0.7로 설정했습니다. 
-            if (collision.contacts[0].normal.y < -0.7f)
+            if ((collision.contacts.Length > 0) && (collision.contacts[0].normal.y < -0.7f))
             {
                 _isTriggered = true;
                 Debug.Log("<color=orange>드론: 플레이어가 밟았다! 폭발 카운트다운에 들어갑니다.</color>");
