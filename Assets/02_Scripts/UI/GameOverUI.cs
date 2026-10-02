@@ -3,14 +3,17 @@ using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Image _gameOverImage;
     [SerializeField] private Sprite[] _gameOverSprites;
 
+    [Header("Animation Easing Settings")]
+    [SerializeField, Range(0f, 2f)] private float _enableTime = 0.5f;
+    [SerializeField, Range(0f, 2f)] private float _disableTime = 0f;
+
     private Player _player;
     private RespawnManager _respawnManager;
-
-    // 테스트용
-    [SerializeField] private bool _isTestMode = false;
+    private Coroutine _easingCoroutine;
 
 
     private void Awake()
@@ -25,42 +28,37 @@ public class GameOverUI : MonoBehaviour
     {
         _respawnManager = RespawnManager.Instance;
 
-        if (_isTestMode)
-        {
-            _respawnManager.OnRespawnUIEvent += EnableUI;
-            return;
-        }
-
         if (_player == null)
         {
             _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         }
 
-        //_player.OnDeadEvent += EnableUI;
+        _player.OnDeath += EnableUI;
         _respawnManager.OnRespawnUIEvent += DisableUI;
     }
 
     private void EnableUI()
     {
         SetRandomSprite();
-        _gameOverImage.enabled = true;
 
-        if (_isTestMode)
+        if (_easingCoroutine != null)
         {
-            _respawnManager.OnRespawnUIEvent -= EnableUI;
-            _respawnManager.OnRespawnUIEvent += DisableUI;
+            StopCoroutine(_easingCoroutine);
+            _easingCoroutine = null;
         }
+
+        _easingCoroutine = StartCoroutine(EaseImage(_enableTime, 1f));
     }
 
     private void DisableUI()
     {
-        _gameOverImage.enabled = false;
-
-        if (_isTestMode)
+        if (_easingCoroutine != null)
         {
-            _respawnManager.OnRespawnUIEvent -= DisableUI;
-            _respawnManager.OnRespawnUIEvent += EnableUI;
+            StopCoroutine(_easingCoroutine);
+            _easingCoroutine = null;
         }
+
+        _easingCoroutine = StartCoroutine(EaseImage(_disableTime, 0f));
     }
 
     private void SetRandomSprite()
@@ -70,5 +68,32 @@ public class GameOverUI : MonoBehaviour
 
         int randomIndex = UnityEngine.Random.Range(0, _gameOverSprites.Length);
         _gameOverImage.sprite = _gameOverSprites[randomIndex];
+    }
+
+    private System.Collections.IEnumerator EaseImage(float duration, float targetScale)
+    {
+        // 0으로 나누기 오류, 음수로 인한 오작동이 발생하지 않게 예외 처리
+        if (duration <= 0f)
+        {
+            transform.localScale = Vector3.one * targetScale;
+            yield break;
+        }
+
+        float startScale = transform.localScale.x;
+
+        float timer = 0;
+        while (timer <= duration)
+        {
+            // 일시정지가 있을 수 있으니 unscaled 사용
+            timer += Time.unscaledDeltaTime;
+            float t = Mathf.Clamp01(timer / duration);
+
+            // Ease-out Sine 사용
+            float easedT = Mathf.Sin((t * Mathf.PI) / 2f);
+
+            transform.localScale = Vector3.one * Mathf.Lerp(startScale, targetScale, easedT);
+
+            yield return null;
+        }
     }
 }
