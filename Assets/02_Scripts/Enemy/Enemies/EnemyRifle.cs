@@ -9,13 +9,15 @@ public class EnemyRifle : EnemyBase
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _deathParticle;
     [SerializeField] private GameObject _muzzleFlashParticle;
-    [SerializeField] private float _shootRecoilPower = 3f;
 
     private bool _isDead = false;
     private float _currentAlarmTime = 0f;
     private float _fireTimer = 0f;
 
     private RifleStatDataSO _rifleStatData => _baseStatData as RifleStatDataSO;
+
+    private bool _isPlayerTooHigh => Mathf.Abs(playerTransform.position.y - transform.position.y) >
+                                     _rifleStatData.ShootHeightDifference;
 
     protected override void UpdateIdle()
     {
@@ -40,7 +42,7 @@ public class EnemyRifle : EnemyBase
         }
 
         // 플레이어가 경고 기간 내에 공격 범위로 들어오면 즉시 Attack으로 진입합니다.
-        if (distanceToPlayer <= _baseStatData.AttackRange)
+        if (distanceToPlayer <= _baseStatData.AttackRange && !_isPlayerTooHigh)
         {
             _fireTimer = _rifleStatData.FireRate; // 빠른 접근 시, 1회 즉시 사격합니다.
             ChangeState(EnemyState.Attack);
@@ -66,21 +68,29 @@ public class EnemyRifle : EnemyBase
         }
 
         // 공격 범위 안으로 들어오면 Attack으로 전환합니다.
-        if (distanceToPlayer <= _baseStatData.AttackRange)
+        if (distanceToPlayer <= _baseStatData.AttackRange && !_isPlayerTooHigh)
         {
             ChangeState(EnemyState.Attack);
             return;
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position,
-            _baseStatData.Speed * Time.deltaTime);
+        if (_isPlayerTooHigh)
+        {
+            LookAtPlayer();
+            return;
+        }
+
+        Vector2 targetPosition = new Vector2(playerTransform.position.x, transform.position.y);
+        transform.position =
+            Vector2.MoveTowards(transform.position, targetPosition, _baseStatData.Speed * Time.deltaTime);
         LookAtPlayer();
     }
 
     protected override void UpdateAttack()
     {
         // 플레이어가 공격 범위를 벗어나면 Trace 상태로 전환합니다.
-        if (distanceToPlayer > _baseStatData.AttackRange)
+        float outOfRangeBuffer = 2.0f;
+        if (distanceToPlayer > _baseStatData.AttackRange + outOfRangeBuffer || _isPlayerTooHigh)
         {
             ChangeState(EnemyState.Trace);
             return;
@@ -109,13 +119,7 @@ public class EnemyRifle : EnemyBase
 
         if (_deathParticle == null) return;
 
-        GameObject effect = Instantiate(_deathParticle, transform.position, Quaternion.identity);
-
-        Rigidbody2D effectRb = effect.GetComponent<Rigidbody2D>();
-
-        if (effectRb == null) return;
-
-        effectRb.AddForce(receivedKnockbackForce, ForceMode2D.Impulse);
+        Instantiate(_deathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
 
         Destroy(gameObject);
         Debug.Log("<color=red>소총수: 으아악! (사망)</color>");
@@ -130,12 +134,11 @@ public class EnemyRifle : EnemyBase
         bullet.FireBullet(direction);
 
         // 2. 반동 적용
-        rb.AddForce(-direction * _shootRecoilPower, ForceMode2D.Impulse);
+        rb.AddForce(-direction * _rifleStatData.ShootRecoilPower, ForceMode2D.Impulse);
 
-        // 3. 이펙트 생성 (위치 수정 완료)
+        // 3. 이펙트 생성
         if (_muzzleFlashParticle != null)
         {
-            // 🚨 하체에서 나오던 연기/화염을 반드시 _firePoint.position에서 나오도록 고정!
             Instantiate(_muzzleFlashParticle, _firePoint.position, _firePoint.rotation);
         }
     }

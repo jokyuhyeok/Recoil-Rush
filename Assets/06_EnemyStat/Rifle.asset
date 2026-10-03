@@ -17,4 +17,4 @@ MonoBehaviour:
   DetectRange: 8
   AttackRange: 7
   AlarmTime: 1
-  FireRate: 0.5
+  FireRate: 1
