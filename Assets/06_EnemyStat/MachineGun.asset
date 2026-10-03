@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0c2cf2b44336440a37025a60657288, type: 3}
   m_Name: MachineGun
   m_EditorClassIdentifier: Assembly-CSharp::MachineGunStatDataSO
-  MaxHp: 5
+  MaxHp: 1
   Speed: 2
-  DetectRange: 10
-  AttackRange: 9
+  DetectRange: 7
+  AttackRange: 5
   AlarmTime: 2
-  FireRate: 0.05
-  MagazineSize: 10
+  FireRate: 0.1
+  MagazineSize: 6
   ReloadTime: 2
+  ShootRecoilPower: 1.5
+  ShootHeightDifference: 2
+  SpreadAngle: 10

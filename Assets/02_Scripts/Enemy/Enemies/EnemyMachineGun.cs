@@ -6,14 +6,23 @@ public class EnemyMachineGun : EnemyBase
 {
     [SerializeField] private EnemyBullet _bulletPrefab;
     [SerializeField] private Transform _firePoint;
+    [SerializeField] private GameObject _deathParticle;
+    [SerializeField] private GameObject _muzzleFlashParticle;
 
     private float _currentAlarmTime = 0f;
     private float _fireTimer = 0f;
     private float _reloadTimer = 0f;
     private int _currentBulletRemain;
     private bool _isReloading = false;
+    private bool _isDead = false;
+
+    private bool _isAimLocked = false;
+    private Vector2 _lockedAimedDirection;
 
     private MachineGunStatDataSO _machineGunStatDataSo => _baseStatData as MachineGunStatDataSO;
+
+    private bool _isPlayerTooHigh => Mathf.Abs(playerTransform.position.y - transform.position.y) >
+                                     _machineGunStatDataSo.ShootHeightDifference;
 
     protected override void Start()
     {
@@ -44,7 +53,7 @@ public class EnemyMachineGun : EnemyBase
         }
 
         // 플레이어가 경고 기간 내에 공격 범위로 들어오면 즉시 Attack으로 진입합니다.
-        if (distanceToPlayer <= _baseStatData.AttackRange)
+        if (distanceToPlayer <= _baseStatData.AttackRange && !_isPlayerTooHigh)
         {
             ChangeState(EnemyState.Attack);
             return;
@@ -61,6 +70,8 @@ public class EnemyMachineGun : EnemyBase
 
     protected override void UpdateTrace()
     {
+        _isAimLocked = false;
+
         // 플레이어가 감지범위를 벗어나면 Idle 상태로 돌아갑니다.
         if (distanceToPlayer > _baseStatData.DetectRange)
         {
@@ -69,57 +80,74 @@ public class EnemyMachineGun : EnemyBase
         }
 
         // 공격 범위 안으로 들어오면 Attack으로 전환합니다.
-        if (distanceToPlayer <= _baseStatData.AttackRange)
+        if (distanceToPlayer <= _baseStatData.AttackRange && !_isPlayerTooHigh)
         {
             ChangeState(EnemyState.Attack);
             return;
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position,
+        if (_isPlayerTooHigh)
+        {
+            LookAtPlayer();
+            return;
+        }
+
+        Vector2 targetPosition = new Vector2(playerTransform.position.x, transform.position.y);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition,
             _baseStatData.Speed * Time.deltaTime);
         LookAtPlayer();
     }
 
     protected override void UpdateAttack()
     {
+        float outOfRangeBuffer = 2.0f;
         // 플레이어가 공격 범위를 벗어나면 Trace 상태로 전환합니다.
-        if (distanceToPlayer > _baseStatData.AttackRange)
+        if (distanceToPlayer > _baseStatData.AttackRange + outOfRangeBuffer || _isPlayerTooHigh)
         {
+            _isAimLocked = false;
             ChangeState(EnemyState.Trace);
             return;
         }
 
-        LookAtPlayer();
+        // 쏘기 전 한번만 Player에게 조준 고정합니다. 
+        if (!_isAimLocked)
+        {
+            LookAtPlayer();
+            _lockedAimedDirection = (playerTransform.position - _firePoint.position).normalized;
+            _isAimLocked = true;
+        }
 
         // 연사 후 재장전 로직입니다.
         if (_isReloading)
         {
+            LookAtPlayer();
             _reloadTimer += Time.deltaTime;
 
-            if (_reloadTimer >= _machineGunStatDataSo.ReloadTime)
-            {
-                _isReloading = false;
-                _currentBulletRemain = _machineGunStatDataSo.MagazineSize;
-                _fireTimer = _machineGunStatDataSo.FireRate;
-                Debug.Log("<color=yellow>기관총 장전 완료! 다시 쏜다!</color>");
-            }
+            if (_reloadTimer < _machineGunStatDataSo.ReloadTime) return;
 
+            // 장전 완료
+            _isReloading = false;
+            _currentBulletRemain = _machineGunStatDataSo.MagazineSize;
+            _fireTimer = _machineGunStatDataSo.FireRate;
+            _isAimLocked = false;
+            Debug.Log("<color=yellow>기관총 장전 완료! 다시 쏜다!</color>");
             return;
         }
 
         _fireTimer += Time.deltaTime;
 
         // 총알 연사 로직입니다.
-        if (_fireTimer >= _machineGunStatDataSo.FireRate)
+        // 쏠 시간이 안 됐으면 리턴합니다.
+        if (_fireTimer < _machineGunStatDataSo.FireRate) return;
+
+        // 실제 사격 실행
+        _fireTimer = 0f;
+        if (anim != null)
         {
-            // 사격 애니메이션 실행
-            if (anim != null)
-            {
-                anim.SetTrigger("Attack");
-                ShootBulletEvent();
-                _fireTimer = 0f;
-            }
+            anim.SetTrigger("Attack");
         }
+
+        ShootBulletEvent();
     }
 
     private void ShootBulletEvent()
@@ -128,8 +156,25 @@ public class EnemyMachineGun : EnemyBase
         if (_bulletPrefab == null || _firePoint == null || playerTransform == null) return;
 
         EnemyBullet bullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
-        Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
-        bullet.FireBullet(direction);
+        Vector2 direction = _lockedAimedDirection;
+
+        // 2. 탄 퍼짐(Spread) 수학 로직 적용
+        float halfSpread = _machineGunStatDataSo.SpreadAngle / 2f;
+        float randomAngle = UnityEngine.Random.Range(-halfSpread, halfSpread);
+        Vector2 spreadDirection = Quaternion.Euler(0, 0, randomAngle) * direction;
+
+        bullet.FireBullet(spreadDirection);
+
+        // 총구 반동입니다.
+        rb.AddForce(-direction * _machineGunStatDataSo.ShootRecoilPower, ForceMode2D.Impulse);
+
+        // 총구 화염 파티클 넣는 로직입니다. 
+        if (_muzzleFlashParticle == null)
+        {
+            Debug.LogError("총구 화염 파티클 넣어주세요! 안 그러면 총알을 무한대로 쏘는 오류가 납니다.");
+        }
+
+        Instantiate(_muzzleFlashParticle, _firePoint.position, _firePoint.rotation);
 
         // -------------------------------------------------------------
         // 🎯 [Game Feel: 총을 발사할 때의 연출입니다.]
@@ -139,9 +184,6 @@ public class EnemyMachineGun : EnemyBase
         // 2. Gun SFX (총기 사운드)
         // (추천 구현 방법: 권총/소총 특유의 날카롭고 가벼운 발사음 재생)
         //
-        // 3. Gun Kick Animation (총구 반동 애니메이션)
-        // (추천 구현 방법: 적 스프라이트 전체를 발사 반대 방향으로 아주 짧게 DOShakePosition 하거나 탄피 파티클 배출)
-        // -------------------------------------------------------------
 
         _currentBulletRemain--;
 
@@ -161,14 +203,17 @@ public class EnemyMachineGun : EnemyBase
 
     protected override void UpdateDead()
     {
-        // [구현 예정 : 기관총 사수 사망] [가이드]
-        // player 무기에 따라 다른 로직을 적용할지는 미정입니다. (샷건이랑 권총에 맞은 리액션이 같으면 좀... 그렇긴 해서...)
-        // 1. 콜라이더 판정 끄기 (길막 방지)
-        // 2. receivedKnockback(총알 방향) 벡터에 Y축(위쪽) 힘을 섞어 포물선 궤도 생성
-        // 3. 해당 벡터로 AddForce 적용 및 AddTorque로 회전
-        // 4. 바닥에 떨어지고 n초 후 파괴 (Destroy)
+        if (_isDead) return;
+        _isDead = true;
 
+        if (_deathParticle == null)
+        {
+            Debug.LogError("기관총 사망 파티클 넣어주세요!");
+        }
+
+        Instantiate(_deathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
         Destroy(gameObject);
+
         Debug.Log("<color=red>기관총 사수: 으아악! (사망)</color>");
     }
 }
