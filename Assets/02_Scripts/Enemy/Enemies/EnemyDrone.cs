@@ -7,6 +7,7 @@ public class EnemyDrone : EnemyBase
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _fallingSparkObject;
     [SerializeField] private GameObject _explosionPrefab;
+    [SerializeField] private GameObject _chargeEffectObject; // 기 모으는 이펙트 (드론의 자식 객체)
 
     private float _hoverStart_X;
     private float _hoverStart_Y;
@@ -19,9 +20,7 @@ public class EnemyDrone : EnemyBase
     private bool _isKnockbackProcessed = false;
     private float _knockbackTimer = 0f;
     private bool _isDeadProcessed = false;
-
     private float _deadTimer = 0f; // 3초 카운트다운 타이머
-    private float _deadStartX = 0f; // 추락 시 좌우로 휘청거릴 기준 X축
 
     private DroneStatDataSO _droneStatDataSo => _baseStatData as DroneStatDataSO;
 
@@ -196,7 +195,6 @@ public class EnemyDrone : EnemyBase
             _deadTimer = 0f;
 
             if (anim != null) anim.SetTrigger("Die");
-
             if (rb == null) return;
 
             rb.bodyType = RigidbodyType2D.Dynamic;
@@ -241,17 +239,20 @@ public class EnemyDrone : EnemyBase
     private void ShootBulletEvent()
     {
         Debug.Log("<color=red>드론: 쾅! (대포 발사)</color>");
-        if (_cannonPrefab != null && _firePoint != null)
+        // 발사 순간 차징 이펙트 안전하게 끄기
+        if (_chargeEffectObject != null)
         {
+            _chargeEffectObject.SetActive(false);
+        }
+
+        if (_firePoint != null && _cannonPrefab != null)
+        {
+            // 플라즈마탄(총알) 발사! (데미지 정상 적용)
             EnemyBullet bullet = Instantiate(_cannonPrefab, _firePoint.position, Quaternion.identity);
             Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
             bullet.FireBullet(direction);
 
             CameraController.Instance.StartPerlinShake(0.5f, 15f, 0.2f);
-            //
-            // 2. Muzzle Flash & Gun SFX[cite: 3, 4]
-            // (추천 구현 방법: 소총보다 훨씬 큰 링 모양의 섬광과 묵직한 대포 사운드 재생)
-            // -------------------------------------------------------------
         }
     }
 
@@ -304,6 +305,12 @@ public class EnemyDrone : EnemyBase
         _attackTimer = 0f;
         _isCharging = true;
         // 🎯 [Game Feel: 차징 연출 삽입 위치] (추천: 빛이 모이는 파티클과 위잉~ 사운드)
+        if (_chargeEffectObject == null)
+        {
+            Debug.LogError("대포 차징 이펙트 넣어주세요.");
+        }
+
+        _chargeEffectObject.SetActive(true);
         Debug.Log("<color=cyan>드론: 위이잉... (대포 차징 시작)</color>");
     }
 
@@ -313,6 +320,13 @@ public class EnemyDrone : EnemyBase
         {
             _isCharging = false;
             _attackTimer = 0f;
+
+            if (_chargeEffectObject == null)
+            {
+                Debug.LogError("대포 차징 이펙트 넣어주세요.");
+            }
+
+            _chargeEffectObject.SetActive(true);
             Debug.Log("<color=grey>드론: 앗 너무 멀어졌다! (차징 취소)</color>");
         }
     }
