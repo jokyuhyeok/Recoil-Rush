@@ -17,9 +17,6 @@ public class EnemyRifle : EnemyBase
 
     private RifleStatDataSO _rifleStatData => _baseStatData as RifleStatDataSO;
 
-    private bool _isPlayerTooHigh => Mathf.Abs(playerTransform.position.y - transform.position.y) >
-                                     _rifleStatData.ShootHeightDifference;
-
     protected override void UpdateIdle()
     {
         // 플레이어가 감지범위 안으로 들어왔을 시, 경고 단계로 넘어갑니다.

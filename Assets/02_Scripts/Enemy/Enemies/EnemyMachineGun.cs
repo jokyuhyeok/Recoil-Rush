@@ -1,13 +1,15 @@
 using UnityEngine;
 
 // 기본 적 2 (기관총 사수)
-// 이동속도, 감지범위, 공격범위, 경고 시간을 가집니다. (소총수와 동일)
 public class EnemyMachineGun : EnemyBase
 {
     [SerializeField] private EnemyBullet _bulletPrefab;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _deathParticle;
     [SerializeField] private GameObject _muzzleFlashParticle;
+
+    [SerializeField] private LayerMask _obstacleMask;
+    [SerializeField] private float _maxShootAngle = 45;
 
     private float _currentAlarmTime = 0f;
     private float _fireTimer = 0f;
@@ -21,9 +23,6 @@ public class EnemyMachineGun : EnemyBase
 
     private MachineGunStatDataSO _machineGunStatDataSo => _baseStatData as MachineGunStatDataSO;
 
-    private bool _isPlayerTooHigh => Mathf.Abs(playerTransform.position.y - transform.position.y) >
-                                     _machineGunStatDataSo.ShootHeightDifference;
-
     protected override void Start()
     {
         base.Start();
@@ -32,10 +31,9 @@ public class EnemyMachineGun : EnemyBase
 
     protected override void UpdateIdle()
     {
-        // 플레이어가 감지범위 안으로 들어왔을 시, 경고 단계로 넘어갑니다.
         if (distanceToPlayer <= _baseStatData.DetectRange)
         {
-            _currentAlarmTime = 0f; // 경고 시간 초기화
+            _currentAlarmTime = 0f;
             ChangeState(EnemyState.Alarm);
         }
     }
@@ -53,7 +51,7 @@ public class EnemyMachineGun : EnemyBase
         }
 
         // 플레이어가 경고 기간 내에 공격 범위로 들어오면 즉시 Attack으로 진입합니다.
-        if (distanceToPlayer <= _baseStatData.AttackRange && !_isPlayerTooHigh)
+        if (distanceToPlayer <= _baseStatData.AttackRange && CanShootTarget())
         {
             ChangeState(EnemyState.Attack);
             return;
@@ -80,15 +78,9 @@ public class EnemyMachineGun : EnemyBase
         }
 
         // 공격 범위 안으로 들어오면 Attack으로 전환합니다.
-        if (distanceToPlayer <= _baseStatData.AttackRange && !_isPlayerTooHigh)
+        if (distanceToPlayer <= _baseStatData.AttackRange)
         {
             ChangeState(EnemyState.Attack);
-            return;
-        }
-
-        if (_isPlayerTooHigh)
-        {
-            LookAtPlayer();
             return;
         }
 
@@ -102,10 +94,17 @@ public class EnemyMachineGun : EnemyBase
     {
         float outOfRangeBuffer = 2.0f;
         // 플레이어가 공격 범위를 벗어나면 Trace 상태로 전환합니다.
-        if (distanceToPlayer > _baseStatData.AttackRange + outOfRangeBuffer || _isPlayerTooHigh)
+        if (distanceToPlayer > _baseStatData.AttackRange + outOfRangeBuffer)
         {
             _isAimLocked = false;
             ChangeState(EnemyState.Trace);
+            return;
+        }
+
+        if (!CanShootTarget())
+        {
+            // 조준만 풀고 그 자리에 가만히 대기합니다. (이동 안함, 사격 안함)
+            _isAimLocked = false;
             return;
         }
 
@@ -113,7 +112,8 @@ public class EnemyMachineGun : EnemyBase
         if (!_isAimLocked)
         {
             LookAtPlayer();
-            _lockedAimedDirection = (playerTransform.position - _firePoint.position).normalized;
+            Vector2 targetPosition = GetTargetPosition();
+            _lockedAimedDirection = (targetPosition - (Vector2)_firePoint.position).normalized;
             _isAimLocked = true;
         }
 
@@ -150,6 +150,29 @@ public class EnemyMachineGun : EnemyBase
         ShootBulletEvent();
     }
 
+    protected override void UpdateKnockback()
+    {
+        // // 해당 적은 1대 맞으면 바로 사망 처리이므로 Knockback 구현은 없습니다.
+    }
+
+    protected override void UpdateDead()
+    {
+        if (_isDead) return;
+        _isDead = true;
+
+        if (_deathParticle == null)
+        {
+            Debug.LogError("기관총 사망 파티클 넣어주세요!");
+        }
+
+        Instantiate(_deathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+
+        CameraController.Instance.StartShake(0.5f, 0.2f);
+        Destroy(gameObject);
+
+        Debug.Log("<color=red>기관총 사수: 으아악! (사망)</color>");
+    }
+
     private void ShootBulletEvent()
     {
         // 총알 즉시 생성 및 발사
@@ -168,7 +191,6 @@ public class EnemyMachineGun : EnemyBase
         // 총구 반동입니다.
         rb.AddForce(-direction * _machineGunStatDataSo.ShootRecoilPower, ForceMode2D.Impulse);
 
-        // 총구 화염 파티클 넣는 로직입니다. 
         if (_muzzleFlashParticle == null)
         {
             Debug.LogError("총구 화염 파티클 넣어주세요! 안 그러면 총알을 무한대로 쏘는 오류가 납니다.");
@@ -176,14 +198,7 @@ public class EnemyMachineGun : EnemyBase
 
         Instantiate(_muzzleFlashParticle, _firePoint.position, _firePoint.rotation);
 
-        // -------------------------------------------------------------
-        // 🎯 [Game Feel: 총을 발사할 때의 연출입니다.]
-        // 1. Muzzle Flash (총구 섬광)
-        // (추천 구현 방법: _firePoint.position에 총구 화염 이펙트를 띄우고 0.1초 뒤 삭제)
-        //
-        // 2. Gun SFX (총기 사운드)
-        // (추천 구현 방법: 권총/소총 특유의 날카롭고 가벼운 발사음 재생)
-        //
+        CameraController.Instance.StartPerlinShake(0.30f, 18f, 0.05f);
 
         _currentBulletRemain--;
 
@@ -196,24 +211,28 @@ public class EnemyMachineGun : EnemyBase
         }
     }
 
-    protected override void UpdateKnockback()
+    private Vector2 GetTargetPosition()
     {
-        // // 해당 적은 1대 맞으면 바로 사망 처리이므로 Knockback 구현은 없습니다.
+        if (playerTransform == null) return Vector2.zero;
+        return playerTransform.position + Vector3.up * 0.8f;
     }
 
-    protected override void UpdateDead()
+    private bool CanShootTarget()
     {
-        if (_isDead) return;
-        _isDead = true;
+        Vector2 targetPos = GetTargetPosition();
+        Vector2 direction = targetPos - (Vector2)_firePoint.position;
 
-        if (_deathParticle == null)
+        // 각도 제한 체크
+        float angle = Mathf.Atan2(direction.y, Mathf.Abs(direction.x)) * Mathf.Rad2Deg;
+        if (angle < -_maxShootAngle || angle > _maxShootAngle)
         {
-            Debug.LogError("기관총 사망 파티클 넣어주세요!");
+            return false;
         }
 
-        Instantiate(_deathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
-        Destroy(gameObject);
+        // 장애물(벽) 체크
+        float distance = Vector2.Distance(_firePoint.position, targetPos);
+        RaycastHit2D hit = Physics2D.Raycast(_firePoint.position, direction.normalized, distance, _obstacleMask);
 
-        Debug.Log("<color=red>기관총 사수: 으아악! (사망)</color>");
+        return hit.collider == null;
     }
 }
