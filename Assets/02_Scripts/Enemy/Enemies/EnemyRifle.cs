@@ -1,14 +1,15 @@
 using UnityEngine;
 
 // 기본 적 1 (소총수)
-// 이동속도, 감지범위, 공격범위, 경고 시간을 가집니다.
 public class EnemyRifle : EnemyBase
 {
-    // 총알 발사에 관련된 변수입니다.
     [SerializeField] private EnemyBullet _bulletPrefeb;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _deathParticle;
     [SerializeField] private GameObject _muzzleFlashParticle;
+
+    [SerializeField] private LayerMask _obstacleMask;
+    [SerializeField] private float _maxShootAngle = 45f;
 
     private bool _isDead = false;
     private float _currentAlarmTime = 0f;
@@ -42,7 +43,7 @@ public class EnemyRifle : EnemyBase
         }
 
         // 플레이어가 경고 기간 내에 공격 범위로 들어오면 즉시 Attack으로 진입합니다.
-        if (distanceToPlayer <= _baseStatData.AttackRange && !_isPlayerTooHigh)
+        if (distanceToPlayer <= _baseStatData.AttackRange && CanShootTarget())
         {
             _fireTimer = _rifleStatData.FireRate; // 빠른 접근 시, 1회 즉시 사격합니다.
             ChangeState(EnemyState.Attack);
@@ -68,15 +69,9 @@ public class EnemyRifle : EnemyBase
         }
 
         // 공격 범위 안으로 들어오면 Attack으로 전환합니다.
-        if (distanceToPlayer <= _baseStatData.AttackRange && !_isPlayerTooHigh)
+        if (distanceToPlayer <= _baseStatData.AttackRange && CanShootTarget())
         {
             ChangeState(EnemyState.Attack);
-            return;
-        }
-
-        if (_isPlayerTooHigh)
-        {
-            LookAtPlayer();
             return;
         }
 
@@ -90,7 +85,7 @@ public class EnemyRifle : EnemyBase
     {
         // 플레이어가 공격 범위를 벗어나면 Trace 상태로 전환합니다.
         float outOfRangeBuffer = 2.0f;
-        if (distanceToPlayer > _baseStatData.AttackRange + outOfRangeBuffer || _isPlayerTooHigh)
+        if (distanceToPlayer > _baseStatData.AttackRange + outOfRangeBuffer || !CanShootTarget())
         {
             ChangeState(EnemyState.Trace);
             return;
@@ -121,6 +116,8 @@ public class EnemyRifle : EnemyBase
 
         Instantiate(_deathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
 
+        CameraController.Instance.StartShake(0.5f, 0.2f);
+
         Destroy(gameObject);
         Debug.Log("<color=red>소총수: 으아악! (사망)</color>");
     }
@@ -128,9 +125,11 @@ public class EnemyRifle : EnemyBase
     // 애니메이션에서 호출될 메서드입니다. 
     public void ExecuteFire()
     {
-        // 1. 총알 생성 및 발사
+        Vector2 targetPosition = GetTargetPosition();
+        Vector2 direction = (targetPosition - (Vector2)_firePoint.position).normalized;
+
+        // 총알 생성 및 발사
         EnemyBullet bullet = Instantiate(_bulletPrefeb, _firePoint.position, Quaternion.identity);
-        Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
         bullet.FireBullet(direction);
 
         // 2. 반동 적용
@@ -141,5 +140,36 @@ public class EnemyRifle : EnemyBase
         {
             Instantiate(_muzzleFlashParticle, _firePoint.position, _firePoint.rotation);
         }
+
+        CameraController.Instance.StartPerlinShake(0.2f, 10f, 0.1f);
+    }
+
+    // 플레이어 피벗이 발 밑에 있어서 명치를 겨냥하도록 위치 보정.
+    private Vector2 GetTargetPosition()
+    {
+        if (playerTransform == null) return Vector2.zero;
+
+        return playerTransform.position + Vector3.up * 0.5f;
+    }
+
+    // 사격 가능 각도인지 + 중간에 벽이 없는지 동시에 체크합니다.
+    private bool CanShootTarget()
+    {
+        Vector2 targetPosition = GetTargetPosition();
+        Vector2 direction = targetPosition - (Vector2)_firePoint.position;
+
+        // 각도 체크
+        float angle = Mathf.Atan2(direction.y, Mathf.Abs(direction.x)) * Mathf.Rad2Deg;
+        if (angle < -_maxShootAngle || angle > _maxShootAngle)
+        {
+            return false; // 각도가 너무 가파르면 사격 불가
+        }
+
+        // 벽(장애물) 관통 체크
+        float distance = Vector2.Distance(_firePoint.position, targetPosition);
+        RaycastHit2D hit = Physics2D.Raycast(_firePoint.position, direction.normalized, distance, _obstacleMask);
+
+        // hit.collider가 null이면 중간에 가로막는 벽이 없다는 뜻입니다.
+        return hit.collider == null;
     }
 }

@@ -178,6 +178,10 @@ MonoBehaviour:
   _firePoint: {fileID: 6444100825903076648}
   _deathParticle: {fileID: 2198790418200276517, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
   _muzzleFlashParticle: {fileID: 7235242540448781643, guid: 32526b30a3e3df0418aac39f97627a52, type: 3}
+  _obstacleMask:
+    serializedVersion: 2
+    m_Bits: 51
+  _maxShootAngle: 45
 --- !u!95 &2227474746717055977
 Animator:
   serializedVersion: 7
