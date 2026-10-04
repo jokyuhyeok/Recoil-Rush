@@ -5,6 +5,8 @@ public class EnemyDrone : EnemyBase
 {
     [SerializeField] private EnemyBullet _cannonPrefab;
     [SerializeField] private Transform _firePoint;
+    [SerializeField] private GameObject _fallingSparkObject;
+    [SerializeField] private GameObject _explosionPrefab;
 
     private float _hoverStart_X;
     private float _hoverStart_Y;
@@ -17,6 +19,9 @@ public class EnemyDrone : EnemyBase
     private bool _isKnockbackProcessed = false;
     private float _knockbackTimer = 0f;
     private bool _isDeadProcessed = false;
+
+    private float _deadTimer = 0f; // 3초 카운트다운 타이머
+    private float _deadStartX = 0f; // 추락 시 좌우로 휘청거릴 기준 X축
 
     private DroneStatDataSO _droneStatDataSo => _baseStatData as DroneStatDataSO;
 
@@ -34,22 +39,20 @@ public class EnemyDrone : EnemyBase
 
     protected override void UpdateIdle()
     {
+        Hovering();
+
         if (_isReturning) // 플레이어가 감지범위 밖으로 벗어나면 생성위치로 복귀합니다.
         {
-            Hovering();
-            Vector2 backToFirstPosition = new Vector2(_hoverStart_X, _hoverStart_Y);
-            transform.position = Vector2.MoveTowards(transform.position, backToFirstPosition,
-                _baseStatData.Speed * Time.deltaTime);
+            float moveX = Mathf.MoveTowards(transform.position.x, _hoverStart_X, _baseStatData.Speed * Time.deltaTime);
+            transform.position = new Vector2(moveX, transform.position.y);
 
-            if (Vector2.Distance(transform.position, backToFirstPosition) < 0.001f)
+            if (Mathf.Abs(transform.position.x - _hoverStart_X) < 0.001f)
             {
                 _isReturning = false;
             }
 
             return;
         }
-
-        Hovering();
 
         // 플레이어가 감지범위 내로 들어오면 Alarm 상태로 전환합니다.
         if (distanceToPlayer <= _baseStatData.DetectRange)
@@ -72,14 +75,6 @@ public class EnemyDrone : EnemyBase
             return;
         }
 
-        // 플레이어가 공격범위 안으로 들어오면 Attack 상태로 전환합니다.
-        if (distanceToPlayer <= _baseStatData.AttackRange)
-        {
-            StartCharging();
-            ChangeState(EnemyState.Attack);
-            return;
-        }
-
         _currentAlarmTime += Time.deltaTime;
         // 경고 시간이 끝나면 Trace 상태로 전환합니다.
         if (_currentAlarmTime >= _baseStatData.AlarmTime)
@@ -91,6 +86,9 @@ public class EnemyDrone : EnemyBase
 
     protected override void UpdateTrace()
     {
+        float angleBuffer = 5.0f;
+
+        Hovering();
         if (distanceToPlayer > _baseStatData.DetectRange)
         {
             _isReturning = true;
@@ -98,135 +96,145 @@ public class EnemyDrone : EnemyBase
             return;
         }
 
-        if (distanceToPlayer <= _baseStatData.AttackRange)
+        if (distanceToPlayer <= _baseStatData.AttackRange && IsInShootingAngle(angleBuffer))
         {
             StartCharging();
             ChangeState(EnemyState.Attack);
+            return;
         }
 
-        Hovering();
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position,
-            _baseStatData.Speed * Time.deltaTime);
+        float decidedPositionX = DecideXPosition();
+        float newX = Mathf.MoveTowards(transform.position.x, decidedPositionX, _baseStatData.Speed * Time.deltaTime);
+        transform.position = new Vector2(newX, transform.position.y);
+
         LookAtPlayer();
     }
 
     protected override void UpdateAttack()
     {
-        LookAtPlayer();
+        Hovering();
+        float outOfRangeBuffer = 3.0f;
+        float angleBuffer = 5.0f;
 
+        if (distanceToPlayer > _baseStatData.AttackRange + outOfRangeBuffer || !IsInShootingAngle(angleBuffer))
+        {
+            CancelCharge();
+            ChangeState(EnemyState.Trace);
+            return;
+        }
+
+        LookAtPlayer();
         _attackTimer += Time.deltaTime;
 
+        // 차징 중일 때의 로직입니다.
         if (_isCharging)
         {
-            if (_attackTimer > _droneStatDataSo.ChargeTime)
-            {
-                if (anim != null)
-                {
-                    anim.SetTrigger("Attack");
-                }
+            if (_attackTimer < _droneStatDataSo.ChargeTime) return;
 
-                _isCharging = false;
-                _attackTimer = 0f;
-            }
-        }
-        else
-        {
-            if (_attackTimer >= _droneStatDataSo.AttackCooldown)
+            if (anim == null)
             {
-                if (distanceToPlayer > _baseStatData.AttackRange)
-                {
-                    ChangeState(EnemyState.Trace);
-                    return;
-                }
-
-                StartCharging();
+                Debug.LogError("Attack 애니메이션을 넣어주세요!");
+                return;
             }
+
+            anim.SetTrigger("Attack");
+            _isCharging = false;
+            _attackTimer = 0f;
+            return;
         }
+
+        // 사격 후 쿨타임 동안의 로직입니다.
+        if (_attackTimer < _droneStatDataSo.AttackCooldown) return;
+        StartCharging();
     }
 
     protected override void UpdateKnockback()
     {
-        // [구현 예정: 드론 넉백] [가이드]
-        // 총의 종류에 따라서 넉백 정도를 다르게 줄 예정입니다. (총 damage가 확정되면 조정하면 될 것 같습니다. 일단 가이드...)
-        // 1. receivedDamage 확인
-        // 2-case.A: (권총, damage == n) 살짝 뒤로 밀렸다가 Trace 복귀
-        // 2-case.B: (샷건, damage >= m) _attackTimer 초기화 및 _isCharging = false (차징 취소)
-        // 2-case.B: 위로 튕기듯 크게 밀려났다가 Trace 복귀
-
-        // 1. 상태 진입 첫 프레임에 딱 한 번만 뒤로 밀어냅니다.
         if (!_isKnockbackProcessed)
         {
-            // 플레이어 반대 방향(뒤) 계산
-            Vector2 pushDir = (transform.position - playerTransform.position).normalized;
-
-            if (rb != null)
-            {
-                rb.linearVelocity = Vector2.zero; // 기존 속도 초기화
-                rb.AddForce(pushDir * 5f, ForceMode2D.Impulse); // 뒤로 휙! 밀려남
-            }
-
             _isKnockbackProcessed = true;
             _knockbackTimer = 0f;
+
+            Debug.Log(
+                $"<color=yellow>[넉백 시작]</color> 받은 물리력: {receivedKnockbackForce}, 크기: {receivedKnockbackForce.magnitude}");
+            if (rb == null)
+            {
+                Debug.LogError("<color=red>[오류]</color> 드론에 Rigidbody2D가 없습니다!");
+            }
+
+            rb.linearVelocity = Vector2.zero;
+            Vector2 amplifiedForce = receivedKnockbackForce * 4f;
+            rb.AddForce(amplifiedForce, ForceMode2D.Impulse);
+            rb.linearDamping = 10f; // 급브레이크
+            Debug.Log($"<color=orange>[물리 적용]</color> 현재 드론 속도: {rb.linearVelocity}");
+            // (클래스 맨 위 변수 선언하는 곳에 피격 이펙트 변수 하나 추가해주세요)
+            // [SerializeField] private GameObject _hitSparkVFX;
+            // 여기에 피격 파티클을 넣습니다.
+            // if (_hitSparkVFX != null) _hitSparkVFX.SetActive(true);
+            CameraController.Instance.StartShake(0.3f, 0.1f);
         }
 
         _knockbackTimer += Time.deltaTime;
+        if (_knockbackTimer < 0.3f) return;
+        if (rb == null) return;
 
-        // 2. 0.2초(짧은 시간) 뒤에 넉백을 끝내고 다시 추적 상태로 돌아갑니다.
-        if (_knockbackTimer >= 0.2f)
-        {
-            if (rb != null) rb.linearVelocity = Vector2.zero; // 밀리던 것 멈춤
-            _isKnockbackProcessed = false; // 다음 피격을 위해 자물쇠 초기화
-            ChangeState(EnemyState.Trace);
-        }
+        rb.linearVelocity = Vector2.zero;
+        rb.linearDamping = 0f; // 브레이크 해제
+        _isKnockbackProcessed = false;
+        Debug.Log("<color=green>[넉백 종료]</color> 스턴 0.3초 끝. Trace로 복귀합니다.");
+        _hoverStart_X = transform.position.x;
+        _hoverStart_Y = transform.position.y;
+        ChangeState(EnemyState.Trace);
     }
 
     protected override void UpdateDead()
     {
-        // [구현 예정: 드론 추락 사망] [가이드]
-        // 사망할 때, player가 밟고 이동할 수 있게 사망시 지형으로 바꾸겠습니다.
-        // 1. gameObject.layer = LayerMask.NameToLayer("Platform"); (지형으로 변경)
-        // 2. 피격 판정 콜라이더 비활성화
-        // 3. rb.gravityScale = 0.5f; (추락 시작)
-        // 4. transform.Rotate 로 빙글빙글 회전 연출
-        // 5. 폭발 파티클 재생 후 3초 뒤 Destroy
-
-        // -------------------------------------------------------------
-        // 🎯 [Game Feel: 드론의 폭발 및 추락 연출입니다.]
-        // 1. Impact Flash (인상 섬광)
-        // (추천 구현 방법: 기계가 파괴되는 순간 화면 전체가 짧고 굵게 하얗게 번쩍이게 처리)
-        //
-        // 2. 추락 파티클 및 사운드
-        // (추천 구현 방법: 빙글빙글 추락하는 동안 검은 연기와 스파크 파티클 지속 재생, 고장난 기계음 루프)
-        // -------------------------------------------------------------
-
-        // 상태 진입 첫 프레임에 딱 한 번만 애니메이션과 추락 물리력을 줍니다.
+        // 사망 진입 첫 프레임 (발판으로 변신합니다.)
         if (!_isDeadProcessed)
         {
-            // 1. 사망 애니메이션 트리거
+            _isDeadProcessed = true;
+            _deadTimer = 0f;
+
             if (anim != null) anim.SetTrigger("Die");
 
-            // 2. 콜라이더 끄기 (시체 길막 방지)
-            Collider2D coll = GetComponent<Collider2D>();
-            if (coll != null) coll.enabled = false;
+            if (rb == null) return;
 
-            // 3. 중력 켜기 및 추락 연출
-            if (rb != null)
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.gravityScale = 2f;
+            rb.linearDamping = 0.5f;
+            rb.linearVelocity = Vector2.zero;
+            rb.freezeRotation = false;
+
+            Vector2 amplifiedForce = receivedKnockbackForce * 1f;
+            rb.AddForce(amplifiedForce, ForceMode2D.Impulse);
+
+            float randomTorque = Random.Range(-4f, 4f);
+            rb.AddTorque(randomTorque, ForceMode2D.Impulse);
+            gameObject.layer = LayerMask.NameToLayer("Default");
+
+            Debug.Log("<color=red>[드론 사망]</color> 넉백 힘으로 날아갑니다!");
+
+            if (_fallingSparkObject != null)
             {
-                rb.gravityScale = 2f;
+                _fallingSparkObject.SetActive(true); // 드론 프리팹 안에 있는 오브젝트를 끌어다 놓으셔야 합니다.
+            }
+        }
 
-                // 맞은 방향(receivedKnockbackForce)으로 살짝 튕기며 떨어지게
-                Vector2 pushForce = new Vector2(receivedKnockbackForce.x, 0.5f).normalized * 5f;
-                rb.AddForce(pushForce, ForceMode2D.Impulse);
+        _deadTimer += Time.deltaTime;
 
-                // 고장나서 빙글빙글 돌기
-                rb.AddTorque(720f);
+        // 1초 ~ 1.5초 정도가 지난 후 '공중 폭발' 합니다.
+        if (_deadTimer >= 0.3f)
+        {
+            Debug.Log("<color=red>[쾅!!]</color> 공중 대폭발!");
+            // (나중에 여기에 폭발 파티클과 카메라 흔들림 함수를 넣습니다.)
+            CameraController.Instance.StartShake(1.5f, 0.4f);
+            if (_explosionPrefab == null)
+            {
+                Debug.Log("드론 폭발 프리팹을 넣어주세요!");
             }
 
-            // 4. 2초 뒤 삭제
-            Destroy(gameObject, 2f);
-            Debug.Log("<color=red>드론: 끼기긱... (빙글빙글 추락)</color>");
-
-            _isDeadProcessed = true; // 이후 이 블록은 다시 실행되지 않음
+            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 
@@ -239,14 +247,55 @@ public class EnemyDrone : EnemyBase
             Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
             bullet.FireBullet(direction);
 
-            // -------------------------------------------------------------
-            // 🎯 [Game Feel: 거대 대포 발사 연출 삽입 위치]
-            // 1. Camera Shake (카메라 진동)[cite: 3]
-            // (추천 구현 방법: 대포의 폭발감을 플레이어가 직접 느끼도록 화면 전체에 강한 진동 부여)
+            CameraController.Instance.StartPerlinShake(0.5f, 15f, 0.2f);
             //
             // 2. Muzzle Flash & Gun SFX[cite: 3, 4]
             // (추천 구현 방법: 소총보다 훨씬 큰 링 모양의 섬광과 묵직한 대포 사운드 재생)
             // -------------------------------------------------------------
+        }
+    }
+
+    // Player가 드론의 사격 가능 각도 안에 있는지 확인하는 메서드입니다.
+    private bool IsInShootingAngle(float angleBuffer = 0f)
+    {
+        if (_firePoint == null || playerTransform == null) return false;
+
+        Vector2 direction = playerTransform.position - _firePoint.position;
+        float distanceX = Mathf.Abs(direction.x);
+        float distanceY = direction.y;
+
+        float angle = Mathf.Atan2(distanceY, distanceX) * Mathf.Rad2Deg;
+        return angle >= (_droneStatDataSo.MinAttackAngle - angleBuffer) &&
+               angle <= (_droneStatDataSo.MaxAttackAngle + angleBuffer);
+    }
+
+    private float DecideXPosition()
+    {
+        float directionSign = Mathf.Sign(transform.position.x - playerTransform.position.x);
+        float currentDistanceX = Mathf.Abs(transform.position.x - playerTransform.position.x);
+        float distanceY = playerTransform.position.y - _firePoint.position.y;
+
+        float requiredXMove = 0f;
+
+        // 플레이어가 드론보다 아래에 있을 경우 (-60도 각도를 맞추기 위한 최소 X거리 tan계산)
+        if (distanceY < 0)
+        {
+            float angleAbs = Mathf.Abs(_droneStatDataSo.MinAttackAngle);
+            float angleRad = angleAbs * Mathf.Deg2Rad;
+            float tangentValue = Mathf.Tan(angleRad);
+            requiredXMove = Mathf.Abs(distanceY) / tangentValue;
+        }
+
+        // 현재 거리가 필요한 각도 확보 거리보다 가깝다면? (플레이어가 바로 밑으로 파고들었다면!)
+        if (currentDistanceX < requiredXMove)
+        {
+            // 뒤로 물러나서(거리 벌리기) 최적의 사격 각도를 확보하는 목표 X좌표 반환
+            return playerTransform.position.x + (requiredXMove * directionSign);
+        }
+        else
+        {
+            // 아직 각도가 넉넉하거나 멀리 있다면, 평범하게 플레이어의 X좌표를 향해 추적
+            return playerTransform.position.x;
         }
     }
 
@@ -256,6 +305,16 @@ public class EnemyDrone : EnemyBase
         _isCharging = true;
         // 🎯 [Game Feel: 차징 연출 삽입 위치] (추천: 빛이 모이는 파티클과 위잉~ 사운드)
         Debug.Log("<color=cyan>드론: 위이잉... (대포 차징 시작)</color>");
+    }
+
+    private void CancelCharge()
+    {
+        if (_isCharging)
+        {
+            _isCharging = false;
+            _attackTimer = 0f;
+            Debug.Log("<color=grey>드론: 앗 너무 멀어졌다! (차징 취소)</color>");
+        }
     }
 
     private void Hovering()
