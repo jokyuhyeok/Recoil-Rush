@@ -170,6 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0ed7bdd47220744aaafb96cfe9e026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet
-  _bulletSpeed: 20
+  _bulletSpeed: 40
   _bulletLifeTime: 3
   _impactParticle: {fileID: 5455285142049394309, guid: dd811a7f885df0a439b0b4cc967b2fa1, type: 3}

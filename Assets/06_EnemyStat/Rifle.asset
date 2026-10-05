@@ -18,3 +18,11 @@ MonoBehaviour:
   AttackRange: 7
   AlarmTime: 1
   FireRate: 1
+  ShootRecoilPower: 3
+  MaxShootAngle: 45
+  ObstacleMask:
+    serializedVersion: 2
+    m_Bits: 51
+  BulletPrefab: {fileID: 1441611445395233385, guid: 68051dfd86eacc74a9370c27b83d2bd2, type: 3}
+  MuzzleFlashParticle: {fileID: 7235242540448781643, guid: 32526b30a3e3df0418aac39f97627a52, type: 3}
+  DeathParticle: {fileID: 2198790418200276517, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}

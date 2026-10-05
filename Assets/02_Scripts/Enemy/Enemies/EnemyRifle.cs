@@ -3,13 +3,7 @@ using UnityEngine;
 // 기본 적 1 (소총수)
 public class EnemyRifle : EnemyBase
 {
-    [SerializeField] private EnemyBullet _bulletPrefeb;
     [SerializeField] private Transform _firePoint;
-    [SerializeField] private GameObject _deathParticle;
-    [SerializeField] private GameObject _muzzleFlashParticle;
-
-    [SerializeField] private LayerMask _obstacleMask;
-    [SerializeField] private float _maxShootAngle = 45f;
 
     private bool _isDead = false;
     private float _currentAlarmTime = 0f;
@@ -66,7 +60,7 @@ public class EnemyRifle : EnemyBase
         }
 
         // 공격 범위 안으로 들어오면 Attack으로 전환합니다.
-        if (distanceToPlayer <= _baseStatData.AttackRange && CanShootTarget())
+        if (distanceToPlayer <= _baseStatData.AttackRange)
         {
             ChangeState(EnemyState.Attack);
             return;
@@ -82,14 +76,19 @@ public class EnemyRifle : EnemyBase
     {
         // 플레이어가 공격 범위를 벗어나면 Trace 상태로 전환합니다.
         float outOfRangeBuffer = 2.0f;
-        if (distanceToPlayer > _baseStatData.AttackRange + outOfRangeBuffer || !CanShootTarget())
+        if (distanceToPlayer > _baseStatData.AttackRange + outOfRangeBuffer)
         {
             ChangeState(EnemyState.Trace);
             return;
         }
 
-        LookAtPlayer();
+        if (!CanShootTarget())
+        {
+            LookAtPlayer();
+            return;
+        }
 
+        LookAtPlayer();
         _fireTimer += Time.deltaTime;
 
         if (_fireTimer >= _rifleStatData.FireRate)
@@ -109,14 +108,12 @@ public class EnemyRifle : EnemyBase
         if (_isDead) return;
         _isDead = true;
 
-        if (_deathParticle == null) return;
+        if (_rifleStatData.DeathParticle == null) return;
 
-        Instantiate(_deathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+        Instantiate(_rifleStatData.DeathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
 
         CameraController.Instance.StartShake(0.5f, 0.2f);
-
         Destroy(gameObject);
-        Debug.Log("<color=red>소총수: 으아악! (사망)</color>");
     }
 
     // 애니메이션에서 호출될 메서드입니다. 
@@ -125,17 +122,18 @@ public class EnemyRifle : EnemyBase
         Vector2 targetPosition = GetTargetPosition();
         Vector2 direction = (targetPosition - (Vector2)_firePoint.position).normalized;
 
+        if (_rifleStatData.BulletPrefab == null) return;
         // 총알 생성 및 발사
-        EnemyBullet bullet = Instantiate(_bulletPrefeb, _firePoint.position, Quaternion.identity);
+        EnemyBullet bullet = Instantiate(_rifleStatData.BulletPrefab, _firePoint.position, Quaternion.identity);
         bullet.FireBullet(direction);
 
-        // 2. 반동 적용
+        // 반동 적용
         rb.AddForce(-direction * _rifleStatData.ShootRecoilPower, ForceMode2D.Impulse);
 
-        // 3. 이펙트 생성
-        if (_muzzleFlashParticle != null)
+        // 이펙트 생성
+        if (_rifleStatData.MuzzleFlashParticle != null)
         {
-            Instantiate(_muzzleFlashParticle, _firePoint.position, _firePoint.rotation);
+            Instantiate(_rifleStatData.MuzzleFlashParticle, _firePoint.position, _firePoint.rotation);
         }
 
         CameraController.Instance.StartPerlinShake(0.2f, 10f, 0.1f);
@@ -154,19 +152,20 @@ public class EnemyRifle : EnemyBase
     {
         Vector2 targetPosition = GetTargetPosition();
         Vector2 direction = targetPosition - (Vector2)_firePoint.position;
+        float distance = Vector2.Distance(_firePoint.position, targetPosition);
 
-        // 각도 체크
+        // 각도 체크 (초근접일 때는 사격 가능으로 판정)
+        if (distance < 1.5f) return true;
+
         float angle = Mathf.Atan2(direction.y, Mathf.Abs(direction.x)) * Mathf.Rad2Deg;
-        if (angle < -_maxShootAngle || angle > _maxShootAngle)
+        if (angle < -_rifleStatData.MaxShootAngle || angle > _rifleStatData.MaxShootAngle)
         {
-            return false; // 각도가 너무 가파르면 사격 불가
+            return false;
         }
 
         // 벽(장애물) 관통 체크
-        float distance = Vector2.Distance(_firePoint.position, targetPosition);
-        RaycastHit2D hit = Physics2D.Raycast(_firePoint.position, direction.normalized, distance, _obstacleMask);
-
-        // hit.collider가 null이면 중간에 가로막는 벽이 없다는 뜻입니다.
+        RaycastHit2D hit = Physics2D.Raycast(_firePoint.position, direction.normalized, distance,
+            _rifleStatData.ObstacleMask);
         return hit.collider == null;
     }
 }

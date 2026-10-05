@@ -20,6 +20,12 @@ MonoBehaviour:
   FireRate: 0.1
   MagazineSize: 6
   ReloadTime: 2
-  ShootRecoilPower: 1.5
-  ShootHeightDifference: 2
   SpreadAngle: 10
+  ShootRecoilPower: 1.5
+  MaxShootAngle: 45
+  ObstacleMask:
+    serializedVersion: 2
+    m_Bits: 51
+  BulletPrefab: {fileID: 1441611445395233385, guid: c8b027ed93d7ec34fa2961d04600b580, type: 3}
+  MuzzleFlashParticle: {fileID: 8154968109357767497, guid: 0d762ab2b0724f9498cd6730698133eb, type: 3}
+  DeathParticle: {fileID: 2198790418200276517, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
