@@ -22,26 +22,21 @@ public class Cmd_BackwardDash : IBossCommand
         boss.Anim.Play("BackMove");
         boss.Rigidbody.linearVelocity = Vector2.zero; // 멈춰서 기를 모읍니다.
 
-        Debug.Log($"<color=orange>보스: {_chargeTime}초 동안 후방 돌진 준비...</color>");
+        Debug.Log($"<color=orange>보스: {_chargeTime}초 동안 후진 준비...</color>");
         yield return new WaitForSeconds(_chargeTime);
 
-        Debug.Log("<color=orange>보스: 후방 돌진 시작! [잔상 효과 발동]</color>");
+        Debug.Log("<color=orange>보스: 후진 시작!</color>");
 
         float directionX = 1f;
         float timer = 0f;
         float ghostTimer = 0f;
 
-        // [연출] 여기에 잔상을 남기는 코드를 추가할 예정입니다.
-
         while (timer < _dashDuration)
         {
             if ((directionX < 0 && boss.IsHittingLeftWall) || (directionX > 0 && boss.IsHittingRightWall))
             {
-                Debug.Log("쾅! 등 뒤의 벽에 박고 앞으로 통통 튕겨납니다!");
-
-                // 역방향으로 튕겨나가는 힘 적용
+                Debug.Log("<color=orange>보스: 등 뒤의 벽에 박았다!</color>");
                 boss.Rigidbody.linearVelocity = new Vector2(directionX * _dashSpeed, boss.Rigidbody.linearVelocity.y);
-
                 yield return new WaitForSeconds(0.2f);
                 break;
             }
@@ -60,6 +55,6 @@ public class Cmd_BackwardDash : IBossCommand
         }
 
         boss.Rigidbody.linearVelocity = new Vector2(0f, boss.Rigidbody.linearVelocity.y);
-        Debug.Log("<color=cyan>보스: 후방 돌진 종료... [잔상 효과 끄기]");
+        Debug.Log("<color=orange>보스: 후진 종료...</color>");
     }
 }

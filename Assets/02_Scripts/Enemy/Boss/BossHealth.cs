@@ -1,9 +1,13 @@
 using UnityEngine;
+using System;
 
 public class BossHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private BossStatDataSO _stat;
     [SerializeField] private BossController _controller;
+
+    public event Action OnBossDead;
+    public event Action<int> OnPhaseChanged;
 
     private int _currentHp;
     private int _currentPhase = 1;
@@ -33,14 +37,21 @@ public class BossHealth : MonoBehaviour, IDamageable
 
         if (_currentPhase == 1 && (hpPercentage <= _stat.Phase2Threshold))
         {
-            _currentPhase = 2;
-            _controller.SetPhase(2);
+            ChangePhase(2);
         }
         else if (_currentPhase == 2 && hpPercentage <= _stat.Phase3Threshold)
         {
-            _currentPhase = 3;
-            _controller.SetPhase(3); // "컨트롤러야! 당장 3페이즈로 바꿔!" 라고 찌르기
+            ChangePhase(3);
         }
+    }
+
+    private void ChangePhase(int newPhase)
+    {
+        _currentPhase = newPhase;
+        _controller.SetPhase(newPhase);
+
+        // 페이즈가 변경되었음을 알림
+        OnPhaseChanged?.Invoke(newPhase);
     }
 
     private void Die()
@@ -49,15 +60,7 @@ public class BossHealth : MonoBehaviour, IDamageable
 
         _controller.StopAllAttacks();
 
-        // 여기에 보스 사망 폭발 파티클, 사운드 등을 넣으면 됩니다.
-        // (예: GameManager.Instance.ShowClearUI(); 등)
+        OnBossDead?.Invoke();
         Destroy(gameObject);
     }
 }
-
-//public void BossDeadEvent()
-//{
-//    Debug.Log("말씀하신 public 이벤트입니다.");
-
-//    OnBossDead?.Invoke();
-//}
