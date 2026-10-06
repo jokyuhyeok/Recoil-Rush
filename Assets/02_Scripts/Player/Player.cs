@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float _reloadGroundDelay = 0.2f;
     [SerializeField] private float _reloadStopDelay = 1f;
 
+    [Header("Effect")]
+    [SerializeField] private SpriteEffect _dieEffectPrefab;
+
     [SerializeField] private string _resetTag = "Ground";
 
     // 법선 y가 이 값 이상이면 바닥 (약 45도 이내)
@@ -294,6 +297,11 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        if (_dieEffectPrefab != null)
+        {
+            Instantiate(_dieEffectPrefab, transform.position, Quaternion.identity);
+        }
+
         gameObject.SetActive(false);
         // ? = !null
         OnDeath?.Invoke();

@@ -5,6 +5,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _recoilRadius = 2f;
     [SerializeField] private float _recoilPower = 3f;
 
+    [Header("Effect")]
+    [SerializeField] private SpriteEffect _hitEffectPrefab;
+
     private Rigidbody2D _rigidbody;
 
     private Weapon _weapon;
@@ -43,6 +46,8 @@ public class Bullet : MonoBehaviour
         Vector2 currentPosition = _rigidbody.position;
         Vector2 move = currentPosition - _previousPosition;
 
+        Vector2 hitPoint = currentPosition;
+
         RaycastHit2D[] hits = Physics2D.RaycastAll(
             _previousPosition,
             move.normalized,
@@ -65,6 +70,13 @@ public class Bullet : MonoBehaviour
             }
 
             AddImpactRecoil(hit.point);
+
+            hitPoint = hit.point;
+        }
+
+        if (_hitEffectPrefab != null)
+        {
+            Instantiate(_hitEffectPrefab, hitPoint, Quaternion.identity);
         }
 
         Destroy(gameObject);
