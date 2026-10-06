@@ -4977,11 +4977,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 712902371655090222, guid: 54674b968294cf04a8591a6e6cbc7fcc, type: 3}
       propertyPath: _reloadGroundDelay
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2949447460592847076, guid: 54674b968294cf04a8591a6e6cbc7fcc, type: 3}
       propertyPath: _recoilPower
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145751671586403668, guid: 54674b968294cf04a8591a6e6cbc7fcc, type: 3}
+      propertyPath: _weaponType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6091322744737446989, guid: 54674b968294cf04a8591a6e6cbc7fcc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18845,6 +18849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1638574824}
   - component: {fileID: 1638574823}
+  - component: {fileID: 1638574825}
   m_Layer: 0
   m_Name: ShotGun
   m_TagString: Untagged
@@ -18926,6 +18931,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 516179964}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 132.68}
+--- !u!114 &1638574825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638574822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf0a777f10b2d345982f0a86dd4af6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponPickup
+  _weaponType: 1
 --- !u!1 &1805073166
 GameObject:
   m_ObjectHideFlags: 0

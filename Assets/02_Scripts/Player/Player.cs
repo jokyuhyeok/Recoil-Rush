@@ -13,15 +13,19 @@ public class Player : MonoBehaviour
 
     [SerializeField] private string _resetTag = "Ground";
 
+    // 법선 y가 이 값 이상이면 바닥 (약 45도 이내)
+    private const float GroundNormalY = 0.7f;
+
     private List<Weapon> _weapons = new List<Weapon>();
+    private List<Weapon> _unlockedWeapons = new List<Weapon>();
     private Weapon _currentWeapon;
     private PlayerAim _playerAIm;
 
     private float _reloadTimer;
-    private float _reloadGroundTimer;
+    private float _airTimer;
+    private int _groundCount;
     private bool _isReloading;
     private bool _isGrounded;
-    private bool _groundReloading;
 
     public event Action OnDeath;
 
@@ -40,10 +44,17 @@ public class Player : MonoBehaviour
 
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.gravityScale = 0f;
+        // 잠들면 OnCollisionStay2D가 오지 않아 바닥 판정이 끊김으로 Sleep 방지
+        _rigidbody.sleepMode = RigidbodySleepMode2D.NeverSleep;
 
         _playerAIm = GetComponent<PlayerAim>();
 
         FindCurrentWeapon();
+
+        if (_currentWeapon != null)
+        {
+            _unlockedWeapons.Add(_currentWeapon);
+        }
 
         foreach (Weapon weapon in _weapons)
         {
@@ -60,12 +71,16 @@ public class Player : MonoBehaviour
     private void Update()
     {
         ReloadUpdate();
+        AirTimeUpdate();
         ReloadGroundCheck();
         WeaponChangeUpdate();
     }
 
     private void FixedUpdate()
     {
+        // 순서 FixedUpdate: false -> 충돌 계산 후 Stay: 다시 true -> Update(ReloadGroundCheck): true를 읽음
+        _isGrounded = false;
+
         ApplyGravity();
     }
 
@@ -122,70 +137,55 @@ public class Player : MonoBehaviour
         _isReloading = false;
     }
 
+    private void AirTimeUpdate()
+    {
+        if (_groundCount > 0)
+        {
+            return;
+        }
+
+        _airTimer += Time.deltaTime;
+    }
+
     private void ReloadGroundCheck()
     {
         if (!_isGrounded || _isReloading)
         {
-            _reloadGroundTimer = 0f;
             return;
         }
 
-        bool allMagazineEmpty = true;
-
-        foreach (Weapon weapon in _weapons)
+        foreach (Weapon weapon in _unlockedWeapons)
         {
             if (!weapon.IsEmptyMagazine)
             {
-                allMagazineEmpty = false;
-                break;
+                return;
             }
-        }
-
-        if (allMagazineEmpty)
-        {
-            StartReload();
-            return;
-        }
-
-        if (!_groundReloading)
-        {
-            return;
-        }
-
-        bool ammoReload = false;
-
-        foreach (Weapon weapon in _weapons)
-        {
-            if (weapon.AmmoReload)
-            {
-                ammoReload = true;
-                break;
-            }
-        }
-
-        if (!ammoReload)
-        {
-            _groundReloading = false;
-            _reloadGroundTimer = 0f;
-            return;
-        }
-
-        _reloadGroundTimer += Time.deltaTime;
-
-        if (_reloadGroundTimer < _reloadGroundDelay)
-        {
-            return;
         }
 
         StartReload();
+    }
+
+    private void TryStartReload()
+    {
+        if (_isReloading)
+        {
+            return;
+        }
+
+        foreach (Weapon weapon in _unlockedWeapons)
+        {
+            if (weapon.AmmoReload)
+            {
+                StartReload();
+                return;
+            }
+        }
     }
 
     private void StartReload()
     {
         _isReloading = true;
         _reloadTimer = _reloadTime;
-        _reloadGroundTimer = 0f;
-        _groundReloading = false;
     }
 
     private void ChangeWeapon(Weapon changeWeapon)
@@ -208,12 +208,13 @@ public class Player : MonoBehaviour
     {
         float scroll = Input.mouseScrollDelta.y;
 
-        if (scroll == 0f)
+        // 해금된 무기가 1개 이하라면 교체할 대상이 없으니
+        if (scroll == 0f || _unlockedWeapons.Count <= 1)
         {
             return;
         }
 
-        int currentIndex = _weapons.IndexOf(_currentWeapon);
+        int currentIndex = _unlockedWeapons.IndexOf(_currentWeapon);
 
         if (scroll > 0f)
         {
@@ -224,17 +225,35 @@ public class Player : MonoBehaviour
             currentIndex--;
         }
 
-        if (currentIndex >= _weapons.Count)
+        if (currentIndex >= _unlockedWeapons.Count)
         {
             currentIndex = 0;
         }
         else if (currentIndex < 0)
         {
             // Count는 총 개수를 알려주는 프로퍼티기 때문에 -1로 최대값을 수정해 줌
-            currentIndex = _weapons.Count - 1;
+            currentIndex = _unlockedWeapons.Count - 1;
         }
 
-        ChangeWeapon(_weapons[currentIndex]);
+        ChangeWeapon(_unlockedWeapons[currentIndex]);
+    }
+
+    public void UnlockWeapon(WeaponType weaponType)
+    {
+        foreach (Weapon weapon in _weapons)
+        {
+            if (weapon.WeaponType == weaponType)
+            {
+                // Contains: 리스트에 이미 있으면 true / !라 없어야만 Add
+                if (!_unlockedWeapons.Contains(weapon))
+                {
+                    _unlockedWeapons.Add(weapon);
+                }
+
+                ChangeWeapon(weapon);
+                return;
+            }
+        }
     }
 
     // TODO: SetTagObjectsActive(false) 넣기
@@ -259,9 +278,9 @@ public class Player : MonoBehaviour
     private void Reset()
     {
         _reloadTimer = 0f;
-        _reloadGroundTimer = 0f;
+        _airTimer = 0f;
+        _groundCount = 0;
         _isReloading = false;
-        _groundReloading = false;
 
         _rigidbody.linearVelocity = Vector2.zero;
 
@@ -285,12 +304,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            if (!_isGrounded)
-            {
-                _groundReloading = true;
-            }
-
-            _isGrounded = true;
+            GroundEnterCheck(collision);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Dangerous"))
@@ -299,14 +313,84 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && IsGroundContact(collision))
+        {
+            _isGrounded = true;
+        }
+    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (!collision.gameObject.CompareTag("Ground"))
         {
-            _isGrounded = false;
-            _groundReloading = false;
-            _reloadGroundTimer = 0f;
+            return;
         }
+
+        _groundCount = Mathf.Max(_groundCount - 1, 0);
+
+        if (_groundCount == 0)
+        {
+            _airTimer = 0f;
+            _isGrounded = false;
+        }
+    }
+
+    // Collider: 누가 충돌했는지 | Collision: 어떻게 충돌했는지
+    private void GroundEnterCheck(Collision2D collision)
+    {
+        bool isLanding = _groundCount == 0;
+
+        _groundCount++;
+
+        bool isGroundContact = IsGroundContact(collision);
+
+        if (isGroundContact)
+        {
+            _isGrounded = true;
+        }
+
+        // 벽, 천장은 즉시 재장전
+        if (IsWallContact(collision))
+        {
+            TryStartReload();
+            return;
+        }
+
+        // 바닥은 체공 허용 시간 이상 떠 있다가 착지하면 재장전
+        if (isGroundContact && isLanding && _airTimer >= _reloadGroundDelay)
+        {
+            TryStartReload();
+        }
+    }
+
+    private bool IsGroundContact(Collision2D collision)
+    {
+        // contactCount: 이번 충돌에 접촉한 개수
+        for (int i = 0; i < collision.contactCount; i++)
+        {
+            // 닿은 면이 바라보는 방향, 바닥이면 위(y +1), 벽은 옆(y 0), 천장은 아래(y -1)
+            if (collision.GetContact(i).normal.y >= GroundNormalY)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool IsWallContact(Collision2D collision)
+    {
+        for (int i = 0; i < collision.contactCount; i++)
+        {
+            if (collision.GetContact(i).normal.y < GroundNormalY)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void OnRespawn(Vector3 respawnPosition)
