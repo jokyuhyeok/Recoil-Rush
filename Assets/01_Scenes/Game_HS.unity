@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 45852589}
   - component: {fileID: 45852588}
   - component: {fileID: 45852587}
+  - component: {fileID: 45852591}
   m_Layer: 0
   m_Name: ShotgunRoomCamera
   m_TagString: Untagged
@@ -375,6 +376,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 795660547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &45852591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45852586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce1e9770983c854a9975a8f157eb004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CinemachineMouseLookAhead
 --- !u!1 &84229352
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +400,7 @@ GameObject:
   - component: {fileID: 84229356}
   - component: {fileID: 84229355}
   - component: {fileID: 84229354}
+  - component: {fileID: 84229358}
   m_Layer: 0
   m_Name: Zone2Camera
   m_TagString: Untagged
@@ -503,6 +517,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 795660547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &84229358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84229352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce1e9770983c854a9975a8f157eb004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CinemachineMouseLookAhead
 --- !u!1 &174417759
 GameObject:
   m_ObjectHideFlags: 0
@@ -4293,6 +4319,7 @@ GameObject:
   - component: {fileID: 335850743}
   - component: {fileID: 335850746}
   - component: {fileID: 335850745}
+  - component: {fileID: 335850747}
   - component: {fileID: 335850744}
   m_Layer: 0
   m_Name: BossRoomCamera
@@ -4410,6 +4437,18 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &335850747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335850742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce1e9770983c854a9975a8f157eb004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CinemachineMouseLookAhead
 --- !u!1 &434080651
 GameObject:
   m_ObjectHideFlags: 0
@@ -6173,6 +6212,7 @@ GameObject:
   - component: {fileID: 995566046}
   - component: {fileID: 995566045}
   - component: {fileID: 995566044}
+  - component: {fileID: 995566048}
   m_Layer: 0
   m_Name: Zone1Camera
   m_TagString: Untagged
@@ -6289,6 +6329,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 795660547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &995566048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995566043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce1e9770983c854a9975a8f157eb004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CinemachineMouseLookAhead
 --- !u!1 &1028125619
 GameObject:
   m_ObjectHideFlags: 0
@@ -7172,6 +7224,7 @@ GameObject:
   - component: {fileID: 1805073168}
   - component: {fileID: 1805073167}
   - component: {fileID: 1805073171}
+  - component: {fileID: 1805073172}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7329,6 +7382,21 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &1805073172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805073166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa82e723951829b459683573cb96eaf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraLookAhead
+  _maxDistance: 4
+  _smoothTime: 0.3
+  _minMouseDistance: 0.2
 --- !u!114 &1822992032 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2949447460592847076, guid: 54674b968294cf04a8591a6e6cbc7fcc, type: 3}
@@ -20248,6 +20316,7 @@ GameObject:
   - component: {fileID: 2088610860}
   - component: {fileID: 2088610859}
   - component: {fileID: 2088610858}
+  - component: {fileID: 2088610861}
   m_Layer: 0
   m_Name: Zone3Camera
   m_TagString: Untagged
@@ -20364,6 +20433,18 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &2088610861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088610856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce1e9770983c854a9975a8f157eb004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CinemachineMouseLookAhead
 --- !u!1 &2110625548
 GameObject:
   m_ObjectHideFlags: 0
