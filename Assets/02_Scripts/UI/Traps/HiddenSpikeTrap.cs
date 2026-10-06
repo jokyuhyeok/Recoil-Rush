@@ -1,21 +1,28 @@
 using System.Collections;
 using UnityEngine;
 
-public class FallingSpikeTrap : MonoBehaviour, IResettable
+public class HiddenSpikeTrap : MonoBehaviour, IResettable
 {
-    [Header("Spike")]
-    [SerializeField] private Rigidbody2D _spikeRb;
-    [SerializeField] private Collider2D _spikeCollider;
+    [Header("Fake Tile")]
+    [SerializeField] private Rigidbody2D _tileRb;
+    [SerializeField] private Collider2D _tileCollider;
+
+    [Header("Ground")]
+    [SerializeField] private Collider2D _groundCollider;
+
+    [Header("Spikes")]
+    [SerializeField] private GameObject[] _spikes;
 
     [Header("Timing")]
     [SerializeField] private float _fallDelay = 0.1f;
+    [SerializeField] private float _colliderOffDelay = 0.08f;
 
     [Header("Fall")]
     [SerializeField] private float _gravityScale = 10f;
     [SerializeField] private float _initialFallSpeed = 3f;
 
-    private Vector2 _startPosition;
-    private float _startRotation;
+    private Vector3 _startPosition;
+    private Quaternion _startRotation;
 
     private bool _triggered;
     private Coroutine _fallCoroutine;
@@ -23,8 +30,8 @@ public class FallingSpikeTrap : MonoBehaviour, IResettable
 
     private void Awake()
     {
-        _startPosition = _spikeRb.position;
-        _startRotation = _spikeRb.rotation;
+        _startPosition = _tileRb.transform.position;
+        _startRotation = _tileRb.transform.rotation;
 
         ResetTrap();
     }
@@ -36,22 +43,38 @@ public class FallingSpikeTrap : MonoBehaviour, IResettable
             return;
 
         _triggered = true;
-
         _fallCoroutine = StartCoroutine(FallRoutine());
     }
 
 
     private IEnumerator FallRoutine()
     {
-        // 잠깐 대기
         yield return new WaitForSeconds(_fallDelay);
 
-        // 떨어지기 시작
-        _spikeRb.bodyType = RigidbodyType2D.Dynamic;
-        _spikeRb.gravityScale = _gravityScale;
+        foreach (GameObject spike in _spikes)
+        {
+            if (spike != null)
+                spike.SetActive(true);
+        }
 
-        _spikeRb.linearVelocity =
+        if (_groundCollider != null && _tileCollider != null)
+        {
+            Physics2D.IgnoreCollision(
+                _tileCollider,
+                _groundCollider,
+                true
+            );
+        }
+
+        _tileRb.bodyType = RigidbodyType2D.Dynamic;
+        _tileRb.gravityScale = _gravityScale;
+        _tileRb.linearVelocity =
             Vector2.down * _initialFallSpeed;
+
+        yield return new WaitForSeconds(_colliderOffDelay);
+
+        if (_tileCollider != null)
+            _tileCollider.enabled = false;
 
         _fallCoroutine = null;
     }
@@ -67,29 +90,41 @@ public class FallingSpikeTrap : MonoBehaviour, IResettable
 
         _triggered = false;
 
-        // 물리 잠시 정지
-        _spikeRb.simulated = false;
+        _tileRb.simulated = false;
 
-        // 속도 제거
-        _spikeRb.linearVelocity = Vector2.zero;
-        _spikeRb.angularVelocity = 0f;
+        _tileRb.linearVelocity = Vector2.zero;
+        _tileRb.angularVelocity = 0f;
 
-        // 원래 위치
-        _spikeRb.position = _startPosition;
-        _spikeRb.rotation = _startRotation;
+        _tileRb.bodyType = RigidbodyType2D.Kinematic;
+        _tileRb.gravityScale = 0f;
 
-        // 다시 고정
-        _spikeRb.bodyType = RigidbodyType2D.Kinematic;
-        _spikeRb.gravityScale = 0f;
+        _tileRb.transform.SetPositionAndRotation(
+            _startPosition,
+            _startRotation
+        );
 
-        // ★ 중요: 천장/바닥과 물리 충돌하지 않음
-        if (_spikeCollider != null)
+        _tileRb.position = _startPosition;
+        _tileRb.rotation = _startRotation.eulerAngles.z;
+
+        if (_tileCollider != null)
+            _tileCollider.enabled = true;
+
+        if (_groundCollider != null && _tileCollider != null)
         {
-            _spikeCollider.enabled = true;
-            _spikeCollider.isTrigger = true;
+            Physics2D.IgnoreCollision(
+                _tileCollider,
+                _groundCollider,
+                false
+            );
         }
 
-        _spikeRb.simulated = true;
+        foreach (GameObject spike in _spikes)
+        {
+            if (spike != null)
+                spike.SetActive(false);
+        }
+
+        _tileRb.simulated = true;
 
         Physics2D.SyncTransforms();
     }
