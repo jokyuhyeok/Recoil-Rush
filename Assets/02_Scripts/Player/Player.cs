@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _reloadTime = 2f;
     [SerializeField] private float _reloadGroundDelay = 0.2f;
 
+    [SerializeField] private string _resetTag = "Ground";
+
     private List<Weapon> _weapons = new List<Weapon>();
     private Weapon _currentWeapon;
     private PlayerAim _playerAIm;
@@ -24,6 +26,8 @@ public class Player : MonoBehaviour
     public event Action OnDeath;
 
     private Rigidbody2D _rigidbody;
+
+    private GameObject[] _resetTagObject;
 
     public Weapon CurrentWeapon => _currentWeapon;
     public bool IsReloading => _isReloading;
@@ -50,6 +54,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         RespawnManager.Instance.OnRespawnEvent += OnRespawn;
+        _resetTagObject = GameObject.FindGameObjectsWithTag(_resetTag);
     }
 
     private void Update()
@@ -232,6 +237,15 @@ public class Player : MonoBehaviour
         ChangeWeapon(_weapons[currentIndex]);
     }
 
+    // TODO: SetTagObjectsActive(false) 넣기
+    private void SetTagObjectActive(bool isActive)
+    {
+        foreach (GameObject resetTagObject in _resetTagObject)
+        {
+            resetTagObject.SetActive(isActive);
+        }
+    }
+
 
     private void Die()
     {
@@ -255,6 +269,8 @@ public class Player : MonoBehaviour
         {
             weapon.Reload();
         }
+
+        SetTagObjectActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

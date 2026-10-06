@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 1528791186144689551}
   - component: {fileID: 90324089730873121}
   - component: {fileID: 6688626903228502571}
+  - component: {fileID: -9056046370644596006}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -131,6 +132,7 @@ Transform:
   - {fileID: 4042267712204740403}
   - {fileID: 9121998829106011764}
   - {fileID: 726706733528176045}
+  - {fileID: 6408108973995753189}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8764389557059062983
@@ -291,23 +293,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossController
   _stat: {fileID: 11400000, guid: f7a2362c13c08d342b77ad7d32544fe7, type: 2}
-  _laserBeamObject: {fileID: 0}
-  _dronePrefab: {fileID: 1243293954406359395, guid: 14feceb37f901754daa602af23c27a8b, type: 3}
-  _bombPrefab: {fileID: 0}
-  _droneSpawnPoints: []
-  _ghostPrefab: {fileID: 2523284707451859810, guid: 1d2e5fbc62c324845a8ffe5dad006fbf, type: 3}
   _spriteRenderer: {fileID: 8764389557059062983}
   _firePoints:
   - {fileID: 4042267712204740403}
   - {fileID: 9121998829106011764}
-  _bulletPrefab: {fileID: 1353503040259925186, guid: b42d3df310d103448a44482489b363a3, type: 3}
   _laserFirePoint: {fileID: 726706733528176045}
-  _bossLaserPrefab: {fileID: 7862357097906083089, guid: f95aa90d063bc5b4494bb83f65233f0a, type: 3}
-  PlayerTransform: {fileID: 0}
-  Rigidbody: {fileID: 0}
-  Anim: {fileID: 0}
-  IsHittingLeftWall: 0
-  IsHittingRightWall: 0
+  _droneSpawnPoints: []
+  _rotatingLaserSkill: {fileID: -9056046370644596006}
+  _redSphereEffect: {fileID: 63744603643204614}
+  _centerAirPosition: {fileID: 0}
 --- !u!114 &6688626903228502571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,3 +316,93 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossHealth
   _stat: {fileID: 11400000, guid: f7a2362c13c08d342b77ad7d32544fe7, type: 2}
   _controller: {fileID: 90324089730873121}
+--- !u!114 &-9056046370644596006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788299274323883459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b4db5862d982748b3d3eda004f076b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossLaserTest
+  _warningSprite: {fileID: 1220450566015627945, guid: bb69b9da5104caf4ab7e2dfbeb0c524d, type: 3}
+  _laserSprite: {fileID: -1441039701986354734, guid: ea2b80d6db1a597428f7a5dc157ebc5f, type: 3}
+  _laserWarningTime: 1
+  _laserLength: 30
+  _laserSpeed: 60
+  _minRotateCount: 1
+  _maxRotateCount: 4
+--- !u!1001 &356044092232922366
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1762722423737500353}
+    m_Modifications:
+    - target: {fileID: 293467720231100664, guid: 24c14430295020c46b12883429865f92, type: 3}
+      propertyPath: m_Name
+      value: Red_Spher_Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 293467720231100664, guid: 24c14430295020c46b12883429865f92, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637955236137339419, guid: 24c14430295020c46b12883429865f92, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637955236137339419, guid: 24c14430295020c46b12883429865f92, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637955236137339419, guid: 24c14430295020c46b12883429865f92, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637955236137339419, guid: 24c14430295020c46b12883429865f92, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637955236137339419, guid: 24c14430295020c46b12883429865f92, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637955236137339419, guid: 24c14430295020c46b12883429865f92, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637955236137339419, guid: 24c14430295020c46b12883429865f92, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637955236137339419, guid: 24c14430295020c46b12883429865f92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637955236137339419, guid: 24c14430295020c46b12883429865f92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637955236137339419, guid: 24c14430295020c46b12883429865f92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 24c14430295020c46b12883429865f92, type: 3}
+--- !u!1 &63744603643204614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 293467720231100664, guid: 24c14430295020c46b12883429865f92, type: 3}
+  m_PrefabInstance: {fileID: 356044092232922366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6408108973995753189 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6637955236137339419, guid: 24c14430295020c46b12883429865f92, type: 3}
+  m_PrefabInstance: {fileID: 356044092232922366}
+  m_PrefabAsset: {fileID: 0}

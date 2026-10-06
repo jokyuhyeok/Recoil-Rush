@@ -20,10 +20,12 @@ public class TestBullet : MonoBehaviour
         Destroy(gameObject, _bulletLifeTime); // 일정 시간 후 총알은 자동 파괴됩니다. (인스펙터에서 조정가능)
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.CompareTag("Player") == false)
+        if (collider.CompareTag("Player") == false || collider.CompareTag("Enemy"))
             return;
+
+        collider.GetComponent<IDamageable>()?.TakeDamage(_bulletDamage, (transform.position - collider.transform.position.normalized));
 
         Destroy(gameObject);
     }

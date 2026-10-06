@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+// 레이저 공격 로직은 BossController.cs에 ShootLaserEvent로 구현
 public class Cmd_LaserAndDrone : IBossCommand
 {
     public IEnumerator Execute(BossController boss)
@@ -10,7 +11,6 @@ public class Cmd_LaserAndDrone : IBossCommand
         boss.LaserSequenceIndex = 0;
 
         Debug.Log("<color=magenta>보스: 3단 레이저 패턴 시작! (하->상->중)</color>");
-
         boss.Anim.Play("SpecialAttack");
 
         float timeout = 10f;
