@@ -48,6 +48,8 @@ public class WeaponPickup : MonoBehaviour
 
         player.UnlockWeapon(_weaponType);
 
+        RespawnManager.Instance.UpdateCheckpoint(transform.position);
+
         gameObject.SetActive(false);
     }
 }
