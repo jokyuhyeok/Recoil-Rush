@@ -3,6 +3,9 @@ using System;
 
 public abstract class Weapon : MonoBehaviour
 {
+    [Header("Weapon Type")]
+    [SerializeField] private WeaponType _weaponType;
+
     [Header("Ammo")]
     [SerializeField] private int _magazine = 6;
 
@@ -22,6 +25,8 @@ public abstract class Weapon : MonoBehaviour
 
     private int _currentAmmo;
     private float _fireCooldown;
+
+    public WeaponType WeaponType => _weaponType;
 
     public Transform FirePoint => _firePoint;
 
