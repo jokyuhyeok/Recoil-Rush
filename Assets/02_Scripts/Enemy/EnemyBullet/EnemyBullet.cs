@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] private float _bulletSpeed = 10f;
-    [SerializeField] private int _bulletDamage = 1;
     [SerializeField] private float _bulletLifeTime = 3f;
+    [SerializeField] private GameObject _impactParticle;
 
     private Rigidbody2D _rigidbody;
 
@@ -24,14 +24,39 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 부딪힌 오브젝트가 맞을 수 있는 대상(IDamageable)인지 확인합니다.
-        IDamageable damageable = collision.GetComponent<IDamageable>();
+        if (collision.isTrigger) return;
 
-        if (damageable != null)
+        if (collision.CompareTag("Player"))
         {
-            // Player는 넉백이 없으므로 총알 데미지만 넘겨주겠습니다.
-            damageable.TakeDamage(_bulletDamage, Vector3.zero);
+            Destroy(gameObject);
+            return;
         }
+
+        if (_impactParticle == null)
+        {
+            Debug.LogError("적 총알이 부서질 때의 파티클을 넣어주세요!");
+            return;
+        }
+
+        Vector2 contactPoint = collision.ClosestPoint(transform.position);
+        Vector2 bulletDirection = _rigidbody.linearVelocity.normalized;
+
+        RaycastHit2D hit =
+            Physics2D.Raycast(transform.position - (Vector3)bulletDirection * 0.5f, bulletDirection, 1.5f);
+        Quaternion impactRotation = Quaternion.identity;
+
+        if (hit.collider != null)
+        {
+            // 벽의 바깥 방향(normal)으로 파티클 꺾기
+            impactRotation = Quaternion.FromToRotation(Vector2.up, hit.normal);
+        }
+        else
+        {
+            // 예외: 튕겨나온 반대 방향으로 꺾기
+            impactRotation = Quaternion.FromToRotation(Vector2.up, -bulletDirection);
+        }
+
+        Instantiate(_impactParticle, contactPoint, impactRotation);
 
         // -------------------------------------------------------------
         // 🎯 [Game Feel: 총알이 어딘가에 부딪혔을 때 나올 연출입니다.]

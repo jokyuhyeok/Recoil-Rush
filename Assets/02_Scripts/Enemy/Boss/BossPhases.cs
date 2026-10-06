@@ -16,7 +16,7 @@ public interface IBossPhase
 1. 대기 (잠시 멈춤 - SO 데이터 사용)
 new Cmd_Wait(stat.WaitTime)
 
-2. 대기 (잠시 멈춤 - 직접 시간 입력 시)
+2. 대기 (잠시 멈춤 - 직접 시간 입력 )
 new Cmd_Wait(0.5f)
 
 3. 전방 돌진 (플레이어 쪽으로 대시)
@@ -28,7 +28,8 @@ new Cmd_BackwardDash(stat.BackDashSpeed, stat.BackDashDuration, stat.BackDashCha
 5. 3단 레이저 & 드론 소환
 new Cmd_LaserAndDrone()
 
-(※ 참고: 고무폭탄 공격(Cmd_ThrowBomb) 패턴은 폐기/삭제되었습니다.)
+6. 레이저 회전 공격
+new Cmd_CenterRotatingLaser()
 ========================================================================
 */
 
@@ -39,14 +40,39 @@ public class BossPhase1 : IBossPhase
     {
         return new List<IBossCommand>
         {
+            // 1. 등장 후 가벼운 기싸움 (대기)
             new Cmd_Wait(stat.WaitTime),
+
+            // 2. 갑작스러운 맹공: 거리를 순식간에 좁혀 들이받음
             new Cmd_ForwardDash(stat.DashSpeed, stat.DashDuration, stat.DashChargeTime, stat.DashGhostInterval),
+            
+            // 3. 플레이어의 근접 반격을 여유롭게 회피하며 거리 벌리기
+            new Cmd_Wait(0.2f),
+            new Cmd_BackwardDash(stat.BackDashSpeed, stat.BackDashDuration, stat.BackDashChargeTime, stat.BackDashGhostInterval),
+
+            // 4. 거리가 벌어진 틈을 타 화망 전개 (SO에 세팅된 양팔 부채꼴 탄막 사격)
+            new Cmd_Wait(0.3f),
+            new Cmd_SpreadShoot(
+                stat.LeftBulletCount, stat.LeftStartAngle, stat.LeftEndAngle, stat.LeftFireDelay, stat.LeftBulletSpeed,
+                stat.RightBulletCount, stat.RightStartAngle, stat.RightEndAngle, stat.RightFireDelay, stat.RightBulletSpeed
+            ),
+
+            // 5. 플레이어가 총알을 피하며 숨을 고를 시간을 잠시 줌 (완급 조절)
             new Cmd_Wait(stat.WaitTime),
-            new Cmd_BackwardDash(stat.BackDashSpeed, stat.BackDashDuration, stat.BackDashChargeTime,
-                stat.BackDashGhostInterval),
-            new Cmd_Wait(stat.WaitTime),
+
+            // 6. 지옥 시작: 맵에 폭탄 드론 3대를 깔면서 위/아래 3단 레이저로 퇴로 차단
             new Cmd_LaserAndDrone(),
-            new Cmd_Wait(0.1f)
+
+            // 7. 레이저가 끝나자마자 쉴 틈 주지 않고 짧은 충전 후 기습 돌진!
+            new Cmd_Wait(0.2f),
+            new Cmd_ForwardDash(stat.DashSpeed * 1.2f, stat.DashDuration, 0.1f, stat.DashGhostInterval), // 평소보다 빠르고 충전도 짧게
+
+            // 8. 1페이즈의 하이라이트 (공중 도약 후 풍차 레이저)
+            new Cmd_Wait(0.5f),
+            new Cmd_CenterRotatingLaser(),
+            
+            // 9. 궁극기 시전 후 오버히트 (착지 후 길게 대기 - 플레이어의 프리딜 타임)
+            new Cmd_Wait(stat.WaitTime * 1.5f)
         };
     }
 }

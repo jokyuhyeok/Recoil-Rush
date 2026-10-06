@@ -44,7 +44,17 @@ public class EnemyBase : MonoBehaviour, IDamageable
 
     protected virtual void Update()
     {
-        if (playerTransform == null) return;
+        if (playerTransform == null || !playerTransform.gameObject.activeInHierarchy)
+        {
+            // 플레이어가 사망 등으로 오브젝트가 없을 때, 대기상태로 전환합니다. 
+            if (currentState != EnemyState.Idle && currentState != EnemyState.Dead)
+            {
+                ChangeState(EnemyState.Idle);
+            }
+
+            return;
+        }
+
         distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position); // 플레이어와의 거리를 계산합니다.
 
         // 현재 상태에 맞는 메서드를 실행합니다.

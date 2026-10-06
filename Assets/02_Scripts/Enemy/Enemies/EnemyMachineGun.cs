@@ -1,10 +1,8 @@
 using UnityEngine;
 
 // 기본 적 2 (기관총 사수)
-// 이동속도, 감지범위, 공격범위, 경고 시간을 가집니다. (소총수와 동일)
 public class EnemyMachineGun : EnemyBase
 {
-    [SerializeField] private EnemyBullet _bulletPrefab;
     [SerializeField] private Transform _firePoint;
 
     private float _currentAlarmTime = 0f;
@@ -12,39 +10,42 @@ public class EnemyMachineGun : EnemyBase
     private float _reloadTimer = 0f;
     private int _currentBulletRemain;
     private bool _isReloading = false;
+    private bool _isDead = false;
+
+    private bool _isAimLocked = false;
+    private Vector2 _lockedAimedDirection;
 
     private MachineGunStatDataSO _machineGunStatDataSo => _baseStatData as MachineGunStatDataSO;
 
     protected override void Start()
     {
         base.Start();
-        _currentBulletRemain = _machineGunStatDataSo.MagazineSize; // 초기에 바로 공격할 수 있게 장전을 해놓습니다.
+        _currentBulletRemain = _machineGunStatDataSo.MagazineSize; // 초기에 바로 공격할 수 있게 장전
     }
 
     protected override void UpdateIdle()
     {
-        // 플레이어가 감지범위 안으로 들어왔을 시, 경고 단계로 넘어갑니다.
         if (distanceToPlayer <= _baseStatData.DetectRange)
         {
-            _currentAlarmTime = 0f; // 경고 시간 초기화
+            _currentAlarmTime = 0f;
             ChangeState(EnemyState.Alarm);
         }
     }
 
-    // 경고 단계: "!", "플레이어 바라보기" 등으로 플레이어를 감지함을 알려주는 상태입니다.
+    // 경고 단계: "!", "플레이어 바라보기" 등으로 플레이어를 감지함을 알려주는 상태
     protected override void UpdateAlarm()
     {
         LookAtPlayer();
 
-        // 플레이어가 감지범위를 벗어나면 Idle로 돌아갑니다. 
+        // 플레이어가 감지범위를 벗어나면 Idle로 전환 
         if (distanceToPlayer > _baseStatData.DetectRange)
         {
             ChangeState(EnemyState.Idle);
             return;
         }
 
-        // 플레이어가 경고 기간 내에 공격 범위로 들어오면 즉시 Attack으로 진입합니다.
-        if (distanceToPlayer <= _baseStatData.AttackRange)
+        // 플레이어가 경고 기간 내에 공격 범위로 들어오면 즉시 Attack으로 진입
+        if (distanceToPlayer <= _baseStatData.AttackRange && CanShootTarget())
         {
             ChangeState(EnemyState.Attack);
             return;
@@ -52,7 +53,7 @@ public class EnemyMachineGun : EnemyBase
 
         _currentAlarmTime += Time.deltaTime;
 
-        // 경고 시간이 끝나면 Trace로 진입합니다.
+        // 경고 시간이 끝나면 Trace로 진입
         if (_currentAlarmTime >= _baseStatData.AlarmTime)
         {
             ChangeState(EnemyState.Trace);
@@ -61,97 +62,81 @@ public class EnemyMachineGun : EnemyBase
 
     protected override void UpdateTrace()
     {
-        // 플레이어가 감지범위를 벗어나면 Idle 상태로 돌아갑니다.
+        _isAimLocked = false;
+
         if (distanceToPlayer > _baseStatData.DetectRange)
         {
             ChangeState(EnemyState.Idle);
             return;
         }
 
-        // 공격 범위 안으로 들어오면 Attack으로 전환합니다.
         if (distanceToPlayer <= _baseStatData.AttackRange)
         {
             ChangeState(EnemyState.Attack);
             return;
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position,
+        Vector2 targetPosition = new Vector2(playerTransform.position.x, transform.position.y);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition,
             _baseStatData.Speed * Time.deltaTime);
         LookAtPlayer();
     }
 
     protected override void UpdateAttack()
     {
-        // 플레이어가 공격 범위를 벗어나면 Trace 상태로 전환합니다.
-        if (distanceToPlayer > _baseStatData.AttackRange)
+        // 플레이어가 공격 범위를 벗어나면 Trace 상태로 전환
+        float outOfRangeBuffer = 2.0f;
+        if (distanceToPlayer > _baseStatData.AttackRange + outOfRangeBuffer)
         {
+            _isAimLocked = false;
             ChangeState(EnemyState.Trace);
             return;
         }
 
-        LookAtPlayer();
-
-        // 연사 후 재장전 로직입니다.
-        if (_isReloading)
+        // 벽에 막혔을 땐 조준만 풀고 대기
+        if (!CanShootTarget())
         {
-            _reloadTimer += Time.deltaTime;
-
-            if (_reloadTimer >= _machineGunStatDataSo.ReloadTime)
-            {
-                _isReloading = false;
-                _currentBulletRemain = _machineGunStatDataSo.MagazineSize;
-                _fireTimer = _machineGunStatDataSo.FireRate;
-                Debug.Log("<color=yellow>기관총 장전 완료! 다시 쏜다!</color>");
-            }
-
+            _isAimLocked = false;
             return;
         }
 
+        // 쏘기 전 한 번만 Player에게 조준 고정
+        if (!_isAimLocked)
+        {
+            LookAtPlayer();
+            Vector2 targetPosition = GetTargetPosition();
+            _lockedAimedDirection = (targetPosition - (Vector2)_firePoint.position).normalized;
+            _isAimLocked = true;
+        }
+
+        // 재장전 로직
+        if (_isReloading)
+        {
+            LookAtPlayer();
+            _reloadTimer += Time.deltaTime;
+
+            if (_reloadTimer < _machineGunStatDataSo.ReloadTime) return;
+
+            // 장전 완료
+            _isReloading = false;
+            _currentBulletRemain = _machineGunStatDataSo.MagazineSize;
+            _fireTimer = _machineGunStatDataSo.FireRate;
+            _isAimLocked = false;
+            return;
+        }
+
+        // 연사 로직
         _fireTimer += Time.deltaTime;
 
-        // 총알 연사 로직입니다.
-        if (_fireTimer >= _machineGunStatDataSo.FireRate)
+        if (_fireTimer < _machineGunStatDataSo.FireRate) return;
+
+        _fireTimer = 0f;
+        if (anim != null)
         {
-            // 사격 애니메이션 실행
-            if (anim != null)
-            {
-                anim.SetTrigger("Attack");
-                ShootBulletEvent();
-                _fireTimer = 0f;
-            }
+            anim.SetTrigger("Attack");
         }
-    }
 
-    private void ShootBulletEvent()
-    {
-        // 총알 즉시 생성 및 발사
-        if (_bulletPrefab == null || _firePoint == null || playerTransform == null) return;
-
-        EnemyBullet bullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
-        Vector2 direction = (playerTransform.position - _firePoint.position).normalized;
-        bullet.FireBullet(direction);
-
-        // -------------------------------------------------------------
-        // 🎯 [Game Feel: 총을 발사할 때의 연출입니다.]
-        // 1. Muzzle Flash (총구 섬광)
-        // (추천 구현 방법: _firePoint.position에 총구 화염 이펙트를 띄우고 0.1초 뒤 삭제)
-        //
-        // 2. Gun SFX (총기 사운드)
-        // (추천 구현 방법: 권총/소총 특유의 날카롭고 가벼운 발사음 재생)
-        //
-        // 3. Gun Kick Animation (총구 반동 애니메이션)
-        // (추천 구현 방법: 적 스프라이트 전체를 발사 반대 방향으로 아주 짧게 DOShakePosition 하거나 탄피 파티클 배출)
-        // -------------------------------------------------------------
-
-        _currentBulletRemain--;
-
-        // 남은 총알이 0발일 때, 재장전에 들어갑니다.
-        if (_currentBulletRemain <= 0)
-        {
-            _isReloading = true;
-            _reloadTimer = 0f;
-            Debug.Log("<color=orange>기관총 탄창 방전! 3초간 재장전 시작!</color>");
-        }
+        ShootBulletEvent();
     }
 
     protected override void UpdateKnockback()
@@ -161,14 +146,85 @@ public class EnemyMachineGun : EnemyBase
 
     protected override void UpdateDead()
     {
-        // [구현 예정 : 기관총 사수 사망] [가이드]
-        // player 무기에 따라 다른 로직을 적용할지는 미정입니다. (샷건이랑 권총에 맞은 리액션이 같으면 좀... 그렇긴 해서...)
-        // 1. 콜라이더 판정 끄기 (길막 방지)
-        // 2. receivedKnockback(총알 방향) 벡터에 Y축(위쪽) 힘을 섞어 포물선 궤도 생성
-        // 3. 해당 벡터로 AddForce 적용 및 AddTorque로 회전
-        // 4. 바닥에 떨어지고 n초 후 파괴 (Destroy)
+        if (_isDead) return;
+        _isDead = true;
 
+        if (_machineGunStatDataSo.DeathParticle == null)
+        {
+            Debug.LogError("기관총 사망 파티클 넣어주세요!");
+            return;
+        }
+
+        Instantiate(_machineGunStatDataSo.DeathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+
+        CameraController.Instance.StartShake(0.5f, 0.2f);
         Destroy(gameObject);
-        Debug.Log("<color=red>기관총 사수: 으아악! (사망)</color>");
+    }
+
+    // 애니메이션 이벤트 호출 메서드
+    private void ShootBulletEvent()
+    {
+        if (_machineGunStatDataSo.BulletPrefab == null || _firePoint == null || playerTransform == null) return;
+
+        EnemyBullet bullet = Instantiate(_machineGunStatDataSo.BulletPrefab, _firePoint.position, Quaternion.identity);
+        Vector2 direction = _lockedAimedDirection;
+
+        // 탄 퍼짐 계산
+        float halfSpread = _machineGunStatDataSo.SpreadAngle / 2f;
+        float randomAngle = UnityEngine.Random.Range(-halfSpread, halfSpread);
+        Vector2 spreadDirection = Quaternion.Euler(0, 0, randomAngle) * direction;
+
+        bullet.FireBullet(spreadDirection);
+
+        // 총구 반동
+        rb.AddForce(-direction * _machineGunStatDataSo.ShootRecoilPower, ForceMode2D.Impulse);
+
+        // 총구 화염
+        if (_machineGunStatDataSo.MuzzleFlashParticle == null)
+        {
+            Debug.LogError("총구 화염 파티클 넣어주세요!");
+            return;
+        }
+
+        Instantiate(_machineGunStatDataSo.MuzzleFlashParticle, _firePoint.position, _firePoint.rotation);
+
+        CameraController.Instance.StartPerlinShake(0.30f, 18f, 0.05f);
+
+        _currentBulletRemain--;
+
+        // 재장전
+        if (_currentBulletRemain <= 0)
+        {
+            _isReloading = true;
+            _reloadTimer = 0f;
+            Debug.Log("<color=orange>기관총 탄창 방전.. 재장전 시작!</color>");
+        }
+    }
+
+    private Vector2 GetTargetPosition()
+    {
+        if (playerTransform == null) return Vector2.zero;
+        return playerTransform.position + Vector3.up * 0.8f;
+    }
+
+    private bool CanShootTarget()
+    {
+        Vector2 targetPos = GetTargetPosition();
+        Vector2 direction = targetPos - (Vector2)_firePoint.position;
+        float distance = Vector2.Distance(_firePoint.position, targetPos);
+
+        // 각도 제한 체크
+        if (distance < 1.5f) return true;
+
+        float angle = Mathf.Atan2(direction.y, Mathf.Abs(direction.x)) * Mathf.Rad2Deg;
+        if (angle < -_machineGunStatDataSo.MaxShootAngle || angle > _machineGunStatDataSo.MaxShootAngle)
+        {
+            return false;
+        }
+
+        // 장애물 체크
+        RaycastHit2D hit = Physics2D.Raycast(_firePoint.position, direction.normalized, distance,
+            _machineGunStatDataSo.ObstacleMask);
+        return hit.collider == null;
     }
 }

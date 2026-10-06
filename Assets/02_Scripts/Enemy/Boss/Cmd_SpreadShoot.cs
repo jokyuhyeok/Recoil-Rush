@@ -10,8 +10,7 @@ public class Cmd_SpreadShoot : IBossCommand
     private int _rCount;
     private float _rStart, _rEnd, _rDelay, _rSpeed;
 
-    public Cmd_SpreadShoot(int lCount, float lStart, float lEnd, float lDelay, float lSpeed, int rCount, float rStart,
-        float rEnd, float rDelay, float rSpeed)
+    public Cmd_SpreadShoot(int lCount, float lStart, float lEnd, float lDelay, float lSpeed, int rCount, float rStart, float rEnd, float rDelay, float rSpeed)
     {
         _lCount = lCount;
         _lStart = lStart;
@@ -32,18 +31,16 @@ public class Cmd_SpreadShoot : IBossCommand
         Debug.Log("<color=yellow>보스: 사격 폼 잡기</color>");
 
         yield return new WaitForSeconds(0.8f);
-
         Debug.Log($"<color=yellow>보스: 양팔 사격 시작!</color>");
 
-        // 양쪽 사격이 끝났는지 체크하는 변수입니다. 
+        // 양쪽 사격이 끝났는지 체크
         bool isLeftDone = false;
         bool isRightDone = false;
 
-        // 왼쪽 총구 사격 코루틴을 시작합니다. (비동기 병렬 실행으로 오른쪽과 동시에 쏩니다.)
+        // 사격 코루틴 시작 (비동기 병렬 실행)
         if (boss.FirePoints.Length > 0)
         {
-            boss.StartCoroutine(ShootRoutine(boss, boss.FirePoints[0], _lCount, _lStart, _lEnd, _lDelay, _lSpeed,
-                () => isLeftDone = true));
+            boss.StartCoroutine(ShootRoutine(boss, boss.FirePoints[0], _lCount, _lStart, _lEnd, _lDelay, _lSpeed, () => isLeftDone = true));
         }
         else
         {
@@ -51,11 +48,9 @@ public class Cmd_SpreadShoot : IBossCommand
             isLeftDone = true;
         }
 
-        // 오른쪽 총구 사격 코루틴도 시작합니다.
         if (boss.FirePoints.Length > 1)
         {
-            boss.StartCoroutine(ShootRoutine(boss, boss.FirePoints[1], _rCount, _rStart, _rEnd, _rDelay, _rSpeed,
-                () => isRightDone = true));
+            boss.StartCoroutine(ShootRoutine(boss, boss.FirePoints[1], _rCount, _rStart, _rEnd, _rDelay, _rSpeed, () => isRightDone = true));
         }
         else
         {
@@ -68,22 +63,20 @@ public class Cmd_SpreadShoot : IBossCommand
             yield return null;
         }
 
-        Debug.Log("<color=yellow>보스: 양팔 사격이 끝났습니다.</color>");
+        Debug.Log("<color=yellow>보스: 양팔 사격 끝!</color>");
     }
 
-    private static IEnumerator ShootRoutine(BossController boss, Transform firePoint, int count, float start, float end,
-        float delay, float speed, Action onComplete)
+    private static IEnumerator ShootRoutine(BossController boss, Transform firePoint, int count, float start, float end, float delay, float speed, Action onComplete)
     {
         for (int i = 0; i < count; i++)
         {
-            float maxStpes = Mathf.Max(1f, count - 1);
-            float t = (float)i / maxStpes;
+            float maxSteps = Mathf.Max(1f, count - 1);
+            float t = (float)i / maxSteps;
             float currentAngle = Mathf.Lerp(start, end, t);
 
             Vector2 fireDirection = Quaternion.Euler(0, 0, currentAngle) * Vector2.left;
 
-            GameObject bullet =
-                UnityEngine.Object.Instantiate(boss.BulletPrefab, firePoint.position, Quaternion.identity);
+            GameObject bullet = UnityEngine.Object.Instantiate(boss.Stat.BulletPrefab, firePoint.position, Quaternion.identity);
             BossBullet bossBullet = bullet.GetComponent<BossBullet>();
 
             if (bossBullet != null)

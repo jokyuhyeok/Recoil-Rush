@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3049348116587001974}
   - component: {fileID: 1441611445395233385}
   m_Layer: 7
-  m_Name: EnemyBullet
+  m_Name: EnemyBullet_MachineGun
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,6 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0ed7bdd47220744aaafb96cfe9e026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet
-  _bulletSpeed: 20
-  _bulletDamage: 20
+  _bulletSpeed: 10
   _bulletLifeTime: 3
+  _impactParticle: {fileID: 8765659098741916620, guid: 48c6d640b1618064a94d624dfb8b59a7, type: 3}
