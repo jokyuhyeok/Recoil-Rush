@@ -143,6 +143,12 @@ MonoBehaviour:
   _baseStatData: {fileID: 11400000, guid: 501f98afae3931f478dc60db766c2916, type: 2}
   _bulletPrefab: {fileID: 1441611445395233385, guid: c8b027ed93d7ec34fa2961d04600b580, type: 3}
   _firePoint: {fileID: 5888493977975284625}
+  _deathParticle: {fileID: 2198790418200276517, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+  _muzzleFlashParticle: {fileID: 8154968109357767497, guid: 0d762ab2b0724f9498cd6730698133eb, type: 3}
+  _obstacleMask:
+    serializedVersion: 2
+    m_Bits: 51
+  _maxShootAngle: 45
 --- !u!70 &157889799504271550
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -192,8 +198,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
+  m_Mass: 2
+  m_LinearDamping: 3
   m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}

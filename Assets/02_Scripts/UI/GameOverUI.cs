@@ -1,26 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Image))]
 public class GameOverUI : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Image _gameOverImage;
     [SerializeField] private Sprite[] _gameOverSprites;
 
     [Header("Animation Easing Settings")]
     [SerializeField, Range(0f, 2f)] private float _enableTime = 0.5f;
     [SerializeField, Range(0f, 2f)] private float _disableTime = 0f;
 
+    private Image _gameOverImage;
     private Player _player;
     private RespawnManager _respawnManager;
+
     private Coroutine _easingCoroutine;
 
 
     private void Awake()
     {
-        if (_gameOverImage != null)
-            return;
-
         _gameOverImage = GetComponent<Image>();
     }
 

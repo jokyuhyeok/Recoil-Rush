@@ -891,7 +891,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -973,8 +973,8 @@ TextureImporter:
         y: 384
         width: 96
         height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2285,6 +2285,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: vfx_explosion-Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1152
+        height: 480
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0c022417a051084c9745da002e6a89e
+      internalID: -1427614343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -2358,6 +2380,7 @@ TextureImporter:
       vfx_explosion-Sheet_58: -1112676700049139241
       vfx_explosion-Sheet_59: 6493020103841946042
       vfx_explosion-Sheet_6: 881906466227027137
+      vfx_explosion-Sheet_60: -1427614343
       vfx_explosion-Sheet_7: -2531457681437956885
       vfx_explosion-Sheet_8: -5186513426814775987
       vfx_explosion-Sheet_9: 8852078804466859452

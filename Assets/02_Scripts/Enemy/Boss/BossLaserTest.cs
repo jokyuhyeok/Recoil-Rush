@@ -15,13 +15,12 @@ public class BossLaserTest : MonoBehaviour
     [SerializeField] private int _maxRotateCount = 4;
 
     private const float Turn = 180f;
-
     private Transform _pivot;
-
     private GameObject[] _warningLaser = new GameObject[2];
     private GameObject[] _laser = new GameObject[2];
-
     private Coroutine _skillCoroutine;
+
+    public bool IsPlaying => _skillCoroutine != null;
 
     private void Awake()
     {
@@ -131,6 +130,8 @@ public class BossLaserTest : MonoBehaviour
 
         SpriteRenderer spriteRenderer = laser.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprite;
+
+        spriteRenderer.sortingOrder = 50;
 
         // Border: Sprite Editor에서 맞춘 초록색 선
         // Sliced: Border 바깥(양 끝)은 고정, 가운데만 늘어남 / size보다 먼저 설정해야 적용됨
