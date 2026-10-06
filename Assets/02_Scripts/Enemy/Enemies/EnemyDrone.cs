@@ -213,7 +213,8 @@ public class EnemyDrone : EnemyBase
 
             if (_droneStatDataSo.ExplosionPrefab == null)
             {
-                Debug.Log("드론 폭발 프리팹을 넣어주세요!");
+                Debug.LogError("드론 폭발 프리팹을 넣어주세요!");
+                return;
             }
 
             Instantiate(_droneStatDataSo.ExplosionPrefab, transform.position, Quaternion.identity);
@@ -248,6 +249,7 @@ public class EnemyDrone : EnemyBase
         if (_chargeEffectObject == null)
         {
             Debug.LogError("대포 차징 이펙트 넣어주세요.");
+            return;
         }
 
         _chargeEffectObject.SetActive(true);
@@ -263,6 +265,7 @@ public class EnemyDrone : EnemyBase
             if (_chargeEffectObject == null)
             {
                 Debug.LogError("대포 차징 이펙트 넣어주세요.");
+                return;
             }
 
             _chargeEffectObject.SetActive(false);

@@ -152,6 +152,7 @@ public class EnemyMachineGun : EnemyBase
         if (_machineGunStatDataSo.DeathParticle == null)
         {
             Debug.LogError("기관총 사망 파티클 넣어주세요!");
+            return;
         }
 
         Instantiate(_machineGunStatDataSo.DeathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
@@ -181,7 +182,8 @@ public class EnemyMachineGun : EnemyBase
         // 총구 화염
         if (_machineGunStatDataSo.MuzzleFlashParticle == null)
         {
-            Debug.LogError("총구 화염 파티클 넣어주세요! 안 그러면 총알을 무한대로 쏘는 오류가 납니다.");
+            Debug.LogError("총구 화염 파티클 넣어주세요!");
+            return;
         }
 
         Instantiate(_machineGunStatDataSo.MuzzleFlashParticle, _firePoint.position, _firePoint.rotation);
