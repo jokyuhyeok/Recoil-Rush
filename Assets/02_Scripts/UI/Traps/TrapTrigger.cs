@@ -22,11 +22,18 @@ public class TrapTrigger : MonoBehaviour, IResettable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("★ 트리거 접촉: " + collision.name);
+
         if (!collision.CompareTag(_targetTag))
+        {
+            Debug.Log("★ 태그 불일치: " + collision.tag);
             return;
+        }
 
         if (_triggerOnce && _triggered)
             return;
+
+        Debug.Log("★ GenericTrigger 발동!");
 
         _triggered = true;
 
@@ -37,7 +44,6 @@ public class TrapTrigger : MonoBehaviour, IResettable
             _triggerCollider.enabled = false;
         }
     }
-
     public void ResetTrap()
     {
         _triggered = false;

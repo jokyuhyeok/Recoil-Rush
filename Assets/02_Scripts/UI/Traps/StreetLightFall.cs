@@ -3,16 +3,20 @@ using UnityEngine;
 
 public class StreetLightFall : MonoBehaviour, IResettable
 {
+    [Header("Components")]
     [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private Collider2D _dangerCollider;
 
-    // HingeJoint2D를 사용 중이면 연결
+    // Player 타격 전용 Trigger Collider
+    [SerializeField] private Collider2D _hitCollider;
+
     [SerializeField] private HingeJoint2D _hinge;
 
+
     [Header("Fall")]
-    [SerializeField] private float _dangerDelay = 0.15f;
+    [SerializeField] private float _hitDelay = 0.03f;
     [SerializeField] private float _torquePower = 80f;
     [SerializeField] private bool _fallRight = true;
+
 
     private bool _triggered;
 
@@ -24,14 +28,16 @@ public class StreetLightFall : MonoBehaviour, IResettable
 
     private void Awake()
     {
-        // 처음 상태 저장
         _startPosition = transform.position;
         _startRotation = transform.rotation;
 
         _rb.bodyType = RigidbodyType2D.Kinematic;
 
-        _dangerCollider.enabled = false;
-        gameObject.tag = "Untagged";
+        // 처음에는 공격 판정 OFF
+        if (_hitCollider != null)
+        {
+            _hitCollider.enabled = false;
+        }
     }
 
 
@@ -42,34 +48,80 @@ public class StreetLightFall : MonoBehaviour, IResettable
 
         _triggered = true;
 
-        _fallCoroutine = StartCoroutine(FallRoutine());
+        _fallCoroutine =
+            StartCoroutine(FallRoutine());
     }
 
 
     private IEnumerator FallRoutine()
     {
-        // 넘어지기 시작
+        // 가로등 넘어지기 시작
         _rb.bodyType = RigidbodyType2D.Dynamic;
 
-        float direction = _fallRight ? -1f : 1f;
+        float direction =
+            _fallRight ? -1f : 1f;
 
         _rb.AddTorque(
             direction * _torquePower,
             ForceMode2D.Impulse
         );
 
-        yield return new WaitForSeconds(_dangerDelay);
 
-        gameObject.tag = "Dangerous";
-        _dangerCollider.enabled = true;
+        // 살짝 움직인 다음 공격 판정 활성화
+        yield return new WaitForSeconds(
+            _hitDelay
+        );
+
+        if (_hitCollider != null)
+        {
+            _hitCollider.enabled = true;
+        }
+
+        _fallCoroutine = null;
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        PlayerKnockbackFall player =
+            collision.GetComponentInParent<PlayerKnockbackFall>();
+
+        if (player == null)
+            return;
+
+
+        // 플레이어 위치에서 가로등이 실제로 움직이는 방향
+        Vector2 hitDirection =
+            _rb.GetPointVelocity(
+                collision.bounds.center
+            );
+
+
+        // 속도가 너무 작게 계산됐을 경우
+        if (hitDirection.sqrMagnitude < 0.01f)
+        {
+            hitDirection =
+                _fallRight
+                    ? Vector2.right
+                    : Vector2.left;
+        }
+
+
+        // 한 번 때리면 공격판정 OFF
+        if (_hitCollider != null)
+        {
+            _hitCollider.enabled = false;
+        }
+
+
+        player.Launch(
+            hitDirection.normalized
+        );
     }
 
 
     public void ResetTrap()
     {
-        Debug.Log("가로등 ResetTrap 실행!");
-
-        // 코루틴 제거
         if (_fallCoroutine != null)
         {
             StopCoroutine(_fallCoroutine);
@@ -78,35 +130,46 @@ public class StreetLightFall : MonoBehaviour, IResettable
 
         _triggered = false;
 
-        // ★ Joint가 있으면 잠깐 OFF
-        if (_hinge != null)
-            _hinge.enabled = false;
 
-        // ★ 먼저 Kinematic으로 바꾸기
+        // 공격판정 다시 OFF
+        if (_hitCollider != null)
+        {
+            _hitCollider.enabled = false;
+        }
+
+
+        // Joint 잠깐 끄기
+        if (_hinge != null)
+        {
+            _hinge.enabled = false;
+        }
+
+
+        // 물리 정지
         _rb.bodyType = RigidbodyType2D.Kinematic;
 
-        // 속도 제거
         _rb.linearVelocity = Vector2.zero;
         _rb.angularVelocity = 0f;
 
-        // ★ Transform 자체를 처음 상태로 복구
+
+        // 처음 위치/각도로 복구
         transform.SetPositionAndRotation(
             _startPosition,
             _startRotation
         );
 
-        // Rigidbody에도 한 번 더 적용
         _rb.position = _startPosition;
-        _rb.rotation = _startRotation.eulerAngles.z;
+        _rb.rotation =
+            _startRotation.eulerAngles.z;
 
-        // Dangerous 해제
-        gameObject.tag = "Untagged";
-        _dangerCollider.enabled = false;
 
         Physics2D.SyncTransforms();
 
+
         // Joint 다시 ON
         if (_hinge != null)
+        {
             _hinge.enabled = true;
+        }
     }
 }

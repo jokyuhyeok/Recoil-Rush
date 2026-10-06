@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 187334104475443003}
   - component: {fileID: 6173003760259362280}
   - component: {fileID: 712902371655090222}
+  - component: {fileID: 2936029090155355294}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -215,6 +216,22 @@ MonoBehaviour:
   _gravity: 9
   _reloadTime: 2
   _reloadGroundDelay: 0.2
+  _resetTag: Ground
+--- !u!114 &2936029090155355294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452856847095122898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f4418d9bd5b1004b88e2953cf0e2c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerKnockbackFall
+  _rb: {fileID: 187334104475443003}
+  _horizontalPower: 25
+  _verticalPower: 5
 --- !u!1 &896392810565409608
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba6397b841d36644b2c3db5da53013e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pistol
+  _weaponType: 0
   _magazine: 6
   _firePoint: {fileID: 2999767159277550126}
   _fireSpeed: 0.2
@@ -554,6 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a79f7d1c61ae3459c078d197c502e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
+  _weaponType: 0
   _magazine: 4
   _firePoint: {fileID: 6438602270447389132}
   _fireSpeed: 0.2

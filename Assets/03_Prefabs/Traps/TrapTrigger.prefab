@@ -47,12 +47,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrapTrigger
   _targetTag: Player
   _triggerOnce: 1
+  _disableAfterTrigger: 1
   _onTriggered:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 562542934627556729, guid: e3208b78c6d771446bfa8aefa4b43b7b, type: 3}
         m_TargetAssemblyTypeName: StreetLightFall, Assembly-CSharp
         m_MethodName: StartFall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11500000, guid: 97eb08240e2b57f40b70e0ac1f8fbe06, type: 3}
+        m_TargetAssemblyTypeName: StreetLightFall, Assembly-CSharp
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
