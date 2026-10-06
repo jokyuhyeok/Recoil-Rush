@@ -10,6 +10,12 @@ public class BossController : MonoBehaviour
     [SerializeField] private Transform _laserFirePoint;
     [SerializeField] private Transform[] _droneSpawnPoints;
 
+    [Header("시각 효과 (VFX)")]
+    [SerializeField] private GameObject _idleSmokeEffect;   // 패턴: 대기
+    [SerializeField] private GameObject _dashChargeEffect;     // 패턴: 전방 돌진
+    [SerializeField] private GameObject _dashFireEffect;       // 패턴: 전방 돌진
+    [SerializeField] private GameObject _hitWallEffectPrefab;  // 패턴: 전방, 후방 돌진
+
     [Header("레이저 회전 공격 전용 변수")]
     [SerializeField] private BossLaserTest _rotatingLaserSkill; // 레이저 회전 Script
     [SerializeField] private GameObject _redSphereEffect;
@@ -31,6 +37,10 @@ public class BossController : MonoBehaviour
     public BossLaserTest RotatingLaserSkill => _rotatingLaserSkill;
     public GameObject RedSphereEffect => _redSphereEffect;
     public Transform CenterAirPosition => _centerAirPosition;
+    public GameObject IdleSmokeEffect => _idleSmokeEffect;
+    public GameObject DashChargeEffect => _dashChargeEffect;
+    public GameObject DashFireEffect => _dashFireEffect;
+    public GameObject HitWallEffectPrefab => _hitWallEffectPrefab;
 
     public bool IsLaserFinished { get; set; } = false;
     public int LaserSequenceIndex { get; set; } = 0;

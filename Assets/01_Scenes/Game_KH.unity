@@ -2428,6 +2428,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4019020264304743934, guid: 47693d5fd47ad324d92309c565de5a7a, type: 3}
   m_PrefabInstance: {fileID: 388822359}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &414026344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 453927418883963629, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
+  m_PrefabInstance: {fileID: 516978017}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &418354669
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,17 +2763,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 90324089730873121, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
+      propertyPath: _dashFireEffect
+      value: 
+      objectReference: {fileID: 516978018}
+    - target: {fileID: 90324089730873121, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
       propertyPath: _bossLaserPrefab
       value: 
       objectReference: {fileID: 7862357097906083089, guid: f95aa90d063bc5b4494bb83f65233f0a, type: 3}
+    - target: {fileID: 90324089730873121, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
+      propertyPath: _idleSmokeEffect
+      value: 
+      objectReference: {fileID: 414026344}
     - target: {fileID: 90324089730873121, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
       propertyPath: CenterAirPosition
       value: 
       objectReference: {fileID: 926385440}
     - target: {fileID: 90324089730873121, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
+      propertyPath: _dashChargeEffect
+      value: 
+      objectReference: {fileID: 516978019}
+    - target: {fileID: 90324089730873121, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
       propertyPath: _centerAirPosition
       value: 
       objectReference: {fileID: 926385440}
+    - target: {fileID: 90324089730873121, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
+      propertyPath: _hitWallEffectPrefab
+      value: 
+      objectReference: {fileID: 2054533921475329168, guid: 18c5a5f7c813ff24faa24718f4682011, type: 3}
     - target: {fileID: 90324089730873121, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
       propertyPath: _droneSpawnPoints.Array.size
       value: 2
@@ -2843,7 +2864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6788299274323883459, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6788299274323883459, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
       propertyPath: m_TagString
@@ -2858,6 +2879,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
+--- !u!1 &516978018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7226125380590200559, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
+  m_PrefabInstance: {fileID: 516978017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &516978019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2352644068967379297, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
+  m_PrefabInstance: {fileID: 516978017}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &529971100
 GameObject:
   m_ObjectHideFlags: 0

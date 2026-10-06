@@ -40,6 +40,7 @@ public class BossPhase1 : IBossPhase
     {
         return new List<IBossCommand>
         {
+            new Cmd_Wait(5f),
             // 1. 등장 후 가벼운 기싸움 (대기)
             new Cmd_Wait(stat.WaitTime),
 

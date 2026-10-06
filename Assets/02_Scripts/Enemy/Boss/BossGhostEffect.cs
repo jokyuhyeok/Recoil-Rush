@@ -16,7 +16,7 @@ public class BossGhostEffect : MonoBehaviour
         _sr.sprite = currentSprite;
         transform.position = bossTransform.position;
         transform.localScale = bossTransform.localScale;
-        _sr.color = new Color(0.5f, 0.7f, 0.9f, 0.5f);
+        _sr.color = new Color(0.5f, 0.7f, 0.9f, 0.8f);
     }
 
     private void Update()
