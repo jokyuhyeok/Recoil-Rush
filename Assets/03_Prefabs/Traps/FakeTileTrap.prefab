@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HiddenSpikeTrap
   _tileRb: {fileID: 870155208336046575}
   _tileCollider: {fileID: 5498828834009779522}
+  _groundCollider: {fileID: 0}
   _spikes:
   - {fileID: 2602450480304031091}
   _fallDelay: 0.1

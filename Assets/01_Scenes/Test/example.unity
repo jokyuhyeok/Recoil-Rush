@@ -18961,11 +18961,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8818627389158354349, guid: e3208b78c6d771446bfa8aefa4b43b7b, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0
+      value: -0.103248596
       objectReference: {fileID: 0}
     - target: {fileID: 8818627389158354349, guid: e3208b78c6d771446bfa8aefa4b43b7b, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0
+      value: 0.2710247
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19541,7 +19541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   _target: {fileID: 1201404962}
-  _minPosition: {x: -29.7, y: -17.8}
+  _minPosition: {x: -30, y: -17.8}
   _maxPosition: {x: 56, y: 32.2}
 --- !u!114 &1822992032 stripped
 MonoBehaviour:
@@ -29666,6 +29666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FakeTileTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 3007692907313332206, guid: 6daa782905cb0f742b6fec4e7b635bc8, type: 3}
+      propertyPath: _groundCollider
+      value: 
+      objectReference: {fileID: 1835257325}
     - target: {fileID: 5729990736660934568, guid: 6daa782905cb0f742b6fec4e7b635bc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
