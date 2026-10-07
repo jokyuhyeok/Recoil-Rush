@@ -23,6 +23,9 @@ public abstract class Weapon : MonoBehaviour
     [Header("Recoil")]
     [SerializeField] private float _recoilPower = 5f;
 
+    [Header("Effect")]
+    [SerializeField] private SpriteEffect _fireEffect;
+
     private int _currentAmmo;
     private float _fireCooldown;
 
@@ -49,6 +52,17 @@ public abstract class Weapon : MonoBehaviour
         _player = GetComponentInParent<Player>();
 
         _currentAmmo = _magazine;
+
+        // _fireEffect가 비어있으면 자식에서 총구 이펙트 자동 검색 (false 포함) <- 실수 방지
+        if (_fireEffect == null)
+        {
+            _fireEffect = GetComponentInChildren<SpriteEffect>(true);
+        }
+
+        if (_fireEffect != null)
+        {
+            _fireEffect.gameObject.SetActive(false);
+        }
     }
 
     // 무기 활성화 시 이벤트
@@ -74,6 +88,11 @@ public abstract class Weapon : MonoBehaviour
 
         Fire();
         AddRecoil();
+
+        if (_fireEffect != null)
+        {
+            _fireEffect.Play();
+        }
 
         _currentAmmo--;
 
