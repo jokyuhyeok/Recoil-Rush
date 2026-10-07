@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1852757fb612acf46b45cd46f7cc2e83, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: Assembly-CSharp::BossStatDataSO
-  MaxHp: 100
+  MaxHp: 10
   Phase2Threshold: 0.6
   Phase3Threshold: 0.3
   WaitTime: 1

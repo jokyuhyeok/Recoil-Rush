@@ -5,6 +5,7 @@ public class BossHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private BossStatDataSO _stat;
     [SerializeField] private BossController _controller;
+    [SerializeField] private BossHealthUI _healthUI;
 
     public event Action OnBossDead;
     public event Action<int> OnPhaseChanged;
@@ -21,6 +22,11 @@ public class BossHealth : MonoBehaviour, IDamageable
     {
         _currentHp -= damage;
         Debug.Log($"보스 피격! 데미지: {damage} | 현재 체력: {_currentHp}/{_stat.MaxHp}");
+
+        if (_healthUI != null)
+        {
+            _healthUI.UpdateHealth(_currentHp, _stat.MaxHp);
+        }
 
         if (_currentHp <= 0)
         {
