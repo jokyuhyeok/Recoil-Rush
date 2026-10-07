@@ -9,18 +9,25 @@ public class AudioManager : MonoBehaviour
     private static AudioManager _instance;
     public static AudioManager Instance => _instance;
 
-    [Header("BGM Settings")]
-    [SerializeField] private BackgroundMusicData[] _bgmDatas;
+    [Header("BGM Settings")] [SerializeField]
+    private BackgroundMusicData[] _bgmDatas;
+
     private Dictionary<BackgroundMusicType, AudioClip> _bgmClips;
+
     // 배경음악은 수시로 바꾸지 않으므로 따로 풀링하지 않고, 전용 AudioSource 하나로 관리합니다.
     private AudioSource _bgmSource;
+    private float _bgmVolume;
+    public float BGMVolume => _bgmVolume;
 
-    [Header("SFX Settings")]
-    [SerializeField] private SoundEffectData[] _sfxDatas;
+    [Header("SFX Settings")] [SerializeField]
+    private SoundEffectData[] _sfxDatas;
+
     private Dictionary<SoundEffectType, AudioClip> _sfxClips;
 
     [SerializeField] private int _initPoolSize = 10;
     private Queue<AudioSource> _audioSourcePool;
+    private float _sfxVolume;
+    public float SFXVolume => _sfxVolume;
 
 
     private void Awake()
@@ -39,8 +46,12 @@ public class AudioManager : MonoBehaviour
 
     private void Init()
     {
+        _bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
+        _sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+
         // 기본적으로 가지고 있는 AudioSource는 BGM 전용으로 할당
         _bgmSource = GetComponent<AudioSource>();
+        _bgmSource.volume = _bgmVolume;
 
         _bgmClips = new Dictionary<BackgroundMusicType, AudioClip>(_bgmDatas.Length);
         // Inspector에서 넣은 데이터 순회하면서 Dictionary로 변환
@@ -76,6 +87,7 @@ public class AudioManager : MonoBehaviour
         {
             AudioSource audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.playOnAwake = false;
+            audioSource.volume = _sfxVolume;
             audioSource.enabled = false;
 
             _audioSourcePool.Enqueue(audioSource);
@@ -93,6 +105,12 @@ public class AudioManager : MonoBehaviour
         _bgmSource.Stop();
         _bgmSource.clip = audioClip;
         _bgmSource.Play();
+    }
+
+    public void SetBGMVolume(float volume)
+    {
+        _bgmVolume = volume;
+        _bgmSource.volume = volume;
     }
 
     // SFX 실행
@@ -118,12 +136,23 @@ public class AudioManager : MonoBehaviour
         }
 
         audioSource.clip = audioClip;
+        audioSource.volume = _sfxVolume;
         // Todo: Pitch 값 동적으로 수정하기 (매개변수로 받는 오버로드 하나 하든지..)
         audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
         audioSource.Play();
 
         float playTime = audioClip.length / audioSource.pitch;
         StartCoroutine(WaitAndReturnToPool(audioSource, playTime));
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        _sfxVolume = volume;
+
+        foreach (AudioSource sfxSource in _audioSourcePool)
+        {
+            sfxSource.volume = volume;
+        }
     }
 
     // 실행 시간 기다렸다가 다시 풀에 넣기
