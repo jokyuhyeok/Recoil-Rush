@@ -5,6 +5,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _recoilRadius = 2f;
     [SerializeField] private float _recoilPower = 3f;
 
+    [Header("Effect")]
+    [SerializeField] private SpriteEffect _hitEffect;
+
     private Rigidbody2D _rigidbody;
 
     private Weapon _weapon;
@@ -16,6 +19,17 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+
+        // _hitEffect가 비어있으면 자식에서 피격 이벤트 자동 검색 (꺼진 것도)
+        if (_hitEffect == null)
+        {
+            _hitEffect = GetComponentInChildren<SpriteEffect>(true);
+        }
+
+        if (_hitEffect != null)
+        {
+            _hitEffect.gameObject.SetActive(false);
+        }
     }
 
     private void FixedUpdate()
@@ -43,6 +57,8 @@ public class Bullet : MonoBehaviour
         Vector2 currentPosition = _rigidbody.position;
         Vector2 move = currentPosition - _previousPosition;
 
+        Vector2 hitPoint = currentPosition;
+
         RaycastHit2D[] hits = Physics2D.RaycastAll(
             _previousPosition,
             move.normalized,
@@ -65,6 +81,16 @@ public class Bullet : MonoBehaviour
             }
 
             AddImpactRecoil(hit.point);
+
+            hitPoint = hit.point;
+        }
+
+        if (_hitEffect != null)
+        {
+            // 부모에서 떼어낸 뒤 재생
+            _hitEffect.transform.SetParent(null);
+            _hitEffect.transform.SetPositionAndRotation(hitPoint, Quaternion.identity);
+            _hitEffect.Play();
         }
 
         Destroy(gameObject);
