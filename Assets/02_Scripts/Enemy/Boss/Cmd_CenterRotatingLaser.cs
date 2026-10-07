@@ -35,7 +35,7 @@ public class Cmd_CenterRotatingLaser : IBossCommand
         }
 
         boss.RedSphereEffect.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
 
         // 레이저 회전 끝날 때까지 대기
         boss.RotatingLaserSkill.StartSkill();

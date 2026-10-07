@@ -35,13 +35,15 @@ MonoBehaviour:
   RightEndAngle: 45
   RightFireDelay: 0.05
   RightBulletSpeed: 8
-  LaserTopOffsetY: 1.6
-  LaserMidOffsetY: 0.8
-  LaserBottomOffsetY: -0.5
+  MultiLaserOffsets:
+  - 0
+  - 4
+  - 8
+  - 2
+  - 6
   LaserWarningTime: 1
   LaserBeamTime: 1
   FlySpeed: 10
   BulletPrefab: {fileID: 599344886590209370, guid: 0c30b73362351d249b1174574ef917fd, type: 3}
   BossLaserPrefab: {fileID: 7862357097906083089, guid: f95aa90d063bc5b4494bb83f65233f0a, type: 3}
-  DronePrefab: {fileID: 1243293954406359395, guid: 14feceb37f901754daa602af23c27a8b, type: 3}
   GhostPrefab: {fileID: 2523284707451859810, guid: 1d2e5fbc62c324845a8ffe5dad006fbf, type: 3}

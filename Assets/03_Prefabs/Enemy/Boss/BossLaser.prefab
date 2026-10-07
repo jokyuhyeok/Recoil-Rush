@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed396dd2670b7ac4a8206e440e20adeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossLaser
-  _warningSprite: {fileID: 1220450566015627945, guid: bb69b9da5104caf4ab7e2dfbeb0c524d, type: 3}
-  _laserSprite: {fileID: -1441039701986354734, guid: ea2b80d6db1a597428f7a5dc157ebc5f, type: 3}
-  _laserLength: 30
+  _chargeOrbectPrefab: {fileID: 5361014372742634401, guid: 5240135ec205895408f0efbe0a4ca55a, type: 3}
+  _warningLaserPrefab: {fileID: 5027864927494637231, guid: e589fffa07466f7489ff39867c2f1ede, type: 3}
+  _mainLaserPrefab: {fileID: 5635918373487445397, guid: 9e240354d863d654c93a9fec70800f2b, type: 3}
+  _laserLength: 40

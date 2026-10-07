@@ -4,21 +4,27 @@ using UnityEngine;
 public class BossLaserTest : MonoBehaviour
 {
     [Header("Laser Sprite")]
-    [SerializeField] private Sprite _warningSprite;
-    [SerializeField] private Sprite _laserSprite;
+    [SerializeField] private GameObject _warningLaserPrefab;
+    [SerializeField] private GameObject _mainLaserPrefab;
 
     [Header("Laser Setting")]
     [SerializeField] private float _laserWarningTime = 1f;
     [SerializeField] private float _laserLength = 30f;
     [SerializeField] private float _laserSpeed = 60f;
+    [SerializeField] private float _laserStartOffset = 1.5f;
     [SerializeField] private int _minRotateCount = 1;
     [SerializeField] private int _maxRotateCount = 4;
+    private GameObject _screenFlashObj;
+
+    [SerializeField, Range(0f, 1f)] private float _flashIntensity = 0.3f; // 번쩍임 강도
+    [SerializeField] private float _flashSpeed = 0.05f;                   // 번쩍임 속도
 
     private const float Turn = 180f;
     private Transform _pivot;
     private GameObject[] _warningLaser = new GameObject[2];
     private GameObject[] _laser = new GameObject[2];
     private Coroutine _skillCoroutine;
+    private Coroutine _flashCoroutine;
 
     public bool IsPlaying => _skillCoroutine != null;
 
@@ -27,11 +33,11 @@ public class BossLaserTest : MonoBehaviour
         CreatePivot();
 
         // 문자열이 들어가는 이유는 Hierarchy에 표시될 오브젝트 이름 설정
-        _warningLaser[0] = CreateLaser("WariningLaser_Left", _warningSprite, -1f, false);
-        _warningLaser[1] = CreateLaser("WariningLaser_Right", _warningSprite, 1f, false);
+        _warningLaser[0] = CreateLaser("WarningLaser_Left", _warningLaserPrefab, -1f);
+        _warningLaser[1] = CreateLaser("WarningLaser_Right", _warningLaserPrefab, 1f);
 
-        _laser[0] = CreateLaser("Laser_Left", _laserSprite, -1f, true);
-        _laser[1] = CreateLaser("Laser_Right", _laserSprite, 1f, true);
+        _laser[0] = CreateLaser("Laser_Left", _mainLaserPrefab, -1f);
+        _laser[1] = CreateLaser("Laser_Right", _mainLaserPrefab, 1f);
     }
 
     // 보스가 비활성화되면 레이저가 사라지도록
@@ -61,8 +67,21 @@ public class BossLaserTest : MonoBehaviour
     private IEnumerator SkillRoutine()
     {
         SetLaserActive(_warningLaser, true);
+        CameraController.Instance.StartShake(_laserWarningTime, 0.3f);
 
-        yield return new WaitForSeconds(_laserWarningTime);
+        // 경고선이 지정된 시간 동안 쭈욱 자라남.
+        float timer = 0f;
+        while (timer < _laserWarningTime)
+        {
+            timer += Time.deltaTime;
+            float currentLength = Mathf.Lerp(0f, _laserLength, timer / _laserWarningTime);
+
+            // 길이와 위치를 동시에 실시간으로 조절합니다.
+            SetLaserLengthAndPosition(_warningLaser[0], currentLength, -1f);
+            SetLaserLengthAndPosition(_warningLaser[1], currentLength, 1f);
+
+            yield return null;
+        }
 
         SetLaserActive(_warningLaser, false);
 
@@ -76,8 +95,16 @@ public class BossLaserTest : MonoBehaviour
 
         SetLaserActive(_laser, true);
 
+        // 메인 레이저는 처음부터 끝까지 가득 찬 길이를 유지
+        SetLaserLengthAndPosition(_laser[0], _laserLength, -1f);
+        SetLaserLengthAndPosition(_laser[1], _laserLength, 1f);
+
+        _flashCoroutine = StartCoroutine(LaserFlashRoutine());
+
         while (rotatedAngle < targetAngle)
         {
+            CameraController.Instance.StartPerlinShake(0.1f, 30f, 0.5f);
+
             // Mathf.Min: 마지막 프레임에 목표 각도를 넘지 않도록 맞춤 / 더 낮은 값을 선택하기 때문(기억이 맞다면)
             rotatedAngle = Mathf.Min(rotatedAngle + _laserSpeed * Time.deltaTime, targetAngle);
 
@@ -91,11 +118,57 @@ public class BossLaserTest : MonoBehaviour
         EndSkill();
     }
 
+    // 메인 레이저 번쩍임
+    private IEnumerator LaserFlashRoutine()
+    {
+        // 1. 화면 전체를 덮을 거대한 빈 오브젝트 생성
+        _screenFlashObj = new GameObject("FullScreenFlashVFX");
+
+        // 2. 메인 카메라의 자식으로 넣어서 화면을 따라다니게 함
+        if (Camera.main != null)
+        {
+            _screenFlashObj.transform.SetParent(Camera.main.transform, false);
+            _screenFlashObj.transform.localPosition = new Vector3(0, 0, 10f); // 카메라 바로 앞
+        }
+
+        // 3. 화면을 덮을 만큼 스케일을 무식하게 키움
+        _screenFlashObj.transform.localScale = new Vector3(100f, 100f, 1f);
+
+        // 4. 유저님이 넣어둔 레이저의 스프라이트를 빌려와서 화면 전체에 하얗게 도배
+        SpriteRenderer sr = _screenFlashObj.AddComponent<SpriteRenderer>();
+        if (_laser[0] != null)
+        {
+            sr.sprite = _laser[0].GetComponent<SpriteRenderer>().sprite;
+        }
+        sr.sortingOrder = 30000; // 무조건 맨 앞에 보이게 설정
+
+        bool isFlash = false;
+
+        // 5. 무한 반복하며 0.05초마다 하얀 막을 껐다 켰다 함
+        while (true)
+        {
+            sr.color = new Color(1f, 1f, 1f, isFlash ? _flashIntensity : 0f);
+            isFlash = !isFlash;
+
+            yield return new WaitForSeconds(_flashSpeed);
+        }
+    }
+
     // 레이저 종료 및 회전을 원래대로 되돌림
     private void EndSkill()
     {
         SetLaserActive(_warningLaser, false);
         SetLaserActive(_laser, false);
+
+        if (_flashCoroutine != null)
+        {
+            StopCoroutine(_flashCoroutine);
+        }
+
+        if (_screenFlashObj != null)
+        {
+            Destroy(_screenFlashObj);
+        }
 
         // Quaternion.identity: 회전 X / 0f, 0f, 0f
         _pivot.localRotation = Quaternion.identity;
@@ -118,57 +191,35 @@ public class BossLaserTest : MonoBehaviour
         pivotRigidbody.bodyType = RigidbodyType2D.Kinematic;
     }
 
-    private GameObject CreateLaser(string laserName, Sprite sprite, float direction, bool hasCollider)
+    private GameObject CreateLaser(string laserName, GameObject prefab, float direction)
     {
-        GameObject laser = new GameObject(laserName);
-        laser.transform.SetParent(_pivot, false);
+        if (prefab == null) return new GameObject(laserName);
 
-        // 스프라이트 피벗이 가운데라 길이의 절반만큼 밀어야 시작점(플레어)이 보스 중심에 옴
-        laser.transform.localPosition = new Vector3(_laserLength * 0.5f * direction, 0f, 0f);
-        // 왼쪽은 x 스케일 -1로 좌우 반전
-        laser.transform.localScale = new Vector3(direction, 1f, 1f);
+        GameObject laser = Instantiate(prefab, _pivot);
+        laser.name = laserName;
 
-        SpriteRenderer spriteRenderer = laser.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = sprite;
-
-        spriteRenderer.sortingOrder = 50;
-
-        // Border: Sprite Editor에서 맞춘 초록색 선
-        // Sliced: Border 바깥(양 끝)은 고정, 가운데만 늘어남 / size보다 먼저 설정해야 적용됨
-        spriteRenderer.drawMode = SpriteDrawMode.Sliced;
-        // bounds.size.y: 스프라이트 원래 높이 (두께 유지)
-        spriteRenderer.size = new Vector2(_laserLength, sprite.bounds.size.y);
-
-        if (hasCollider)
-        {
-            AddLaserCollider(laser, sprite);
-        }
+        // 처음 위치를 잡아줄 필요가 사라짐
+        Vector3 originScale = prefab.transform.localScale;
+        laser.transform.localScale = new Vector3(originScale.x * direction, originScale.y, originScale.z);
 
         laser.SetActive(false);
 
         return laser;
     }
 
-    // Border 위, 아래 값으로 가운데 몸통 두께만큼 판정 콜라이더 추가
-    // + Sprite Editor에서 그은 위, 아래 초록선 사이 = 판정 범위를 코드로 계산하는 함수
-    private void AddLaserCollider(GameObject laser, Sprite sprite)
+    // 그림과 콜라이더 길이를 늘려주고, 보스 중심에서 출발하도록 위치를 밀어주는 함수
+    private void SetLaserLengthAndPosition(GameObject laser, float length, float direction)
     {
-        laser.layer = LayerMask.NameToLayer("Dangerous");
+        float centerPos = _laserStartOffset + (length * 0.5f);
+        laser.transform.localPosition = new Vector3(centerPos * direction, 0f, 0f);
 
-        // border: x 왼쪽, y 아래, z 오른쪽, w 위 (픽셀 단위)
-        // Vecotr4: Vector2(x, y), Vector3(x, y, z) 처럼 Vector4 = x, y, z, w / 위치가 아니라 그냥 숫자 4개 묶음으로 쓰임
-        Vector4 border = sprite.border;
-        // Border는 픽셀 단위라서 콜라이더 크가(칸 단위)로 바꿀 때 이걸로 나눔
-        float pixelsPerUnit = sprite.pixelsPerUnit;
+        // Sprite 길이 늘리기
+        SpriteRenderer sr = laser.GetComponent<SpriteRenderer>();
+        if (sr != null) sr.size = new Vector2(length, sr.size.y);
 
-        float colliderHeight = (sprite.rect.height - border.y - border.w) / pixelsPerUnit;
-        // 위, 아래 Border가 다르면 몸통 중심이 스프라이트 중심에서 벗어나기 때문에 그만큼 이동
-        float colliderOffsetY = (border.y - border.w) * 0.5f / pixelsPerUnit;
-
-        BoxCollider2D laserCollider = laser.AddComponent<BoxCollider2D>();
-        laserCollider.isTrigger = true;
-        laserCollider.size = new Vector2(_laserLength, colliderHeight);
-        laserCollider.offset = new Vector2(0f, colliderOffsetY);
+        // Collider 길이 자동으로 똑같이 늘리기
+        BoxCollider2D col = laser.GetComponent<BoxCollider2D>();
+        if (col != null) col.size = new Vector2(length, col.size.y);
     }
 
     // 레이저 ON/OFF
@@ -176,7 +227,7 @@ public class BossLaserTest : MonoBehaviour
     {
         foreach (GameObject laser in lasers)
         {
-            laser.SetActive(isActive);
+            if (laser != null) laser.SetActive(isActive);
         }
     }
 }
