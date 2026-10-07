@@ -10,11 +10,17 @@ public class Player : MonoBehaviour
     [Header("Reload")]
     [SerializeField] private float _reloadTime = 2f;
     [SerializeField] private float _reloadGroundDelay = 0.2f;
+    [SerializeField] private float _reloadStopDelay = 1f;
+
+    [Header("Effect")]
+    [SerializeField] private ParticleSystem _dieEffect;
 
     [SerializeField] private string _resetTag = "Ground";
 
     // 법선 y가 이 값 이상이면 바닥 (약 45도 이내)
     private const float GroundNormalY = 0.7f;
+    // 속도가 이 값 이하면 멈춘걸로 판단
+    private const float StopSpeed = 0.01f;
 
     private List<Weapon> _weapons = new List<Weapon>();
     private List<Weapon> _unlockedWeapons = new List<Weapon>();
@@ -23,6 +29,7 @@ public class Player : MonoBehaviour
 
     private float _reloadTimer;
     private float _airTimer;
+    private float _stopTimer;
     private int _groundCount;
     private bool _isReloading;
     private bool _isGrounded;
@@ -49,6 +56,15 @@ public class Player : MonoBehaviour
 
         _playerAIm = GetComponent<PlayerAim>();
 
+        // Play On Awake가 켜져 있어도 시작하자마자 재생되지 않게 정지
+        if (_dieEffect != null)
+        {
+            _dieEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            // 이미 나간 입자가 오브젝트를 따라 움직이지 않게 월드 기준으로 시뮬레이션
+            ParticleSystem.MainModule main = _dieEffect.main;
+            main.simulationSpace = ParticleSystemSimulationSpace.World;
+        }
+
         FindCurrentWeapon();
 
         if (_currentWeapon != null)
@@ -73,6 +89,7 @@ public class Player : MonoBehaviour
         ReloadUpdate();
         AirTimeUpdate();
         ReloadGroundCheck();
+        ReloadStopCheck();
         WeaponChangeUpdate();
     }
 
@@ -113,6 +130,9 @@ public class Player : MonoBehaviour
     public void AddRecoil(Vector2 recoil)
     {
         _rigidbody.linearVelocity += recoil;
+
+        // 사격 시 재장전 타이머 리셋
+        _stopTimer = 0f;
     }
 
     private void ReloadUpdate()
@@ -163,6 +183,24 @@ public class Player : MonoBehaviour
         }
 
         StartReload();
+    }
+
+    private void ReloadStopCheck()
+    {
+        // linearVelocity.magnitude: x, y를 합친 실제 속력이라 상하좌우 어느 방향이든 움직이면 걸린다
+        if (!_isGrounded || _isReloading || _rigidbody.linearVelocity.magnitude > StopSpeed)
+        {
+            _stopTimer = 0f;
+            return;
+        }
+
+        _stopTimer += Time.deltaTime;
+
+        if (_stopTimer >= _reloadStopDelay)
+        {
+            _stopTimer = 0f;
+            TryStartReload();
+        }
     }
 
     private void TryStartReload()
@@ -268,6 +306,15 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        if (_dieEffect != null)
+        {
+            _dieEffect.transform.SetParent(null);
+            _dieEffect.transform.position = transform.position;
+            // 이전 재생이 남아있어도 처음부터 다시 재생
+            _dieEffect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            _dieEffect.Play();
+        }
+
         gameObject.SetActive(false);
         // ? = !null
         OnDeath?.Invoke();
@@ -279,8 +326,10 @@ public class Player : MonoBehaviour
     {
         _reloadTimer = 0f;
         _airTimer = 0f;
+        _stopTimer = 0f;
         _groundCount = 0;
         _isReloading = false;
+        _isGrounded = false;
 
         _rigidbody.linearVelocity = Vector2.zero;
 
