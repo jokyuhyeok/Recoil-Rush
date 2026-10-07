@@ -34,6 +34,20 @@ public class PlayerAim : MonoBehaviour
         _playerSprite = _player.GetComponent<SpriteRenderer>();
     }
 
+    // 플레이 중 OS 커서를 숨기고 창 안에 가둠
+    private void OnEnable()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    // 비활성화 시 커서를 다시 보여줌
+    private void OnDisable()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     private void Start()
     {
         _weapon = _player.CurrentWeapon;
