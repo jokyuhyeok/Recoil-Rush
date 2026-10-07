@@ -22,15 +22,23 @@ public class SpriteEffect : MonoBehaviour
         {
             Debug.LogWarning($"{name}: SpriteEffect Frames X");
         }
+
+        Restart();
     }
 
-    private void OnEnable()
+    private void OnDisable()
     {
-        Restart();
+        _spriteRenderer.enabled = false;
     }
 
     private void Update()
     {
+        // false 상태면 return;
+        if (!_spriteRenderer.enabled)
+        {
+            return;
+        }
+
         if (_frames.Length == 0)
         {
             End();
@@ -65,6 +73,7 @@ public class SpriteEffect : MonoBehaviour
     {
         _frameTimer = 0f;
         _frameIndex = 0;
+        _spriteRenderer.enabled = true;
 
         if (_frames.Length > 0)
         {
