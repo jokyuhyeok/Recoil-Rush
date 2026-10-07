@@ -51,7 +51,6 @@ public class PlayerAim : MonoBehaviour
     private void Start()
     {
         _weapon = _player.CurrentWeapon;
-        _weaponSprite = _weapon.GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update()
@@ -94,7 +93,11 @@ public class PlayerAim : MonoBehaviour
 
         // Quaternion.Euler: X, Y, Z 회전 각도를 Unity가 사용하는 회전값인 Quaternion으로 변환
         _weapon.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-        _weaponSprite.flipY = !isRight;
+
+        // 왼쪽이면 scale.y를 -로 뒤집음, 기존의 flipY와 달리 FirePoint인 자식도 같이 뒤집힘
+        Vector3 weaponScale = _weapon.transform.localScale;
+        weaponScale.y = !isRight ? -Mathf.Abs(weaponScale.y) : Mathf.Abs(weaponScale.y);
+        _weapon.transform.localScale = weaponScale;
 
         _aimPoint.position = mousePosition;
 
@@ -127,7 +130,5 @@ public class PlayerAim : MonoBehaviour
     public void ChangeWeapon(Weapon weapon)
     {
         _weapon = weapon;
-        // 무기가 변경되면서 각도 때문에
-        _weaponSprite = weapon.GetComponentInChildren<SpriteRenderer>();
     }
 }
