@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _reloadStopDelay = 1f;
 
     [Header("Effect")]
-    [SerializeField] private SpriteEffect _dieEffectPrefab;
+    [SerializeField] private ParticleSystem _dieEffect;
 
     [SerializeField] private string _resetTag = "Ground";
 
@@ -55,6 +55,15 @@ public class Player : MonoBehaviour
         _rigidbody.sleepMode = RigidbodySleepMode2D.NeverSleep;
 
         _playerAIm = GetComponent<PlayerAim>();
+
+        // Play On Awake가 켜져 있어도 시작하자마자 재생되지 않게 정지
+        if (_dieEffect != null)
+        {
+            _dieEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            // 이미 나간 입자가 오브젝트를 따라 움직이지 않게 월드 기준으로 시뮬레이션
+            ParticleSystem.MainModule main = _dieEffect.main;
+            main.simulationSpace = ParticleSystemSimulationSpace.World;
+        }
 
         FindCurrentWeapon();
 
@@ -297,9 +306,13 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        if (_dieEffectPrefab != null)
+        if (_dieEffect != null)
         {
-            Instantiate(_dieEffectPrefab, transform.position, Quaternion.identity);
+            _dieEffect.transform.SetParent(null);
+            _dieEffect.transform.position = transform.position;
+            // 이전 재생이 남아있어도 처음부터 다시 재생
+            _dieEffect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            _dieEffect.Play();
         }
 
         gameObject.SetActive(false);

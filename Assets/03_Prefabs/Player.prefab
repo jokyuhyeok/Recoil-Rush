@@ -38,6 +38,7 @@ Transform:
   - {fileID: 2330848054973217185}
   - {fileID: 6520759025709264146}
   - {fileID: 2201892847365875605}
+  - {fileID: 7441888922306563072}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2029556378898189642
@@ -216,7 +217,7 @@ MonoBehaviour:
   _reloadTime: 2
   _reloadGroundDelay: 0.2
   _reloadStopDelay: 1
-  _dieEffectPrefab: {fileID: 0}
+  _dieEffect: {fileID: 3256941653800981508}
   _resetTag: Ground
 --- !u!1 &896392810565409608
 GameObject:
@@ -759,3 +760,79 @@ MonoBehaviour:
   - {fileID: 9158524287044183108, guid: 78d6c7977220a184bb52b4e5ccbff45a, type: 3}
   _effectType: 1
   _frameInterval: 0.1
+--- !u!1001 &7279642134934750141
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6091322744737446989}
+    m_Modifications:
+    - target: {fileID: 162302725831249853, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.056
+      objectReference: {fileID: 0}
+    - target: {fileID: 162302725831249853, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.465
+      objectReference: {fileID: 0}
+    - target: {fileID: 162302725831249853, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 162302725831249853, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 162302725831249853, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 162302725831249853, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 162302725831249853, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 162302725831249853, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 162302725831249853, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 162302725831249853, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198790418200276517, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: m_Name
+      value: VFX_Enemy_Death
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198790418200276517, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202925161568507833, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 183
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2080208013259852434, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+--- !u!198 &3256941653800981508 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5202925161568507833, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+  m_PrefabInstance: {fileID: 7279642134934750141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7441888922306563072 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 162302725831249853, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
+  m_PrefabInstance: {fileID: 7279642134934750141}
+  m_PrefabAsset: {fileID: 0}
