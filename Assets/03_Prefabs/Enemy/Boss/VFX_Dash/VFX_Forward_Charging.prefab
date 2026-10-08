@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 742027474567735951}
   - component: {fileID: 7968428153370115786}
   - component: {fileID: 3517135357968510909}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Forward_Charging
   m_TagString: Untagged
   m_Icon: {fileID: 0}

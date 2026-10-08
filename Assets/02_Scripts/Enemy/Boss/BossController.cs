@@ -8,16 +8,19 @@ public class BossController : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Transform[] _firePoints;
     [SerializeField] private Transform _laserFirePoint;
+    [SerializeField] private Transform _vfxGroup;
 
     [Header("시각 효과 (VFX)")]
-    [SerializeField] private GameObject _idleSmokeEffect;   // 패턴: 대기
-    [SerializeField] private GameObject _dashChargeEffect;     // 패턴: 전방 돌진
-    [SerializeField] private GameObject _dashFireEffect;       // 패턴: 전방 돌진
-    [SerializeField] private GameObject _hitWallEffectPrefab;  // 패턴: 전방, 후방 돌진
-    [SerializeField] private GameObject _handSwirlEffect;   // 패턴: 멀티레이저
+    [SerializeField] private GameObject _idleSmokeEffect; // 패턴: 대기
+
+    [SerializeField] private GameObject _dashChargeEffect; // 패턴: 전방 돌진
+    [SerializeField] private GameObject _dashFireEffect; // 패턴: 전방 돌진
+    [SerializeField] private GameObject _hitWallEffectPrefab; // 패턴: 전방, 후방 돌진
+    [SerializeField] private GameObject _handSwirlEffect; // 패턴: 멀티레이저
 
     [Header("레이저 회전 공격 전용 변수")]
     [SerializeField] private BossLaserTest _rotatingLaserSkill; // 레이저 회전 Script
+
     [SerializeField] private GameObject _redSphereEffect;
     [SerializeField] private Transform _centerAirPosition;
 
@@ -97,6 +100,17 @@ public class BossController : MonoBehaviour
         _currentPhase = phaseIndex;
 
         StopAllCoroutines();
+
+        if (_vfxGroup == null)
+        {
+            Debug.LogError("보스 프리팹 안의 VFX_Group을 연결해주세요.");
+        }
+
+        foreach (Transform child in _vfxGroup)
+        {
+            child.gameObject.SetActive(false);
+        }
+
         _commandQueue.Clear();
         _isExecuting = false;
 
@@ -145,7 +159,7 @@ public class BossController : MonoBehaviour
     }
 
     // private 제어 메서드
-    private IEnumerator ProcessCommands()   // 핵심 코루틴
+    private IEnumerator ProcessCommands() // 핵심 코루틴
     {
         // 보스가 살아있는동안 반복
         while (true)
@@ -156,7 +170,7 @@ public class BossController : MonoBehaviour
                 {
                     _isExecuting = true;
                     IBossCommand currentCommand = _commandQueue.Dequeue();
-                    yield return StartCoroutine(currentCommand.Execute(this));  // 꺼낸 패턴 실행 + 패턴이 끝날 때까지 대기
+                    yield return StartCoroutine(currentCommand.Execute(this)); // 꺼낸 패턴 실행 + 패턴이 끝날 때까지 대기
                     _isExecuting = false;
                 }
                 else
@@ -164,6 +178,7 @@ public class BossController : MonoBehaviour
                     LoadPhaseCommands();
                 }
             }
+
             yield return null;
         }
     }

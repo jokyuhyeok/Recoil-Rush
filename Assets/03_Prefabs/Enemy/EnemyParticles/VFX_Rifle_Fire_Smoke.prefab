@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2900275227331171442}
   - component: {fileID: 5043778812219543121}
   - component: {fileID: 2112891489262906177}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Rifle_Fire_Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6137993343645803347}
   - component: {fileID: 1980603643992394111}
   - component: {fileID: 6939559784603324794}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Machinegun_Fire_Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5336656825273005155}
   - component: {fileID: 7900316395028073057}
   - component: {fileID: 7207556441996127786}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Multi_Laser_Charging
   m_TagString: Untagged
   m_Icon: {fileID: 0}

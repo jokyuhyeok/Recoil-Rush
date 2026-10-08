@@ -6,8 +6,10 @@ public class BossLaser : MonoBehaviour
     [Header("레이저 관련 프리팹 (에디터에서 연결)")]
     [Tooltip("에너지가 모이는 구체 애니메이션 프리팹")]
     [SerializeField] private GameObject _chargeOrbectPrefab;
+
     [Tooltip("길이가 늘어나는 얇은 경고선 프리팹")]
     [SerializeField] private GameObject _warningLaserPrefab;
+
     [Tooltip("실제 데미지를 주는 굵은 레이저 프리팹")]
     [SerializeField] private GameObject _mainLaserPrefab;
 
@@ -16,7 +18,7 @@ public class BossLaser : MonoBehaviour
     [SerializeField] private float _flashDuration = 0.05f;
 
     // 보스가 우측에 있으므로 기본 발사 방향은 왼쪽(-1)
-    private float _direction = -1f;
+    private float _direction = 1f;
 
     private GameObject _chargeOrb;
     private GameObject _warningLaser;
@@ -110,6 +112,7 @@ public class BossLaser : MonoBehaviour
             _screenFlashObj.transform.SetParent(Camera.main.transform, false);
             _screenFlashObj.transform.localPosition = new Vector3(0, 0, 10f);
         }
+
         _screenFlashObj.transform.localScale = new Vector3(100f, 100f, 1f);
 
         SpriteRenderer sr = _screenFlashObj.AddComponent<SpriteRenderer>();
@@ -119,6 +122,7 @@ public class BossLaser : MonoBehaviour
         {
             sr.sprite = _mainLaser.GetComponent<SpriteRenderer>().sprite;
         }
+
         sr.sortingOrder = 30000;
 
         // 0.05초 동안 완전 하얗게 번쩍! (알파값 0.8)

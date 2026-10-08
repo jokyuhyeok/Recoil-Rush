@@ -74,7 +74,7 @@ public class Cmd_SpreadShoot : IBossCommand
             float t = (float)i / maxSteps;
             float currentAngle = Mathf.Lerp(start, end, t);
 
-            Vector2 fireDirection = Quaternion.Euler(0, 0, currentAngle) * Vector2.left;
+            Vector2 fireDirection = Quaternion.Euler(0, 0, currentAngle) * Vector2.right;
 
             GameObject bullet = UnityEngine.Object.Instantiate(boss.Stat.BulletPrefab, firePoint.position, Quaternion.identity);
             BossBullet bossBullet = bullet.GetComponent<BossBullet>();

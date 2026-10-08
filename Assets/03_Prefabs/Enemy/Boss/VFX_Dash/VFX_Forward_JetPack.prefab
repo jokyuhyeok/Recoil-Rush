@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1233650336752723966}
   - component: {fileID: 1056148615286658514}
   - component: {fileID: 262513213897745917}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Forward_JetPack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

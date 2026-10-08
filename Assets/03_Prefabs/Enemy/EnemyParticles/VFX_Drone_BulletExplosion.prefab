@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3076423614400537359}
   - component: {fileID: 1902186941032548552}
   - component: {fileID: -1239414750529169161}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Drone_BulletExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

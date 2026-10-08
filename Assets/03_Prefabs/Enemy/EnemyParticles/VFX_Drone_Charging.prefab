@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4247091431942338084}
   - component: {fileID: 1984867234845885098}
   - component: {fileID: 7249664481965758414}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Drone_Charging
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -6,6 +6,10 @@ public class BossRoomTrigger : MonoBehaviour
     [Tooltip("하이어라키에 있는 BossUI를 끌어다 넣으세요.")]
     [SerializeField] private GameObject _bossUIObject;
 
+    [Header("보스 본체 오브젝트")]
+    [Tooltip("미리 왼쪽에 배치해둔 보스 본체를 끌어다 넣으세요. (평소엔 꺼두세요)")]
+    [SerializeField] private GameObject _bossObject;
+
     private bool _hasTriggered = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,10 +24,14 @@ public class BossRoomTrigger : MonoBehaviour
                 _bossUIObject.SetActive(true);
             }
 
-            Debug.Log("<color=cyan>보스방 입장! 체력바 활성화</color>");
+            // 보스 본체 켜기
+            if (_bossObject != null)
+            {
+                // 켜지는 순간 BossController의 Start()가 실행되며 알아서 패턴을 시작
+                _bossObject.SetActive(true);
+            }
 
-            // 필요하다면 이 부분에 보스 AI를 깨우는 코드를 추가할 수 있습니다.
-            // 예: BossController.SetPhase(1);
+            Debug.Log("<color=cyan>보스방 입장! 체력바 활성화</color>");
         }
     }
 }

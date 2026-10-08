@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3309413868886134644}
   - component: {fileID: 3525972054155447319}
   - component: {fileID: 1836175502036735376}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_HitWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

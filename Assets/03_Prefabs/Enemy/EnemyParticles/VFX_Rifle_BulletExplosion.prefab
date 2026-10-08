@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4735263376474383164}
   - component: {fileID: 7969127513818077702}
   - component: {fileID: -2196558678017417562}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Rifle_BulletExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

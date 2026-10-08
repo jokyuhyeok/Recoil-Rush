@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5987881387022470655}
   - component: {fileID: 4410323584624255293}
   - component: {fileID: 8421349273027495386}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Bullet_Destroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

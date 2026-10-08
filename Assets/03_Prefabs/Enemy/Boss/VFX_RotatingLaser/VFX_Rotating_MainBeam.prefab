@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7017864247019642046}
   m_Layer: 7
   m_Name: VFX_Rotating_MainBeam
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

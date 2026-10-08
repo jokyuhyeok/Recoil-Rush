@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7299450257004654431}
   - component: {fileID: 5408245861769251292}
   - component: {fileID: 805702250313999424}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Idle_Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

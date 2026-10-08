@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6891706000286097186}
   - component: {fileID: 1930012647260616270}
   - component: {fileID: 1599804659734821431}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Multi_Laser_Warning
   m_TagString: Untagged
   m_Icon: {fileID: 0}

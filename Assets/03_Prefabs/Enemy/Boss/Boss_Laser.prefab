@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,3 +48,5 @@ MonoBehaviour:
   _warningLaserPrefab: {fileID: 5027864927494637231, guid: e589fffa07466f7489ff39867c2f1ede, type: 3}
   _mainLaserPrefab: {fileID: 5635918373487445397, guid: 9e240354d863d654c93a9fec70800f2b, type: 3}
   _laserLength: 40
+  _flashIntensity: 0.15
+  _flashDuration: 0.05

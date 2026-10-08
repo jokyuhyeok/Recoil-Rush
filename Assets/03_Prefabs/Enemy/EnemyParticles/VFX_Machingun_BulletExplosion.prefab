@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7893776917659671190}
   - component: {fileID: 204916883505463781}
   - component: {fileID: 7958959519360654385}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Machingun_BulletExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

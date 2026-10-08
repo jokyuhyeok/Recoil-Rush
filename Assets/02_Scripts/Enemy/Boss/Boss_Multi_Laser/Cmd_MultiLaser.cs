@@ -27,7 +27,7 @@ public class Cmd_MultiLaser : IBossCommand
             yield return new WaitForSeconds(fireDelay);
         }
 
-        float waitTimeForLastLaser = boss.Stat.LaserWarningTime + boss.Stat.LaserBeamTime + 1.0f;
+        float waitTimeForLastLaser = boss.Stat.LaserWarningTime + boss.Stat.LaserBeamTime + 0.1f;
         yield return new WaitForSeconds(waitTimeForLastLaser);
 
         Debug.Log("<color=magenta>보스: 5단 레이저 패턴 종료!</color>");

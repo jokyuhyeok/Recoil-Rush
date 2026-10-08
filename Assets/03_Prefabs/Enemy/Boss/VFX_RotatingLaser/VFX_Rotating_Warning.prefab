@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2560977530916945893}
   - component: {fileID: 8874120543982551171}
   - component: {fileID: 7940630801288770320}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Rotating_Warning
   m_TagString: Untagged
   m_Icon: {fileID: 0}

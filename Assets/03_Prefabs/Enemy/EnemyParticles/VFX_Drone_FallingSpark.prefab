@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5152347823438580686}
   - component: {fileID: 8194966601653802760}
   - component: {fileID: 4827318300589840728}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Drone_FallingSpark
   m_TagString: Untagged
   m_Icon: {fileID: 0}

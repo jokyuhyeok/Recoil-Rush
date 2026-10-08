@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 873089954888753616}
   - component: {fileID: 5897844010396386739}
   - component: {fileID: 9123581321669231485}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Sphere_Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

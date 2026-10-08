@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2064792329565784474}
   - component: {fileID: 4212809024963254550}
   - component: {fileID: 9156994189831462738}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Rotating_HandSwirl
   m_TagString: Untagged
   m_Icon: {fileID: 0}

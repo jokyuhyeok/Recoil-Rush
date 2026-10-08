@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5921851288023429736}
   - component: {fileID: 3562067994044539162}
   - component: {fileID: 7889013813354403766}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Sphere_Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
