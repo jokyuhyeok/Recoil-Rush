@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DroneStatDataSO
   MaxHp: 2
   Speed: 1
-  DetectRange: 20
-  AttackRange: 12
+  DetectRange: 10
+  AttackRange: 8
   AlarmTime: 1
   HoverHeight: 0.5
   HoverSpeed: 2
