@@ -38,15 +38,18 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        /*
         if (_target == null)
         {
             _target = transform.parent ?? GameObject.FindGameObjectWithTag("Player").transform;
         }
+        */
 
         //transform.position = _target.position + new Vector3(0f, 0f, transform.position.z);
         _baseOffset = transform.position - _target.position;
     }
 
+    /*
     private void LateUpdate()
     {
         if (_target == null)
@@ -88,6 +91,7 @@ public class CameraController : MonoBehaviour
 
         transform.position = nextPosition;
     }
+    */
 
     public void StartShake(float force, float duration)
     {

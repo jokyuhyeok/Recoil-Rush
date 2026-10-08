@@ -1966,6 +1966,8 @@ GameObject:
   - component: {fileID: 282878072}
   - component: {fileID: 282878071}
   - component: {fileID: 282878070}
+  - component: {fileID: 282878077}
+  - component: {fileID: 282878076}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2138,6 +2140,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &282878076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282878069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb35733af7c71e4f9ba1023e98fb0c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  _target: {fileID: 0}
+  _minPosition: {x: -7, y: -2.5}
+  _maxPosition: {x: 14, y: 8}
+--- !u!114 &282878077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282878069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f4c42f07c341548a73069aa27fede3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraShake
 --- !u!1001 &289551123
 PrefabInstance:
   m_ObjectHideFlags: 0
