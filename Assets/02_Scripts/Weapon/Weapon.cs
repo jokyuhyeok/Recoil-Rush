@@ -26,6 +26,8 @@ public abstract class Weapon : MonoBehaviour
     [Header("Effect")]
     [SerializeField] private SpriteEffect _fireEffect;
 
+    [SerializeField] private StartUI _startUi;
+
     private int _currentAmmo;
     private float _fireCooldown;
 
@@ -81,6 +83,12 @@ public abstract class Weapon : MonoBehaviour
 
     public bool TryFire()
     {
+        // 옵션창이 열려 있으면 발사 금지
+        if (_startUi != null && _startUi.IsOptionOpen)
+        {
+            return false;
+        }
+
         if (_currentAmmo <= 0 || _fireCooldown > 0f || _player.IsReloading)
         {
             return false;
