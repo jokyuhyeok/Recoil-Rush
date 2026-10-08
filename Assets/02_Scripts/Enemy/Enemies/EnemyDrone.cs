@@ -218,7 +218,8 @@ public class EnemyDrone : EnemyBase
             }
 
             Instantiate(_droneStatDataSo.ExplosionPrefab, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+
+            EnemyPoolManager.Instance.ReturnEnemy(gameObject);
         }
     }
 
@@ -331,6 +332,36 @@ public class EnemyDrone : EnemyBase
         {
             // 평범하게 플레이어의 X좌표를 추적
             return playerTransform.position.x;
+        }
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        _currentAlarmTime = 0f;
+        _isReturning = false;
+        _attackTimer = 0f;
+        _isCharging = false;
+        _isKnockbackProcessed = false;
+        _isDeadProcessed = false;
+
+        if (rb != null)
+        {
+            rb.gravityScale = 0f;
+            rb.freezeRotation = true;
+            transform.rotation = Quaternion.identity; // 빙글빙글 돌며 떨어졌으니 자세 똑바로 잡기
+            gameObject.layer = LayerMask.NameToLayer("Enemy");
+        }
+
+        if (_fallingSparkObject != null)
+        {
+            _fallingSparkObject.SetActive(false);
+        }
+
+        if (_chargeEffectObject != null)
+        {
+            _chargeEffectObject.SetActive(false);
         }
     }
 }

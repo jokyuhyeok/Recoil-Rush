@@ -113,7 +113,8 @@ public class EnemyRifle : EnemyBase
         Instantiate(_rifleStatData.DeathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
 
         CameraController.Instance.StartShake(0.5f, 0.2f);
-        Destroy(gameObject);
+
+        EnemyPoolManager.Instance.ReturnEnemy(gameObject);
     }
 
     // 애니메이션에서 호출될 메서드입니다. 
@@ -167,5 +168,14 @@ public class EnemyRifle : EnemyBase
         RaycastHit2D hit = Physics2D.Raycast(_firePoint.position, direction.normalized, distance,
             _rifleStatData.ObstacleMask);
         return hit.collider == null;
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        _isDead = false;
+        _currentAlarmTime = 0f;
+        _fireTimer = 0f;
     }
 }

@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     [Header("Reload")]
     [SerializeField] private float _reloadTime = 2f;
+
     [SerializeField] private float _reloadGroundDelay = 0.2f;
     [SerializeField] private float _reloadStopDelay = 1f;
 
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
 
     // 법선 y가 이 값 이상이면 바닥 (약 45도 이내)
     private const float GroundNormalY = 0.7f;
+
     // 속도가 이 값 이하면 멈춘걸로 판단
     private const float StopSpeed = 0.01f;
 
@@ -321,7 +323,6 @@ public class Player : MonoBehaviour
     }
 
 
-
     private void Reset()
     {
         _reloadTimer = 0f;
@@ -451,5 +452,26 @@ public class Player : MonoBehaviour
 
         // 부활 처리
         gameObject.SetActive(true);
+
+        // 적들과 트리거들을 리셋
+        ResetEnemy();
+    }
+
+    private void ResetEnemy()
+    {
+        // 맵에 살아있는 모든 적을 창고에 반납
+        EnemyBase[] activeEnemies = FindObjectsOfType<EnemyBase>();
+
+        foreach (EnemyBase enemy in activeEnemies)
+        {
+            EnemyPoolManager.Instance.ReturnEnemy(enemy.gameObject);
+        }
+
+        EnemySpawnTrigger[] triggers = FindObjectsOfType<EnemySpawnTrigger>();
+
+        foreach (EnemySpawnTrigger trigger in triggers)
+        {
+            trigger.ResetTrigger();
+        }
     }
 }
