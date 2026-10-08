@@ -50,3 +50,5 @@ public class Cmd_ForwardDash : IBossCommand
         boss.DashFireEffect.SetActive(true);
 
         float directionX = boss.transform.localScale.x > 0 ? -1f : 1f;
+    }
+}
