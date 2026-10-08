@@ -17435,7 +17435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 766936708}
   - component: {fileID: 766936707}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21192,10 +21192,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.13
       objectReference: {fileID: 0}
-    - target: {fileID: 1922579877599982274, guid: 1275c5bc08a7bbf45b1395f1ea7afa02, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2575181403115539526, guid: 1275c5bc08a7bbf45b1395f1ea7afa02, type: 3}
       propertyPath: m_Size.x
       value: 0.89461136
@@ -21325,16 +21321,8 @@ PrefabInstance:
       value: FallingSpikeTrap (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5374944535468403313, guid: 1275c5bc08a7bbf45b1395f1ea7afa02, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5374944535468403313, guid: 1275c5bc08a7bbf45b1395f1ea7afa02, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6039205792081283488, guid: 1275c5bc08a7bbf45b1395f1ea7afa02, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6951717511862646737, guid: 1275c5bc08a7bbf45b1395f1ea7afa02, type: 3}
       propertyPath: _triggerOnce
@@ -21472,14 +21460,6 @@ PrefabInstance:
     - target: {fileID: 4063158490050101385, guid: e3208b78c6d771446bfa8aefa4b43b7b, type: 3}
       propertyPath: m_Name
       value: StreetLightTrap (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4063158490050101385, guid: e3208b78c6d771446bfa8aefa4b43b7b, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7129719780412660935, guid: e3208b78c6d771446bfa8aefa4b43b7b, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8818627389158354349, guid: e3208b78c6d771446bfa8aefa4b43b7b, type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -21989,10 +21969,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.13
       objectReference: {fileID: 0}
-    - target: {fileID: 1922579877599982274, guid: 1275c5bc08a7bbf45b1395f1ea7afa02, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2575181403115539526, guid: 1275c5bc08a7bbf45b1395f1ea7afa02, type: 3}
       propertyPath: m_Size.x
       value: 0.89461136
@@ -22118,16 +22094,8 @@ PrefabInstance:
       value: FallingSpikeTrap
       objectReference: {fileID: 0}
     - target: {fileID: 5374944535468403313, guid: 1275c5bc08a7bbf45b1395f1ea7afa02, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5374944535468403313, guid: 1275c5bc08a7bbf45b1395f1ea7afa02, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6039205792081283488, guid: 1275c5bc08a7bbf45b1395f1ea7afa02, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6951717511862646737, guid: 1275c5bc08a7bbf45b1395f1ea7afa02, type: 3}
       propertyPath: _triggerOnce
@@ -23489,10 +23457,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLightTrap
       objectReference: {fileID: 0}
-    - target: {fileID: 4063158490050101385, guid: e3208b78c6d771446bfa8aefa4b43b7b, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6583595838964034210, guid: e3208b78c6d771446bfa8aefa4b43b7b, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -23504,10 +23468,6 @@ PrefabInstance:
     - target: {fileID: 6583595838964034210, guid: e3208b78c6d771446bfa8aefa4b43b7b, type: 3}
       propertyPath: m_SortingLayerID
       value: -226113057
-      objectReference: {fileID: 0}
-    - target: {fileID: 7129719780412660935, guid: e3208b78c6d771446bfa8aefa4b43b7b, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8818627389158354349, guid: e3208b78c6d771446bfa8aefa4b43b7b, type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -23791,7 +23751,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1129092749}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25071,14 +25031,6 @@ PrefabInstance:
     - target: {fileID: 5085686044630766736, guid: 77cfe00ba6a91aa458655af3dd75f362, type: 3}
       propertyPath: m_Name
       value: SequentialSpikeDropTrap
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085686044630766736, guid: 77cfe00ba6a91aa458655af3dd75f362, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6793403494891520040, guid: 77cfe00ba6a91aa458655af3dd75f362, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8011199849315367480, guid: 77cfe00ba6a91aa458655af3dd75f362, type: 3}
       propertyPath: _spikes.Array.size
@@ -36117,10 +36069,6 @@ PrefabInstance:
     - target: {fileID: 7757820110461411784, guid: 68ad491c422c17a498cbe2497169e506, type: 3}
       propertyPath: m_Name
       value: AutocheckPoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 7757820110461411784, guid: 68ad491c422c17a498cbe2497169e506, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8486646221484425230, guid: 68ad491c422c17a498cbe2497169e506, type: 3}
       propertyPath: m_Size.x
