@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 562542934627556729}
   - component: {fileID: 7197429954933300552}
   - component: {fileID: 8818627389158354349}
+  - component: {fileID: 1839869774275768374}
   m_Layer: 0
   m_Name: StreetLightTrap
   m_TagString: Untagged
@@ -167,6 +168,18 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: -90
     m_UpperAngle: 0
+--- !u!114 &1839869774275768374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4063158490050101385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638761f8edb178c49baee180e0b06862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrapBullet
 --- !u!1 &7126337052181765316
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +268,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3920978594244702400, guid: a4df3c2ba0d0f1a438c751b55deae3ba, type: 3}
       propertyPath: m_Size.x
-      value: 1.7333412
+      value: 5.488968
       objectReference: {fileID: 0}
     - target: {fileID: -3920978594244702400, guid: a4df3c2ba0d0f1a438c751b55deae3ba, type: 3}
       propertyPath: m_Size.y
@@ -263,7 +276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3920978594244702400, guid: a4df3c2ba0d0f1a438c751b55deae3ba, type: 3}
       propertyPath: m_Offset.x
-      value: 0.4209919
+      value: -1.4568214
       objectReference: {fileID: 0}
     - target: {fileID: -3920978594244702400, guid: a4df3c2ba0d0f1a438c751b55deae3ba, type: 3}
       propertyPath: m_Offset.y
