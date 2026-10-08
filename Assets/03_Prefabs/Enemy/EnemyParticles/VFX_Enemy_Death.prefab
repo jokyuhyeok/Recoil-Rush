@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 162302725831249853}
   - component: {fileID: 2080208013259852434}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VFX_Enemy_Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 2443252455092379996}
   - component: {fileID: 5202925161568507833}
   - component: {fileID: 2367340835948991924}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Blood_Pixels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
