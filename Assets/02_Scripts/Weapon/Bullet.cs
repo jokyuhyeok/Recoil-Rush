@@ -54,6 +54,9 @@ public class Bullet : MonoBehaviour
             return;
         }
 
+        if (other.gameObject.layer == LayerMask.NameToLayer("Dangerous") || other.gameObject.layer == LayerMask.NameToLayer("Ignore Raycast") || other.gameObject.layer == LayerMask.NameToLayer("UI"))
+            return;
+
         Vector2 currentPosition = _rigidbody.position;
         Vector2 move = currentPosition - _previousPosition;
 
