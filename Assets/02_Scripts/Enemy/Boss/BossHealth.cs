@@ -5,6 +5,7 @@ public class BossHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private BossStatDataSO _stat;
     [SerializeField] private BossController _controller;
+    private BossHealthUI _healthUI;
 
     public event Action OnBossDead;
     public event Action<int> OnPhaseChanged;
@@ -15,12 +16,29 @@ public class BossHealth : MonoBehaviour, IDamageable
     private void Start()
     {
         _currentHp = _stat.MaxHp;
+
+        _healthUI = FindFirstObjectByType<BossHealthUI>();
+
+        if (_healthUI == null)
+        {
+            Debug.LogWarning("씬에 BossHealthUI을 올려주세요!");
+        }
     }
 
     public void TakeDamage(int damage, Vector3 knockbackForce)
     {
         _currentHp -= damage;
         Debug.Log($"보스 피격! 데미지: {damage} | 현재 체력: {_currentHp}/{_stat.MaxHp}");
+
+        if (_controller != null)
+        {
+            _controller.PlayHitFlash();
+        }
+
+        if (_healthUI != null)
+        {
+            _healthUI.UpdateHealth(_currentHp, _stat.MaxHp);
+        }
 
         if (_currentHp <= 0)
         {

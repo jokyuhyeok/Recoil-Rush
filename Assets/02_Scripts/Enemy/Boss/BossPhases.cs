@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public interface IBossPhase
 {
-    // 보스의 스탯을 받습니다. 그리고 실행할 커맨드들의 목록을 조립해서 반환합니다. 
+    // 보스의 스탯을 받습니다. 그리고 실행할 커맨드들의 목록을 조립해서 반환합니다.
     IEnumerable<IBossCommand> PhaseCommands(BossStatDataSO stat);
 }
 
@@ -26,7 +26,7 @@ new Cmd_ForwardDash(stat.DashSpeed, stat.DashDuration, stat.DashChargeTime, stat
 new Cmd_BackwardDash(stat.BackDashSpeed, stat.BackDashDuration, stat.BackDashChargeTime, stat.BackDashGhostInterval)
 
 5. 3단 레이저 & 드론 소환
-new Cmd_LaserAndDrone()
+new Cmd_MultiLaser()
 
 6. 레이저 회전 공격
 new Cmd_CenterRotatingLaser()
@@ -40,12 +40,13 @@ public class BossPhase1 : IBossPhase
     {
         return new List<IBossCommand>
         {
+            new Cmd_Wait(5f),
             // 1. 등장 후 가벼운 기싸움 (대기)
             new Cmd_Wait(stat.WaitTime),
 
             // 2. 갑작스러운 맹공: 거리를 순식간에 좁혀 들이받음
             new Cmd_ForwardDash(stat.DashSpeed, stat.DashDuration, stat.DashChargeTime, stat.DashGhostInterval),
-            
+
             // 3. 플레이어의 근접 반격을 여유롭게 회피하며 거리 벌리기
             new Cmd_Wait(0.2f),
             new Cmd_BackwardDash(stat.BackDashSpeed, stat.BackDashDuration, stat.BackDashChargeTime, stat.BackDashGhostInterval),
@@ -61,7 +62,7 @@ public class BossPhase1 : IBossPhase
             new Cmd_Wait(stat.WaitTime),
 
             // 6. 지옥 시작: 맵에 폭탄 드론 3대를 깔면서 위/아래 3단 레이저로 퇴로 차단
-            new Cmd_LaserAndDrone(),
+            new Cmd_MultiLaser(),
 
             // 7. 레이저가 끝나자마자 쉴 틈 주지 않고 짧은 충전 후 기습 돌진!
             new Cmd_Wait(0.2f),
@@ -70,7 +71,7 @@ public class BossPhase1 : IBossPhase
             // 8. 1페이즈의 하이라이트 (공중 도약 후 풍차 레이저)
             new Cmd_Wait(0.5f),
             new Cmd_CenterRotatingLaser(),
-            
+
             // 9. 궁극기 시전 후 오버히트 (착지 후 길게 대기 - 플레이어의 프리딜 타임)
             new Cmd_Wait(stat.WaitTime * 1.5f)
         };
