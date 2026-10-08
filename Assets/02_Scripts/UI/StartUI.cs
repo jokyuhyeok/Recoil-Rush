@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +7,7 @@ public class StartUI : MonoBehaviour
     [SerializeField] private Button _optionButton;
     [SerializeField] private Button _exitButton;
 
+    [SerializeField] private GameObject _loadingUI;
 
     private void Awake()
     {
@@ -18,6 +18,7 @@ public class StartUI : MonoBehaviour
 
     private void OnStartButtonClicked()
     {
+        _loadingUI.SetActive(true);
         gameObject.SetActive(false);
     }
 
@@ -28,7 +29,10 @@ public class StartUI : MonoBehaviour
 
     private void OnExitButtonClicked()
     {
-        // 저장할 게 없어서 바로 끝내면 됨 (옵션 생기면 저장해야 함..)
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
 }
