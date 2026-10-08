@@ -5,6 +5,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _recoilRadius = 2f;
     [SerializeField] private float _recoilPower = 3f;
 
+    [Header("Effect")]
+    [SerializeField] private SpriteEffect _hitEffect;
+
     private Rigidbody2D _rigidbody;
 
     private Weapon _weapon;
@@ -16,6 +19,17 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+
+        // _hitEffect가 비어있으면 자식에서 피격 이벤트 자동 검색 (꺼진 것도)
+        if (_hitEffect == null)
+        {
+            _hitEffect = GetComponentInChildren<SpriteEffect>(true);
+        }
+
+        if (_hitEffect != null)
+        {
+            _hitEffect.gameObject.SetActive(false);
+        }
     }
 
     private void FixedUpdate()
@@ -40,8 +54,13 @@ public class Bullet : MonoBehaviour
             return;
         }
 
+        if (other.gameObject.layer == LayerMask.NameToLayer("Trigger"))
+            return;
+
         Vector2 currentPosition = _rigidbody.position;
         Vector2 move = currentPosition - _previousPosition;
+
+        Vector2 hitPoint = other.ClosestPoint(currentPosition);
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(
             _previousPosition,
@@ -51,20 +70,34 @@ public class Bullet : MonoBehaviour
 
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider == null || hit.collider != other)
+            if (hit.collider == other)
             {
-                continue;
+                hitPoint = hit.point;
+                break;
             }
+        }
 
-            // 부딪힌 게 적이면 데미지를 입힌다.
-            if (hit.collider.CompareTag("Enemy"))
+        // 부딪힌 게 적이면 데미지를 입힌다.
+        if (other.CompareTag("Enemy"))
+        {
+            // Todo: 이중 넉백 수정
+            // 넉백은 임시로 사용
+            IDamageable damageable = other.GetComponent<IDamageable>();
+
+            if (damageable != null)
             {
-                // Todo: 이중 넉백 수정
-                // 넉백은 임시로 사용
-                hit.collider.GetComponent<IDamageable>().TakeDamage(_damage, move.normalized * _recoilPower);
+                damageable.TakeDamage(_damage, move.normalized * _recoilPower);
             }
+        }
 
-            AddImpactRecoil(hit.point);
+        AddImpactRecoil(hitPoint);
+
+        if (_hitEffect != null)
+        {
+            // 부모에서 떼어낸 뒤 재생
+            _hitEffect.transform.SetParent(null);
+            _hitEffect.transform.SetPositionAndRotation(hitPoint, Quaternion.identity);
+            _hitEffect.Play();
         }
 
         Destroy(gameObject);

@@ -9,8 +9,8 @@ public class AudioManager : MonoBehaviour
     private static AudioManager _instance;
     public static AudioManager Instance => _instance;
 
-    [Header("BGM Settings")] [SerializeField]
-    private BackgroundMusicData[] _bgmDatas;
+    [Header("BGM Settings")]
+    [SerializeField] private BackgroundMusicData[] _bgmDatas;
 
     private Dictionary<BackgroundMusicType, AudioClip> _bgmClips;
 
@@ -19,8 +19,8 @@ public class AudioManager : MonoBehaviour
     private float _bgmVolume;
     public float BGMVolume => _bgmVolume;
 
-    [Header("SFX Settings")] [SerializeField]
-    private SoundEffectData[] _sfxDatas;
+    [Header("SFX Settings")]
+    [SerializeField] private SoundEffectData[] _sfxDatas;
 
     private Dictionary<SoundEffectType, AudioClip> _sfxClips;
 
@@ -46,8 +46,8 @@ public class AudioManager : MonoBehaviour
 
     private void Init()
     {
-        _bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
-        _sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        _bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 100f) / 100f;
+        _sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 100f) / 100f;
 
         // 기본적으로 가지고 있는 AudioSource는 BGM 전용으로 할당
         _bgmSource = GetComponent<AudioSource>();

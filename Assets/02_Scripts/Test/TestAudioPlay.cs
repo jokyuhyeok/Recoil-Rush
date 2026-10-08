@@ -19,7 +19,7 @@ public class TestAudioPlay : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            _manager.PlaySFX(SoundEffectType.SHOOT);
+            //_manager.PlaySFX(SoundEffectType.SHOOT);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
