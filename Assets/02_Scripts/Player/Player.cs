@@ -400,6 +400,11 @@ public class Player : MonoBehaviour
             _isGrounded = true;
         }
 
+        if (isGroundContact && isLanding && AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(SoundEffectType.PLAYER_LAND);
+        }
+
         // 벽, 천장은 즉시 재장전
         if (IsWallContact(collision))
         {
