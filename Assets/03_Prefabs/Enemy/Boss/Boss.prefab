@@ -340,6 +340,7 @@ MonoBehaviour:
   _dashFireEffect: {fileID: 7226125380590200559}
   _hitWallEffectPrefab: {fileID: 2054533921475329168, guid: 18c5a5f7c813ff24faa24718f4682011, type: 3}
   _handSwirlEffect: {fileID: 2345604356229402526}
+  _flashMaterial: {fileID: 2100000, guid: b0811a1e32dc2054f8dc74b9a0edc51e, type: 2}
   _rotatingLaserSkill: {fileID: -9056046370644596006}
   _redSphereEffect: {fileID: 3337297669749920003}
   _centerAirPosition: {fileID: 3309413868886134644, guid: 18c5a5f7c813ff24faa24718f4682011, type: 3}
@@ -357,7 +358,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossHealth
   _stat: {fileID: 11400000, guid: f7a2362c13c08d342b77ad7d32544fe7, type: 2}
   _controller: {fileID: 90324089730873121}
-  _healthUI: {fileID: 0}
 --- !u!114 &-9056046370644596006
 MonoBehaviour:
   m_ObjectHideFlags: 0

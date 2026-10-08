@@ -54,7 +54,7 @@ public class Cmd_BackwardDash : IBossCommand
             if ((directionX < 0 && boss.IsHittingLeftWall) || (directionX > 0 && boss.IsHittingRightWall))
             {
                 Debug.Log("<color=orange>보스: 등 뒤의 벽에 박았다!</color>");
-                CameraController.Instance.StartShake(0.5f, 1.5f);
+                CameraController.Instance.StartShake(0.6f, 1.5f);
 
                 boss.Rigidbody.linearVelocity = new Vector2(directionX * _dashSpeed, boss.Rigidbody.linearVelocity.y);
                 yield return new WaitForSeconds(0.2f);

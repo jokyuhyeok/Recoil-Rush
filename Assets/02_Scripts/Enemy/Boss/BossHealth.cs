@@ -30,6 +30,11 @@ public class BossHealth : MonoBehaviour, IDamageable
         _currentHp -= damage;
         Debug.Log($"보스 피격! 데미지: {damage} | 현재 체력: {_currentHp}/{_stat.MaxHp}");
 
+        if (_controller != null)
+        {
+            _controller.PlayHitFlash();
+        }
+
         if (_healthUI != null)
         {
             _healthUI.UpdateHealth(_currentHp, _stat.MaxHp);

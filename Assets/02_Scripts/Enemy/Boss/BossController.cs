@@ -18,6 +18,10 @@ public class BossController : MonoBehaviour
     [SerializeField] private GameObject _hitWallEffectPrefab; // 패턴: 전방, 후방 돌진
     [SerializeField] private GameObject _handSwirlEffect; // 패턴: 멀티레이저
 
+    [SerializeField] private Material _flashMaterial;
+    private Material _originalMaterial; // 원래 머티리얼 기억용
+    private Coroutine _flashCoroutine; // 깜빡임 코루틴 제어용
+
     [Header("레이저 회전 공격 전용 변수")]
     [SerializeField] private BossLaserTest _rotatingLaserSkill; // 레이저 회전 Script
 
@@ -57,6 +61,9 @@ public class BossController : MonoBehaviour
         Anim = GetComponent<Animator>();
         Rigidbody.gravityScale = _stat.HeavyGravity;
         PlayerCaching();
+
+        if (_spriteRenderer == null) return;
+        _originalMaterial = _spriteRenderer.material;
 
         _phases = new IBossPhase[]
         {
@@ -100,6 +107,7 @@ public class BossController : MonoBehaviour
         _currentPhase = phaseIndex;
 
         StopAllCoroutines();
+        ResetFlashMaterial();
 
         if (_vfxGroup == null)
         {
@@ -121,8 +129,21 @@ public class BossController : MonoBehaviour
     public void StopAllAttacks()
     {
         StopAllCoroutines();
+        ResetFlashMaterial();
         _commandQueue.Clear();
         Rigidbody.linearVelocity = Vector2.zero;
+    }
+
+    public void PlayHitFlash()
+    {
+        if (_spriteRenderer == null || _flashMaterial == null) return;
+
+        if (_flashCoroutine != null)
+        {
+            StopCoroutine(_flashCoroutine);
+        }
+
+        _flashCoroutine = StartCoroutine(HitFlashRoutine());
     }
 
     public void ShootLaserEvent()
@@ -211,6 +232,21 @@ public class BossController : MonoBehaviour
         else
         {
             Debug.LogError("플레이어가 씬에 없습니다!");
+        }
+    }
+
+    private IEnumerator HitFlashRoutine()
+    {
+        _spriteRenderer.material = _flashMaterial;
+        yield return new WaitForSeconds(0.05f);
+        _spriteRenderer.material = _originalMaterial;
+    }
+
+    private void ResetFlashMaterial()
+    {
+        if (_spriteRenderer != null && _originalMaterial != null)
+        {
+            _spriteRenderer.material = _originalMaterial;
         }
     }
 }
