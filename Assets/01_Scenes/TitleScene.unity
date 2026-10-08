@@ -849,7 +849,7 @@ RectTransform:
   - {fileID: 866009173}
   - {fileID: 2039503301}
   - {fileID: 1861951055}
-  - {fileID: 1647839499}
+  - {fileID: 1483788456}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2902,6 +2902,7 @@ GameObject:
   - component: {fileID: 1483788456}
   - component: {fileID: 1483788458}
   - component: {fileID: 1483788457}
+  - component: {fileID: 1483788459}
   m_Layer: 5
   m_Name: Cursor
   m_TagString: Untagged
@@ -2916,12 +2917,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483788455}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1647839499}
+  m_Father: {fileID: 259064349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2966,6 +2967,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483788455}
   m_CullTransparentMesh: 1
+--- !u!114 &1483788459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483788455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16cd1fd486080174c872f57e1cdcb4ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VirtualMouseCursor
+  _canvas: {fileID: 259064348}
+  _normalSprite: {fileID: -8409868546834434180, guid: d3982f03ee2cb434493f39b0e5a54c7e, type: 3}
+  _clickSprite: {fileID: -4420790056390850207, guid: d3982f03ee2cb434493f39b0e5a54c7e, type: 3}
 --- !u!1 &1539873039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,26 +3309,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1647839499
-RectTransform:
+--- !u!4 &1647839499
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647839498}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1483788456}
-  m_Father: {fileID: 259064349}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1647839500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3325,7 +3336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e3db6a2e2080a479db122b1e47620a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VirtualMouse
-  _mouseSpeed: 20
   _sensitivity: 1
 --- !u!1 &1767825400
 GameObject:
@@ -4203,3 +4213,4 @@ SceneRoots:
   - {fileID: 259064349}
   - {fileID: 880395943}
   - {fileID: 214183889}
+  - {fileID: 1647839499}

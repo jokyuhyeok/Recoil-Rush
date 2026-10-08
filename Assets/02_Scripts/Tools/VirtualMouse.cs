@@ -1,28 +1,28 @@
-using System;
 using UnityEngine;
 
+[DefaultExecutionOrder(-100)]
 public class VirtualMouse : MonoBehaviour
 {
-    private static VirtualMouse _instance;
-    public static VirtualMouse Instance => _instance;
+    private const float MouseSpeed = 15f;
 
-    [SerializeField] private float _mouseSpeed = 10f;
+    public static VirtualMouse Instance { get; private set; }
+
     [SerializeField] private float _sensitivity = 1f;
-    public float Sensitivity => _sensitivity;
 
     private Vector2 _screenPosition;
-    public Vector2 ScreenPosition => _screenPosition;
 
+    public Vector2 ScreenPosition => _screenPosition;
+    public float Sensitivity => _sensitivity;
 
     private void Awake()
     {
-        if (_instance != null)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        _instance = this;
+        Instance = this;
         DontDestroyOnLoad(gameObject);
 
         _screenPosition = Input.mousePosition;
@@ -40,7 +40,7 @@ public class VirtualMouse : MonoBehaviour
     {
         Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
-        _screenPosition += mouseDelta * _mouseSpeed * _sensitivity;
+        _screenPosition += mouseDelta * (MouseSpeed * _sensitivity);
 
         _screenPosition.x = Mathf.Clamp(_screenPosition.x, 0f, Screen.width);
         _screenPosition.y = Mathf.Clamp(_screenPosition.y, 0f, Screen.height);
