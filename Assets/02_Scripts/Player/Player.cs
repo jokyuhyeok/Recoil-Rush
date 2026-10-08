@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private string _resetTag = "Ground";
 
-    // 법선 y가 이 값 이상이면 바닥 (약 45도 이내)
+    // 법선 y가 이 값 이상이면 바닥 (약 45도 이내 / 45.6)
     private const float GroundNormalY = 0.7f;
     // 속도가 이 값 이하면 멈춘걸로 판단
     private const float StopSpeed = 0.01f;
