@@ -2,6 +2,6 @@ public enum BackgroundMusicType
 {
     TITLE,
     MAIN,
-    SUB,
+    BOSS,
     ENDING,
 }

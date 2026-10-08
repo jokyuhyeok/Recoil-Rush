@@ -54,10 +54,13 @@ public class Bullet : MonoBehaviour
             return;
         }
 
+        if (other.gameObject.layer == LayerMask.NameToLayer("Trigger"))
+            return;
+
         Vector2 currentPosition = _rigidbody.position;
         Vector2 move = currentPosition - _previousPosition;
 
-        Vector2 hitPoint = currentPosition;
+        Vector2 hitPoint = other.ClosestPoint(currentPosition);
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(
             _previousPosition,
@@ -67,23 +70,27 @@ public class Bullet : MonoBehaviour
 
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider == null || hit.collider != other)
+            if (hit.collider == other)
             {
-                continue;
+                hitPoint = hit.point;
+                break;
             }
-
-            // 부딪힌 게 적이면 데미지를 입힌다.
-            if (hit.collider.CompareTag("Enemy"))
-            {
-                // Todo: 이중 넉백 수정
-                // 넉백은 임시로 사용
-                hit.collider.GetComponent<IDamageable>().TakeDamage(_damage, move.normalized * _recoilPower);
-            }
-
-            AddImpactRecoil(hit.point);
-
-            hitPoint = hit.point;
         }
+
+        // 부딪힌 게 적이면 데미지를 입힌다.
+        if (other.CompareTag("Enemy"))
+        {
+            // Todo: 이중 넉백 수정
+            // 넉백은 임시로 사용
+            IDamageable damageable = other.GetComponent<IDamageable>();
+
+            if (damageable != null)
+            {
+                damageable.TakeDamage(_damage, move.normalized * _recoilPower);
+            }
+        }
+
+        AddImpactRecoil(hitPoint);
 
         if (_hitEffect != null)
         {
