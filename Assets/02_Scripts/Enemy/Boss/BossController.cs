@@ -8,10 +8,23 @@ public class BossController : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Transform[] _firePoints;
     [SerializeField] private Transform _laserFirePoint;
-    [SerializeField] private Transform[] _droneSpawnPoints;
+    [SerializeField] private Transform _vfxGroup;
+
+    [Header("시각 효과 (VFX)")]
+    [SerializeField] private GameObject _idleSmokeEffect; // 패턴: 대기
+
+    [SerializeField] private GameObject _dashChargeEffect; // 패턴: 전방 돌진
+    [SerializeField] private GameObject _dashFireEffect; // 패턴: 전방 돌진
+    [SerializeField] private GameObject _hitWallEffectPrefab; // 패턴: 전방, 후방 돌진
+    [SerializeField] private GameObject _handSwirlEffect; // 패턴: 멀티레이저
+
+    [SerializeField] private Material _flashMaterial;
+    private Material _originalMaterial; // 원래 머티리얼 기억용
+    private Coroutine _flashCoroutine; // 깜빡임 코루틴 제어용
 
     [Header("레이저 회전 공격 전용 변수")]
     [SerializeField] private BossLaserTest _rotatingLaserSkill; // 레이저 회전 Script
+
     [SerializeField] private GameObject _redSphereEffect;
     [SerializeField] private Transform _centerAirPosition;
 
@@ -31,11 +44,15 @@ public class BossController : MonoBehaviour
     public BossLaserTest RotatingLaserSkill => _rotatingLaserSkill;
     public GameObject RedSphereEffect => _redSphereEffect;
     public Transform CenterAirPosition => _centerAirPosition;
+    public GameObject IdleSmokeEffect => _idleSmokeEffect;
+    public GameObject DashChargeEffect => _dashChargeEffect;
+    public GameObject DashFireEffect => _dashFireEffect;
+    public GameObject HitWallEffectPrefab => _hitWallEffectPrefab;
 
-    public bool IsLaserFinished { get; set; } = false;
     public int LaserSequenceIndex { get; set; } = 0;
     public bool IsHittingLeftWall { get; private set; } = false;
     public bool IsHittingRightWall { get; private set; } = false;
+    public GameObject HandSwirlEffect => _handSwirlEffect;
 
     // 유니티 생명주기
     private void Awake()
@@ -44,6 +61,9 @@ public class BossController : MonoBehaviour
         Anim = GetComponent<Animator>();
         Rigidbody.gravityScale = _stat.HeavyGravity;
         PlayerCaching();
+
+        if (_spriteRenderer == null) return;
+        _originalMaterial = _spriteRenderer.material;
 
         _phases = new IBossPhase[]
         {
@@ -87,6 +107,18 @@ public class BossController : MonoBehaviour
         _currentPhase = phaseIndex;
 
         StopAllCoroutines();
+        ResetFlashMaterial();
+
+        if (_vfxGroup == null)
+        {
+            Debug.LogError("보스 프리팹 안의 VFX_Group을 연결해주세요.");
+        }
+
+        foreach (Transform child in _vfxGroup)
+        {
+            child.gameObject.SetActive(false);
+        }
+
         _commandQueue.Clear();
         _isExecuting = false;
 
@@ -97,17 +129,31 @@ public class BossController : MonoBehaviour
     public void StopAllAttacks()
     {
         StopAllCoroutines();
+        ResetFlashMaterial();
         _commandQueue.Clear();
         Rigidbody.linearVelocity = Vector2.zero;
+    }
+
+    public void PlayHitFlash()
+    {
+        if (_spriteRenderer == null || _flashMaterial == null) return;
+
+        if (_flashCoroutine != null)
+        {
+            StopCoroutine(_flashCoroutine);
+        }
+
+        _flashCoroutine = StartCoroutine(HitFlashRoutine());
     }
 
     public void ShootLaserEvent()
     {
         if (_stat.BossLaserPrefab == null || _laserFirePoint == null) return;
+        if (_stat.MultiLaserOffsets == null || _stat.MultiLaserOffsets.Length == 0) return;
 
-        float offsetY = LaserSequenceIndex == 0 ? _stat.LaserBottomOffsetY
-            : LaserSequenceIndex == 1 ? _stat.LaserTopOffsetY
-            : _stat.LaserMidOffsetY;
+        // 인덱스 초과 방어 (5번 쏠 거지만 혹시 몰라서 방어 코드 추가)
+        int index = Mathf.Clamp(LaserSequenceIndex, 0, _stat.MultiLaserOffsets.Length - 1);
+        float offsetY = _stat.MultiLaserOffsets[index];
 
         LaserSequenceIndex++;
 
@@ -118,23 +164,6 @@ public class BossController : MonoBehaviour
         if (laser != null)
         {
             laser.FireLaser(_stat.LaserWarningTime, _stat.LaserBeamTime);
-        }
-    }
-
-    public void SpawnDroneEvent()
-    {
-        if (_stat.DronePrefab == null || _droneSpawnPoints == null)
-        {
-            Debug.LogError("드론 프리팹 또는 스폰 포인트가 없습니다!");
-            return;
-        }
-        Debug.Log("<color=green>보스: 발판용 시한폭탄 드론 공중 소환!</color>");
-
-        foreach (Transform spawnPoint in _droneSpawnPoints)
-        {
-            if (spawnPoint == null) return;
-
-            Instantiate(_stat.DronePrefab, spawnPoint.position, Quaternion.identity);
         }
     }
 
@@ -150,13 +179,8 @@ public class BossController : MonoBehaviour
         ghost.Setup(_spriteRenderer.sprite, transform);
     }
 
-    public void FinishLaserEvent()
-    {
-        IsLaserFinished = true;
-    }
-
     // private 제어 메서드
-    private IEnumerator ProcessCommands()   // 핵심 코루틴
+    private IEnumerator ProcessCommands() // 핵심 코루틴
     {
         // 보스가 살아있는동안 반복
         while (true)
@@ -167,7 +191,7 @@ public class BossController : MonoBehaviour
                 {
                     _isExecuting = true;
                     IBossCommand currentCommand = _commandQueue.Dequeue();
-                    yield return StartCoroutine(currentCommand.Execute(this));  // 꺼낸 패턴 실행 + 패턴이 끝날 때까지 대기
+                    yield return StartCoroutine(currentCommand.Execute(this)); // 꺼낸 패턴 실행 + 패턴이 끝날 때까지 대기
                     _isExecuting = false;
                 }
                 else
@@ -175,6 +199,7 @@ public class BossController : MonoBehaviour
                     LoadPhaseCommands();
                 }
             }
+
             yield return null;
         }
     }
@@ -207,6 +232,21 @@ public class BossController : MonoBehaviour
         else
         {
             Debug.LogError("플레이어가 씬에 없습니다!");
+        }
+    }
+
+    private IEnumerator HitFlashRoutine()
+    {
+        _spriteRenderer.material = _flashMaterial;
+        yield return new WaitForSeconds(0.05f);
+        _spriteRenderer.material = _originalMaterial;
+    }
+
+    private void ResetFlashMaterial()
+    {
+        if (_spriteRenderer != null && _originalMaterial != null)
+        {
+            _spriteRenderer.material = _originalMaterial;
         }
     }
 }

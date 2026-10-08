@@ -78,16 +78,9 @@ public class BossStatDataSO : ScriptableObject
     [Tooltip("총알들의 이동속도입니다.")]
     public float RightBulletSpeed = 15f;
 
-    [Header("레이저 공격과 드론 소환(LaserAndDrone)")]
-    [Header("3단 위치 랜덤 레이저 공격")]
-    [Tooltip("상단 레이저 발사 시 Y축 오프셋입니다.(보스 중앙 기준)")]
-    public float LaserTopOffsetY = 2.0f;
-
-    [Tooltip("중단 레이저 발사 시 Y축 오프셋입니다. (보스 중앙 기준)")]
-    public float LaserMidOffsetY = 0.0f;
-
-    [Tooltip("하단 레이저 발사 시 Y축 오프셋입니다. (보스 중앙 기준)")]
-    public float LaserBottomOffsetY = -2.0f;
+    [Header("5단 광역 레이저 공격")]
+    [Tooltip("5단 레이저 발사 시 Y축 오프셋 값들입니다. (보스 중앙 기준, 아래부터 위로 5개 세팅 추천)")]
+    public float[] MultiLaserOffsets = new float[] { 0f, 2f, 8f, 4f, 6f };
 
     [Tooltip("레이저 발사 전 얇은 경고선이 표시되는 시간입니다.")]
     public float LaserWarningTime = 1.0f;
@@ -105,9 +98,6 @@ public class BossStatDataSO : ScriptableObject
 
     [Tooltip("3단 레이저 공격에 쓰일 레이저 프리팹입니다.")]
     public GameObject BossLaserPrefab;
-
-    [Tooltip("3단 레이저 공격 시 공중에 등장할 드론 프리팹입니다.")]
-    public GameObject DronePrefab;
 
     [Tooltip("돌진 시 잔상이 생길 때 사용할 프리팹입니다.")]
     public GameObject GhostPrefab;
