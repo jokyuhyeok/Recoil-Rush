@@ -46,8 +46,8 @@ public class AudioManager : MonoBehaviour
 
     private void Init()
     {
-        _bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
-        _sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        _bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 100f) / 100f;
+        _sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 100f) / 100f;
 
         // 기본적으로 가지고 있는 AudioSource는 BGM 전용으로 할당
         _bgmSource = GetComponent<AudioSource>();

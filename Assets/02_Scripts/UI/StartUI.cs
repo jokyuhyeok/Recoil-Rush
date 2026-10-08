@@ -8,6 +8,8 @@ public class StartUI : MonoBehaviour
     [SerializeField] private Button _exitButton;
 
     [SerializeField] private GameObject _loadingUI;
+    [SerializeField] private GameObject _optionUI;
+
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class StartUI : MonoBehaviour
 
     private void OnOptionButtonClicked()
     {
-        // Todo: 시간 남으면 옵션 구현
+        _optionUI.SetActive(true);
     }
 
     private void OnExitButtonClicked()
