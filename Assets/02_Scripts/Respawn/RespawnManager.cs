@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class RespawnManager : MonoBehaviour
@@ -5,8 +6,8 @@ public class RespawnManager : MonoBehaviour
     private static RespawnManager _instance;
     public static RespawnManager Instance => _instance;
 
-    public delegate void RespawnEvent(Vector3 respawnPosition);
-    public event RespawnEvent OnRespawnEvent;
+    public event Action<Vector3> OnRespawnEvent;
+    public event Action OnRespawnUIEvent;
 
     private Vector3 _respawnPosition;
 
@@ -28,6 +29,7 @@ public class RespawnManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             OnRespawnEvent?.Invoke(_respawnPosition);
+            OnRespawnUIEvent?.Invoke();
         }
     }
 

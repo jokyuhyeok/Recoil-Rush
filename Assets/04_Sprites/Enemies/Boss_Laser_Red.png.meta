@@ -1,0 +1,871 @@
+fileFormatVersion: 2
+guid: ea2b80d6db1a597428f7a5dc157ebc5f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1441039701986354734
+    second: Boss_Laser_Red_0
+  - first:
+      213: -4910282179693184212
+    second: Boss_Laser_Red_1
+  - first:
+      213: 1380394687049571796
+    second: Boss_Laser_Red_2
+  - first:
+      213: 5764767113934038541
+    second: Boss_Laser_Red_3
+  - first:
+      213: 1553610557139196940
+    second: Boss_Laser_Red_4
+  - first:
+      213: -8972675617290262811
+    second: Boss_Laser_Red_5
+  - first:
+      213: -1837958975645838636
+    second: Boss_Laser_Red_6
+  - first:
+      213: -8152485976694444057
+    second: Boss_Laser_Red_7
+  - first:
+      213: 6578051912404833355
+    second: Boss_Laser_Red_8
+  - first:
+      213: 6165289850499039502
+    second: Boss_Laser_Red_9
+  - first:
+      213: 4844204312959200966
+    second: Boss_Laser_Red_10
+  - first:
+      213: 6799319191238058145
+    second: Boss_Laser_Red_11
+  - first:
+      213: 3714216024318515454
+    second: Boss_Laser_Red_12
+  - first:
+      213: -8556906562005601217
+    second: Boss_Laser_Red_13
+  - first:
+      213: 4994369493509721028
+    second: Boss_Laser_Red_14
+  - first:
+      213: 5086807989117063064
+    second: Boss_Laser_Red_15
+  - first:
+      213: -5582541539307028745
+    second: Boss_Laser_Red_16
+  - first:
+      213: -1859770236492828567
+    second: Boss_Laser_Red_17
+  - first:
+      213: -6703225458574033248
+    second: Boss_Laser_Red_18
+  - first:
+      213: 1105265878489118883
+    second: Boss_Laser_Red_19
+  - first:
+      213: -3604930061962376900
+    second: Boss_Laser_Red_20
+  - first:
+      213: 348781442367643329
+    second: Boss_Laser_Red_21
+  - first:
+      213: 3677661653681986272
+    second: Boss_Laser_Red_22
+  - first:
+      213: -7206502040979393767
+    second: Boss_Laser_Red_23
+  - first:
+      213: 2816503697990128489
+    second: Boss_Laser_Red_24
+  - first:
+      213: -6327495771373660009
+    second: Boss_Laser_Red_25
+  - first:
+      213: 522276816749250495
+    second: Boss_Laser_Red_26
+  - first:
+      213: -6891169550008515090
+    second: Boss_Laser_Red_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Boss_Laser_Red_0
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 103
+        width: 2127
+        height: 499
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 257, y: 69, z: 379, w: 57}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d95ed7a606600ce0800000000000000
+      internalID: -1441039701986354734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_1
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 642
+        width: 108
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2bf4749f5c2bdbb0800000000000000
+      internalID: -4910282179693184212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_2
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 693
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dd1d6b77a5282310800000000000000
+      internalID: 1380394687049571796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_3
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 699
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0664e6a521900050800000000000000
+      internalID: 5764767113934038541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_4
+      rect:
+        serializedVersion: 2
+        x: 1810
+        y: 693
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0c149102988f8510800000000000000
+      internalID: 1553610557139196940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_5
+      rect:
+        serializedVersion: 2
+        x: 1818
+        y: 691
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e6ea9ab017aa7380800000000000000
+      internalID: -8972675617290262811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_6
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 685
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d293e0bc024e76e0800000000000000
+      internalID: -1837958975645838636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_7
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 670
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ef26caa23d8cde80800000000000000
+      internalID: -8152485976694444057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_8
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 661
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4418f0cc5fe94b50800000000000000
+      internalID: 6578051912404833355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_9
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 653
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e01015434728f8550800000000000000
+      internalID: 6165289850499039502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_10
+      rect:
+        serializedVersion: 2
+        x: 1721
+        y: 651
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ce295d28221a3340800000000000000
+      internalID: 4844204312959200966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_11
+      rect:
+        serializedVersion: 2
+        x: 1727
+        y: 635
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a0ad34b7c80c5e50800000000000000
+      internalID: 6799319191238058145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_12
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 626
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef8919c9bcb8b8330800000000000000
+      internalID: 3714216024318515454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_13
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 618
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f34727b71d2cf3980800000000000000
+      internalID: -8556906562005601217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_14
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 626
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cbc1b1d7909f4540800000000000000
+      internalID: 4994369493509721028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_15
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 596
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89f01ff3ae8f79640800000000000000
+      internalID: 5086807989117063064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_16
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 612
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fefdbd2c04d682b0800000000000000
+      internalID: -5582541539307028745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_17
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 79
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 960300ac2d4c036e0800000000000000
+      internalID: -1859770236492828567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_18
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 71
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0aef65ce5fb59f2a0800000000000000
+      internalID: -6703225458574033248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_19
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 49
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a834b5e571b65f00800000000000000
+      internalID: 1105265878489118883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_20
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 41
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c390b985537b8fdc0800000000000000
+      internalID: -3604930061962376900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_21
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 54
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ce5298bfde17d400800000000000000
+      internalID: 348781442367643329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_22
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 37
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ea5ac7f9cda90330800000000000000
+      internalID: 3677661653681986272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_23
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 47
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 913bb4e439c5dfb90800000000000000
+      internalID: -7206502040979393767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_24
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 45
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 963964bd03b361720800000000000000
+      internalID: 2816503697990128489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_25
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 38
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7989c75de183038a0800000000000000
+      internalID: -6327495771373660009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_26
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 15
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb7c2c86fff7f3700800000000000000
+      internalID: 522276816749250495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Laser_Red_27
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 17
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee501c42ec5ad50a0800000000000000
+      internalID: -6891169550008515090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e289666d39e8fb1439107abaf99d8eb6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Boss_Laser_Red_0: -1441039701986354734
+      Boss_Laser_Red_1: -4910282179693184212
+      Boss_Laser_Red_10: 4844204312959200966
+      Boss_Laser_Red_11: 6799319191238058145
+      Boss_Laser_Red_12: 3714216024318515454
+      Boss_Laser_Red_13: -8556906562005601217
+      Boss_Laser_Red_14: 4994369493509721028
+      Boss_Laser_Red_15: 5086807989117063064
+      Boss_Laser_Red_16: -5582541539307028745
+      Boss_Laser_Red_17: -1859770236492828567
+      Boss_Laser_Red_18: -6703225458574033248
+      Boss_Laser_Red_19: 1105265878489118883
+      Boss_Laser_Red_2: 1380394687049571796
+      Boss_Laser_Red_20: -3604930061962376900
+      Boss_Laser_Red_21: 348781442367643329
+      Boss_Laser_Red_22: 3677661653681986272
+      Boss_Laser_Red_23: -7206502040979393767
+      Boss_Laser_Red_24: 2816503697990128489
+      Boss_Laser_Red_25: -6327495771373660009
+      Boss_Laser_Red_26: 522276816749250495
+      Boss_Laser_Red_27: -6891169550008515090
+      Boss_Laser_Red_3: 5764767113934038541
+      Boss_Laser_Red_4: 1553610557139196940
+      Boss_Laser_Red_5: -8972675617290262811
+      Boss_Laser_Red_6: -1837958975645838636
+      Boss_Laser_Red_7: -8152485976694444057
+      Boss_Laser_Red_8: 6578051912404833355
+      Boss_Laser_Red_9: 6165289850499039502
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299959c1399bb8e4298f9f1f88f69f37, type: 3}
   m_Name: Drone
   m_EditorClassIdentifier: Assembly-CSharp::DroneStatDataSO
-  maxHp: 2
-  speed: 1
-  detectRange: 10
-  attackRange: 8
-  alarmTime: 1
-  hoverHeight: 0.5
-  hoverSpeed: 2
-  chargeTime: 2
-  attackCooldown: 0.5
+  MaxHp: 2
+  Speed: 1
+  DetectRange: 10
+  AttackRange: 8
+  AlarmTime: 1
+  HoverHeight: 0.5
+  HoverSpeed: 2
+  ChargeTime: 2
+  AttackCooldown: 2
+  MinAttackAngle: -60
+  MaxAttackAngle: 15
+  ObstacleMask:
+    serializedVersion: 2
+    m_Bits: 51
+  CannonPrefab: {fileID: 3158174680353163776, guid: 37b2270972fafff43a2d1f891229da55, type: 3}
+  ExplosionPrefab: {fileID: 4046830469507457698, guid: 797540eb56db1474985d12184685de2f, type: 3}

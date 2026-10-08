@@ -1,0 +1,2631 @@
+fileFormatVersion: 2
+guid: 78d6c7977220a184bb52b4e5ccbff45a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 721697048631340149
+    second: vfx_spark-Sheet_0
+  - first:
+      213: -6090080515804961623
+    second: vfx_spark-Sheet_1
+  - first:
+      213: -8778967378042869347
+    second: vfx_spark-Sheet_2
+  - first:
+      213: 4804577087510518469
+    second: vfx_spark-Sheet_3
+  - first:
+      213: -3331647791068996298
+    second: vfx_spark-Sheet_4
+  - first:
+      213: -6511793810025846950
+    second: vfx_spark-Sheet_5
+  - first:
+      213: -2151694467756528062
+    second: vfx_spark-Sheet_6
+  - first:
+      213: 1091596116501685186
+    second: vfx_spark-Sheet_7
+  - first:
+      213: -3501181404818176666
+    second: vfx_spark-Sheet_8
+  - first:
+      213: -3920629082343533430
+    second: vfx_spark-Sheet_9
+  - first:
+      213: 2775209518693314556
+    second: vfx_spark-Sheet_10
+  - first:
+      213: 7806663147608678169
+    second: vfx_spark-Sheet_11
+  - first:
+      213: 1998215195621009739
+    second: vfx_spark-Sheet_12
+  - first:
+      213: -6365985267382728027
+    second: vfx_spark-Sheet_13
+  - first:
+      213: -4794267763389096016
+    second: vfx_spark-Sheet_14
+  - first:
+      213: -7526721026900073376
+    second: vfx_spark-Sheet_15
+  - first:
+      213: 7155038347720808912
+    second: vfx_spark-Sheet_16
+  - first:
+      213: -5184271256769426259
+    second: vfx_spark-Sheet_17
+  - first:
+      213: 6276432533990832788
+    second: vfx_spark-Sheet_18
+  - first:
+      213: -5290431234457890689
+    second: vfx_spark-Sheet_19
+  - first:
+      213: -3829194708653905487
+    second: vfx_spark-Sheet_20
+  - first:
+      213: -3828512749299744581
+    second: vfx_spark-Sheet_21
+  - first:
+      213: 7539909693366787033
+    second: vfx_spark-Sheet_22
+  - first:
+      213: 5564625582828533672
+    second: vfx_spark-Sheet_23
+  - first:
+      213: 7429965598636014324
+    second: vfx_spark-Sheet_24
+  - first:
+      213: -4316844456557994075
+    second: vfx_spark-Sheet_25
+  - first:
+      213: 118194393881076118
+    second: vfx_spark-Sheet_26
+  - first:
+      213: -3500974827852892025
+    second: vfx_spark-Sheet_27
+  - first:
+      213: -8089665673241609300
+    second: vfx_spark-Sheet_28
+  - first:
+      213: -3866929238771445548
+    second: vfx_spark-Sheet_29
+  - first:
+      213: 4948103451612067732
+    second: vfx_spark-Sheet_30
+  - first:
+      213: -6811608295622564880
+    second: vfx_spark-Sheet_31
+  - first:
+      213: 3192399951087199317
+    second: vfx_spark-Sheet_32
+  - first:
+      213: 191636522038614673
+    second: vfx_spark-Sheet_33
+  - first:
+      213: 465814683584382143
+    second: vfx_spark-Sheet_34
+  - first:
+      213: -4480896737499503719
+    second: vfx_spark-Sheet_35
+  - first:
+      213: -2874153725533114191
+    second: vfx_spark-Sheet_36
+  - first:
+      213: -7451220383391715261
+    second: vfx_spark-Sheet_37
+  - first:
+      213: -122433504647605271
+    second: vfx_spark-Sheet_38
+  - first:
+      213: -8735389148723873062
+    second: vfx_spark-Sheet_39
+  - first:
+      213: -8364221680024934182
+    second: vfx_spark-Sheet_40
+  - first:
+      213: 5626064062744372242
+    second: vfx_spark-Sheet_41
+  - first:
+      213: -7411857607608109969
+    second: vfx_spark-Sheet_42
+  - first:
+      213: 2441372542446678110
+    second: vfx_spark-Sheet_43
+  - first:
+      213: -7181796953331428932
+    second: vfx_spark-Sheet_44
+  - first:
+      213: 3306533479360789044
+    second: vfx_spark-Sheet_45
+  - first:
+      213: -7741009700648084577
+    second: vfx_spark-Sheet_46
+  - first:
+      213: -3405239463614058401
+    second: vfx_spark-Sheet_47
+  - first:
+      213: 4063490501913183921
+    second: vfx_spark-Sheet_48
+  - first:
+      213: 7287197546788122903
+    second: vfx_spark-Sheet_49
+  - first:
+      213: -3749320686954387893
+    second: vfx_spark-Sheet_50
+  - first:
+      213: -5562019206889866358
+    second: vfx_spark-Sheet_51
+  - first:
+      213: -5766419596364644547
+    second: vfx_spark-Sheet_52
+  - first:
+      213: 5712487842667988400
+    second: vfx_spark-Sheet_53
+  - first:
+      213: 5782209789644986029
+    second: vfx_spark-Sheet_54
+  - first:
+      213: 3932693556678974526
+    second: vfx_spark-Sheet_55
+  - first:
+      213: -8555118261688382403
+    second: vfx_spark-Sheet_56
+  - first:
+      213: 2087403207449527901
+    second: vfx_spark-Sheet_57
+  - first:
+      213: 1601078722262089990
+    second: vfx_spark-Sheet_58
+  - first:
+      213: 8066648453723603498
+    second: vfx_spark-Sheet_59
+  - first:
+      213: -4309687971319851867
+    second: vfx_spark-Sheet_60
+  - first:
+      213: 7789307253710224278
+    second: vfx_spark-Sheet_61
+  - first:
+      213: 7636152826441599435
+    second: vfx_spark-Sheet_62
+  - first:
+      213: -8568321419433456243
+    second: vfx_spark-Sheet_63
+  - first:
+      213: 739027962461004327
+    second: vfx_spark-Sheet_64
+  - first:
+      213: 9158524287044183108
+    second: vfx_spark-Sheet_65
+  - first:
+      213: 6130060100073400728
+    second: vfx_spark-Sheet_66
+  - first:
+      213: 7156131782450656687
+    second: vfx_spark-Sheet_67
+  - first:
+      213: -1319258569886615934
+    second: vfx_spark-Sheet_68
+  - first:
+      213: -3307225251138792130
+    second: vfx_spark-Sheet_69
+  - first:
+      213: 2695882070148438792
+    second: vfx_spark-Sheet_70
+  - first:
+      213: -872347508439039722
+    second: vfx_spark-Sheet_71
+  - first:
+      213: -6925500936327145077
+    second: vfx_spark-Sheet_72
+  - first:
+      213: 666106154500063114
+    second: vfx_spark-Sheet_73
+  - first:
+      213: 5229071454424201749
+    second: vfx_spark-Sheet_74
+  - first:
+      213: 7224083926277376445
+    second: vfx_spark-Sheet_75
+  - first:
+      213: -6034678346477543019
+    second: vfx_spark-Sheet_76
+  - first:
+      213: 5759653512174722643
+    second: vfx_spark-Sheet_77
+  - first:
+      213: -2236787300518360597
+    second: vfx_spark-Sheet_78
+  - first:
+      213: -3121800417001328306
+    second: vfx_spark-Sheet_79
+  - first:
+      213: 2130853499562057941
+    second: vfx_spark-Sheet_80
+  - first:
+      213: -8372495248388598735
+    second: vfx_spark-Sheet_81
+  - first:
+      213: 6547867121136256061
+    second: vfx_spark-Sheet_82
+  - first:
+      213: -9182197269547791944
+    second: vfx_spark-Sheet_83
+  - first:
+      213: -6152329176249081886
+    second: vfx_spark-Sheet_84
+  - first:
+      213: 716303856512468064
+    second: vfx_spark-Sheet_85
+  - first:
+      213: -3003652611928065596
+    second: vfx_spark-Sheet_86
+  - first:
+      213: -7240963709278442744
+    second: vfx_spark-Sheet_87
+  - first:
+      213: -6158071001765147095
+    second: vfx_spark-Sheet_88
+  - first:
+      213: 7005564260997418027
+    second: vfx_spark-Sheet_89
+  - first:
+      213: -2508333680095990495
+    second: vfx_spark-Sheet_90
+  - first:
+      213: -8435695259034431236
+    second: vfx_spark-Sheet_91
+  - first:
+      213: -8597754568207666848
+    second: vfx_spark-Sheet_92
+  - first:
+      213: 538952554349322816
+    second: vfx_spark-Sheet_93
+  - first:
+      213: -8779052932840082917
+    second: vfx_spark-Sheet_94
+  - first:
+      213: 8895976861842913186
+    second: vfx_spark-Sheet_95
+  - first:
+      213: -6399538251814879592
+    second: vfx_spark-Sheet_96
+  - first:
+      213: 4733841764634503201
+    second: vfx_spark-Sheet_97
+  - first:
+      213: -1996741866465862574
+    second: vfx_spark-Sheet_98
+  - first:
+      213: 3401859457997807259
+    second: vfx_spark-Sheet_99
+  - first:
+      213: 7770857226646833401
+    second: vfx_spark-Sheet_100
+  - first:
+      213: 8427764253086883575
+    second: vfx_spark-Sheet_101
+  - first:
+      213: 6324956871858874212
+    second: vfx_spark-Sheet_102
+  - first:
+      213: -1172874061112951571
+    second: vfx_spark-Sheet_103
+  - first:
+      213: -5381963555074514863
+    second: vfx_spark-Sheet_104
+  - first:
+      213: 1246856178432448145
+    second: vfx_spark-Sheet_105
+  - first:
+      213: -7066482391463120250
+    second: vfx_spark-Sheet_106
+  - first:
+      213: -7381591877122317407
+    second: vfx_spark-Sheet_107
+  - first:
+      213: -2145430746964143735
+    second: vfx_spark-Sheet_108
+  - first:
+      213: 2074200366866080913
+    second: vfx_spark-Sheet_109
+  - first:
+      213: 4127632700448356398
+    second: vfx_spark-Sheet_110
+  - first:
+      213: -8811219833418715148
+    second: vfx_spark-Sheet_111
+  - first:
+      213: -735069431549195957
+    second: vfx_spark-Sheet_112
+  - first:
+      213: -4158579243616154622
+    second: vfx_spark-Sheet_113
+  - first:
+      213: -2804141537853958714
+    second: vfx_spark-Sheet_114
+  - first:
+      213: -6589627310657135122
+    second: vfx_spark-Sheet_115
+  - first:
+      213: -546457820392309291
+    second: vfx_spark-Sheet_116
+  - first:
+      213: 4575436980035332245
+    second: vfx_spark-Sheet_117
+  - first:
+      213: 481347651473161255
+    second: vfx_spark-Sheet_118
+  - first:
+      213: 7341207657027240984
+    second: vfx_spark-Sheet_119
+  - first:
+      213: 6337617847724982588
+    second: vfx_spark-Sheet_120
+  - first:
+      213: 7040874168269445218
+    second: vfx_spark-Sheet_121
+  - first:
+      213: 4269445164925894505
+    second: vfx_spark-Sheet_122
+  - first:
+      213: 1476953065240594135
+    second: vfx_spark-Sheet_123
+  - first:
+      213: 1374558519648853091
+    second: vfx_spark-Sheet_124
+  - first:
+      213: -5825142288902579282
+    second: vfx_spark-Sheet_125
+  - first:
+      213: 5016312725665440209
+    second: vfx_spark-Sheet_126
+  - first:
+      213: -7133077198014878464
+    second: vfx_spark-Sheet_127
+  - first:
+      213: 123396173284116705
+    second: vfx_spark-Sheet_128
+  - first:
+      213: -7168633252962871534
+    second: vfx_spark-Sheet_129
+  - first:
+      213: 6390901832315158799
+    second: vfx_spark-Sheet_130
+  - first:
+      213: 3200943196804362362
+    second: vfx_spark-Sheet_131
+  - first:
+      213: 8156173667975797339
+    second: vfx_spark-Sheet_132
+  - first:
+      213: -356649333721788750
+    second: vfx_spark-Sheet_133
+  - first:
+      213: 8078032357030541488
+    second: vfx_spark-Sheet_134
+  - first:
+      213: -8462891812029517080
+    second: vfx_spark-Sheet_135
+  - first:
+      213: -3247113187084278002
+    second: vfx_spark-Sheet_136
+  - first:
+      213: 5051978528309795935
+    second: vfx_spark-Sheet_137
+  - first:
+      213: -2838914018621373698
+    second: vfx_spark-Sheet_138
+  - first:
+      213: -5933365030854644664
+    second: vfx_spark-Sheet_139
+  - first:
+      213: 9055376184521520995
+    second: vfx_spark-Sheet_140
+  - first:
+      213: 5470640829921691920
+    second: vfx_spark-Sheet_141
+  - first:
+      213: 5755805056167786969
+    second: vfx_spark-Sheet_142
+  - first:
+      213: 6510639994921332239
+    second: vfx_spark-Sheet_143
+  - first:
+      213: 3264266491045043318
+    second: vfx_spark-Sheet_144
+  - first:
+      213: 2265823461352612892
+    second: vfx_spark-Sheet_145
+  - first:
+      213: 3985165263040558349
+    second: vfx_spark-Sheet_146
+  - first:
+      213: 1391579666567678468
+    second: vfx_spark-Sheet_147
+  - first:
+      213: -6011813920295640188
+    second: vfx_spark-Sheet_148
+  - first:
+      213: 5886347500922598346
+    second: vfx_spark-Sheet_149
+  - first:
+      213: 420580200720432390
+    second: vfx_spark-Sheet_150
+  - first:
+      213: -3471367028802246733
+    second: vfx_spark-Sheet_151
+  - first:
+      213: 3953936334511193000
+    second: vfx_spark-Sheet_152
+  - first:
+      213: 207364277931670040
+    second: vfx_spark-Sheet_153
+  - first:
+      213: -4106998227803302189
+    second: vfx_spark-Sheet_154
+  - first:
+      213: -7714769164364227443
+    second: vfx_spark-Sheet_155
+  - first:
+      213: -5684875635069006496
+    second: vfx_spark-Sheet_156
+  - first:
+      213: -2183811684629313812
+    second: vfx_spark-Sheet_157
+  - first:
+      213: -5554392221441689256
+    second: vfx_spark-Sheet_158
+  - first:
+      213: 2691223605113690783
+    second: vfx_spark-Sheet_159
+  - first:
+      213: -5160300408224379375
+    second: vfx_spark-Sheet_160
+  - first:
+      213: 4450850064861957184
+    second: vfx_spark-Sheet_161
+  - first:
+      213: -6414592562582749604
+    second: vfx_spark-Sheet_162
+  - first:
+      213: -8260586096673433525
+    second: vfx_spark-Sheet_163
+  - first:
+      213: 1099687002577239329
+    second: vfx_spark-Sheet_164
+  - first:
+      213: -7635652347242486665
+    second: vfx_spark-Sheet_165
+  - first:
+      213: 1739549683988707113
+    second: vfx_spark-Sheet_166
+  - first:
+      213: 584029516681958761
+    second: vfx_spark-Sheet_167
+  - first:
+      213: 2520186363776543863
+    second: vfx_spark-Sheet_168
+  - first:
+      213: -5194951198647517126
+    second: vfx_spark-Sheet_169
+  - first:
+      213: -8377322736505129805
+    second: vfx_spark-Sheet_170
+  - first:
+      213: -7298007839503778243
+    second: vfx_spark-Sheet_171
+  - first:
+      213: 47032232807729764
+    second: vfx_spark-Sheet_172
+  - first:
+      213: 1157973684364362364
+    second: vfx_spark-Sheet_173
+  - first:
+      213: 7829789843640787367
+    second: vfx_spark-Sheet_174
+  - first:
+      213: 2508049491046849414
+    second: vfx_spark-Sheet_175
+  - first:
+      213: -6628310136120173176
+    second: vfx_spark-Sheet_176
+  - first:
+      213: 2843549523668075939
+    second: vfx_spark-Sheet_177
+  - first:
+      213: 518422549360830358
+    second: vfx_spark-Sheet_178
+  - first:
+      213: -1048720592129703821
+    second: vfx_spark-Sheet_179
+  - first:
+      213: -5132828254736763962
+    second: vfx_spark-Sheet_180
+  - first:
+      213: -7195620757671260342
+    second: vfx_spark-Sheet_181
+  - first:
+      213: 8972986101750254055
+    second: vfx_spark-Sheet_182
+  - first:
+      213: 8970352147300917702
+    second: vfx_spark-Sheet_183
+  - first:
+      213: 5544039209759156830
+    second: vfx_spark-Sheet_184
+  - first:
+      213: 4717631507713899347
+    second: vfx_spark-Sheet_185
+  - first:
+      213: 4854813783065802662
+    second: vfx_spark-Sheet_186
+  - first:
+      213: -9195650680681588600
+    second: vfx_spark-Sheet_187
+  - first:
+      213: -4096714800084593288
+    second: vfx_spark-Sheet_188
+  - first:
+      213: 1014148800843312775
+    second: vfx_spark-Sheet_189
+  - first:
+      213: -5982639376322711758
+    second: vfx_spark-Sheet_190
+  - first:
+      213: 8993656002557930743
+    second: vfx_spark-Sheet_191
+  - first:
+      213: -7915840994971349887
+    second: vfx_spark-Sheet_192
+  - first:
+      213: 83883858403571358
+    second: vfx_spark-Sheet_193
+  - first:
+      213: 839800344580582143
+    second: vfx_spark-Sheet_194
+  - first:
+      213: -124067402475371202
+    second: vfx_spark-Sheet_195
+  - first:
+      213: 6088819071478523363
+    second: vfx_spark-Sheet_196
+  - first:
+      213: -55975702304926776
+    second: vfx_spark-Sheet_197
+  - first:
+      213: 4934660716031815318
+    second: vfx_spark-Sheet_198
+  - first:
+      213: -5145119080071509066
+    second: vfx_spark-Sheet_199
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57c6e1b54abf30a00800000000000000
+      internalID: 721697048631340149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a4eae99900bb7ba0800000000000000
+      internalID: -6090080515804961623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d992301cea7da2680800000000000000
+      internalID: -8778967378042869347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ca9b05c7694da240800000000000000
+      internalID: 4804577087510518469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63d1e906cfb93c1d0800000000000000
+      internalID: -3331647791068996298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5762ded70671a5a0800000000000000
+      internalID: -6511793810025846950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24ee2302845a322e0800000000000000
+      internalID: -2151694467756528062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 864
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c3674a62e0262f00800000000000000
+      internalID: 1091596116501685186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6650c97ff0e496fc0800000000000000
+      internalID: -3501181404818176666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8419da3f902799c0800000000000000
+      internalID: -3920629082343533430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cff6ff28a56838620800000000000000
+      internalID: 2775209518693314556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91f195275c6d65c60800000000000000
+      internalID: 7806663147608678169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4927c722261bbb10800000000000000
+      internalID: 1998215195621009739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aa4844b02a77a7a0800000000000000
+      internalID: -6365985267382728027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bf161dced6577db0800000000000000
+      internalID: -4794267763389096016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 768
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0646824ba17bb8790800000000000000
+      internalID: -7526721026900073376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d9523ed77dcb4360800000000000000
+      internalID: 7155038347720808912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dac8df862c4cd08b0800000000000000
+      internalID: -5184271256769426259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49a7a3db22e5a1750800000000000000
+      internalID: 6276432533990832788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f70918972dc9496b0800000000000000
+      internalID: -5290431234457890689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b9e0ee43b7fbdac0800000000000000
+      internalID: -3829194708653905487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb04fe750f36edac0800000000000000
+      internalID: -3828512749299744581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dbd6affae323a860800000000000000
+      internalID: 7539909693366787033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 672
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a7bb842c75893d40800000000000000
+      internalID: 5564625582828533672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fa7218a85a8c1760800000000000000
+      internalID: 7429965598636014324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5af1f30a6dc7714c0800000000000000
+      internalID: -4316844456557994075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69169bdcc29e3a100800000000000000
+      internalID: 118194393881076118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7887e3a61f90a6fc0800000000000000
+      internalID: -3500974827852892025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cab33ca5eebbbbf80800000000000000
+      internalID: -8089665673241609300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d0d47f5858e55ac0800000000000000
+      internalID: -3866929238771445548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 497b8318fd13ba440800000000000000
+      internalID: 4948103451612067732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f32056385e4871a0800000000000000
+      internalID: -6811608295622564880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 576
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 554e68967dead4c20800000000000000
+      internalID: 3192399951087199317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19a5a16c664d8a200800000000000000
+      internalID: 191636522038614673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb4453a9cf7e67600800000000000000
+      internalID: 465814683584382143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 993a2267828a0d1c0800000000000000
+      internalID: -4480896737499503719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b0bbbf1a64fc18d0800000000000000
+      internalID: -2874153725533114191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34079c02a82f79890800000000000000
+      internalID: -7451220383391715261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e39fde40670d4ef0800000000000000
+      internalID: -122433504647605271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adaf28fe9d9a5c680800000000000000
+      internalID: -8735389148723873062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 480
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad82e7392b05ceb80800000000000000
+      internalID: -8364221680024934182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2142877f47bc31e40800000000000000
+      internalID: 5626064062744372242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f64fdbc86cac32990800000000000000
+      internalID: -7411857607608109969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e503de4746f71e120800000000000000
+      internalID: 2441372542446678110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb192b3c8b1255c90800000000000000
+      internalID: -7181796953331428932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43a7c334eaa23ed20800000000000000
+      internalID: 3306533479360789044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9b940ed0b8629490800000000000000
+      internalID: -7741009700648084577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f507424efb82eb0d0800000000000000
+      internalID: -3405239463614058401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b685ba051b646830800000000000000
+      internalID: 4063490501913183921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71177604f83512560800000000000000
+      internalID: 7287197546788122903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b466f0133bcb7fbc0800000000000000
+      internalID: -3749320686954387893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8bfd6b000dbfc2b0800000000000000
+      internalID: -5562019206889866358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3f75dccdef89ffa0800000000000000
+      internalID: -5766419596364644547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b586f54d65d64f40800000000000000
+      internalID: 5712487842667988400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da653901b298e3050800000000000000
+      internalID: 5782209789644986029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3c515814fbb39630800000000000000
+      internalID: 3932693556678974526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c4b98944d164980800000000000000
+      internalID: -8555118261688382403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d564a0b5822f7fc10800000000000000
+      internalID: 2087403207449527901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6014ed17d9c283610800000000000000
+      internalID: 1601078722262089990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a22462c970e72ff60800000000000000
+      internalID: 8066648453723603498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a4d4b0bf99e034c0800000000000000
+      internalID: -4309687971319851867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_61
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69b75cf7dad291c60800000000000000
+      internalID: 7789307253710224278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_62
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc985ae998019f960800000000000000
+      internalID: 7636152826441599435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_63
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8d4c41e015371980800000000000000
+      internalID: -8568321419433456243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_64
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 722a19d240e814a00800000000000000
+      internalID: 739027962461004327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_65
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4446e0ca05d991f70800000000000000
+      internalID: 9158524287044183108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_66
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 899abacbe29521550800000000000000
+      internalID: 6130060100073400728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_67
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa5badaf0ffaf4360800000000000000
+      internalID: 7156131782450656687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_68
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 286b407025d01bde0800000000000000
+      internalID: -1319258569886615934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_69
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e359ba118206a12d0800000000000000
+      internalID: -3307225251138792130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_70
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80bda8b9572b96520800000000000000
+      internalID: 2695882070148438792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_71
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6114bce109cc4e3f0800000000000000
+      internalID: -872347508439039722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_72
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b89d59e579da3ef90800000000000000
+      internalID: -6925500936327145077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_73
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8f7da1b40c7e3900800000000000000
+      internalID: 666106154500063114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_74
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51af61278c4619840800000000000000
+      internalID: 5229071454424201749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_75
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db94f5d5e0a114460800000000000000
+      internalID: 7224083926277376445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_76
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 591e6785404804ca0800000000000000
+      internalID: -6034678346477543019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_77
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35e51867a566eef40800000000000000
+      internalID: 5759653512174722643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_78
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be98f7a1dc555f0e0800000000000000
+      internalID: -2236787300518360597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_79
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4138fc8f032da4d0800000000000000
+      internalID: -3121800417001328306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_80
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d06bc5d7ff429d10800000000000000
+      internalID: 2130853499562057941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_spark-Sheet_81
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 134d6245eebeecb80800000000000000
+      internalID: -8372495248388598735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8c35c85b6fcebe34a965c8681b573bdf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":9.0,"y":10.0},"gridSpriteSize":{"x":96.0,"y":96.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      vfx_spark-Sheet_0: 721697048631340149
+      vfx_spark-Sheet_1: -6090080515804961623
+      vfx_spark-Sheet_10: 2775209518693314556
+      vfx_spark-Sheet_11: 7806663147608678169
+      vfx_spark-Sheet_12: 1998215195621009739
+      vfx_spark-Sheet_13: -6365985267382728027
+      vfx_spark-Sheet_14: -4794267763389096016
+      vfx_spark-Sheet_15: -7526721026900073376
+      vfx_spark-Sheet_16: 7155038347720808912
+      vfx_spark-Sheet_17: -5184271256769426259
+      vfx_spark-Sheet_18: 6276432533990832788
+      vfx_spark-Sheet_19: -5290431234457890689
+      vfx_spark-Sheet_2: -8778967378042869347
+      vfx_spark-Sheet_20: -3829194708653905487
+      vfx_spark-Sheet_21: -3828512749299744581
+      vfx_spark-Sheet_22: 7539909693366787033
+      vfx_spark-Sheet_23: 5564625582828533672
+      vfx_spark-Sheet_24: 7429965598636014324
+      vfx_spark-Sheet_25: -4316844456557994075
+      vfx_spark-Sheet_26: 118194393881076118
+      vfx_spark-Sheet_27: -3500974827852892025
+      vfx_spark-Sheet_28: -8089665673241609300
+      vfx_spark-Sheet_29: -3866929238771445548
+      vfx_spark-Sheet_3: 4804577087510518469
+      vfx_spark-Sheet_30: 4948103451612067732
+      vfx_spark-Sheet_31: -6811608295622564880
+      vfx_spark-Sheet_32: 3192399951087199317
+      vfx_spark-Sheet_33: 191636522038614673
+      vfx_spark-Sheet_34: 465814683584382143
+      vfx_spark-Sheet_35: -4480896737499503719
+      vfx_spark-Sheet_36: -2874153725533114191
+      vfx_spark-Sheet_37: -7451220383391715261
+      vfx_spark-Sheet_38: -122433504647605271
+      vfx_spark-Sheet_39: -8735389148723873062
+      vfx_spark-Sheet_4: -3331647791068996298
+      vfx_spark-Sheet_40: -8364221680024934182
+      vfx_spark-Sheet_41: 5626064062744372242
+      vfx_spark-Sheet_42: -7411857607608109969
+      vfx_spark-Sheet_43: 2441372542446678110
+      vfx_spark-Sheet_44: -7181796953331428932
+      vfx_spark-Sheet_45: 3306533479360789044
+      vfx_spark-Sheet_46: -7741009700648084577
+      vfx_spark-Sheet_47: -3405239463614058401
+      vfx_spark-Sheet_48: 4063490501913183921
+      vfx_spark-Sheet_49: 7287197546788122903
+      vfx_spark-Sheet_5: -6511793810025846950
+      vfx_spark-Sheet_50: -3749320686954387893
+      vfx_spark-Sheet_51: -5562019206889866358
+      vfx_spark-Sheet_52: -5766419596364644547
+      vfx_spark-Sheet_53: 5712487842667988400
+      vfx_spark-Sheet_54: 5782209789644986029
+      vfx_spark-Sheet_55: 3932693556678974526
+      vfx_spark-Sheet_56: -8555118261688382403
+      vfx_spark-Sheet_57: 2087403207449527901
+      vfx_spark-Sheet_58: 1601078722262089990
+      vfx_spark-Sheet_59: 8066648453723603498
+      vfx_spark-Sheet_6: -2151694467756528062
+      vfx_spark-Sheet_60: -4309687971319851867
+      vfx_spark-Sheet_61: 7789307253710224278
+      vfx_spark-Sheet_62: 7636152826441599435
+      vfx_spark-Sheet_63: -8568321419433456243
+      vfx_spark-Sheet_64: 739027962461004327
+      vfx_spark-Sheet_65: 9158524287044183108
+      vfx_spark-Sheet_66: 6130060100073400728
+      vfx_spark-Sheet_67: 7156131782450656687
+      vfx_spark-Sheet_68: -1319258569886615934
+      vfx_spark-Sheet_69: -3307225251138792130
+      vfx_spark-Sheet_7: 1091596116501685186
+      vfx_spark-Sheet_70: 2695882070148438792
+      vfx_spark-Sheet_71: -872347508439039722
+      vfx_spark-Sheet_72: -6925500936327145077
+      vfx_spark-Sheet_73: 666106154500063114
+      vfx_spark-Sheet_74: 5229071454424201749
+      vfx_spark-Sheet_75: 7224083926277376445
+      vfx_spark-Sheet_76: -6034678346477543019
+      vfx_spark-Sheet_77: 5759653512174722643
+      vfx_spark-Sheet_78: -2236787300518360597
+      vfx_spark-Sheet_79: -3121800417001328306
+      vfx_spark-Sheet_8: -3501181404818176666
+      vfx_spark-Sheet_80: 2130853499562057941
+      vfx_spark-Sheet_81: -8372495248388598735
+      vfx_spark-Sheet_9: -3920629082343533430
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

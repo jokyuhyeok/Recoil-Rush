@@ -19,6 +19,10 @@
 ## or put your custom commands -------------------
 #echo 'Husky.Net is awesome!'
 
+# Git 저장소 루트로 이동
+ROOT="$(git rev-parse --show-toplevel)" || exit 1
+cd "$ROOT" || exit 1
+
 # merge 또는 revert 작업 중에는 Hook을 실행하지 않음
 if [ -f "$(git rev-parse --git-path MERGE_HEAD)" ] ||
    [ -f "$(git rev-parse --git-path REVERT_HEAD)" ]; then
@@ -26,14 +30,33 @@ if [ -f "$(git rev-parse --git-path MERGE_HEAD)" ] ||
     exit 0
 fi
 
-if [ -f "GA1_2D_Team03.sln" ]; then
-    solution="GA1_2D_Team03.sln"
-elif [ -f "2d-team03.sln" ]; then
-    solution="2d-team03.sln"
+# Solution 탐색
+slnx_files=$(find . -maxdepth 1 -type f -name '*.slnx')
+slnx_count=$(printf '%s\n' "$slnx_files" | sed '/^$/d' | wc -l)
+
+sln_files=$(find . -maxdepth 1 -type f -name '*.sln')
+sln_count=$(printf '%s\n' "$sln_files" | sed '/^$/d' | wc -l)
+
+if [ "$slnx_count" -eq 1 ]; then
+    solution=$(printf '%s\n' "$slnx_files" | head -n 1)
+
+elif [ "$slnx_count" -gt 1 ]; then
+    echo "여러 개의 .slnx 파일이 존재합니다."
+    exit 1
+
+elif [ "$sln_count" -eq 1 ]; then
+    solution=$(printf '%s\n' "$sln_files" | head -n 1)
+
+elif [ "$sln_count" -gt 1 ]; then
+    echo "여러 개의 .sln 파일이 존재합니다."
+    exit 1
+
 else
-    echo "지원하는 솔루션 파일을 찾을 수 없습니다. 팀장에게 문의해주세요."
+    echo "솔루션 파일(.sln/.slnx)을 찾을 수 없습니다."
     exit 1
 fi
+
+echo "사용할 솔루션: $solution"
 
 dotnet format "$solution" \
     --verify-no-changes \

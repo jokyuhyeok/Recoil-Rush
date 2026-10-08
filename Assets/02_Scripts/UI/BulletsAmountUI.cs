@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BulletsAmountUI : MonoBehaviour
 {
     [Header("Component")]
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Image _bulletImage;
     [SerializeField] private Animator _animator;
 
     [Header("Sprite")]
@@ -28,9 +29,9 @@ public class BulletsAmountUI : MonoBehaviour
             _animator.enabled = false;
         }
 
-        if (_spriteRenderer != null && _spentSprite != null)
+        if (_bulletImage != null && _spentSprite != null)
         {
-            _spriteRenderer.sprite = _spentSprite;
+            _bulletImage.sprite = _spentSprite;
         }
     }
 
@@ -41,9 +42,9 @@ public class BulletsAmountUI : MonoBehaviour
             _animator.enabled = false;
         }
 
-        if (_spriteRenderer != null && _loadedSprite != null)
+        if (_bulletImage != null && _loadedSprite != null)
         {
-            _spriteRenderer.sprite = _loadedSprite;
+            _bulletImage.sprite = _loadedSprite;
         }
     }
 }

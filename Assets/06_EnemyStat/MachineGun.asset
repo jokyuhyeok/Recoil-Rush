@@ -12,11 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0c2cf2b44336440a37025a60657288, type: 3}
   m_Name: MachineGun
   m_EditorClassIdentifier: Assembly-CSharp::MachineGunStatDataSO
-  maxHp: 5
-  speed: 2
-  detectRange: 10
-  attackRange: 9
-  alarmTime: 2
-  fireRate: 0.05
-  magazineSize: 10
-  reloadTime: 2
+  MaxHp: 1
+  Speed: 2
+  DetectRange: 10
+  AttackRange: 9
+  AlarmTime: 2
+  FireRate: 0.1
+  MagazineSize: 6
+  ReloadTime: 2
+  SpreadAngle: 10
+  ShootRecoilPower: 1.5
+  MaxShootAngle: 45
+  ObstacleMask:
+    serializedVersion: 2
+    m_Bits: 51
+  BulletPrefab: {fileID: 1441611445395233385, guid: c8b027ed93d7ec34fa2961d04600b580, type: 3}
+  MuzzleFlashParticle: {fileID: 8154968109357767497, guid: 0d762ab2b0724f9498cd6730698133eb, type: 3}
+  DeathParticle: {fileID: 2198790418200276517, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}

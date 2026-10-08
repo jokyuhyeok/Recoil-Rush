@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour
     public static CameraController Instance => _instance;
 
     [SerializeField] private Transform _target;
-    [SerializeField] private float _minY = -2.5f;
-    [SerializeField] private float _maxY = 4f;
+    [SerializeField] private Vector2 _minPosition = new Vector2(-7f, -2.5f);
+    [SerializeField] private Vector2 _maxPosition = new Vector2(14f, 8f);
 
     private CameraLookAhead _lookAhead;
     private CameraShake _shake;
@@ -38,15 +38,18 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        /*
         if (_target == null)
         {
             _target = transform.parent ?? GameObject.FindGameObjectWithTag("Player").transform;
         }
+        */
 
         //transform.position = _target.position + new Vector3(0f, 0f, transform.position.z);
         _baseOffset = transform.position - _target.position;
     }
 
+    /*
     private void LateUpdate()
     {
         if (_target == null)
@@ -64,20 +67,31 @@ public class CameraController : MonoBehaviour
             nextPosition += (Vector3)_shake.Offset;
         }
 
-        // 최소 높이 제한보다 낮으면 Clamp
-        if (nextPosition.y < _minY)
+        // 최소 좌표를 넘어가려고 하면 Clamp
+        if (nextPosition.x < _minPosition.x)
         {
-            nextPosition.y = _minY;
+            nextPosition.x = _minPosition.x;
         }
 
-        // 최대 높이 제한보다 높으면 Clamp
-        if (nextPosition.y > _maxY)
+        if (nextPosition.y < _minPosition.y)
         {
-            nextPosition.y = _maxY;
+            nextPosition.y = _minPosition.y;
+        }
+
+        // 최대 좌표를 넘어가려고 하면 Clamp
+        if (nextPosition.x > _maxPosition.x)
+        {
+            nextPosition.x = _maxPosition.x;
+        }
+
+        if (nextPosition.y > _maxPosition.y)
+        {
+            nextPosition.y = _maxPosition.y;
         }
 
         transform.position = nextPosition;
     }
+    */
 
     public void StartShake(float force, float duration)
     {
