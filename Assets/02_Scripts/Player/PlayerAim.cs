@@ -21,24 +21,27 @@ public class PlayerAim : MonoBehaviour
     private SpriteRenderer _weaponSprite;
 
     private Camera _camera;
+    private VirtualMouse _virtualMouse;
+
 
     private void Awake()
     {
         _camera = Camera.main;
+        _virtualMouse = VirtualMouse.Instance;
 
         _aimPointSprite = _aimPoint.GetComponent<SpriteRenderer>();
         _normalAimPoint = _aimPointSprite.sprite;
 
-        // HS: ??부터는 테스트용 방어 코드로 넣어놨습니다. 추후 제거 예정입니다.
-        _player = GetComponent<Player>() ?? GetComponentInParent<Player>();
+        _player = GetComponent<Player>();
         _playerSprite = _player.GetComponent<SpriteRenderer>();
     }
 
+    /*
     // 플레이 중 OS 커서를 숨기고 창 안에 가둠
     private void OnEnable()
     {
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // 비활성화 시 커서를 다시 보여줌
@@ -47,6 +50,7 @@ public class PlayerAim : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
+    */
 
     private void Start()
     {
@@ -70,7 +74,7 @@ public class PlayerAim : MonoBehaviour
     {
         // Input.mousePosition: 마우스의 화면 좌표
         // ScreenToWorldPoint(Input.mousePosition): 화면에서 마우스가 있는 위치를 Unity World 좌표로 변환
-        Vector3 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = _camera.ScreenToWorldPoint(_virtualMouse.ScreenPosition);
         // 보통 Camera는 Z -10 이기 때문에 이 값을 0으로 바꿔줌
         mousePosition.z = 0f;
 
