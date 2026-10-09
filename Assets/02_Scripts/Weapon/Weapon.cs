@@ -26,6 +26,9 @@ public abstract class Weapon : MonoBehaviour
     [Header("Effect")]
     [SerializeField] private SpriteEffect _fireEffect;
 
+    [Header("Sound")]
+    [SerializeField] private SoundEffectType _fireSound;
+
     [SerializeField] private StartUI _startUi;
 
     private int _currentAmmo;
@@ -100,6 +103,11 @@ public abstract class Weapon : MonoBehaviour
         if (_fireEffect != null)
         {
             _fireEffect.Play();
+        }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(_fireSound);
         }
 
         _currentAmmo--;

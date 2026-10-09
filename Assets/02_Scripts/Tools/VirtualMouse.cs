@@ -25,7 +25,11 @@ public class VirtualMouse : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+#if UNITY_EDITOR
         _screenPosition = Input.mousePosition;
+#else
+        _screenPosition = new Vector2(Screen.width / 2f, Screen.height / 2f);
+#endif
     }
 
     private void Start()

@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,22 +10,20 @@ public enum MenuAction
 
 public class StartUI : MonoBehaviour
 {
-    [Header("Buttons")]
-    [SerializeField] private Button _startButton;
+    [Header("Buttons")] [SerializeField] private Button _startButton;
     [SerializeField] private Button _optionButton;
     [SerializeField] private Button _exitButton;
 
-    [Header("UI")]
-    [SerializeField] private GameObject _loadingUI;
+    [Header("UI")] [SerializeField] private GameObject _cutsceneUI;
     [SerializeField] private GameObject _optionUI;
 
-    [Header("Shooting")]
-    [SerializeField] private Collider2D[] _menuHitboxes;
+    [Header("Shooting")] [SerializeField] private Collider2D[] _menuHitboxes;
 
     private bool _isLoading;
     private bool _isOptionOpen;
 
     public bool IsOptionOpen => _isOptionOpen;
+
     private void Awake()
     {
         // 메인 메뉴 버튼은 마우스로 클릭 불가능
@@ -91,7 +88,11 @@ public class StartUI : MonoBehaviour
 
         _isLoading = true;
 
-        _loadingUI.SetActive(true);
+        // 메뉴 충돌 판정 비활성화
+        SetMenuShooting(false);
+
+        // 컷씬 UI 활성화
+        _cutsceneUI.SetActive(true);
         gameObject.SetActive(false);
     }
 
@@ -109,7 +110,6 @@ public class StartUI : MonoBehaviour
         _optionUI.SetActive(true);
     }
 
-
     public void CloseOptionUI()
     {
         if (!_isOptionOpen)
@@ -125,7 +125,6 @@ public class StartUI : MonoBehaviour
 
         Debug.Log("옵션 종료 - 총 발사 가능");
     }
-
 
     private void SetMenuShooting(bool enabled)
     {
