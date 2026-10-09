@@ -57,12 +57,29 @@ public class Player : MonoBehaviour
         _playerAIm = GetComponent<PlayerAim>();
 
         // Play On Awake가 켜져 있어도 시작하자마자 재생되지 않게 정지
+        
         if (_dieEffect != null)
         {
-            _dieEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            // 이미 나간 입자가 오브젝트를 따라 움직이지 않게 월드 기준으로 시뮬레이션
-            ParticleSystem.MainModule main = _dieEffect.main;
-            main.simulationSpace = ParticleSystemSimulationSpace.World;
+            // 활성화 시 자동 재생 방지
+            ParticleSystem[] particles =
+                _dieEffect.GetComponentsInChildren<ParticleSystem>(true);
+
+            foreach (ParticleSystem particle in particles)
+            {
+                ParticleSystem.MainModule main = particle.main;
+
+                main.playOnAwake = false;
+
+                particle.Stop(
+                    true,
+                    ParticleSystemStopBehavior.StopEmittingAndClear
+                );
+            }
+
+            // 사망 파티클은 월드 공간에서 재생
+            ParticleSystem.MainModule dieMain = _dieEffect.main;
+            dieMain.simulationSpace =
+                ParticleSystemSimulationSpace.World;
         }
 
         FindCurrentWeapon();
