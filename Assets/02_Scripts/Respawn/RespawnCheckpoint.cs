@@ -3,6 +3,7 @@ using UnityEngine;
 public class RespawnCheckpoint : MonoBehaviour
 {
     [SerializeField] private TestBullet _bulletPrefab;
+    [SerializeField] private Vector2 _checkpointOffset;
 
     private bool _isActive = false;
     private Animator _animator;
@@ -27,7 +28,7 @@ public class RespawnCheckpoint : MonoBehaviour
         if (_isActive == false)
         {
             _isActive = true;
-            RespawnManager.Instance.UpdateCheckpoint(transform.position);
+            RespawnManager.Instance.UpdateCheckpoint(transform.position + (Vector3)_checkpointOffset);
             _animator.SetTrigger("Activate");
         }
 
