@@ -156,4 +156,36 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 77d10aa3c8195714f9c4ecd1c584c98d, type: 3}
   - Type: 10
     Clip: {fileID: 8300000, guid: abefee6b2b18edb4ea66e4c8fb7683cb, type: 3}
+  - Type: 10
+    Clip: {fileID: 8300000, guid: abefee6b2b18edb4ea66e4c8fb7683cb, type: 3}
+  - Type: 12
+    Clip: {fileID: 8300000, guid: 86e526b18717ca7419c375c8ca9e374a, type: 3}
+  - Type: 13
+    Clip: {fileID: 8300000, guid: 873d79869ae1e154da69ce1824f176bf, type: 3}
+  - Type: 14
+    Clip: {fileID: 8300000, guid: 81ef8b7981fb4ae429bccb2db40fa8d0, type: 3}
+  - Type: 15
+    Clip: {fileID: 8300000, guid: 02520b4db2883ca4796b8389e7ad90f4, type: 3}
+  - Type: 16
+    Clip: {fileID: 8300000, guid: 28271b50dedd01746b0218adb669bd7f, type: 3}
+  - Type: 17
+    Clip: {fileID: 8300000, guid: 9aaaa01de8a147349a0ee8bae1064281, type: 3}
+  - Type: 18
+    Clip: {fileID: 8300000, guid: 23d8b4c114f91024691afe885e249db4, type: 3}
+  - Type: 19
+    Clip: {fileID: 8300000, guid: 5cb336e9495b350429bfdd95962e0824, type: 3}
+  - Type: 20
+    Clip: {fileID: 8300000, guid: ad1cb192fabfa52458c19edd7c826297, type: 3}
+  - Type: 21
+    Clip: {fileID: 8300000, guid: 46cd1b0b8342b1e44a6f828aae804520, type: 3}
+  - Type: 22
+    Clip: {fileID: 8300000, guid: 6e622e42a53a90e468a2fb498d2a6bd8, type: 3}
+  - Type: 23
+    Clip: {fileID: 8300000, guid: 3111467021d5bc645bfe7151062581e8, type: 3}
+  - Type: 24
+    Clip: {fileID: 8300000, guid: 3dd57dca5d9e61041abb80869ff94391, type: 3}
+  - Type: 25
+    Clip: {fileID: 8300000, guid: bb6b3a7ee45130c42a15c0b7a04fcb37, type: 3}
+  - Type: 26
+    Clip: {fileID: 8300000, guid: fe440894941743a4e82227aa2e45a123, type: 3}
   _initPoolSize: 10
