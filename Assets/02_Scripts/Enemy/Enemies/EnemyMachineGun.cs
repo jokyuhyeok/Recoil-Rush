@@ -159,6 +159,7 @@ public class EnemyMachineGun : EnemyBase
 
         CameraController.Instance.StartShake(0.5f, 0.2f);
 
+        AudioManager.Instance.PlaySFX(SoundEffectType.ENEMY_HIT);
         EnemyPoolManager.Instance.ReturnEnemy(gameObject);
     }
 
@@ -179,6 +180,8 @@ public class EnemyMachineGun : EnemyBase
 
         // 총구 반동
         rb.AddForce(-direction * _machineGunStatDataSo.ShootRecoilPower, ForceMode2D.Impulse);
+
+        AudioManager.Instance.PlaySFX(SoundEffectType.SHOOT_MACHINEGUN);
 
         // 총구 화염
         if (_machineGunStatDataSo.MuzzleFlashParticle == null)

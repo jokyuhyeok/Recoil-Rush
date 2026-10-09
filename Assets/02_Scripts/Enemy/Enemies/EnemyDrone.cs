@@ -87,7 +87,7 @@ public class EnemyDrone : EnemyBase
             return;
         }
 
-        if (distanceToPlayer <= _baseStatData.AttackRange)
+        if (distanceToPlayer <= _baseStatData.AttackRange && CanShootTarget())
         {
             StartCharging();
             ChangeState(EnemyState.Attack);
@@ -117,6 +117,7 @@ public class EnemyDrone : EnemyBase
         if (!CanShootTarget())
         {
             CancelCharge();
+            ChangeState(EnemyState.Trace);
             return;
         }
 
@@ -151,6 +152,8 @@ public class EnemyDrone : EnemyBase
         {
             _isKnockbackProcessed = true;
             _knockbackTimer = 0f;
+
+            AudioManager.Instance.PlaySFX(SoundEffectType.ENEMY_HIT);
 
             rb.linearVelocity = Vector2.zero;
             Vector2 amplifiedForce = receivedKnockbackForce * 4f;
@@ -219,6 +222,7 @@ public class EnemyDrone : EnemyBase
 
             Instantiate(_droneStatDataSo.ExplosionPrefab, transform.position, Quaternion.identity);
 
+            AudioManager.Instance.PlaySFX(SoundEffectType.ENEMY_EXPLODE);
             EnemyPoolManager.Instance.ReturnEnemy(gameObject);
         }
     }
@@ -239,6 +243,7 @@ public class EnemyDrone : EnemyBase
             bullet.FireBullet(direction);
 
             CameraController.Instance.StartPerlinShake(0.8f, 15f, 0.2f);
+            AudioManager.Instance.PlaySFX(SoundEffectType.SHOOT_DRONE);
         }
     }
 
@@ -254,6 +259,8 @@ public class EnemyDrone : EnemyBase
         }
 
         _chargeEffectObject.SetActive(true);
+
+        AudioManager.Instance.PlaySFX(SoundEffectType.SHOOT_CHARGE);
     }
 
     private void CancelCharge()
@@ -351,7 +358,7 @@ public class EnemyDrone : EnemyBase
             rb.gravityScale = 0f;
             rb.freezeRotation = true;
             transform.rotation = Quaternion.identity; // 빙글빙글 돌며 떨어졌으니 자세 똑바로 잡기
-            gameObject.layer = LayerMask.NameToLayer("Enemy");
+            gameObject.layer = LayerMask.NameToLayer("Dangerous");
         }
 
         if (_fallingSparkObject != null)
