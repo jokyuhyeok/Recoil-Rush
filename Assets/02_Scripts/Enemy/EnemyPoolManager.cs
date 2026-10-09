@@ -36,6 +36,22 @@ public class EnemyPoolManager : MonoBehaviour
         InitializePools();
     }
 
+    private void Start()
+    {
+        if (RespawnManager.Instance != null)
+        {
+            RespawnManager.Instance.OnRespawnUIEvent += ResetEnemy;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (RespawnManager.Instance != null)
+        {
+            RespawnManager.Instance.OnRespawnUIEvent -= ResetEnemy;
+        }
+    }
+
     private void InitializePools()
     {
         _poolDictionary = new Dictionary<string, Queue<GameObject>>();
@@ -74,7 +90,6 @@ public class EnemyPoolManager : MonoBehaviour
             enemy.SetActive(true);
             return enemy;
         }
-
         else
         {
             GameObject enemy = Instantiate(_prefabDictionary[tag], spawnPosition, Quaternion.identity, transform);
@@ -94,5 +109,24 @@ public class EnemyPoolManager : MonoBehaviour
 
         enemy.SetActive(false);
         _poolDictionary[enemy.name].Enqueue(enemy);
+    }
+
+    public void ResetEnemy()
+    {
+        // 맵에 살아있는 모든 적을 창고에 반납
+        EnemyBase[] activeEnemies = FindObjectsOfType<EnemyBase>();
+        foreach (EnemyBase enemy in activeEnemies)
+        {
+            ReturnEnemy(enemy.gameObject);
+        }
+
+        // 스폰 트리거들 초기화
+        EnemySpawnTrigger[] triggers = FindObjectsOfType<EnemySpawnTrigger>();
+        foreach (EnemySpawnTrigger trigger in triggers)
+        {
+            trigger.ResetTrigger();
+        }
+
+        Debug.Log("<color=green>[EnemyPoolManager] 부활 UI 타이밍에 맞춰 적 리셋 완료!</color>");
     }
 }

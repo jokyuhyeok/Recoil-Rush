@@ -6,18 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class CutsceneController : MonoBehaviour
 {
-    [Header("Cutscene Images")] [SerializeField]
-    private Image[] _panels;
+    [Header("Cutscene Images")]
+    [SerializeField] private Image[] _panels;
 
-    [Header("Animation Settings")] [SerializeField]
-    private float _appearTime = 0.5f;
-
+    [Header("Animation Settings")]
+    [SerializeField] private float _appearTime = 0.5f;
     [SerializeField] private float _interval = 1f;
     [SerializeField] private float _lastDelay = 2f;
     [SerializeField] private float _startScale = 0.85f;
 
-    [Header("Continue UI")] [SerializeField]
-    private TMP_Text _continueText;
+    [Header("Continue UI")]
+    [SerializeField] private TMP_Text _continueText;
 
     private Vector3[] _originalScales;
     private Color[] _originalColors;
@@ -91,7 +90,8 @@ public class CutsceneController : MonoBehaviour
         }
 
         // 실제 게임 씬을 백그라운드에서 로딩
-        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(
+            SceneManager.GetActiveScene().buildIndex + 1);
 
         if (operation == null)
         {

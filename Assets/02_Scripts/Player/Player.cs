@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
         _playerAIm = GetComponent<PlayerAim>();
 
         // Play On Awake가 켜져 있어도 시작하자마자 재생되지 않게 정지
-        
         if (_dieEffect != null)
         {
             // 활성화 시 자동 재생 방지
@@ -474,26 +473,5 @@ public class Player : MonoBehaviour
 
         // 부활 처리
         gameObject.SetActive(true);
-
-        // 적들과 트리거들을 리셋
-        ResetEnemy();
-    }
-
-    private void ResetEnemy()
-    {
-        // 맵에 살아있는 모든 적을 창고에 반납
-        EnemyBase[] activeEnemies = FindObjectsOfType<EnemyBase>();
-
-        foreach (EnemyBase enemy in activeEnemies)
-        {
-            EnemyPoolManager.Instance.ReturnEnemy(enemy.gameObject);
-        }
-
-        EnemySpawnTrigger[] triggers = FindObjectsOfType<EnemySpawnTrigger>();
-
-        foreach (EnemySpawnTrigger trigger in triggers)
-        {
-            trigger.ResetTrigger();
-        }
     }
 }
