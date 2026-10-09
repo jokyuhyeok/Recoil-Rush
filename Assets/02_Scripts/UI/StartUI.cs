@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +21,11 @@ public class StartUI : MonoBehaviour
 
     [Header("Shooting")]
     [SerializeField] private Collider2D[] _menuHitboxes;
+    
+    [Header("Scene Transition")]
+    [SerializeField] private string _cutsceneSceneName = "LoadingCutscene";
+
+    private bool _isStartingGame = false;
 
     private bool _isLoading;
     private bool _isOptionOpen;
@@ -138,6 +142,7 @@ public class StartUI : MonoBehaviour
                 hitbox.enabled = enabled;
         }
     }
+
 
     private void OnExitButtonClicked()
     {
