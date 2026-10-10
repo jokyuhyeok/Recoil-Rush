@@ -26,7 +26,7 @@ public class EnemyRifle : EnemyBase
     {
         LookAtPlayer();
 
-        // 플레이어가 감지범위를 벗어나면 Idle로 돌아갑니다. 
+        // 플레이어가 감지범위를 벗어나면 Idle로 돌아갑니다.
         if (distanceToPlayer > _baseStatData.DetectRange)
         {
             ChangeState(EnemyState.Idle);
@@ -113,19 +113,24 @@ public class EnemyRifle : EnemyBase
         Instantiate(_rifleStatData.DeathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
 
         CameraController.Instance.StartShake(0.5f, 0.2f);
-        Destroy(gameObject);
+
+        AudioManager.Instance.PlaySFX(SoundEffectType.ENEMY_HIT);
+        EnemyPoolManager.Instance.ReturnEnemy(gameObject);
     }
 
-    // 애니메이션에서 호출될 메서드입니다. 
+    // 애니메이션에서 호출될 메서드입니다.
     public void ExecuteFire()
     {
         Vector2 targetPosition = GetTargetPosition();
         Vector2 direction = (targetPosition - (Vector2)_firePoint.position).normalized;
 
         if (_rifleStatData.BulletPrefab == null) return;
+
         // 총알 생성 및 발사
         EnemyBullet bullet = Instantiate(_rifleStatData.BulletPrefab, _firePoint.position, Quaternion.identity);
         bullet.FireBullet(direction);
+
+        AudioManager.Instance.PlaySFX(SoundEffectType.SHOOT_SNIPE);
 
         // 반동 적용
         rb.AddForce(-direction * _rifleStatData.ShootRecoilPower, ForceMode2D.Impulse);
@@ -167,5 +172,14 @@ public class EnemyRifle : EnemyBase
         RaycastHit2D hit = Physics2D.Raycast(_firePoint.position, direction.normalized, distance,
             _rifleStatData.ObstacleMask);
         return hit.collider == null;
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        _isDead = false;
+        _currentAlarmTime = 0f;
+        _fireTimer = 0f;
     }
 }
