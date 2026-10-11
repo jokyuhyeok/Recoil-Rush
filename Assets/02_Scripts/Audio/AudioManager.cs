@@ -29,7 +29,6 @@ public class AudioManager : MonoBehaviour
     private float _sfxVolume;
     public float SFXVolume => _sfxVolume;
 
-
     private void Awake()
     {
         if (_instance != null)
@@ -128,7 +127,6 @@ public class AudioManager : MonoBehaviour
             audioSource = _audioSourcePool.Dequeue();
             audioSource.enabled = true;
         }
-
         else
         {
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -162,5 +160,17 @@ public class AudioManager : MonoBehaviour
 
         audioSource.enabled = false;
         _audioSourcePool.Enqueue(audioSource);
+    }
+
+    // 보스 전용 스피커처럼 외부에서 오디오 클립(.wav) 데이터만 필요할 때 사용하는 함수
+    public AudioClip GetSfxClip(SoundEffectType type)
+    {
+        if (_sfxClips.TryGetValue(type, out AudioClip clip))
+        {
+            return clip;
+        }
+
+        Debug.LogWarning($"{type} 사운드가 AudioManager에 없음.");
+        return null;
     }
 }
