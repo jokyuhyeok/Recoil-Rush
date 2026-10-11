@@ -1,45 +1,18 @@
 using UnityEngine;
-using System.Collections; // 코루틴을 사용하기 위해 추가
+using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// 보스의 전체적인 상태, 물리, 이펙트, 패턴(명령) 큐를 관리하는 메인 컨트롤러입니다.
+/// </summary>
 public class BossController : MonoBehaviour
 {
-    [SerializeField] private BossStatDataSO _stat;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private Transform[] _firePoints;
-    [SerializeField] private Transform _laserFirePoint;
-    [SerializeField] private Transform _vfxGroup;
-
-    [Header("시각 효과 (VFX)")]
-    [SerializeField] private GameObject _idleSmokeEffect; // 패턴: 대기
-
-    [SerializeField] private GameObject _dashChargeEffect; // 패턴: 전방 돌진
-    [SerializeField] private GameObject _dashFireEffect; // 패턴: 전방 돌진
-    [SerializeField] private GameObject _hitWallEffectPrefab; // 패턴: 전방, 후방 돌진
-    [SerializeField] private GameObject _handSwirlEffect; // 패턴: 멀티레이저
-
-    [SerializeField] private Material _flashMaterial;
-    private Material _originalMaterial; // 원래 머티리얼 기억용
-    private Coroutine _flashCoroutine; // 깜빡임 코루틴 제어용
-
-    [Header("레이저 회전 공격 전용 변수")]
-    [SerializeField] private BossLaserTest _rotatingLaserSkill; // 레이저 회전 Script
-
-    [SerializeField] private GameObject _redSphereEffect;
-    [SerializeField] private Transform _centerAirPosition;
-
-    // 내부 상태 변수
-    private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>();
-    private bool _isExecuting = false;
-    private int _currentPhase = 1;
-    private IBossPhase[] _phases;
-
-    // 외부 공개형 프로퍼티 (읽기 전용)
+    public BossGameFeel GameFeel { get; private set; }
     public BossStatDataSO Stat => _stat;
     public Transform PlayerTransform { get; private set; }
     public Rigidbody2D Rigidbody { get; private set; }
     public Animator Anim { get; private set; }
-
+    public SpriteRenderer BossSpriteRenderer => _spriteRenderer;
     public Transform[] FirePoints => _firePoints;
     public BossLaserTest RotatingLaserSkill => _rotatingLaserSkill;
     public GameObject RedSphereEffect => _redSphereEffect;
@@ -48,22 +21,59 @@ public class BossController : MonoBehaviour
     public GameObject DashChargeEffect => _dashChargeEffect;
     public GameObject DashFireEffect => _dashFireEffect;
     public GameObject HitWallEffectPrefab => _hitWallEffectPrefab;
-
+    public GameObject HandSwirlEffect => _handSwirlEffect;
     public int LaserSequenceIndex { get; set; } = 0;
     public bool IsHittingLeftWall { get; private set; } = false;
     public bool IsHittingRightWall { get; private set; } = false;
-    public GameObject HandSwirlEffect => _handSwirlEffect;
 
-    // 유니티 생명주기
+    [Header("기본 세팅")]
+    [SerializeField] private BossStatDataSO _stat;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Material _flashMaterial;
+
+    [Header("시각 효과 (VFX)")]
+    [SerializeField] private Transform _vfxGroup;
+    [SerializeField] private GameObject _idleSmokeEffect;
+    [SerializeField] private GameObject _dashChargeEffect;
+    [SerializeField] private GameObject _dashFireEffect;
+    [SerializeField] private GameObject _hitWallEffectPrefab;
+    [SerializeField] private GameObject _handSwirlEffect;
+
+    [Header("레이저 및 특수 공격")]
+    [SerializeField] private Transform[] _firePoints;
+    [SerializeField] private Transform _laserFirePoint;
+    [SerializeField] private BossLaserTest _rotatingLaserSkill;
+    [SerializeField] private GameObject _redSphereEffect;
+    [SerializeField] private Transform _centerAirPosition;
+
+    private Material _originalMaterial;
+    private Coroutine _flashCoroutine;
+    private AudioSource _audioSource;
+
+    private Queue<IBossCommand> _commandQueue = new Queue<IBossCommand>();
+    private IBossPhase[] _phases;
+
+    private int _currentPhase = 1;
+    private bool _isExecuting = false;
+    private bool _hasLandedOnSpawn = false;
+
+    private WaitForSeconds _hitFlashDelay = new WaitForSeconds(0.05f);
+    private WaitForSeconds _phaseBlinkDelay = new WaitForSeconds(0.3f);
+
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
+        GameFeel = GetComponent<BossGameFeel>();
+
         Rigidbody.gravityScale = _stat.HeavyGravity;
         PlayerCaching();
 
-        if (_spriteRenderer == null) return;
-        _originalMaterial = _spriteRenderer.material;
+        if (_spriteRenderer != null)
+        {
+            _originalMaterial = _spriteRenderer.material;
+        }
 
         _phases = new IBossPhase[]
         {
@@ -91,6 +101,15 @@ public class BossController : MonoBehaviour
             {
                 IsHittingRightWall = true;
             }
+
+            if (!_hasLandedOnSpawn && contact.normal.y > 0.7f)
+            {
+                _hasLandedOnSpawn = true;
+                if (GameFeel != null)
+                {
+                    GameFeel.PlayLandImpact();
+                }
+            }
         }
     }
 
@@ -100,30 +119,65 @@ public class BossController : MonoBehaviour
         IsHittingRightWall = false;
     }
 
-    // Public 기능 메서드
+    public void PlayBossSound(SoundEffectType type, bool isLoop = false)
+    {
+        if (_audioSource == null)
+        {
+            return;
+        }
+
+        AudioClip clip = AudioManager.Instance.GetSfxClip(type);
+        if (clip != null)
+        {
+            _audioSource.clip = clip;
+            _audioSource.loop = isLoop;
+            _audioSource.Play();
+        }
+    }
+
+    public void PlayBossSoundOneShot(SoundEffectType type)
+    {
+        if (_audioSource == null)
+        {
+            return;
+        }
+
+        AudioClip clip = AudioManager.Instance.GetSfxClip(type);
+        if (clip != null)
+        {
+            _audioSource.PlayOneShot(clip);
+        }
+    }
+
+    public void StopBossSound()
+    {
+        if (_audioSource != null && _audioSource.isPlaying)
+        {
+            _audioSource.Stop();
+        }
+    }
+
     public void SetPhase(int phaseIndex)
     {
         Debug.Log($"<color=red>보스: {phaseIndex}페이즈 돌입</color>");
         _currentPhase = phaseIndex;
 
-        StopAllCoroutines();
-        ResetFlashMaterial();
+        StopAllAttacks();
 
         if (_vfxGroup == null)
         {
             Debug.LogError("보스 프리팹 안의 VFX_Group을 연결해주세요.");
         }
-
-        foreach (Transform child in _vfxGroup)
+        else
         {
-            child.gameObject.SetActive(false);
+            foreach (Transform child in _vfxGroup)
+            {
+                child.gameObject.SetActive(false);
+            }
         }
 
-        _commandQueue.Clear();
         _isExecuting = false;
-
-        LoadPhaseCommands();
-        StartCoroutine(ProcessCommands());
+        StartCoroutine(TransitionAndStart(phaseIndex));
     }
 
     public void StopAllAttacks()
@@ -132,11 +186,15 @@ public class BossController : MonoBehaviour
         ResetFlashMaterial();
         _commandQueue.Clear();
         Rigidbody.linearVelocity = Vector2.zero;
+        StopBossSound();
     }
 
     public void PlayHitFlash()
     {
-        if (_spriteRenderer == null || _flashMaterial == null) return;
+        if (_spriteRenderer == null || _flashMaterial == null)
+        {
+            return;
+        }
 
         if (_flashCoroutine != null)
         {
@@ -146,12 +204,24 @@ public class BossController : MonoBehaviour
         _flashCoroutine = StartCoroutine(HitFlashRoutine());
     }
 
+    public void ResetWallCollision()
+    {
+        IsHittingLeftWall = false;
+        IsHittingRightWall = false;
+    }
+
     public void ShootLaserEvent()
     {
-        if (_stat.BossLaserPrefab == null || _laserFirePoint == null) return;
-        if (_stat.MultiLaserOffsets == null || _stat.MultiLaserOffsets.Length == 0) return;
+        if (_stat.BossLaserPrefab == null || _laserFirePoint == null)
+        {
+            return;
+        }
 
-        // 인덱스 초과 방어 (5번 쏠 거지만 혹시 몰라서 방어 코드 추가)
+        if (_stat.MultiLaserOffsets == null || _stat.MultiLaserOffsets.Length == 0)
+        {
+            return;
+        }
+
         int index = Mathf.Clamp(LaserSequenceIndex, 0, _stat.MultiLaserOffsets.Length - 1);
         float offsetY = _stat.MultiLaserOffsets[index];
 
@@ -167,62 +237,26 @@ public class BossController : MonoBehaviour
         }
     }
 
-    // 잔상 생성
     public void SpawnGhost()
     {
-        if (_stat.GhostPrefab == null || _spriteRenderer == null) return;
+        if (_stat.GhostPrefab == null || _spriteRenderer == null)
+        {
+            return;
+        }
 
         GameObject ghostobject = Instantiate(_stat.GhostPrefab, transform.position, Quaternion.identity);
         BossGhostEffect ghost = ghostobject.GetComponent<BossGhostEffect>();
 
-        if (ghost == null) return;
+        if (ghost == null)
+        {
+            return;
+        }
+
         ghost.Setup(_spriteRenderer.sprite, transform);
+        ghost.ExplodeWithDelay(0.15f, 0.4f);
     }
 
-    // private 제어 메서드
-    private IEnumerator ProcessCommands() // 핵심 코루틴
-    {
-        // 보스가 살아있는동안 반복
-        while (true)
-        {
-            if (!_isExecuting)
-            {
-                if (_commandQueue.Count > 0)
-                {
-                    _isExecuting = true;
-                    IBossCommand currentCommand = _commandQueue.Dequeue();
-                    yield return StartCoroutine(currentCommand.Execute(this)); // 꺼낸 패턴 실행 + 패턴이 끝날 때까지 대기
-                    _isExecuting = false;
-                }
-                else
-                {
-                    LoadPhaseCommands();
-                }
-            }
-
-            yield return null;
-        }
-    }
-
-    private void LoadPhaseCommands()
-    {
-        if (_currentPhase >= 1 && _currentPhase < _phases.Length)
-        {
-            // 현재 페이즈 객체에게 패턴들을 받아와 큐에 넣음.
-            IEnumerable<IBossCommand> commands = _phases[_currentPhase].PhaseCommands(_stat);
-
-            foreach (IBossCommand cmd in commands)
-            {
-                _commandQueue.Enqueue(cmd);
-            }
-        }
-        else
-        {
-            Debug.LogWarning("잘못된 페이즈 인덱스입니다!");
-        }
-    }
-
-    void PlayerCaching()
+    private void PlayerCaching()
     {
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
@@ -235,11 +269,20 @@ public class BossController : MonoBehaviour
         }
     }
 
-    private IEnumerator HitFlashRoutine()
+    private void LoadPhaseCommands()
     {
-        _spriteRenderer.material = _flashMaterial;
-        yield return new WaitForSeconds(0.05f);
-        _spriteRenderer.material = _originalMaterial;
+        if (_currentPhase >= 1 && _currentPhase < _phases.Length)
+        {
+            IEnumerable<IBossCommand> commands = _phases[_currentPhase].PhaseCommands(_stat);
+            foreach (IBossCommand cmd in commands)
+            {
+                _commandQueue.Enqueue(cmd);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("잘못된 페이즈 인덱스입니다!");
+        }
     }
 
     private void ResetFlashMaterial()
@@ -248,5 +291,58 @@ public class BossController : MonoBehaviour
         {
             _spriteRenderer.material = _originalMaterial;
         }
+    }
+
+    private IEnumerator TransitionAndStart(int phaseIndex)
+    {
+        if (phaseIndex > 1)
+        {
+            Rigidbody.linearVelocity = Vector2.zero;
+            Rigidbody.gravityScale = 0f;
+
+            PlayBossSoundOneShot(SoundEffectType.DASH_PREPARATION);
+
+            float elapsed = 0f;
+            while (elapsed < 2.0f)
+            {
+                PlayHitFlash();
+                yield return _phaseBlinkDelay;
+                elapsed += 0.3f;
+            }
+
+            Rigidbody.gravityScale = _stat.HeavyGravity;
+        }
+
+        LoadPhaseCommands();
+        StartCoroutine(ProcessCommands());
+    }
+
+    private IEnumerator ProcessCommands()
+    {
+        while (true)
+        {
+            if (!_isExecuting)
+            {
+                if (_commandQueue.Count > 0)
+                {
+                    _isExecuting = true;
+                    IBossCommand currentCommand = _commandQueue.Dequeue();
+                    yield return StartCoroutine(currentCommand.Execute(this));
+                    _isExecuting = false;
+                }
+                else
+                {
+                    LoadPhaseCommands();
+                }
+            }
+            yield return null;
+        }
+    }
+
+    private IEnumerator HitFlashRoutine()
+    {
+        _spriteRenderer.material = _flashMaterial;
+        yield return _hitFlashDelay;
+        _spriteRenderer.material = _originalMaterial;
     }
 }

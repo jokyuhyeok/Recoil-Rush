@@ -29,6 +29,8 @@ public class BossRoomTrigger : MonoBehaviour
             {
                 // 켜지는 순간 BossController의 Start()가 실행되며 알아서 패턴을 시작
                 _bossObject.SetActive(true);
+
+                AudioManager.Instance.PlaySFX(SoundEffectType.BOSS_APPEAR);
             }
 
             Debug.Log("<color=cyan>보스방 입장! 체력바 활성화</color>");

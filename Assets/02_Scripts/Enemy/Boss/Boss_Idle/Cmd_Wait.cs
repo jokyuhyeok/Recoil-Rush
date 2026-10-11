@@ -19,7 +19,10 @@ public class Cmd_Wait : IBossCommand
         {
             Debug.LogError("보스 대기 상태 VFX를 연결해주세요!");
         }
+
         boss.IdleSmokeEffect.SetActive(true);
+
+        boss.PlayBossSound(SoundEffectType.DASH_PREPARATION, true);
 
         Debug.Log($"<color=green>보스 : {_waitTime}초 동안 대기합니다....</color>");
 
@@ -30,6 +33,7 @@ public class Cmd_Wait : IBossCommand
             boss.IdleSmokeEffect.SetActive(false);
         }
 
+        boss.StopBossSound();
         Debug.Log($"<color=green>보스: 대기 완료! 다음 행동을 준비합니다.</color>");
     }
 }

@@ -1,7 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-// Boss의 "전방 돌진" 메서드 입니다.
+/// <summary>
+/// Boss의 "전방 돌진" 메서드
+/// </summary>
 public class Cmd_ForwardDash : IBossCommand
 {
     private float _dashSpeed;
@@ -9,13 +12,23 @@ public class Cmd_ForwardDash : IBossCommand
     private float _chargeTime;
     private float _ghostInterval;
 
-    // 생성자입니다.
+    // 메모리 최적화: 매번 생성하지 않도록 미리 대기 객체를 캐싱
+    private WaitForSeconds _chargeWait;
+    private WaitForSeconds _crashWait;
+
+    /// <summary>
+    /// 생성자입니다.
+    /// </summary>
     public Cmd_ForwardDash(float dashSpeed, float dashDuration, float chargeTime, float ghostInterval)
     {
         _dashSpeed = dashSpeed;
         _dashDuration = dashDuration;
         _chargeTime = chargeTime;
         _ghostInterval = ghostInterval;
+
+        // 생성될 때 미리 캐싱해두어 GC(가비지 컬렉션) 부하 방지
+        _chargeWait = new WaitForSeconds(chargeTime);
+        _crashWait = new WaitForSeconds(0.5f);
     }
 
     public IEnumerator Execute(BossController boss)
@@ -33,8 +46,18 @@ public class Cmd_ForwardDash : IBossCommand
 
         boss.DashChargeEffect.SetActive(true);
 
+        boss.PlayBossSoundOneShot(SoundEffectType.DASH_PREPARATION);
         CameraController.Instance.StartShake(_chargeTime, 0.5f); // 기를 모을 때 흔들림
-        yield return new WaitForSeconds(_chargeTime);
+
+        if (boss.GameFeel != null)
+        {
+            boss.GameFeel.PlayChargeSquash(_chargeTime);
+        }
+
+        yield return _chargeWait;
+
+        if (boss.GameFeel != null) boss.GameFeel.PlayDashStartPop();
+        boss.PlayHitFlash();
 
         Debug.Log("<color=red>보스: 전방 돌진 시작!</color>");
 
@@ -49,6 +72,7 @@ public class Cmd_ForwardDash : IBossCommand
         }
 
         boss.DashFireEffect.SetActive(true);
+        boss.PlayBossSound(SoundEffectType.DASH_BOOSTER, true);
 
         float timer = 0f;
         float ghostTimer = 0f;
@@ -66,11 +90,19 @@ public class Cmd_ForwardDash : IBossCommand
                     boss.DashFireEffect.SetActive(false);
                 }
 
+                boss.StopBossSound();
+                boss.PlayBossSoundOneShot(SoundEffectType.DASH_CRASH);
                 CameraController.Instance.StartShake(0.6f, 1.5f); // 강한 진동
+
+                if (boss.GameFeel != null)
+                {
+                    boss.GameFeel.PlayHitStop(0.06f); // 0.06초 멈춤
+                    boss.GameFeel.PlayGlitchEffect(0.2f); // 색수차 찢어짐
+                }
 
                 boss.Rigidbody.linearVelocity =
                     new Vector2(-directionX * _dashSpeed * 0.2f, boss.Rigidbody.linearVelocity.y);
-                yield return new WaitForSeconds(0.5f);
+                yield return _crashWait;
                 break;
             }
 
@@ -94,6 +126,7 @@ public class Cmd_ForwardDash : IBossCommand
             boss.DashFireEffect.SetActive(false); // 제트팩 끄기
         }
 
+        boss.StopBossSound();
         Debug.Log("<color=red>보스: 전진 돌진 종료!</color>");
     }
 }

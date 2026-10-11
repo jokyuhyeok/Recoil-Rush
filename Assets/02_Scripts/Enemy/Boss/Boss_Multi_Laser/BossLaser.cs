@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 단일 레이저의 시각적 연출(경고선 늘어남 -> 번쩍임 -> 실제 레이저 발사)을 담당하는 클래스
+/// </summary>
 public class BossLaser : MonoBehaviour
 {
     [Header("레이저 관련 프리팹 (에디터에서 연결)")]
@@ -20,19 +23,28 @@ public class BossLaser : MonoBehaviour
     // 보스가 우측에 있으므로 기본 발사 방향은 왼쪽(-1)
     private float _direction = 1f;
 
+    // 내부 제어용 변수
     private GameObject _chargeOrb;
     private GameObject _warningLaser;
     private GameObject _mainLaser;
     private GameObject _screenFlashObj;
 
+    // 메모리 최적화용 대기 객체
+    private WaitForSeconds _flashWait;
+
     private void Awake()
     {
-        // 프리팹이 맵에 생성되자마자, 경고선과 실제 레이저 오브젝트를 코드로 자동 생성합니다.
+        // 프리팹이 맵에 생성되자마자, 경고선과 실제 레이저 오브젝트를 코드로 자동 생성
         _chargeOrb = CreateLaserObject("ChargeOrb", _chargeOrbectPrefab);
         _warningLaser = CreateLaserObject("WarningLaser", _warningLaserPrefab);
         _mainLaser = CreateLaserObject("MainLaser", _mainLaserPrefab);
+
+        _flashWait = new WaitForSeconds(_flashDuration);
     }
 
+    /// <summary>
+    /// 외부에서 레이저 발사 시퀀스를 시작할 때 호출
+    /// </summary>
     public void FireLaser(float warningTime, float beamTime)
     {
         StartCoroutine(LaserSequence(warningTime, beamTime));
@@ -43,6 +55,7 @@ public class BossLaser : MonoBehaviour
         if (_chargeOrb != null) _chargeOrb.SetActive(true);
         if (_warningLaser != null) _warningLaser.SetActive(true);
 
+        AudioManager.Instance.PlaySFX(SoundEffectType.BOSS_LASER_FIRE);
         CameraController.Instance.StartShake(warningTime, 0.2f);
 
         float timer = 0f;
@@ -69,7 +82,14 @@ public class BossLaser : MonoBehaviour
         CameraController.Instance.StartPerlinShake(0.2f, 25f, 0.8f);
         StartCoroutine(SingleFlashRoutine());
 
-        yield return new WaitForSeconds(beamTime);
+        // [메모리 최적화] new WaitForSeconds(beamTime) 대신 GC를 발생시키지 않는 타이머 방식 적용
+        float beamTimer = 0f;
+        while (beamTimer < beamTime)
+        {
+            beamTimer += Time.deltaTime;
+            yield return null;
+        }
+
         Destroy(gameObject);
     }
 
@@ -89,7 +109,7 @@ public class BossLaser : MonoBehaviour
         return obj;
     }
 
-    // 그림(Sprite)과 판정(Collider) 길이를 동시에 늘리고 밖으로 밀어주는 헬퍼 함수
+    // 그림(Sprite)과 판정(Collider) 길이를 동시에 늘리고 밖으로 밀어주는 함수
     private void SetLaserLengthAndPosition(GameObject laser, float length)
     {
         if (laser == null) return;
@@ -123,11 +143,13 @@ public class BossLaser : MonoBehaviour
             sr.sprite = _mainLaser.GetComponent<SpriteRenderer>().sprite;
         }
 
-        sr.sortingOrder = 30000;
+        sr.sortingOrder = 300;
 
         // 0.05초 동안 완전 하얗게 번쩍! (알파값 0.8)
         sr.color = new Color(1f, 1f, 1f, _flashIntensity);
-        yield return new WaitForSeconds(_flashDuration);
+
+        // [메모리 최적화] Awake에서 미리 캐싱해둔 대기 객체 사용
+        yield return _flashWait;
 
         Destroy(_screenFlashObj);
     }

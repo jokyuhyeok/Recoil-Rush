@@ -40,40 +40,49 @@ public class BossPhase1 : IBossPhase
     {
         return new List<IBossCommand>
         {
-            new Cmd_Wait(5f),
-            // 1. 등장 후 가벼운 기싸움 (대기)
-            new Cmd_Wait(stat.WaitTime),
-
-            // 2. 갑작스러운 맹공: 거리를 순식간에 좁혀 들이받음
-            new Cmd_ForwardDash(stat.DashSpeed, stat.DashDuration, stat.DashChargeTime, stat.DashGhostInterval),
-
-            // 3. 플레이어의 근접 반격을 여유롭게 회피하며 거리 벌리기
-            new Cmd_Wait(0.2f),
-            new Cmd_BackwardDash(stat.BackDashSpeed, stat.BackDashDuration, stat.BackDashChargeTime, stat.BackDashGhostInterval),
-
-            // 4. 거리가 벌어진 틈을 타 화망 전개 (SO에 세팅된 양팔 부채꼴 탄막 사격)
-            new Cmd_Wait(0.3f),
+            // 1. 시작하자마자 거리를 벌리고 샷건
+            new Cmd_Wait(2.0f),
+            new Cmd_BackwardDash(stat.BackDashSpeed, stat.BackDashDuration, stat.BackDashChargeTime,
+                stat.BackDashGhostInterval),
+            new Cmd_Wait(1.0f),
             new Cmd_SpreadShoot(
                 stat.LeftBulletCount, stat.LeftStartAngle, stat.LeftEndAngle, stat.LeftFireDelay, stat.LeftBulletSpeed,
-                stat.RightBulletCount, stat.RightStartAngle, stat.RightEndAngle, stat.RightFireDelay, stat.RightBulletSpeed
+                stat.RightBulletCount, stat.RightStartAngle, stat.RightEndAngle, stat.RightFireDelay,
+                stat.RightBulletSpeed
             ),
 
-            // 5. 플레이어가 총알을 피하며 숨을 고를 시간을 잠시 줌 (완급 조절)
-            new Cmd_Wait(stat.WaitTime),
+            // 2. 사격 후 플레이어를 구석으로 밀어붙이는 압박 돌진
+            new Cmd_Wait(3.5f),
+            new Cmd_ForwardDash(stat.DashSpeed, stat.DashDuration, stat.DashChargeTime, stat.DashGhostInterval),
 
-            // 6. 지옥 시작: 맵에 폭탄 드론 3대를 깔면서 위/아래 3단 레이저로 퇴로 차단
-            new Cmd_MultiLaser(),
+            // 3. 벽에 박은 후 다시 크게 백대시하여 사격 각도 확보
+            new Cmd_Wait(1.0f),
+            new Cmd_BackwardDash(stat.BackDashSpeed, stat.BackDashDuration, stat.BackDashChargeTime,
+                stat.BackDashGhostInterval),
 
-            // 7. 레이저가 끝나자마자 쉴 틈 주지 않고 짧은 충전 후 기습 돌진!
-            new Cmd_Wait(0.2f),
-            new Cmd_ForwardDash(stat.DashSpeed * 1.2f, stat.DashDuration, 0.1f, stat.DashGhostInterval), // 평소보다 빠르고 충전도 짧게
+            // 4. 3연속 산탄총 난사 (짧은 텀으로 연속 발사)
+            new Cmd_Wait(1.0f),
+            new Cmd_SpreadShoot(
+                stat.LeftBulletCount, stat.LeftStartAngle, stat.LeftEndAngle, stat.LeftFireDelay, stat.LeftBulletSpeed,
+                stat.RightBulletCount, stat.RightStartAngle, stat.RightEndAngle, stat.RightFireDelay,
+                stat.RightBulletSpeed
+            ),
+            new Cmd_Wait(1.0f),
+            new Cmd_SpreadShoot(
+                stat.LeftBulletCount, stat.LeftStartAngle, stat.LeftEndAngle, stat.LeftFireDelay, stat.LeftBulletSpeed,
+                stat.RightBulletCount, stat.RightStartAngle, stat.RightEndAngle, stat.RightFireDelay,
+                stat.RightBulletSpeed
+            ),
+            new Cmd_Wait(1.0f),
+            new Cmd_SpreadShoot(
+                stat.LeftBulletCount, stat.LeftStartAngle, stat.LeftEndAngle, stat.LeftFireDelay, stat.LeftBulletSpeed,
+                stat.RightBulletCount, stat.RightStartAngle, stat.RightEndAngle, stat.RightFireDelay,
+                stat.RightBulletSpeed
+            ),
 
-            // 8. 1페이즈의 하이라이트 (공중 도약 후 풍차 레이저)
-            new Cmd_Wait(0.5f),
-            new Cmd_CenterRotatingLaser(),
-
-            // 9. 궁극기 시전 후 오버히트 (착지 후 길게 대기 - 플레이어의 프리딜 타임)
-            new Cmd_Wait(stat.WaitTime * 1.5f)
+            // 5. 난사 후 마무리 기습 돌진
+            new Cmd_Wait(4.0f),
+            new Cmd_ForwardDash(stat.DashSpeed, stat.DashDuration, stat.DashChargeTime, stat.DashGhostInterval)
         };
     }
 }
@@ -85,9 +94,32 @@ public class BossPhase2 : IBossPhase
     {
         return new List<IBossCommand>
         {
-            new Cmd_Wait(stat.WaitTime),
-            new Cmd_BackwardDash(stat.BackDashSpeed, stat.BackDashDuration, stat.BackDashChargeTime,
-                stat.BackDashGhostInterval)
+            // 1. 각도 확보 후 바로 멀티 레이저 시전
+            new Cmd_Wait(1.5f),
+            new Cmd_BackwardDash(stat.BackDashSpeed, stat.BackDashDuration, stat.BackDashChargeTime * 0.8f,
+                stat.BackDashGhostInterval),
+            new Cmd_Wait(0.5f),
+            new Cmd_MultiLaser(),
+
+            // 2. 레이저 피한 유저에게 기습 돌진 (기 모으는 시간 단축)
+            new Cmd_Wait(2.0f),
+            new Cmd_ForwardDash(stat.DashSpeed, stat.DashDuration, stat.DashChargeTime * 0.8f, stat.DashGhostInterval),
+
+            // 3. 벽에 붙은 상태에서 백대시 -> 샷건 -> 레이저 콤보
+            new Cmd_Wait(1.5f),
+            new Cmd_BackwardDash(stat.BackDashSpeed, stat.BackDashDuration, stat.BackDashChargeTime * 0.8f,
+                stat.BackDashGhostInterval),
+            new Cmd_SpreadShoot(
+                stat.LeftBulletCount, stat.LeftStartAngle, stat.LeftEndAngle, stat.LeftFireDelay, stat.LeftBulletSpeed,
+                stat.RightBulletCount, stat.RightStartAngle, stat.RightEndAngle, stat.RightFireDelay,
+                stat.RightBulletSpeed
+            ),
+            new Cmd_Wait(1.0f),
+            new Cmd_MultiLaser(),
+
+            // 4. 기습 돌진으로 마무리
+            new Cmd_Wait(2.0f),
+            new Cmd_ForwardDash(stat.DashSpeed, stat.DashDuration, stat.DashChargeTime * 0.8f, stat.DashGhostInterval)
         };
     }
 }
@@ -99,7 +131,46 @@ public class BossPhase3 : IBossPhase
     {
         return new List<IBossCommand>
         {
-            new Cmd_Wait(stat.WaitTime)
+            // 1. 맵 중앙으로 이동하여 궁극기(회전 레이저) 시전
+            new Cmd_Wait(1.0f),
+            new Cmd_CenterRotatingLaser(),
+
+            // 2. 궁극기 시전 후 오버히트 (가장 긴 프리딜 타임 제공)
+            new Cmd_Wait(4.0f),
+
+            // 3. 맵 중앙에서 사방으로 쏟아지는 발악 탄막 난사 (벽과 멀어 총알이 막히지 않음)
+            new Cmd_SpreadShoot(
+                stat.LeftBulletCount, stat.LeftStartAngle, stat.LeftEndAngle, stat.LeftFireDelay * 0.5f,
+                stat.LeftBulletSpeed * 1.2f,
+                stat.RightBulletCount, stat.RightStartAngle, stat.RightEndAngle, stat.RightFireDelay * 0.5f,
+                stat.RightBulletSpeed * 1.2f
+            ),
+            new Cmd_Wait(0.5f),
+            new Cmd_SpreadShoot(
+                stat.LeftBulletCount, stat.LeftStartAngle, stat.LeftEndAngle, stat.LeftFireDelay * 0.5f,
+                stat.LeftBulletSpeed * 1.2f,
+                stat.RightBulletCount, stat.RightStartAngle, stat.RightEndAngle, stat.RightFireDelay * 0.5f,
+                stat.RightBulletSpeed * 1.2f
+            ),
+            new Cmd_Wait(0.5f),
+            new Cmd_SpreadShoot(
+                stat.LeftBulletCount, stat.LeftStartAngle, stat.LeftEndAngle, stat.LeftFireDelay * 0.5f,
+                stat.LeftBulletSpeed * 1.2f,
+                stat.RightBulletCount, stat.RightStartAngle, stat.RightEndAngle, stat.RightFireDelay * 0.5f,
+                stat.RightBulletSpeed * 1.2f
+            ),
+
+            // 4. 엇박자 기습: 급하게 백대시 후 더블 레이저 기습
+            new Cmd_Wait(1.5f),
+            new Cmd_BackwardDash(stat.BackDashSpeed * 1.2f, stat.BackDashDuration, stat.BackDashChargeTime * 0.5f,
+                stat.BackDashGhostInterval),
+            new Cmd_Wait(0.5f),
+            new Cmd_MultiLaser(),
+
+            // 5. 최후의 기습 돌진
+            new Cmd_Wait(1.5f),
+            new Cmd_ForwardDash(stat.DashSpeed * 1.2f, stat.DashDuration, stat.DashChargeTime * 0.5f,
+                stat.DashGhostInterval)
         };
     }
 }
