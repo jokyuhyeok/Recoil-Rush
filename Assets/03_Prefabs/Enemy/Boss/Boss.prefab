@@ -164,7 +164,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.70654064, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4042267712204740403}
@@ -396,22 +396,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81dfeefd88503d9449942bbddf3786f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossGameFeel
-  BossVisual: {fileID: 1762722423737500353}
-  SquashCurve:
+  _bossVisual: {fileID: 0}
+  _squashCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.9881414
-      value: 0.99005026
+      time: 1
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -421,8 +421,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  GhostRelayInterval: 0.05
-  GlitchVolumeObject: {fileID: 1096818956399080462, guid: 57aee2e946ff1184f8ec8448a67926cf, type: 3}
+  _ghostRelayInterval: 0.05
+  _glitchVolumeObject: {fileID: 1096818956399080462, guid: 57aee2e946ff1184f8ec8448a67926cf, type: 3}
 --- !u!82 &5669560832414490759
 AudioSource:
   m_ObjectHideFlags: 0

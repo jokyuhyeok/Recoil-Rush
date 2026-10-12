@@ -9,10 +9,12 @@ public class BossHealth : MonoBehaviour, IDamageable
 {
     [Header("참조 세팅")]
     [SerializeField] private BossStatDataSO _stat;
+
     [SerializeField] private BossController _controller;
 
     [Header("사망 연출 세팅")]
     [SerializeField] private GameObject _massiveExplosionPrefab;
+
     [SerializeField] private float _deathDuration = 4.0f;
 
     // 내부 제어용 변수
@@ -171,5 +173,23 @@ public class BossHealth : MonoBehaviour, IDamageable
         // 6. 진짜 파괴 및 게임 클리어 이벤트 송출
         OnBossDead?.Invoke();
         Destroy(gameObject);
+    }
+
+    // 플레이어 사망 시 보스의 체력과 상태 원상복구
+    public void ResetHealth()
+    {
+        _currentHp = _stat.MaxHp;
+        _currentPhase = 1;
+        _isDead = false;
+
+        if (_spriteRenderer != null)
+        {
+            _spriteRenderer.color = Color.white; // 혹시 빨간색으로 깜빡이던 중이었다면 흰색으로 복구
+        }
+
+        if (_healthUI != null)
+        {
+            _healthUI.UpdateHealth(_currentHp, _stat.MaxHp);
+        }
     }
 }

@@ -59,6 +59,7 @@ public class BossController : MonoBehaviour
     private int _currentPhase = 1;
     private bool _isExecuting = false;
     private bool _hasLandedOnSpawn = false;
+    private Vector3 _initialPosition;
 
     private WaitForSeconds _hitFlashDelay = new WaitForSeconds(0.05f);
     private WaitForSeconds _phaseBlinkDelay = new WaitForSeconds(0.3f);
@@ -85,9 +86,11 @@ public class BossController : MonoBehaviour
             new BossPhase2(),
             new BossPhase3()
         };
+
+        _initialPosition = transform.position;
     }
 
-    private void Start()
+    private void OnEnable()
     {
         SetPhase(1);
     }
@@ -363,5 +366,33 @@ public class BossController : MonoBehaviour
         _spriteRenderer.material = _flashMaterial;
         yield return _hitFlashDelay;
         _spriteRenderer.material = _originalMaterial;
+    }
+
+    public void ResetBoss()
+    {
+        // 1. 모든 공격 및 사운드 정지
+        StopAllAttacks();
+
+        // 2. 켜져있던 이펙트 끄기
+        if (_redSphereEffect != null) _redSphereEffect.SetActive(false);
+        if (_handSwirlEffect != null) _handSwirlEffect.SetActive(false);
+        if (_rotatingLaserSkill != null) _rotatingLaserSkill.gameObject.SetActive(false);
+
+        // 3. 물리력 초기화 및 초기 위치로 복귀
+        Rigidbody.linearVelocity = Vector2.zero;
+        Rigidbody.gravityScale = _stat.HeavyGravity;
+        LaserSequenceIndex = 0;
+        transform.position = _initialPosition;
+        _hasLandedOnSpawn = false;
+
+        // 4. 애니메이션 초기화
+        Anim.Play("Idle");
+
+        // 5. 체력 원상복구
+        BossHealth health = GetComponent<BossHealth>();
+        if (health != null) health.ResetHealth();
+
+        // 6. 보스를 꺼서 숨김 (플레이어가 다시 방에 들어오면 트리거가 켜줌 -> OnEnable 실행)
+        gameObject.SetActive(false);
     }
 }
