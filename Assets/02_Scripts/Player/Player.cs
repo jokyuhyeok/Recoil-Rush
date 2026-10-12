@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 
     [Header("Effect")]
     [SerializeField] private ParticleSystem _dieEffect;
+    [SerializeField] private Animator _reviveEffect;
+    private const string ReviveAnimationName = "VFXRevive";
 
     [SerializeField] private string _resetTag = "Ground";
 
@@ -475,5 +477,7 @@ public class Player : MonoBehaviour
 
         // 부활 처리
         gameObject.SetActive(true);
+        _reviveEffect.enabled = true;
+        _reviveEffect.Play(ReviveAnimationName, 0, 0f);
     }
 }
