@@ -1794,6 +1794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationCutsceneTrigger
   _director: {fileID: 1482051480}
+  _tutorialPopup: {fileID: 534798731}
   _playOnce: 1
 --- !u!4 &251464236
 Transform:
@@ -4742,7 +4743,6 @@ GameObject:
   m_Component:
   - component: {fileID: 534798734}
   - component: {fileID: 534798733}
-  - component: {fileID: 534798732}
   m_Layer: 0
   m_Name: Tutorial
   m_TagString: Untagged
@@ -4750,20 +4750,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &534798732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534798731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e279e40f5babb2641ab2c1ea2ebb99d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TutorialPopup
-  _player: {fileID: 717582667}
-  _moveThreshold: 0.1
 --- !u!212 &534798733
 SpriteRenderer:
   serializedVersion: 2
@@ -28797,6 +28783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationCutsceneTrigger
   _director: {fileID: 1482051480}
+  _tutorialPopup: {fileID: 534798731}
   _playOnce: 1
 --- !u!4 &1330093002
 Transform:
