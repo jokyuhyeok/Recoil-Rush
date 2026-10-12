@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour
 {
+    [SerializeField] private GameObject _lockTileObject;
+
     [Header("Weapon Type")]
     [SerializeField] private WeaponType _weaponType = WeaponType.Shotgun;
 
@@ -47,6 +49,8 @@ public class WeaponPickup : MonoBehaviour
         }
 
         player.UnlockWeapon(_weaponType);
+        // 막아둔 길 뚫기
+        _lockTileObject.SetActive(false);
 
         RespawnManager.Instance.UpdateCheckpoint(transform.position);
 

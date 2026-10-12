@@ -9,12 +9,15 @@ public class Player : MonoBehaviour
 
     [Header("Reload")]
     [SerializeField] private float _reloadTime = 2f;
+    public float ReloadTime => _reloadTime;
 
     [SerializeField] private float _reloadGroundDelay = 0.2f;
     [SerializeField] private float _reloadStopDelay = 1f;
 
     [Header("Effect")]
     [SerializeField] private ParticleSystem _dieEffect;
+    [SerializeField] private Animator _reviveEffect;
+    private const string ReviveAnimationName = "VFXRevive";
 
     [SerializeField] private string _resetTag = "Ground";
 
@@ -30,6 +33,7 @@ public class Player : MonoBehaviour
     private PlayerAim _playerAIm;
 
     private float _reloadTimer;
+    public float ReloadTimer => _reloadTimer;
     private float _airTimer;
     private float _stopTimer;
     private int _groundCount;
@@ -473,5 +477,7 @@ public class Player : MonoBehaviour
 
         // 부활 처리
         gameObject.SetActive(true);
+        _reviveEffect.enabled = true;
+        _reviveEffect.Play(ReviveAnimationName, 0, 0f);
     }
 }
