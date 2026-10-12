@@ -6,6 +6,9 @@ public class LocationCutsceneTrigger : MonoBehaviour
     [Header("Timeline")]
     [SerializeField] private PlayableDirector _director;
 
+    [Header("Tutorial")]
+    [SerializeField] private GameObject _tutorialPopup;
+
     [Header("Settings")]
     [SerializeField] private bool _playOnce = true;
 
@@ -24,7 +27,11 @@ public class LocationCutsceneTrigger : MonoBehaviour
 
         _isTriggered = true;
 
-        // 타임라인 처음부터 재생
+        // 튜토리얼 비활성화
+        if (_tutorialPopup != null)
+            _tutorialPopup.SetActive(false);
+
+        // 컷씬 실행
         _director.time = 0;
         _director.Play();
     }
