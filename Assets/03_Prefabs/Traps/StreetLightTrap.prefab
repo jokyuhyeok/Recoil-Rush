@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1839869774275768374}
   m_Layer: 0
   m_Name: StreetLightTrap
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638761f8edb178c49baee180e0b06862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrapBullet
+  _visual: {fileID: 0}
 --- !u!1 &7126337052181765316
 GameObject:
   m_ObjectHideFlags: 0
