@@ -158,7 +158,9 @@ public class EnemyMachineGun : EnemyBase
         Instantiate(_machineGunStatDataSo.DeathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
 
         CameraController.Instance.StartShake(0.5f, 0.2f);
-        Destroy(gameObject);
+
+        AudioManager.Instance.PlaySFX(SoundEffectType.ENEMY_HIT);
+        EnemyPoolManager.Instance.ReturnEnemy(gameObject);
     }
 
     // 애니메이션 이벤트 호출 메서드
@@ -178,6 +180,8 @@ public class EnemyMachineGun : EnemyBase
 
         // 총구 반동
         rb.AddForce(-direction * _machineGunStatDataSo.ShootRecoilPower, ForceMode2D.Impulse);
+
+        AudioManager.Instance.PlaySFX(SoundEffectType.SHOOT_MACHINEGUN);
 
         // 총구 화염
         if (_machineGunStatDataSo.MuzzleFlashParticle == null)
@@ -226,5 +230,22 @@ public class EnemyMachineGun : EnemyBase
         RaycastHit2D hit = Physics2D.Raycast(_firePoint.position, direction.normalized, distance,
             _machineGunStatDataSo.ObstacleMask);
         return hit.collider == null;
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        _isDead = false;
+        _currentAlarmTime = 0f;
+        _fireTimer = 0f;
+        _reloadTimer = 0f;
+        _isReloading = false;
+        _isAimLocked = false;
+
+        if (_machineGunStatDataSo != null)
+        {
+            _currentBulletRemain = _machineGunStatDataSo.MagazineSize;
+        }
     }
 }

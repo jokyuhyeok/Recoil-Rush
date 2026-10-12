@@ -10,14 +10,17 @@ public enum MenuAction
 
 public class StartUI : MonoBehaviour
 {
-    [Header("Buttons")] [SerializeField] private Button _startButton;
+    [Header("Buttons")]
+    [SerializeField] private Button _startButton;
     [SerializeField] private Button _optionButton;
     [SerializeField] private Button _exitButton;
 
-    [Header("UI")] [SerializeField] private GameObject _cutsceneUI;
+    [Header("UI")]
+    [SerializeField] private GameObject _cutsceneUI;
     [SerializeField] private GameObject _optionUI;
 
-    [Header("Shooting")] [SerializeField] private Collider2D[] _menuHitboxes;
+    [Header("Shooting")]
+    [SerializeField] private Collider2D[] _menuHitboxes;
 
     private bool _isLoading;
     private bool _isOptionOpen;

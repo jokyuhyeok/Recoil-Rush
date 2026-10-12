@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     [Header("Reload")]
     [SerializeField] private float _reloadTime = 2f;
+
     [SerializeField] private float _reloadGroundDelay = 0.2f;
     [SerializeField] private float _reloadStopDelay = 1f;
 
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
 
     // 법선 y가 이 값 이상이면 바닥 (약 45도 이내 / 45.6)
     private const float GroundNormalY = 0.7f;
+
     // 속도가 이 값 이하면 멈춘걸로 판단
     private const float StopSpeed = 0.01f;
 
@@ -57,7 +59,6 @@ public class Player : MonoBehaviour
         _playerAIm = GetComponent<PlayerAim>();
 
         // Play On Awake가 켜져 있어도 시작하자마자 재생되지 않게 정지
-        
         if (_dieEffect != null)
         {
             // 활성화 시 자동 재생 방지
@@ -336,7 +337,6 @@ public class Player : MonoBehaviour
         // ? = !null
         OnDeath?.Invoke();
     }
-
 
 
     private void Reset()
