@@ -22073,7 +22073,7 @@ PrefabInstance:
     - target: {fileID: 7230766701276172762, guid: 62b4d9393dee4d943b1205180ee1b156, type: 3}
       propertyPath: _bossUIObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1871547008}
     - target: {fileID: 8551078307173484632, guid: 62b4d9393dee4d943b1205180ee1b156, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.09
@@ -43428,6 +43428,11 @@ PrefabInstance:
 --- !u!224 &1871547007 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2729904225456691239, guid: 446f0127905ccfe4dacf9b4bbbeb6a3a, type: 3}
+  m_PrefabInstance: {fileID: 1871547006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1871547008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8066004120942974995, guid: 446f0127905ccfe4dacf9b4bbbeb6a3a, type: 3}
   m_PrefabInstance: {fileID: 1871547006}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &1872529225 stripped
