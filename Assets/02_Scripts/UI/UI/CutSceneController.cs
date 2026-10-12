@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class CutsceneController : MonoBehaviour
 {
+    private const string WatchedCutsceneKey = "WatchedCutscene";
+
     [Header("Cutscene Images")]
     [SerializeField] private Image[] _panels;
 
@@ -22,6 +24,7 @@ public class CutsceneController : MonoBehaviour
     private Color[] _originalColors;
 
     private Coroutine _cutsceneCoroutine;
+
 
     private void Awake()
     {
@@ -63,7 +66,9 @@ public class CutsceneController : MonoBehaviour
 
     private void OnEnable()
     {
-        _cutsceneCoroutine = StartCoroutine(PlayCutscene());
+        bool watchedAlready = PlayerPrefs.GetInt(WatchedCutsceneKey, 0) == 1;
+
+        _cutsceneCoroutine = watchedAlready ? StartCoroutine(PlayCutsceneWithSkip()) : StartCoroutine(PlayCutscene());
     }
 
     private void OnDisable()
@@ -112,6 +117,9 @@ public class CutsceneController : MonoBehaviour
             }
         }
 
+        PlayerPrefs.SetInt(WatchedCutsceneKey, 1);
+        PlayerPrefs.Save();
+
         // 마지막 컷이 등장한 후 잠시 유지
         yield return new WaitForSecondsRealtime(_lastDelay);
 
@@ -132,6 +140,59 @@ public class CutsceneController : MonoBehaviour
         {
             yield return null;
         }
+
+        // 게임 시작
+        operation.allowSceneActivation = true;
+        _cutsceneCoroutine = null;
+    }
+
+    private IEnumerator PlayCutsceneWithSkip()
+    {
+        if (_panels == null || _panels.Length != 6)
+            yield break;
+
+        for (int i = 0; i < 6; i++)
+        {
+            if (_panels[i] == null)
+            {
+                Debug.LogError($"Panel0{i + 1} 연결 안 됨!");
+                yield break;
+            }
+        }
+
+        // 컷씬 애니메이션을 별도의 코루틴으로 실행
+        Coroutine cutsceneCoroutine = StartCoroutine(ShowPanels());
+
+        // 실제 게임 씬을 백그라운드에서 로딩
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+
+        if (operation == null)
+        {
+            Debug.LogError("게임 씬 로딩 실패");
+            yield break;
+        }
+
+        operation.allowSceneActivation = false;
+
+        // 게임 씬 로딩 완료 대기
+        while (operation.progress < 0.9f)
+        {
+            yield return null;
+        }
+
+        // 클릭 안내 TMP 표시
+        _continueText?.gameObject.SetActive(true);
+
+        // TMP가 표시된 프레임의 클릭 입력은 무시
+        yield return null;
+
+        // 마우스 왼쪽 버튼 클릭 대기
+        while (!Input.GetMouseButtonDown(0))
+        {
+            yield return null;
+        }
+
+        StopCoroutine(cutsceneCoroutine);
 
         // 게임 시작
         operation.allowSceneActivation = true;
@@ -170,5 +231,19 @@ public class CutsceneController : MonoBehaviour
 
         panel.color = originalColor;
         panel.rectTransform.localScale = originalScale;
+    }
+
+    private IEnumerator ShowPanels()
+    {
+        // 6컷 순서대로 등장
+        for (int i = 0; i < 6; i++)
+        {
+            yield return StartCoroutine(ShowPanel(i));
+
+            if (i < 5)
+            {
+                yield return new WaitForSecondsRealtime(_interval);
+            }
+        }
     }
 }
