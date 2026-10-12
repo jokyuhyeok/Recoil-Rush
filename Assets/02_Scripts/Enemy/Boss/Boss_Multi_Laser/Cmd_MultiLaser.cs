@@ -22,8 +22,9 @@ public class Cmd_MultiLaser : IBossCommand
 
         if (boss.HandSwirlEffect != null) boss.HandSwirlEffect.SetActive(true);
 
-        boss.PlayBossSoundOneShot(SoundEffectType.FIVE_TIMES_LASER_CHARGING);
+        boss.PlayBossSound(SoundEffectType.FIVE_TIMES_LASER_CHARGING, true);
         yield return _startWait; // 캐싱된 대기 객체 사용
+        boss.StopBossSound();
 
         int laserCount = boss.Stat.MultiLaserOffsets.Length;
 

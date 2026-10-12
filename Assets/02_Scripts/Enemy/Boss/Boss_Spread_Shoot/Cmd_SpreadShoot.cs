@@ -45,8 +45,6 @@ public class Cmd_SpreadShoot : IBossCommand
 
         Debug.Log($"<color=yellow>보스: 양팔 사격 시작!</color>");
 
-        boss.PlayBossSoundOneShot(SoundEffectType.BOSS_SPREAD_SHOT);
-
         // 양쪽 사격이 끝났는지 체크
         bool isLeftDone = false;
         bool isRightDone = false;
@@ -79,6 +77,7 @@ public class Cmd_SpreadShoot : IBossCommand
             yield return null;
         }
 
+        boss.StopBossSound();
         Debug.Log("<color=yellow>보스: 양팔 사격 끝!</color>");
     }
 
@@ -109,6 +108,7 @@ public class Cmd_SpreadShoot : IBossCommand
                 bossBullet.FireBullet(fireDirection, speed);
             }
 
+            boss.PlayBossSoundOneShot(SoundEffectType.BOSS_SPREAD_SHOT);
             yield return shotDelay; // 캐싱된 딜레이 사용 (루프당 GC 0)
         }
 

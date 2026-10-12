@@ -22,7 +22,6 @@ public enum SoundEffectType
     BOSS_APPEAR,
     BOSS_DEATH,
     BOSS_HIT,
-    BOSS_MOVE_TO_CENTER,
 
     // 보스 돌진 패턴 (Dash) SFX
     DASH_PREPARATION, // 준비 (쿠구구구)
@@ -37,7 +36,10 @@ public enum SoundEffectType
 
     // 보스 레이저 패턴 (Laser) SFX
     FIVE_TIMES_LASER_CHARGING, // 5단 레이저 기 모으기
-    BOSS_LASER_FIRE, // 레이저 발사
-    ROTATING_LASER_CHARGING, // 회전 레이저 이륙 및 응축
-    ROTATING_LASER_LOOP, // 회전 레이저 웅웅거림 (루프)
+    FIVE_TIMES_LASER_WARNING, // 5단 경고용 레이저 출력
+    FIVE_TIMES_LASER_FIRE, // 5단 레이저 발사
+    BOSS_MOVE_TO_CENTER,       // 1. 도약 (공중으로 뜰 때 나는 쿠구구구 부스터 소리)
+    ROTATING_LASER_CHARGING,   // 2. 구체 차징 (휘오오오 에너지 휩싸이는 소리)
+    BOSS_LASER_WARNING,        // 3. 경고선 (단일 레이저 경고선과 공용 - 뻗어나가는 찌릿 소리)
+    ROTATING_LASER_LOOP,       // 4. 메인 회전 (지이잉 거리는 고압 레이저 루프)
 }

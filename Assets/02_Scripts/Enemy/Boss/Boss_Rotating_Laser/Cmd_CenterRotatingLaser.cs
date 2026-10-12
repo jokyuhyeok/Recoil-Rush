@@ -49,12 +49,12 @@ public class Cmd_CenterRotatingLaser : IBossCommand
         }
 
         boss.RedSphereEffect.SetActive(true);
+
+        boss.PlayBossSoundOneShot(SoundEffectType.ROTATING_LASER_CHARGING);
         yield return _sphereWait; // 캐싱된 대기 객체 사용
 
-        boss.PlayBossSound(SoundEffectType.ROTATING_LASER_LOOP, true);
-
         // 레이저 회전 끝날 때까지 대기
-        boss.RotatingLaserSkill.StartSkill();
+        boss.RotatingLaserSkill.StartSkill(boss);
         yield return new WaitUntil(() => !boss.RotatingLaserSkill.IsPlaying);
 
         boss.StopBossSound();

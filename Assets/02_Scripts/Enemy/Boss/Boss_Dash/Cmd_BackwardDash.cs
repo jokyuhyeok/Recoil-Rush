@@ -84,7 +84,7 @@ public class Cmd_BackwardDash : IBossCommand
                 CameraController.Instance.StartShake(0.6f, 1.5f);
 
                 boss.StopBossSound();
-                boss.PlayBossSoundOneShot(SoundEffectType.BACKDASH_CRASH);
+                AudioManager.Instance.PlaySFX(SoundEffectType.BACKDASH_CRASH);
 
                 if (boss.GameFeel != null)
                 {

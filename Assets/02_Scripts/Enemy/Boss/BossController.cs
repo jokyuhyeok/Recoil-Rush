@@ -28,11 +28,13 @@ public class BossController : MonoBehaviour
 
     [Header("기본 세팅")]
     [SerializeField] private BossStatDataSO _stat;
+
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Material _flashMaterial;
 
     [Header("시각 효과 (VFX)")]
     [SerializeField] private Transform _vfxGroup;
+
     [SerializeField] private GameObject _idleSmokeEffect;
     [SerializeField] private GameObject _dashChargeEffect;
     [SerializeField] private GameObject _dashFireEffect;
@@ -41,6 +43,7 @@ public class BossController : MonoBehaviour
 
     [Header("레이저 및 특수 공격")]
     [SerializeField] private Transform[] _firePoints;
+
     [SerializeField] private Transform _laserFirePoint;
     [SerializeField] private BossLaserTest _rotatingLaserSkill;
     [SerializeField] private GameObject _redSphereEffect;
@@ -109,6 +112,21 @@ public class BossController : MonoBehaviour
                 {
                     GameFeel.PlayLandImpact();
                 }
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            if (contact.normal.x > 0.7f)
+            {
+                IsHittingLeftWall = true;
+            }
+            else if (contact.normal.x < -0.7f)
+            {
+                IsHittingRightWall = true;
             }
         }
     }
@@ -335,6 +353,7 @@ public class BossController : MonoBehaviour
                     LoadPhaseCommands();
                 }
             }
+
             yield return null;
         }
     }

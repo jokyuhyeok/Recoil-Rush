@@ -22,8 +22,6 @@ public class Cmd_Wait : IBossCommand
 
         boss.IdleSmokeEffect.SetActive(true);
 
-        boss.PlayBossSound(SoundEffectType.DASH_PREPARATION, true);
-
         Debug.Log($"<color=green>보스 : {_waitTime}초 동안 대기합니다....</color>");
 
         yield return new WaitForSeconds(_waitTime);

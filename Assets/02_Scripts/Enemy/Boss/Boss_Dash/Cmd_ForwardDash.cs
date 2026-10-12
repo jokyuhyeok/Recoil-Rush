@@ -91,7 +91,7 @@ public class Cmd_ForwardDash : IBossCommand
                 }
 
                 boss.StopBossSound();
-                boss.PlayBossSoundOneShot(SoundEffectType.DASH_CRASH);
+                AudioManager.Instance.PlaySFX(SoundEffectType.DASH_CRASH);
                 CameraController.Instance.StartShake(0.6f, 1.5f); // 강한 진동
 
                 if (boss.GameFeel != null)

@@ -95,7 +95,7 @@ public class BossPhase2 : IBossPhase
         return new List<IBossCommand>
         {
             // 1. 각도 확보 후 바로 멀티 레이저 시전
-            new Cmd_Wait(1.5f),
+            new Cmd_Wait(4.0f),
             new Cmd_BackwardDash(stat.BackDashSpeed, stat.BackDashDuration, stat.BackDashChargeTime * 0.8f,
                 stat.BackDashGhostInterval),
             new Cmd_Wait(0.5f),
