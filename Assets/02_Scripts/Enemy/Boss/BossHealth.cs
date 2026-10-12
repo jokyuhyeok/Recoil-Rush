@@ -15,7 +15,7 @@ public class BossHealth : MonoBehaviour, IDamageable
     [Header("사망 연출 세팅")]
     [SerializeField] private GameObject _massiveExplosionPrefab;
 
-    [SerializeField] private float _deathDuration = 4.0f;
+    [SerializeField] private float _deathDuration = 7.0f;
 
     // 내부 제어용 변수
     private BossHealthUI _healthUI;
@@ -128,49 +128,26 @@ public class BossHealth : MonoBehaviour, IDamageable
         // 1. 사망 사운드 재생 (매니저 바구니 사용)
         AudioManager.Instance.PlaySFX(SoundEffectType.BOSS_DEATH);
 
-        // 2. 화면 전체에 잔잔하고 긴 지진 발생
-        CameraController.Instance.StartPerlinShake(_deathDuration, 15f, 0.5f);
-
-        // 메모리 최적화: new WaitForSeconds를 생성하지 않고 누적 타이머로 구현 (Zero-Allocation)
-        float totalTimer = 0f;
-        float blinkTimer = 0f;
-        float blinkInterval = 0.2f;
-        bool isRed = false;
-
-        // 3. 지정된 시간동안 빨간색으로 점멸
-        while (totalTimer < _deathDuration)
+        // 컨트롤러에 새로 만든 보라색 폭주 코루틴을 실행하고 끝날 때까지 대기
+        if (_controller != null)
         {
-            totalTimer += Time.deltaTime;
-            blinkTimer += Time.deltaTime;
-
-            if (blinkTimer >= blinkInterval)
-            {
-                blinkTimer = 0f;
-
-                if (_spriteRenderer != null)
-                {
-                    _spriteRenderer.color = isRed ? Color.red : Color.white;
-                }
-
-                isRed = !isRed;
-
-                // 시간이 지날수록 깜빡임 속도를 미세하게 빠르게 가속
-                blinkInterval = Mathf.Max(0.05f, blinkInterval - 0.01f);
-            }
-
-            yield return null;
+            yield return StartCoroutine(_controller.PlayDeathVFX(_deathDuration));
+        }
+        else
+        {
+            yield return new WaitForSeconds(_deathDuration);
         }
 
-        // 4. 거대 폭발 이펙트 소환
+        // 폭주가 끝나면 거대 폭발 이펙트 소환
         if (_massiveExplosionPrefab != null)
         {
             Instantiate(_massiveExplosionPrefab, transform.position, Quaternion.identity);
         }
 
-        // 5. 폭발 순간 화면이 찢어질 듯한 강력한 타격감 부여
+        // 폭발 순간 화면이 찢어질 듯한 강력한 타격감 부여
         CameraController.Instance.StartPerlinShake(0.5f, 40f, 1f);
 
-        // 6. 진짜 파괴 및 게임 클리어 이벤트 송출
+        // 진짜 파괴 및 게임 클리어 이벤트 송출
         OnBossDead?.Invoke();
         Destroy(gameObject);
     }

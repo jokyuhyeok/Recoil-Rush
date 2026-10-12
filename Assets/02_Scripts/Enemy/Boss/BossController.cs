@@ -318,20 +318,40 @@ public class BossController : MonoBehaviour
     {
         if (phaseIndex > 1)
         {
+            // 움직임 제어 (돌아다니지 못하게 정지)
             Rigidbody.linearVelocity = Vector2.zero;
-            Rigidbody.gravityScale = 0f;
 
-            PlayBossSoundOneShot(SoundEffectType.DASH_PREPARATION);
-
-            float elapsed = 0f;
-            while (elapsed < 2.0f)
+            // 1. 글리치 효과 및 화면 둥둥 흔들림 시작 (2초간)
+            if (GameFeel != null)
             {
-                PlayHitFlash();
-                yield return _phaseBlinkDelay;
-                elapsed += 0.3f;
+                GameFeel.PlayGlitchEffect(2.0f);
             }
 
-            Rigidbody.gravityScale = _stat.HeavyGravity;
+            CameraController.Instance.StartPerlinShake(2.0f, 6.0f, 0.3f);
+            PlayBossSoundOneShot(SoundEffectType.DASH_PREPARATION);
+
+            Vector3 originalScale = transform.localScale;
+
+            float elapsed = 0f;
+            float blinkInterval = 0.3f;
+            bool isRed = false;
+
+            while (elapsed < 2.0f)
+            {
+                // 페이즈 상관없이 빨간색 점멸
+                _spriteRenderer.color = isRed ? Color.red : Color.white;
+                isRed = !isRed;
+
+                yield return new WaitForSeconds(blinkInterval);
+                elapsed += blinkInterval;
+                blinkInterval = Mathf.Max(0.05f, blinkInterval - 0.04f);
+            }
+
+            _spriteRenderer.color = Color.white;
+            transform.localScale = originalScale;
+
+            CameraController.Instance.StartPerlinShake(0.3f, 35.0f, 1.0f);
+            AudioManager.Instance.PlaySFX(SoundEffectType.BOSS_HIT);
         }
 
         LoadPhaseCommands();
@@ -394,5 +414,60 @@ public class BossController : MonoBehaviour
 
         // 6. 보스를 꺼서 숨김 (플레이어가 다시 방에 들어오면 트리거가 켜줌 -> OnEnable 실행)
         gameObject.SetActive(false);
+    }
+
+    // =================================================================
+    // [신규 추가] 보스 사망 시 호출될 최후의 발악(보라색 폭주 + 늘줄늘줄) 코루틴
+    // 나중에 BossVFX로 옮기기 쉽게 빼두었습니다.
+    // =================================================================
+    public IEnumerator PlayDeathVFX(float duration)
+    {
+        Rigidbody.linearVelocity = Vector2.zero;
+        Rigidbody.gravityScale = 0f;
+
+        if (GameFeel != null) GameFeel.PlayGlitchEffect(duration);
+        CameraController.Instance.StartPerlinShake(duration, 15.0f, 0.5f);
+        PlayBossSoundOneShot(SoundEffectType.DASH_PREPARATION);
+
+        Color purpleColor = new Color(0.65f, 0f, 1f);
+        Vector3 originalScale = transform.localScale;
+
+        float elapsed = 0f;
+        float blinkTimer = 0f;
+        bool isColored = false;
+
+        // 프레임 단위(yield return null)로 쪼개서 늘줄늘줄은 60프레임으로 부드럽게, 깜빡임은 타이머로 제어
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            blinkTimer += Time.deltaTime;
+
+            // 1. 색상 점멸: 시간이 지날수록 점멸 간격이 0.5초에서 0.03초까지 '서서히' 짧아짐
+            float currentBlinkInterval = Mathf.Lerp(0.5f, 0.03f, elapsed / duration);
+
+            if (blinkTimer >= currentBlinkInterval)
+            {
+                blinkTimer = 0f;
+                _spriteRenderer.color = isColored ? purpleColor : Color.white;
+                isColored = !isColored;
+            }
+
+            // 2. 늘줄늘줄 요동: 시간이 지날수록 진동폭(0.05 -> 0.15)과 진동 속도(15 -> 45)가 미친듯이 증가
+            float currentStretchMax = Mathf.Lerp(0.05f, 0.15f, elapsed / duration);
+            float speedMultiplier = Mathf.Lerp(15.0f, 45.0f, elapsed / duration);
+
+            float stretchAmount = Mathf.Sin(elapsed * speedMultiplier) * currentStretchMax;
+            transform.localScale = new Vector3(
+                originalScale.x * (1f + stretchAmount),
+                originalScale.y * (1f - stretchAmount),
+                originalScale.z
+            );
+
+            yield return null; // 매 프레임마다 크기를 갱신하여 찰지고 부드러운 고무공 진동 완성
+        }
+
+        // 연출 종료 시 초기화
+        _spriteRenderer.color = Color.white;
+        transform.localScale = originalScale;
     }
 }

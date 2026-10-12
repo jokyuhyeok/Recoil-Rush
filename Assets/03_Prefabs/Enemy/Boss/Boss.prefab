@@ -164,7 +164,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.70654064, z: 1}
+  m_LocalScale: {x: 1.1992711, y: 0.5250709, z: 1.1992711}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4042267712204740403}
@@ -361,7 +361,7 @@ MonoBehaviour:
   _stat: {fileID: 11400000, guid: f7a2362c13c08d342b77ad7d32544fe7, type: 2}
   _controller: {fileID: 90324089730873121}
   _massiveExplosionPrefab: {fileID: 372007812672291482, guid: b945a7da370626b4e992b8170dc4245c, type: 3}
-  _deathDuration: 2
+  _deathDuration: 3.5
 --- !u!114 &-9056046370644596006
 MonoBehaviour:
   m_ObjectHideFlags: 0
