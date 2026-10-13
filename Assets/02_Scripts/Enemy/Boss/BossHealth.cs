@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.Playables;
 
 /// <summary>
 /// 보스의 체력 관리, 피격 처리, 페이즈 전환 감지 및 사망 연출을 담당
@@ -9,16 +10,15 @@ public class BossHealth : MonoBehaviour, IDamageable
 {
     [Header("참조 세팅")]
     [SerializeField] private BossStatDataSO _stat;
-
+    [SerializeField] private BossHealthUI _healthUI;
     [SerializeField] private BossController _controller;
 
     [Header("사망 연출 세팅")]
     [SerializeField] private GameObject _massiveExplosionPrefab;
-
     [SerializeField] private float _deathDuration = 7.0f;
+    [SerializeField] private PlayableDirector _clearCutsceneDirector;
 
     // 내부 제어용 변수
-    private BossHealthUI _healthUI;
     private SpriteRenderer _spriteRenderer; // 색상 변경용
     private bool _isDead = false; // 중복 사망 방지 플래그
     private int _currentHp;
@@ -31,13 +31,7 @@ public class BossHealth : MonoBehaviour, IDamageable
     private void Start()
     {
         _currentHp = _stat.MaxHp;
-        _healthUI = FindFirstObjectByType<BossHealthUI>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-
-        if (_healthUI == null)
-        {
-            Debug.LogWarning("씬에 BossHealthUI을 올려주세요!");
-        }
 
         if (_spriteRenderer == null)
         {
@@ -117,6 +111,8 @@ public class BossHealth : MonoBehaviour, IDamageable
         _isDead = true; // 중복 호출 방지
         _controller.StopAllAttacks();
 
+        GameManager.Instance.SetCutsceneMode(true);
+        _clearCutsceneDirector.Play();
         StartCoroutine(DeathRoutine());
     }
 
@@ -146,6 +142,7 @@ public class BossHealth : MonoBehaviour, IDamageable
 
         // 폭발 순간 화면이 찢어질 듯한 강력한 타격감 부여
         CameraController.Instance.StartPerlinShake(0.5f, 40f, 1f);
+        _spriteRenderer.enabled = false;
 
         // 진짜 파괴 및 게임 클리어 이벤트 송출
         OnBossDead?.Invoke();
