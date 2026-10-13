@@ -250,8 +250,19 @@ public class Player : MonoBehaviour
 
     private void StartReload()
     {
+        if (_isReloading)
+            return;
+
         _isReloading = true;
         _reloadTimer = _reloadTime;
+
+        // 장전 효과음 재생
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(
+                SoundEffectType.PLAYER_RELOAD
+            );
+        }
     }
 
     private void ChangeWeapon(Weapon changeWeapon)

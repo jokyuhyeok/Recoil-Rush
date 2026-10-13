@@ -900,16 +900,18 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 43a5a9361d656ef4d9be294a080bd6da, type: 3}
   - Type: 2
     Clip: {fileID: 8300000, guid: 8e58f9bc439d9b84b91fc155096292dd, type: 3}
-  - Type: 3
-    Clip: {fileID: 8300000, guid: 8a82b9ba4ccb0c1499f520155b5a935d, type: 3}
-  - Type: 4
-    Clip: {fileID: 8300000, guid: c08415a4fb442414d9db2a9dee5fc8cc, type: 3}
   - Type: 5
     Clip: {fileID: 8300000, guid: 2c0653e3e21fea843be60f2468b802c4, type: 3}
+  - Type: 3
+    Clip: {fileID: 8300000, guid: 8a82b9ba4ccb0c1499f520155b5a935d, type: 3}
   - Type: 6
     Clip: {fileID: 8300000, guid: 6c1d24802afd40b4f8b964ad10e4d3aa, type: 3}
   - Type: 7
     Clip: {fileID: 0}
+  - Type: 4
+    Clip: {fileID: 8300000, guid: c08415a4fb442414d9db2a9dee5fc8cc, type: 3}
+  - Type: 7
+    Clip: {fileID: 8300000, guid: 2b4ef59135df00744aad4bc98fa37653, type: 3}
   _sfxDatas:
   - Type: 0
     Clip: {fileID: 8300000, guid: 6f834e14cd556e340ba05a2e3f035c5c, type: 3}
@@ -967,6 +969,14 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 96835c07695eec5459631900a5880cde, type: 3}
   - Type: 28
     Clip: {fileID: 8300000, guid: a7f12cd0104cc084581b49ed85178819, type: 3}
+  - Type: 2
+    Clip: {fileID: 8300000, guid: ca57ea1ea64e58045ae21e1046f30ae0, type: 3}
+  - Type: 4
+    Clip: {fileID: 8300000, guid: 10922ec7352222c46a57380a0c231137, type: 3}
+  - Type: 13
+    Clip: {fileID: 8300000, guid: ddde1124dc7f50b439475fadb80dd33c, type: 3}
+  - Type: 12
+    Clip: {fileID: 8300000, guid: 0ad40f2c424470b449bb7ad48a73f5c0, type: 3}
   _initPoolSize: 10
   _deathSFXType: 3
   _deathBGMType: 5
