@@ -1,15 +1,28 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 // 기본 적 1 (소총수)
 public class EnemyRifle : EnemyBase
 {
     [SerializeField] private Transform _firePoint;
 
+    [SerializeField] private float _shootShakeForce = 0.5f; // 사격 시 (소총은 연사/단발성 반동이므로 낮게)
+    [SerializeField] private float _deathShakeForce = 1.0f; // 사망 시
+
     private bool _isDead = false;
     private float _currentAlarmTime = 0f;
     private float _fireTimer = 0f;
 
+    private CinemachineImpulseSource _impulseSource;
+
     private RifleStatDataSO _rifleStatData => _baseStatData as RifleStatDataSO;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        // 2. 시네머신 컴포넌트 캐싱
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
+    }
 
     protected override void UpdateIdle()
     {
@@ -112,7 +125,12 @@ public class EnemyRifle : EnemyBase
 
         Instantiate(_rifleStatData.DeathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
 
-        CameraController.Instance.StartShake(0.5f, 0.2f);
+        // 3. 사망 시 카메라 흔들림 (중앙 컨트롤러 대신 자체 Source 사용)
+        if (_impulseSource != null)
+        {
+            Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+            _impulseSource.GenerateImpulse(randomDir * _deathShakeForce);
+        }
 
         AudioManager.Instance.PlaySFX(SoundEffectType.ENEMY_HIT);
         EnemyPoolManager.Instance.ReturnEnemy(gameObject);
@@ -141,7 +159,15 @@ public class EnemyRifle : EnemyBase
             Instantiate(_rifleStatData.MuzzleFlashParticle, _firePoint.position, _firePoint.rotation);
         }
 
-        CameraController.Instance.StartPerlinShake(0.2f, 10f, 0.1f);
+        if (_impulseSource != null)
+        {
+            // 반동 방향(recoilDir)에 약간의 무작위성을 섞어 자연스럽게 연출
+            Vector3 recoilDir = -(Vector3)direction;
+            Vector3 shakeDir = (recoilDir + new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), 0f))
+                .normalized;
+
+            _impulseSource.GenerateImpulse(shakeDir * _shootShakeForce);
+        }
     }
 
     // 플레이어 피벗이 발 밑에 있어서 명치를 겨냥하도록 위치 보정.

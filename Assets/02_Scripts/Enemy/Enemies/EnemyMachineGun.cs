@@ -1,9 +1,13 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 // 기본 적 2 (기관총 사수)
 public class EnemyMachineGun : EnemyBase
 {
     [SerializeField] private Transform _firePoint;
+
+    [SerializeField] private float _shootShakeForce = 0.25f; // 기관총은 연사가 빠르므로 진동을 약하게 연속적으로 줍니다.
+    [SerializeField] private float _deathShakeForce = 1.0f; // 사망 시
 
     private float _currentAlarmTime = 0f;
     private float _fireTimer = 0f;
@@ -15,7 +19,16 @@ public class EnemyMachineGun : EnemyBase
     private bool _isAimLocked = false;
     private Vector2 _lockedAimedDirection;
 
+    private CinemachineImpulseSource _impulseSource;
+
     private MachineGunStatDataSO _machineGunStatDataSo => _baseStatData as MachineGunStatDataSO;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        // 2. 시네머신 컴포넌트 가져오기
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
+    }
 
     protected override void Start()
     {
@@ -157,7 +170,11 @@ public class EnemyMachineGun : EnemyBase
 
         Instantiate(_machineGunStatDataSo.DeathParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
 
-        CameraController.Instance.StartShake(0.5f, 0.2f);
+        if (_impulseSource != null)
+        {
+            Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+            _impulseSource.GenerateImpulse(randomDir * _deathShakeForce);
+        }
 
         AudioManager.Instance.PlaySFX(SoundEffectType.ENEMY_HIT);
         EnemyPoolManager.Instance.ReturnEnemy(gameObject);
@@ -192,7 +209,15 @@ public class EnemyMachineGun : EnemyBase
 
         Instantiate(_machineGunStatDataSo.MuzzleFlashParticle, _firePoint.position, _firePoint.rotation);
 
-        CameraController.Instance.StartPerlinShake(0.30f, 18f, 0.05f);
+        if (_impulseSource != null)
+        {
+            Vector3 recoilDir = -(Vector3)direction; // 총알 반대 방향
+            // 소총(0.2f)보다 적은 난수(0.1f)를 주어 한 방향으로 따다닥 떨리게 만듭니다.
+            Vector3 shakeDir = (recoilDir + new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0f))
+                .normalized;
+
+            _impulseSource.GenerateImpulse(shakeDir * _shootShakeForce);
+        }
 
         _currentBulletRemain--;
 

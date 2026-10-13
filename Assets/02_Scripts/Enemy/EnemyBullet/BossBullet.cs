@@ -1,15 +1,19 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 // 보스 전용 총알 스크립트입니다.
 public class BossBullet : MonoBehaviour
 {
     [SerializeField] private GameObject _explosionPrefab;
+    [SerializeField] private float _explosionShakeForce = 0.8f;
 
     private Rigidbody2D _rb;
+    private CinemachineImpulseSource _impulseSource;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     public void FireBullet(Vector2 direction, float speed)
@@ -25,7 +29,11 @@ public class BossBullet : MonoBehaviour
     {
         if (collision.isTrigger || collision.CompareTag("Enemy")) return;
 
-        CameraController.Instance.StartShake(0.15f, 0.8f);
+        if (_impulseSource != null)
+        {
+            Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+            _impulseSource.GenerateImpulse(randomDir * _explosionShakeForce);
+        }
 
         if (_explosionPrefab == null)
         {

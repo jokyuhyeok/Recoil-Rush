@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3194477922712787517}
   - component: {fileID: 2529891825485719394}
   - component: {fileID: 2227474746717055977}
+  - component: {fileID: 4666829368488411307}
   m_Layer: 7
   m_Name: Enemy_LongAttack
   m_TagString: Enemy
@@ -174,14 +175,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRifle
   currentState: 0
   _baseStatData: {fileID: 11400000, guid: a6dd1be737c38b2418554e08d4c7a270, type: 2}
-  _bulletPrefeb: {fileID: 1441611445395233385, guid: 68051dfd86eacc74a9370c27b83d2bd2, type: 3}
   _firePoint: {fileID: 6444100825903076648}
-  _deathParticle: {fileID: 2198790418200276517, guid: 40f185767c479b34ba3d474a9734b8d8, type: 3}
-  _muzzleFlashParticle: {fileID: 7235242540448781643, guid: 32526b30a3e3df0418aac39f97627a52, type: 3}
-  _obstacleMask:
-    serializedVersion: 2
-    m_Bits: 51
-  _maxShootAngle: 45
+  _shootShakeForce: 0.5
+  _deathShakeForce: 2
 --- !u!95 &2227474746717055977
 Animator:
   serializedVersion: 7
@@ -204,6 +200,59 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4666829368488411307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7646540906875006024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 2
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.1
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1 &8973319537142668502
 GameObject:
   m_ObjectHideFlags: 0
