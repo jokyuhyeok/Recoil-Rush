@@ -39,6 +39,11 @@ public class GameOverUI : MonoBehaviour
     private void EnableUI()
     {
         SetRandomSprite();
+        // 사망 효과음 → DIDE BGM 재생
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayDeathAudio();
+        }
 
         if (_easingCoroutine != null)
         {
@@ -51,6 +56,11 @@ public class GameOverUI : MonoBehaviour
 
     private void DisableUI()
     {
+        // DIDE 종료 → 사망 이전 BGM 복원
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.StopDeathAudio();
+        }
         if (_easingCoroutine != null)
         {
             StopCoroutine(_easingCoroutine);

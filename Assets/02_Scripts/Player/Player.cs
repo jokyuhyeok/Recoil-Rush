@@ -328,17 +328,25 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        // 사망 효과음 → 사망 BGM
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayDeathAudio();
+
         if (_dieEffect != null)
         {
             _dieEffect.transform.SetParent(null);
             _dieEffect.transform.position = transform.position;
-            // 이전 재생이 남아있어도 처음부터 다시 재생
-            _dieEffect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
+            _dieEffect.Stop(
+                true,
+                ParticleSystemStopBehavior.StopEmitting
+            );
+
             _dieEffect.Play();
         }
 
         gameObject.SetActive(false);
-        // ? = !null
+
         OnDeath?.Invoke();
     }
 
@@ -470,12 +478,14 @@ public class Player : MonoBehaviour
 
     private void OnRespawn(Vector3 respawnPosition)
     {
-        // 변수 및 물리 연산 초기화, 재장전
+        // 사망 BGM 종료 및 기존 BGM 복원
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.StopDeathAudio();
+
         Reset();
-        // 리스폰 위치로 플레이어 이동
+
         transform.position = respawnPosition;
 
-        // 부활 처리
         gameObject.SetActive(true);
         _reviveEffect.enabled = true;
         _reviveEffect.Play(ReviveAnimationName, 0, 0f);

@@ -39,6 +39,11 @@ public class StartUI : MonoBehaviour
         _exitButton.onClick.AddListener(OnExitButtonClicked);
     }
 
+    private void Start()
+    {
+        AudioManager.Instance.PlayBGM(BackgroundMusicType.TITLE);
+    }
+
     private void DisableMouseClick(Button button)
     {
         if (button == null)
@@ -93,6 +98,9 @@ public class StartUI : MonoBehaviour
 
         // 메뉴 충돌 판정 비활성화
         SetMenuShooting(false);
+
+        // 컷씬 BGM 시작
+        AudioManager.Instance.PlayBGM(BackgroundMusicType.CUTSCENE);
 
         // 컷씬 UI 활성화
         _cutsceneUI.SetActive(true);
