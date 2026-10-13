@@ -38,6 +38,9 @@ public class ClearUI : MonoBehaviour
 
         rectTransform.anchoredPosition = endPosition;
 
-        _nextClearUI?.SetActive(true);
+        if (_nextClearUI != null)
+        {
+            _nextClearUI.SetActive(true);
+        }
     }
 }
