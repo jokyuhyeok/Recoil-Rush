@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 90324089730873121}
   - component: {fileID: 6688626903228502571}
   - component: {fileID: -9056046370644596006}
+  - component: {fileID: 2004181214574245676}
   - component: {fileID: 5669560832414490759}
   m_Layer: 7
   m_Name: Boss
@@ -163,7 +164,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4042267712204740403}
@@ -331,17 +332,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossController
   _stat: {fileID: 11400000, guid: f7a2362c13c08d342b77ad7d32544fe7, type: 2}
   _spriteRenderer: {fileID: 8764389557059062983}
-  _firePoints:
-  - {fileID: 4042267712204740403}
-  - {fileID: 9121998829106011764}
-  _laserFirePoint: {fileID: 726706733528176045}
+  _flashMaterial: {fileID: 2100000, guid: b0811a1e32dc2054f8dc74b9a0edc51e, type: 2}
   _vfxGroup: {fileID: 7727587910080429962}
   _idleSmokeEffect: {fileID: 8526065223123070815, guid: 0003816548d51724bb497f78414b307d, type: 3}
   _dashChargeEffect: {fileID: 2352644068967379297}
   _dashFireEffect: {fileID: 7226125380590200559}
   _hitWallEffectPrefab: {fileID: 2054533921475329168, guid: 18c5a5f7c813ff24faa24718f4682011, type: 3}
   _handSwirlEffect: {fileID: 2345604356229402526}
-  _flashMaterial: {fileID: 2100000, guid: b0811a1e32dc2054f8dc74b9a0edc51e, type: 2}
+  _firePoints:
+  - {fileID: 4042267712204740403}
+  - {fileID: 9121998829106011764}
+  _laserFirePoint: {fileID: 726706733528176045}
   _rotatingLaserSkill: {fileID: -9056046370644596006}
   _redSphereEffect: {fileID: 3337297669749920003}
   _centerAirPosition: {fileID: 3309413868886134644, guid: 18c5a5f7c813ff24faa24718f4682011, type: 3}
@@ -359,6 +360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossHealth
   _stat: {fileID: 11400000, guid: f7a2362c13c08d342b77ad7d32544fe7, type: 2}
   _controller: {fileID: 90324089730873121}
+  _massiveExplosionPrefab: {fileID: 372007812672291482, guid: b945a7da370626b4e992b8170dc4245c, type: 3}
+  _deathDuration: 3.5
 --- !u!114 &-9056046370644596006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,13 +377,52 @@ MonoBehaviour:
   _warningLaserPrefab: {fileID: 6870694599955676050, guid: b932b41c5d4d65e4eacdfab9b868b426, type: 3}
   _mainLaserPrefab: {fileID: 4831512636678283111, guid: c94186c6439fcf64398cc126134645e3, type: 3}
   _laserWarningTime: 3
-  _laserLength: 30
-  _laserSpeed: 60
+  _laserLength: 20
+  _laserSpeed: 40
   _laserStartOffset: 2
-  _minRotateCount: 1
-  _maxRotateCount: 4
-  _flashIntensity: 0.153
-  _flashSpeed: 0.05
+  _minRotateCount: 2
+  _maxRotateCount: 2
+  _flashIntensity: 0.05
+  _flashSpeed: 0.2
+--- !u!114 &2004181214574245676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788299274323883459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81dfeefd88503d9449942bbddf3786f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossGameFeel
+  _bossVisual: {fileID: 1762722423737500353}
+  _squashCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _ghostRelayInterval: 0.05
+  _glitchVolumeObject: {fileID: 1096818956399080462, guid: 57aee2e946ff1184f8ec8448a67926cf, type: 3}
 --- !u!82 &5669560832414490759
 AudioSource:
   m_ObjectHideFlags: 0
@@ -729,7 +771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5046184037640805261, guid: 9f15f75368d310644b831f6be9c0f1d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.22652
+      value: -0.33
       objectReference: {fileID: 0}
     - target: {fileID: 5046184037640805261, guid: 9f15f75368d310644b831f6be9c0f1d4, type: 3}
       propertyPath: m_LocalPosition.z

@@ -196,7 +196,6 @@ public class AudioManager : MonoBehaviour
 
         // 저장된 위치부터 재생
         _bgmSource.Play();
-
         _currentBGMType = bgmType;
 
         Debug.Log(

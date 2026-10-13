@@ -21,8 +21,8 @@ MonoBehaviour:
   HoverSpeed: 2
   ChargeTime: 2
   AttackCooldown: 2
-  MinAttackAngle: -60
-  MaxAttackAngle: 15
+  MinAttackAngle: -70
+  MaxAttackAngle: 30
   ObstacleMask:
     serializedVersion: 2
     m_Bits: 51
