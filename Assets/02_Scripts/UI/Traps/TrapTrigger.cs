@@ -22,6 +22,9 @@ public class TrapTrigger : MonoBehaviour, IResettable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (GameManager.Instance.IsCutscene)
+            return;
+
         Debug.Log("★ 트리거 접촉: " + collision.name);
 
         if (!collision.CompareTag(_targetTag))
@@ -44,6 +47,7 @@ public class TrapTrigger : MonoBehaviour, IResettable
             _triggerCollider.enabled = false;
         }
     }
+
     public void ResetTrap()
     {
         _triggered = false;

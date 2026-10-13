@@ -26,6 +26,9 @@ public class EnemyBase : MonoBehaviour, IDamageable
     protected int receivedDamage;
     protected int _currentHP;
 
+    // 게임 상태를 관리하는 게임 매니저 변수
+    protected GameManager _gameManager;
+
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,6 +38,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
     protected virtual void Start()
     {
         PlayerCaching();
+        GameManagerCaching();
 
         if (_baseStatData != null)
         {
@@ -44,7 +48,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
 
     protected virtual void Update()
     {
-        if (playerTransform == null || !playerTransform.gameObject.activeInHierarchy)
+        if (playerTransform == null || !playerTransform.gameObject.activeInHierarchy || _gameManager.IsCutscene)
         {
             // 플레이어가 사망 등으로 오브젝트가 없을 때, 대기상태로 전환합니다. 
             if (currentState != EnemyState.Idle && currentState != EnemyState.Dead)
@@ -139,6 +143,17 @@ public class EnemyBase : MonoBehaviour, IDamageable
         {
             Debug.LogWarning("플레이어가 씬에 없습니다!");
         }
+    }
+
+    private void GameManagerCaching()
+    {
+        if (GameManager.Instance == null)
+        {
+            Debug.LogWarning("게임 매니저가 씬에 없습니다!");
+            return;
+        }
+
+        _gameManager = GameManager.Instance;
     }
 
     // 상태를 변경할 때 이 메서드를 거쳐서 안전하게 변경할게요.

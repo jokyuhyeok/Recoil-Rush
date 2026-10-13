@@ -1,71 +1,196 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+/// <summary>
+/// 9-Slicing을 쓰지 않는 Filled 체력바에 대해 역경직(HitStop)을 극복하는
+/// 위로 튕기기(Jump Hop) + 펌핑(Bump) + 딜레이 홀드(Holding) 시스템을 제공합니다.
+/// </summary>
 public class BossHealthUI : MonoBehaviour
 {
     [Header("UI 연결")]
-    [Tooltip("즉각 깎이는 메인 체력바")]
+    [Tooltip("즉각 깎이는 메인 체력바 (빨간색)")]
     [SerializeField] private Image _mainBar;
-    [Tooltip("천천히 깎이는 뒤쪽 체력바")]
+
+    [Tooltip("천천히 깎이는 딜레이 체력바 (노란색)")]
     [SerializeField] private Image _delayBar;
 
-    [Header("타격감(Feel) 설정")]
-    [Tooltip("딜레이 바가 줄어드는 속도")]
-    [SerializeField] private float _delaySpeed = 0.5f;
-    [Tooltip("피격 시 체력바가 커지는 펌핑 배율")]
-    [SerializeField] private float _bumpScale = 1.2f;
+    [Header("타격감(Feel) 설정 (범프 & 튕기기)")]
+    [Tooltip("피격 시 체력바가 커지는 펌핑 배율 (1.35 = 35% 확대)")]
+    [SerializeField] private float _bumpScale = 1.35f;
+
+    [Tooltip("피격 시 위로 튕겨 올라갈 수직 높이 (Pixel)")]
+    [SerializeField] private float _bumpHopHeight = 35f;
+
     [Tooltip("커졌다 원래대로 돌아오는 시간")]
-    [SerializeField] private float _bumpDuration = 0.1f;
+    [SerializeField] private float _bumpDuration = 0.15f;
+
+    [Header("노란색 딜레이 설정 (오래 유지)")]
+    [Tooltip("피격 후 노란색 바가 즉시 깎이지 않고 제자리에서 버티는 대기 시간 (초)")]
+    [SerializeField] private float _delayHoldDuration = 0.6f;
+
+    [Tooltip("버티는 대기 시간이 지난 후 노란색 바가 줄어드는 속도")]
+    [SerializeField] private float _delaySpeed = 0.4f;
+
+    [Header("체력 바 애니메이션 설정")]
+    [SerializeField] private float _expandTime = 1.5f;
+    [SerializeField] private float _moveTime = 1.2f;
 
     private float _targetFill = 1f;
+    private float _delayHoldTimer = 0f;
     private Coroutine _bumpCoroutine;
+    private Coroutine _expandCoroutine;
+    private Coroutine _moveCoroutine;
+
     private Vector3 _originalScale;
+    private Vector3 _originalPosition;
 
     private void Awake()
     {
-        // 체력바 UI의 원래 크기를 기억해 둡니다.
         _originalScale = transform.localScale;
+        _originalPosition = transform.localPosition;
     }
 
-    // 보스가 데미지를 입을 때마다 기존 BossHealth 스크립트에서 이 함수를 호출하게 합니다.
+    private void OnEnable()
+    {
+        if (_expandCoroutine != null)
+        {
+            StopCoroutine(_expandCoroutine);
+        }
+
+        _expandCoroutine = StartCoroutine(ExpandRoutine());
+    }
+
     public void UpdateHealth(int currentHp, int maxHp)
     {
-        _targetFill = (float)currentHp / maxHp;
+        _targetFill = Mathf.Clamp01((float)currentHp / maxHp);
 
-        // 1. 메인 바는 즉각 목표치로 깎아버립니다.
-        _mainBar.fillAmount = _targetFill;
+        if (_mainBar != null)
+        {
+            _mainBar.fillAmount = _targetFill;
+        }
 
-        // 2. 범핑(Bumping) 시각 효과 실행
-        if (_bumpCoroutine != null) StopCoroutine(_bumpCoroutine);
+        _delayHoldTimer = _delayHoldDuration;
+
+        if (_bumpCoroutine != null)
+        {
+            StopCoroutine(_bumpCoroutine);
+        }
+
         _bumpCoroutine = StartCoroutine(BumpRoutine());
+
+        if (currentHp > 0)
+            return;
+
+        if (_moveCoroutine != null)
+            return;
+
+        _moveCoroutine = StartCoroutine(MoveRoutine());
     }
 
     private void Update()
     {
-        // 3. 딜레이 바는 매 프레임 목표치를 향해 서서히 줄어듭니다.
+        if (_delayBar == null)
+        {
+            return;
+        }
+
+        if (_delayHoldTimer > 0f)
+        {
+            _delayHoldTimer -= Time.unscaledDeltaTime;
+            return;
+        }
+
         if (_delayBar.fillAmount > _targetFill)
         {
-            _delayBar.fillAmount -= _delaySpeed * Time.deltaTime;
+            _delayBar.fillAmount -= _delaySpeed * Time.unscaledDeltaTime;
+
+            if (_delayBar.fillAmount < _targetFill)
+            {
+                _delayBar.fillAmount = _targetFill;
+            }
         }
     }
 
-    // 체력바 전체가 순간적으로 커졌다 작아지는 연출
     private IEnumerator BumpRoutine()
     {
-        // 순식간에 지정한 배율(1.2배 등)로 뻥튀기
-        transform.localScale = _originalScale * _bumpScale;
-
-        // 지정된 시간 동안 서서히 원래 크기로 복귀
         float timer = 0f;
+
         while (timer < _bumpDuration)
         {
-            timer += Time.deltaTime;
-            transform.localScale = Vector3.Lerp(_originalScale * _bumpScale, _originalScale, timer / _bumpDuration);
+            timer += Time.unscaledDeltaTime;
+            float progress = Mathf.Clamp01(timer / _bumpDuration);
+
+            float bounceCurve = Mathf.Sin(progress * Mathf.PI);
+
+            transform.localPosition = _originalPosition + Vector3.up * (bounceCurve * _bumpHopHeight);
+            transform.localScale = _originalScale * Mathf.Lerp(1f, _bumpScale, bounceCurve);
+
             yield return null;
         }
 
-        // 오차 방지를 위해 마지막에 원래 크기 고정
+        transform.localPosition = _originalPosition;
+        transform.localScale = _originalScale;
+    }
+
+    private IEnumerator ExpandRoutine()
+    {
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        Vector3 scale = rectTransform.localScale;
+        scale.x = 0f;
+        rectTransform.localScale = scale;
+
+        float timer = 0f;
+
+        while (timer < _expandTime)
+        {
+            timer += Time.unscaledDeltaTime;
+            float progress = Mathf.Clamp01(timer / _expandTime);
+
+            float easedProgress = Mathf.Sin(progress * Mathf.PI * 0.5f);
+
+            scale.x = easedProgress;
+            rectTransform.localScale = scale;
+
+            yield return null;
+        }
+
+        scale.x = 1f;
+        rectTransform.localScale = scale;
+
+        _expandCoroutine = null;
+    }
+
+    private IEnumerator MoveRoutine()
+    {
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        Vector2 startPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y);
+        Vector2 endPosition = new Vector2(rectTransform.anchoredPosition.x, 200f);
+
+        float timer = 0f;
+
+        while (timer < _moveTime)
+        {
+            timer += Time.unscaledDeltaTime;
+
+            float t = Mathf.Clamp01(timer / _moveTime);
+            float easedT = Mathf.Sin(t * Mathf.PI * 0.5f);
+
+            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, easedT);
+
+            yield return null;
+        }
+
+        rectTransform.anchoredPosition = endPosition;
+
+        _moveCoroutine = null;
+        gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        transform.localPosition = _originalPosition;
         transform.localScale = _originalScale;
     }
 }

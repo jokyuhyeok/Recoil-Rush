@@ -33,7 +33,7 @@ public class GameOverUI : MonoBehaviour
         }
 
         _player.OnDeath += EnableUI;
-        _respawnManager.OnRespawnUIEvent += DisableUI;
+        _respawnManager.OnRespawnEvent += DisableUI;
     }
 
     private void EnableUI()

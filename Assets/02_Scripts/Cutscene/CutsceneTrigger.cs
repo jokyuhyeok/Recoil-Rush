@@ -12,6 +12,7 @@ public class CutsceneTrigger : MonoBehaviour
 
     protected virtual void StartCutscene()
     {
+        GameManager.Instance?.SetCutsceneMode(true);
         _director.time = _startCutsceneTime;
         _director.Play();
     }
