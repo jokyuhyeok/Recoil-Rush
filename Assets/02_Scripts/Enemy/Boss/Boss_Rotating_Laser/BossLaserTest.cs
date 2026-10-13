@@ -5,10 +5,12 @@ public class BossLaserTest : MonoBehaviour
 {
     [Header("Laser Sprite")]
     [SerializeField] private GameObject _warningLaserPrefab;
+
     [SerializeField] private GameObject _mainLaserPrefab;
 
     [Header("Laser Setting")]
     [SerializeField] private float _laserWarningTime = 1f;
+
     [SerializeField] private float _laserLength = 30f;
     [SerializeField] private float _laserSpeed = 60f;
     [SerializeField] private float _laserStartOffset = 1.5f;
@@ -17,7 +19,7 @@ public class BossLaserTest : MonoBehaviour
     private GameObject _screenFlashObj;
 
     [SerializeField, Range(0f, 1f)] private float _flashIntensity = 0.3f; // 번쩍임 강도
-    [SerializeField] private float _flashSpeed = 0.05f;                   // 번쩍임 속도
+    [SerializeField] private float _flashSpeed = 0.05f; // 번쩍임 속도
 
     private const float Turn = 180f;
     private Transform _pivot;
@@ -26,6 +28,7 @@ public class BossLaserTest : MonoBehaviour
     private Coroutine _skillCoroutine;
     private Coroutine _flashCoroutine;
 
+    private BossController _bossCache;
     public bool IsPlaying => _skillCoroutine != null;
 
     private void Awake()
@@ -59,8 +62,9 @@ public class BossLaserTest : MonoBehaviour
         _maxRotateCount = Mathf.Max(_minRotateCount, _maxRotateCount);
     }
 
-    public void StartSkill()
+    public void StartSkill(BossController boss)
     {
+        _bossCache = boss;
         _skillCoroutine = StartCoroutine(SkillRoutine());
     }
 
@@ -68,6 +72,8 @@ public class BossLaserTest : MonoBehaviour
     {
         SetLaserActive(_warningLaser, true);
         CameraController.Instance.StartShake(_laserWarningTime, 0.3f);
+
+        AudioManager.Instance.PlaySFX(SoundEffectType.FIVE_TIMES_LASER_WARNING);
 
         // 경고선이 지정된 시간 동안 쭈욱 자라남.
         float timer = 0f;
@@ -98,6 +104,11 @@ public class BossLaserTest : MonoBehaviour
         // 메인 레이저는 처음부터 끝까지 가득 찬 길이를 유지
         SetLaserLengthAndPosition(_laser[0], _laserLength, -1f);
         SetLaserLengthAndPosition(_laser[1], _laserLength, 1f);
+
+        if (_bossCache != null)
+        {
+            _bossCache.PlayBossSound(SoundEffectType.ROTATING_LASER_LOOP, true);
+        }
 
         _flashCoroutine = StartCoroutine(LaserFlashRoutine());
 
@@ -140,6 +151,7 @@ public class BossLaserTest : MonoBehaviour
         {
             sr.sprite = _laser[0].GetComponent<SpriteRenderer>().sprite;
         }
+
         sr.sortingOrder = 30000; // 무조건 맨 앞에 보이게 설정
 
         bool isFlash = false;
@@ -159,6 +171,11 @@ public class BossLaserTest : MonoBehaviour
     {
         SetLaserActive(_warningLaser, false);
         SetLaserActive(_laser, false);
+
+        if (_bossCache != null)
+        {
+            _bossCache.StopBossSound();
+        }
 
         if (_flashCoroutine != null)
         {

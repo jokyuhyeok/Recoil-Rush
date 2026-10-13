@@ -23,6 +23,8 @@ public class BossBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.isTrigger || collision.CompareTag("Enemy")) return;
+
         CameraController.Instance.StartShake(0.15f, 0.8f);
 
         if (_explosionPrefab == null)
@@ -35,6 +37,8 @@ public class BossBullet : MonoBehaviour
         // Quaternion.identity 대신 계산한 회전값(explosionRot)을 넣어줍니다!
         GameObject explosion = Instantiate(_explosionPrefab, transform.position, explosionRotation);
         Destroy(explosion, 2.0f);
+
+        AudioManager.Instance.PlaySFX(SoundEffectType.SPREAD_BULLET_EXPLOSION);
 
         // 총알이 어딘가에(벽이든 플레이어든) 부딪히면 자신을 파괴합니다.
         Destroy(gameObject);
