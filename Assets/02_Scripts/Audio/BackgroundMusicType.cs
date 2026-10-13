@@ -1,7 +1,11 @@
 public enum BackgroundMusicType
 {
     TITLE,
-    MAIN,
+    CUTSCENE,
+    STAGE1,
+    STAGE2,
+    STAGE3,
+    DIDED,
     BOSS,
     ENDING,
 }
