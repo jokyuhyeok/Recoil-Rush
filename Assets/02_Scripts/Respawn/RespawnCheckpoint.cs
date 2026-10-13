@@ -25,10 +25,22 @@ public class RespawnCheckpoint : MonoBehaviour
         if (collider.CompareTag("PlayerBullet") == false)
             return;
 
+        // 체크포인트에 총알이 명중하면 효과음 재생
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(
+                SoundEffectType.SHOOT_CHECKPOINT
+            );
+        }
+
         if (_isActive == false)
         {
             _isActive = true;
-            RespawnManager.Instance.UpdateCheckpoint(transform.position + (Vector3)_checkpointOffset);
+
+            RespawnManager.Instance.UpdateCheckpoint(
+                transform.position + (Vector3)_checkpointOffset
+            );
+
             _animator.SetTrigger("Activate");
         }
 
