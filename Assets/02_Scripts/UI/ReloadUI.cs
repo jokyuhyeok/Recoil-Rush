@@ -8,6 +8,7 @@ public class ReloadUI : MonoBehaviour
     [SerializeField] private float _endX = 0.465f;
 
     private Player _player;
+    private GameManager _gameManager;
 
 
     private void Awake()
@@ -15,8 +16,19 @@ public class ReloadUI : MonoBehaviour
         _player = GetComponent<Player>();
     }
 
+    private void Start()
+    {
+        if (GameManager.Instance == null)
+            return;
+
+        _gameManager = GameManager.Instance;
+    }
+
     private void Update()
     {
+        if (_gameManager.IsCutscene)
+            return;
+
         bool isReloading = _player.IsReloading;
 
         _reloadUIObject.gameObject.SetActive(isReloading);

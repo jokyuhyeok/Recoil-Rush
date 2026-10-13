@@ -83,6 +83,9 @@ public class StreetLightFall : MonoBehaviour, IResettable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (GameManager.Instance.IsCutscene)
+            return;
+
         PlayerKnockbackFall player =
             collision.GetComponentInParent<PlayerKnockbackFall>();
 

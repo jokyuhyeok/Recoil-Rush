@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     private List<Weapon> _unlockedWeapons = new List<Weapon>();
     private Weapon _currentWeapon;
     private PlayerAim _playerAIm;
+    private GameManager _gameManager;
 
     private float _reloadTimer;
     public float ReloadTimer => _reloadTimer;
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
 
-    private GameObject[] _resetTagObject;
+    private GameObject[] _resetTagObjects;
 
     public Weapon CurrentWeapon => _currentWeapon;
     public bool IsReloading => _isReloading;
@@ -102,12 +103,17 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        RespawnManager.Instance.OnRespawnEvent += OnRespawn;
-        _resetTagObject = GameObject.FindGameObjectsWithTag(_resetTag);
+        RespawnManager.Instance.OnRespawnPlayerEvent += OnRespawnPlayer;
+        _gameManager = GameManager.Instance;
+        _gameManager.OnCutsceneModeChanged += OnCutsceneModeChanged;
+        _resetTagObjects = GameObject.FindGameObjectsWithTag(_resetTag);
     }
 
     private void Update()
     {
+        if (_gameManager.IsCutscene)
+            return;
+
         ReloadUpdate();
         AirTimeUpdate();
         ReloadGroundCheck();
@@ -125,7 +131,7 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
-        RespawnManager.Instance.OnRespawnEvent -= OnRespawn;
+        RespawnManager.Instance.OnRespawnPlayerEvent -= OnRespawnPlayer;
     }
 
     private void FindCurrentWeapon()
@@ -319,7 +325,7 @@ public class Player : MonoBehaviour
     // TODO: SetTagObjectsActive(false) 넣기
     private void SetTagObjectActive(bool isActive)
     {
-        foreach (GameObject resetTagObject in _resetTagObject)
+        foreach (GameObject resetTagObject in _resetTagObjects)
         {
             resetTagObject.SetActive(isActive);
         }
@@ -364,6 +370,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_gameManager.IsCutscene)
+            return;
+
         if (collision.gameObject.layer == LayerMask.NameToLayer("Dangerous"))
         {
             Die();
@@ -376,6 +385,9 @@ public class Player : MonoBehaviour
         {
             GroundEnterCheck(collision);
         }
+
+        if (_gameManager.IsCutscene)
+            return;
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Dangerous"))
         {
@@ -468,7 +480,7 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    private void OnRespawn(Vector3 respawnPosition)
+    private void OnRespawnPlayer(Vector3 respawnPosition)
     {
         // 변수 및 물리 연산 초기화, 재장전
         Reset();
@@ -479,5 +491,22 @@ public class Player : MonoBehaviour
         gameObject.SetActive(true);
         _reviveEffect.enabled = true;
         _reviveEffect.Play(ReviveAnimationName, 0, 0f);
+    }
+
+    private void OnCutsceneModeChanged(bool isCutscene)
+    {
+        if (!isCutscene)
+            return;
+
+        _reloadTimer = 0f;
+        _airTimer = 0f;
+        _stopTimer = 0f;
+        _groundCount = 0;
+        _isReloading = false;
+
+        foreach (Weapon weapon in _weapons)
+        {
+            weapon.Reload();
+        }
     }
 }
