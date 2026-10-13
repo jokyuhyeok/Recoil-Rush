@@ -908,6 +908,8 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 6c1d24802afd40b4f8b964ad10e4d3aa, type: 3}
   - Type: 4
     Clip: {fileID: 8300000, guid: c08415a4fb442414d9db2a9dee5fc8cc, type: 3}
+  - Type: 7
+    Clip: {fileID: 8300000, guid: 2b4ef59135df00744aad4bc98fa37653, type: 3}
   _sfxDatas:
   - Type: 0
     Clip: {fileID: 8300000, guid: 6f834e14cd556e340ba05a2e3f035c5c, type: 3}
