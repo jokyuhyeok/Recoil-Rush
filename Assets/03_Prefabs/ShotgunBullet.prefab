@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce30cdcf3422d38438c5cc9d9b469318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  _recoilRadius: 2
-  _recoilPower: 3
+  _recoilRadius: 3
+  _recoilPower: 4
   _hitEffect: {fileID: 0}
 --- !u!50 &4328166488465938025
 Rigidbody2D:

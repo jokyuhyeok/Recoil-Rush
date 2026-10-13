@@ -5,12 +5,10 @@ public class BossLaserTest : MonoBehaviour
 {
     [Header("Laser Sprite")]
     [SerializeField] private GameObject _warningLaserPrefab;
-
     [SerializeField] private GameObject _mainLaserPrefab;
 
     [Header("Laser Setting")]
     [SerializeField] private float _laserWarningTime = 1f;
-
     [SerializeField] private float _laserLength = 30f;
     [SerializeField] private float _laserSpeed = 60f;
     [SerializeField] private float _laserStartOffset = 1.5f;
@@ -71,7 +69,10 @@ public class BossLaserTest : MonoBehaviour
     private IEnumerator SkillRoutine()
     {
         SetLaserActive(_warningLaser, true);
-        CameraController.Instance.StartShake(_laserWarningTime, 0.3f);
+        if (_bossCache != null)
+        {
+            _bossCache.PlayShakeEarthquake(0.3f);
+        }
 
         AudioManager.Instance.PlaySFX(SoundEffectType.FIVE_TIMES_LASER_WARNING);
 
@@ -111,10 +112,20 @@ public class BossLaserTest : MonoBehaviour
         }
 
         _flashCoroutine = StartCoroutine(LaserFlashRoutine());
+        float shakeTimer = 0f;
 
         while (rotatedAngle < targetAngle)
         {
-            CameraController.Instance.StartPerlinShake(0.1f, 30f, 0.5f);
+            shakeTimer += Time.deltaTime;
+            if (shakeTimer >= 0.1f)
+            {
+                if (_bossCache != null)
+                {
+                    _bossCache.PlayShakeHeavy(0.8f);
+                }
+
+                shakeTimer = 0f;
+            }
 
             // Mathf.Min: 마지막 프레임에 목표 각도를 넘지 않도록 맞춤 / 더 낮은 값을 선택하기 때문(기억이 맞다면)
             rotatedAngle = Mathf.Min(rotatedAngle + _laserSpeed * Time.deltaTime, targetAngle);

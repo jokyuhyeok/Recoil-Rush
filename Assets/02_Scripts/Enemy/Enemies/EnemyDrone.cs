@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 // 공중 적 (드론)
 public class EnemyDrone : EnemyBase
@@ -6,6 +7,12 @@ public class EnemyDrone : EnemyBase
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _chargeEffectObject; // 기 모으는 이펙트 (드론의 자식 객체)
     [SerializeField] private GameObject _fallingSparkObject; // 드론 추락할 때 기체에 연기나 불꽃
+
+    [Header("카메라 흔들림 강도")]
+    [SerializeField] private float _knockbackShakeForce = 0.3f; // 피격 시
+
+    [SerializeField] private float _deathShakeForce = 3.0f; // 사망 폭발 시
+    [SerializeField] private float _shootShakeForce = 0.8f; // 사격 시
 
     private float _hoverStart_X;
     private float _hoverStart_Y;
@@ -20,7 +27,15 @@ public class EnemyDrone : EnemyBase
     private bool _isDeadProcessed = false;
     private float _deadTimer = 0f;
 
+    private CinemachineImpulseSource _impulseSource;
     private DroneStatDataSO _droneStatDataSo => _baseStatData as DroneStatDataSO;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        // 시네머신 컴포넌트 캐싱
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
+    }
 
     protected override void Start()
     {
@@ -160,7 +175,11 @@ public class EnemyDrone : EnemyBase
             rb.AddForce(amplifiedForce, ForceMode2D.Impulse);
             rb.linearDamping = 10f; // 급브레이크
 
-            CameraController.Instance.StartShake(0.3f, 0.1f);
+            if (_impulseSource != null)
+            {
+                Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+                _impulseSource.GenerateImpulse(randomDir * _knockbackShakeForce); // 피격 시 가벼운 진동
+            }
         }
 
         _knockbackTimer += Time.deltaTime;
@@ -212,7 +231,11 @@ public class EnemyDrone : EnemyBase
         // 공중 폭발
         if (_deadTimer >= 0.3f)
         {
-            CameraController.Instance.StartShake(1.5f, 0.4f);
+            if (_impulseSource != null)
+            {
+                Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+                _impulseSource.GenerateImpulse(randomDir * _deathShakeForce);
+            }
 
             if (_droneStatDataSo.ExplosionPrefab == null)
             {
@@ -242,7 +265,12 @@ public class EnemyDrone : EnemyBase
             Vector2 direction = (targetPos - (Vector2)_firePoint.position).normalized;
             bullet.FireBullet(direction);
 
-            CameraController.Instance.StartPerlinShake(0.8f, 15f, 0.2f);
+            if (_impulseSource != null)
+            {
+                Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+                _impulseSource.GenerateImpulse(randomDir * _shootShakeForce);
+            }
+
             AudioManager.Instance.PlaySFX(SoundEffectType.SHOOT_DRONE);
         }
     }
@@ -345,6 +373,9 @@ public class EnemyDrone : EnemyBase
     protected override void OnEnable()
     {
         base.OnEnable();
+
+        _hoverStart_X = transform.position.x;
+        _hoverStart_Y = transform.position.y;
 
         _currentAlarmTime = 0f;
         _isReturning = false;

@@ -78,6 +78,7 @@ public class Cmd_CenterRotatingLaser : IBossCommand
             boss.GameFeel.PlayLandImpact(); // 쿵! 납작하게 찌그러지며 역경직 발생
         }
 
+        boss.PlayShakeHeavy();
         yield return _endWait; // 캐싱된 대기 객체 사용
     }
 }

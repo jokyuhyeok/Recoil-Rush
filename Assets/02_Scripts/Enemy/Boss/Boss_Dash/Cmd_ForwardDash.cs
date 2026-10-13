@@ -47,7 +47,7 @@ public class Cmd_ForwardDash : IBossCommand
         boss.DashChargeEffect.SetActive(true);
 
         boss.PlayBossSoundOneShot(SoundEffectType.DASH_PREPARATION);
-        CameraController.Instance.StartShake(_chargeTime, 0.5f); // 기를 모을 때 흔들림
+        boss.PlayShakeEarthquake(0.5f); // 기를 모을 때 흔들림
 
         if (boss.GameFeel != null)
         {
@@ -73,14 +73,13 @@ public class Cmd_ForwardDash : IBossCommand
 
         boss.DashFireEffect.SetActive(true);
         boss.PlayBossSound(SoundEffectType.DASH_BOOSTER, true);
+        boss.PlayShakeHeavy(2.0f);
 
         float timer = 0f;
         float ghostTimer = 0f;
 
         while (timer < _dashDuration)
         {
-            CameraController.Instance.StartPerlinShake(0.1f, 25f, 0.3f);
-
             if ((directionX < 0 && boss.IsHittingLeftWall) || (directionX > 0 && boss.IsHittingRightWall))
             {
                 Debug.Log("앞쪽 벽에 박았다!");
@@ -92,7 +91,7 @@ public class Cmd_ForwardDash : IBossCommand
 
                 boss.StopBossSound();
                 AudioManager.Instance.PlaySFX(SoundEffectType.DASH_CRASH);
-                CameraController.Instance.StartShake(0.6f, 1.5f); // 강한 진동
+                boss.PlayShakeHeavy(3.0f); // 강한 진동
 
                 if (boss.GameFeel != null)
                 {
@@ -111,6 +110,7 @@ public class Cmd_ForwardDash : IBossCommand
             ghostTimer += Time.deltaTime;
             if (ghostTimer >= _ghostInterval)
             {
+                boss.PlayShakeLight(0.3f);
                 boss.SpawnGhost();
                 ghostTimer = 0f;
             }

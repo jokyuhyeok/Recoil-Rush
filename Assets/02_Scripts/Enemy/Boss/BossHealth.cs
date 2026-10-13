@@ -141,7 +141,11 @@ public class BossHealth : MonoBehaviour, IDamageable
         }
 
         // 폭발 순간 화면이 찢어질 듯한 강력한 타격감 부여
-        CameraController.Instance.StartPerlinShake(0.5f, 40f, 1f);
+        if (_controller != null)
+        {
+            _controller.PlayShakeHeavy(4.0f);
+        }
+
         _spriteRenderer.enabled = false;
 
         // 진짜 파괴 및 게임 클리어 이벤트 송출
