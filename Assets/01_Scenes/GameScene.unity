@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 28324970}
   - component: {fileID: 28324969}
   - component: {fileID: 28324968}
+  - component: {fileID: 28324972}
   m_Layer: 0
   m_Name: ShotgunRoomCamera
   m_TagString: Untagged
@@ -260,6 +261,30 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &28324972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28324966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &32905857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2068,6 +2093,7 @@ GameObject:
   - component: {fileID: 244419051}
   - component: {fileID: 244419050}
   - component: {fileID: 244419049}
+  - component: {fileID: 244419053}
   m_Layer: 0
   m_Name: Zone1Camera
   m_TagString: Untagged
@@ -2196,6 +2222,30 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &244419053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244419047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &251464234
 GameObject:
   m_ObjectHideFlags: 0
@@ -30573,125 +30623,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 766936708}
     m_Modifications:
-    - target: {fileID: 314088874521549667, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 393642444809698221, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 655002353575751622, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1269423874517123308, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1470618438646260972, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1541899112700397819, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1873426342819587901, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.43
+      value: -5.04
       objectReference: {fileID: 0}
     - target: {fileID: 1873426342819587901, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1906063829895072202, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
+      value: 4.03
       objectReference: {fileID: 0}
     - target: {fileID: 2799223945157894907, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
       propertyPath: m_Name
       value: SpawnTriggers
       objectReference: {fileID: 0}
-    - target: {fileID: 2799223945157894907, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3091392431764881584, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3562913879372148750, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3988612856950378898, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4215709856609481197, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4498019728491232133, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507141881696659782, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4920948957724407342, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5533357834137255034, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5588860969241861117, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6208554245675999597, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217659186735526580, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 6291087853780725779, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
       propertyPath: m_Size.x
-      value: 29.706146
-      objectReference: {fileID: 0}
-    - target: {fileID: 6291087853780725779, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Size.y
-      value: 5.066269
+      value: 1.9719133
       objectReference: {fileID: 0}
     - target: {fileID: 6291087853780725779, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
       propertyPath: m_Offset.x
-      value: 12.5033
-      objectReference: {fileID: 0}
-    - target: {fileID: 6291087853780725779, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.8984337
-      objectReference: {fileID: 0}
-    - target: {fileID: 6917216346004819240, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7481474498711838047, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678042864740742327, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7817625506286887506, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
+      value: -0.53960276
       objectReference: {fileID: 0}
     - target: {fileID: 7930198122536902500, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30732,30 +30682,6 @@ PrefabInstance:
     - target: {fileID: 7930198122536902500, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172626248427291707, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8299162500562892108, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8336132058621361505, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8520182845349315246, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8911005075826952136, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9021153789224932885, guid: 8b925d0cc62cefe4e91a10e4e4fb935f, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41730,6 +41656,7 @@ GameObject:
   - component: {fileID: 1601696954}
   - component: {fileID: 1601696953}
   - component: {fileID: 1601696952}
+  - component: {fileID: 1601696957}
   m_Layer: 0
   m_Name: Zone3Camera
   m_TagString: Untagged
@@ -41858,6 +41785,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 182784821}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1601696957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601696951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &1626931856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43710,6 +43661,7 @@ GameObject:
   - component: {fileID: 1848642668}
   - component: {fileID: 1848642667}
   - component: {fileID: 1848642666}
+  - component: {fileID: 1848642670}
   m_Layer: 0
   m_Name: BossRoomCamera
   m_TagString: Untagged
@@ -43838,6 +43790,30 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &1848642670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848642664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &1852790670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44730,6 +44706,7 @@ GameObject:
   - component: {fileID: 2034193537}
   - component: {fileID: 2034193536}
   - component: {fileID: 2034193535}
+  - component: {fileID: 2034193539}
   m_Layer: 0
   m_Name: Zone2Camera
   m_TagString: Untagged
@@ -44858,6 +44835,30 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &2034193539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034193533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &2035993548
 PrefabInstance:
   m_ObjectHideFlags: 0
