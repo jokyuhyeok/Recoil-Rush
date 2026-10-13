@@ -5,6 +5,7 @@ public enum SoundEffectType
     SHOOT_SHOTGUN,
     PLAYER_LAND,
     PLAYER_HIT,
+    PLAYER_RELOAD,
 
     // 적 SFX
     SHOOT_SNIPE,
@@ -17,6 +18,7 @@ public enum SoundEffectType
 
     // 함정 SFX
     SHOOT_CHECKPOINT,
+    STREETLIGHT_TRAP,
 
     // 보스 기본 SFX
     BOSS_APPEAR,

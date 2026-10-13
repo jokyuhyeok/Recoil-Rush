@@ -923,6 +923,12 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 0ad40f2c424470b449bb7ad48a73f5c0, type: 3}
   - Type: 9
     Clip: {fileID: 8300000, guid: c588ad0f7d3fc374d8f0e791b6a5d922, type: 3}
+  - Type: 2
+    Clip: {fileID: 8300000, guid: ca57ea1ea64e58045ae21e1046f30ae0, type: 3}
+  - Type: 4
+    Clip: {fileID: 8300000, guid: 10922ec7352222c46a57380a0c231137, type: 3}
+  - Type: 13
+    Clip: {fileID: 8300000, guid: ddde1124dc7f50b439475fadb80dd33c, type: 3}
   _initPoolSize: 10
   _deathSFXType: 3
   _deathBGMType: 5
