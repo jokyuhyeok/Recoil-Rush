@@ -1,8 +1,8 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 배경음악용 AudioSource를 하나 가지도록 강제함
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
@@ -13,25 +13,43 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private BackgroundMusicData[] _bgmDatas;
 
     private Dictionary<BackgroundMusicType, AudioClip> _bgmClips;
-
-    // 배경음악은 수시로 바꾸지 않으므로 따로 풀링하지 않고, 전용 AudioSource 하나로 관리합니다.
     private AudioSource _bgmSource;
     private float _bgmVolume;
     public float BGMVolume => _bgmVolume;
 
     [Header("SFX Settings")]
     [SerializeField] private SoundEffectData[] _sfxDatas;
+    [SerializeField] private int _initPoolSize = 10;
 
     private Dictionary<SoundEffectType, AudioClip> _sfxClips;
-
-    [SerializeField] private int _initPoolSize = 10;
     private Queue<AudioSource> _audioSourcePool;
     private float _sfxVolume;
     public float SFXVolume => _sfxVolume;
 
+    [Header("Death Audio")]
+    [SerializeField] private SoundEffectType _deathSFXType;
+    [SerializeField] private BackgroundMusicType _deathBGMType;
+
+    private AudioSource _deathSFXSource;
+    private Coroutine _deathCoroutine;
+
+    private bool _isDeathAudioPlaying = false;
+
+
+    // BGM 종류별 마지막 재생 위치
+    private Dictionary<BackgroundMusicType, float> _bgmSavedTimes
+        = new Dictionary<BackgroundMusicType, float>();
+
+    // 현재 선택된 일반 BGM
+    private BackgroundMusicType? _currentBGMType;
+
+    // 사망 중 BGM 변경 요청이 들어왔을 때 저장
+    private BackgroundMusicType? _pendingBGMType;
+    public bool IsDeathAudioPlaying => _isDeathAudioPlaying;
+
     private void Awake()
     {
-        if (_instance != null)
+        if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
             return;
@@ -45,65 +63,144 @@ public class AudioManager : MonoBehaviour
 
     private void Init()
     {
-        _bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 100f) / 100f;
-        _sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 100f) / 100f;
+        _bgmVolume =
+            PlayerPrefs.GetFloat("BGMVolume", 100f) / 100f;
 
-        // 기본적으로 가지고 있는 AudioSource는 BGM 전용으로 할당
+        _sfxVolume =
+            PlayerPrefs.GetFloat("SFXVolume", 100f) / 100f;
+
+        // BGM AudioSource
         _bgmSource = GetComponent<AudioSource>();
+        _bgmSource.playOnAwake = false;
+        _bgmSource.loop = true;
+        _bgmSource.spatialBlend = 0f;
         _bgmSource.volume = _bgmVolume;
 
-        _bgmClips = new Dictionary<BackgroundMusicType, AudioClip>(_bgmDatas.Length);
-        // Inspector에서 넣은 데이터 순회하면서 Dictionary로 변환
+        // BGM Dictionary
+        _bgmClips =
+            new Dictionary<BackgroundMusicType, AudioClip>();
+
         foreach (BackgroundMusicData bgmData in _bgmDatas)
         {
-            if (_bgmClips.ContainsKey(bgmData.Type) == false)
+            if (!_bgmClips.ContainsKey(bgmData.Type))
             {
                 _bgmClips[bgmData.Type] = bgmData.Clip;
             }
             else
             {
-                Debug.LogWarning($"BGM Type 중복: {bgmData.Clip.name}");
+                Debug.LogWarning(
+                    $"BGM Type 중복: {bgmData.Type}"
+                );
             }
         }
 
-        _sfxClips = new Dictionary<SoundEffectType, AudioClip>(_sfxDatas.Length);
+        // SFX Dictionary
+        _sfxClips =
+            new Dictionary<SoundEffectType, AudioClip>();
+
         foreach (SoundEffectData sfxData in _sfxDatas)
         {
-            if (_sfxClips.ContainsKey(sfxData.Type) == false)
+            if (!_sfxClips.ContainsKey(sfxData.Type))
             {
                 _sfxClips[sfxData.Type] = sfxData.Clip;
             }
             else
             {
-                Debug.LogWarning($"SFX Type 중복: {sfxData.Clip.name}");
+                Debug.LogWarning(
+                    $"SFX Type 중복: {sfxData.Type}"
+                );
             }
         }
 
-        // Audio Source 생성 및 풀에 집어넣기 (_bgmSource는 넣지 않음)
+        // SFX Pool
         _audioSourcePool = new Queue<AudioSource>();
 
         for (int i = 0; i < _initPoolSize; i++)
         {
-            AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.playOnAwake = false;
-            audioSource.volume = _sfxVolume;
-            audioSource.enabled = false;
+            AudioSource source =
+                gameObject.AddComponent<AudioSource>();
 
-            _audioSourcePool.Enqueue(audioSource);
+            source.playOnAwake = false;
+            source.spatialBlend = 0f;
+            source.volume = _sfxVolume;
+            source.enabled = false;
+
+            _audioSourcePool.Enqueue(source);
         }
+
+        // 사망 효과음 전용 AudioSource
+        _deathSFXSource =
+            gameObject.AddComponent<AudioSource>();
+
+        _deathSFXSource.playOnAwake = false;
+        _deathSFXSource.loop = false;
+        _deathSFXSource.spatialBlend = 0f;
+        _deathSFXSource.volume = _sfxVolume;
     }
+
+    // ==============================
+    // BGM
+    // ==============================
 
     public void PlayBGM(BackgroundMusicType bgmType)
     {
-        if (!_bgmClips.TryGetValue(bgmType, out AudioClip audioClip))
+        if (!_bgmClips.TryGetValue(
+                bgmType, out AudioClip audioClip))
         {
+            Debug.LogWarning($"BGM 미등록: {bgmType}");
             return;
         }
 
-        // 이전 BGM 중단 -> 클립 교체 -> 재생
+        if (audioClip == null)
+            return;
+
+        // 사망 중에는 부활 후 사용할 음악만 변경
+        if (_isDeathAudioPlaying)
+        {
+            _pendingBGMType = bgmType;
+            return;
+        }
+
+        // 같은 BGM이 이미 재생 중이면 유지
+        if (_currentBGMType == bgmType && _bgmSource.isPlaying)
+            return;
+
+        // 이전 BGM의 재생 위치 저장
+        if (_currentBGMType.HasValue &&
+            _bgmSource.clip != null)
+        {
+            _bgmSavedTimes[_currentBGMType.Value]
+                = _bgmSource.time;
+        }
+
+        // 기존 BGM 중지
         _bgmSource.Stop();
+
+        // 새로운 BGM 설정
         _bgmSource.clip = audioClip;
+        _bgmSource.loop = true;
+        _bgmSource.volume = _bgmVolume;
+
+        // 이전 재생 위치 불러오기
+        float savedTime = 0f;
+
+        _bgmSavedTimes.TryGetValue(
+            bgmType, out savedTime);
+
+        _bgmSource.time = Mathf.Clamp(
+            savedTime,
+            0f,
+            Mathf.Max(0f, audioClip.length - 0.01f)
+        );
+
+        // 저장된 위치부터 재생
         _bgmSource.Play();
+
+        _currentBGMType = bgmType;
+
+        Debug.Log(
+            $"BGM 재생: {bgmType}, 시작 위치: {savedTime:F2}초"
+        );
     }
 
     public void SetBGMVolume(float volume)
@@ -112,65 +209,175 @@ public class AudioManager : MonoBehaviour
         _bgmSource.volume = volume;
     }
 
-    // SFX 실행
+    // ==============================
+    // SFX
+    // ==============================
+
     public void PlaySFX(SoundEffectType sfxType)
     {
         if (!_sfxClips.TryGetValue(sfxType, out AudioClip audioClip))
-        {
             return;
-        }
 
-        AudioSource audioSource;
+        if (audioClip == null)
+            return;
+
+        AudioSource source;
 
         if (_audioSourcePool.Count > 0)
         {
-            audioSource = _audioSourcePool.Dequeue();
-            audioSource.enabled = true;
+            source = _audioSourcePool.Dequeue();
+            source.enabled = true;
         }
         else
         {
-            audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.playOnAwake = false;
+            source = gameObject.AddComponent<AudioSource>();
+            source.playOnAwake = false;
+            source.spatialBlend = 0f;
         }
 
-        audioSource.clip = audioClip;
-        audioSource.volume = _sfxVolume;
-        // Todo: Pitch 값 동적으로 수정하기 (매개변수로 받는 오버로드 하나 하든지..)
-        audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
-        audioSource.Play();
+        source.clip = audioClip;
+        source.volume = _sfxVolume;
 
-        float playTime = audioClip.length / audioSource.pitch;
-        StartCoroutine(WaitAndReturnToPool(audioSource, playTime));
+        source.pitch =
+            Random.Range(0.8f, 1.2f);
+
+        source.Play();
+
+        float playTime =
+            audioClip.length / source.pitch;
+
+        StartCoroutine(
+            WaitAndReturnToPool(source, playTime)
+        );
     }
 
     public void SetSFXVolume(float volume)
     {
         _sfxVolume = volume;
 
-        foreach (AudioSource sfxSource in _audioSourcePool)
+        foreach (AudioSource source in _audioSourcePool)
         {
-            sfxSource.volume = volume;
+            source.volume = volume;
+        }
+
+        if (_deathSFXSource != null)
+            _deathSFXSource.volume = volume;
+    }
+
+    private IEnumerator WaitAndReturnToPool(
+        AudioSource source, float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+
+        source.Stop();
+        source.enabled = false;
+
+        _audioSourcePool.Enqueue(source);
+    }
+
+    // ==============================
+    // DEATH AUDIO
+    // ==============================
+
+    public void PlayDeathAudio()
+    {
+        if (_isDeathAudioPlaying)
+            return;
+
+        _isDeathAudioPlaying = true;
+        _pendingBGMType = null;
+
+        // 현재 BGM 위치 저장
+        if (_currentBGMType.HasValue &&
+            _bgmSource.clip != null)
+        {
+            _bgmSavedTimes[_currentBGMType.Value]
+                = _bgmSource.time;
+        }
+
+        // 기존 BGM 중지
+        _bgmSource.Stop();
+
+        if (_deathCoroutine != null)
+            StopCoroutine(_deathCoroutine);
+
+        _deathCoroutine =
+            StartCoroutine(DeathAudioSequence());
+    }
+
+    private IEnumerator DeathAudioSequence()
+    {
+        // 1. 사망 효과음
+        if (_sfxClips.TryGetValue(
+            _deathSFXType, out AudioClip deathClip)
+            && deathClip != null)
+        {
+            _deathSFXSource.Stop();
+            _deathSFXSource.pitch = 1f;
+            _deathSFXSource.clip = deathClip;
+            _deathSFXSource.Play();
+
+            yield return new WaitForSecondsRealtime(
+                deathClip.length
+            );
+        }
+
+        // 2. 사망 BGM 시작
+        if (_bgmClips.TryGetValue(
+            _deathBGMType, out AudioClip deathBGM)
+            && deathBGM != null)
+        {
+            _bgmSource.clip = deathBGM;
+            _bgmSource.loop = true;
+            _bgmSource.Play();
+        }
+
+        _deathCoroutine = null;
+    }
+
+    // ==============================
+    // RESPAWN AUDIO
+    // ==============================
+
+    public void StopDeathAudio()
+    {
+        if (!_isDeathAudioPlaying)
+            return;
+
+        // 부활 후 재생할 BGM 결정
+        BackgroundMusicType? resumeType =
+            _pendingBGMType ?? _currentBGMType;
+
+        _isDeathAudioPlaying = false;
+
+        // 사망 코루틴 중지
+        if (_deathCoroutine != null)
+        {
+            StopCoroutine(_deathCoroutine);
+            _deathCoroutine = null;
+        }
+
+        // 사망 효과음 종료
+        _deathSFXSource.Stop();
+
+        // 사망 BGM 종료
+        _bgmSource.Stop();
+        _bgmSource.clip = null;
+
+        // 현재 BGM 상태 초기화
+        _currentBGMType = null;
+        _pendingBGMType = null;
+
+        // 사망 이전 음악 복원
+        if (resumeType.HasValue)
+        {
+            PlayBGM(resumeType.Value);
         }
     }
 
-    // 실행 시간 기다렸다가 다시 풀에 넣기
-    private IEnumerator WaitAndReturnToPool(AudioSource audioSource, float time)
+    private void OnDestroy()
     {
-        yield return new WaitForSeconds(time);
-
-        audioSource.enabled = false;
-        _audioSourcePool.Enqueue(audioSource);
-    }
-
-    // 보스 전용 스피커처럼 외부에서 오디오 클립(.wav) 데이터만 필요할 때 사용하는 함수
-    public AudioClip GetSfxClip(SoundEffectType type)
-    {
-        if (_sfxClips.TryGetValue(type, out AudioClip clip))
-        {
-            return clip;
-        }
-
-        Debug.LogWarning($"{type} 사운드가 AudioManager에 없음.");
-        return null;
+        if (_instance == this)
+            _instance = null;
     }
 }
