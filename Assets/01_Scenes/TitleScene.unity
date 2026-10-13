@@ -902,12 +902,24 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 8e58f9bc439d9b84b91fc155096292dd, type: 3}
   - Type: 5
     Clip: {fileID: 8300000, guid: 2c0653e3e21fea843be60f2468b802c4, type: 3}
+  - Type: 3
+    Clip: {fileID: 8300000, guid: 8a82b9ba4ccb0c1499f520155b5a935d, type: 3}
+  - Type: 6
+    Clip: {fileID: 8300000, guid: 6c1d24802afd40b4f8b964ad10e4d3aa, type: 3}
+  - Type: 4
+    Clip: {fileID: 8300000, guid: c08415a4fb442414d9db2a9dee5fc8cc, type: 3}
   _sfxDatas:
   - Type: 0
     Clip: {fileID: 8300000, guid: 6f834e14cd556e340ba05a2e3f035c5c, type: 3}
   - Type: 1
     Clip: {fileID: 8300000, guid: e242ac1aa148b724a9372f0364d430ec, type: 3}
   - Type: 3
+    Clip: {fileID: 8300000, guid: c588ad0f7d3fc374d8f0e791b6a5d922, type: 3}
+  - Type: 9
+    Clip: {fileID: 8300000, guid: c588ad0f7d3fc374d8f0e791b6a5d922, type: 3}
+  - Type: 11
+    Clip: {fileID: 8300000, guid: 0ad40f2c424470b449bb7ad48a73f5c0, type: 3}
+  - Type: 9
     Clip: {fileID: 8300000, guid: c588ad0f7d3fc374d8f0e791b6a5d922, type: 3}
   _initPoolSize: 10
   _deathSFXType: 3
