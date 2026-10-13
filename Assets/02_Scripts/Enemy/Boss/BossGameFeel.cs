@@ -27,6 +27,7 @@ public class BossGameFeel : MonoBehaviour
     private Volume _glitchVolume;
     private Coroutine _glitchCoroutine;
 
+    private Coroutine _hitStopCoroutine;
     private WaitForSecondsRealtime _glitchHoldWait = new WaitForSecondsRealtime(0.05f);
 
     private void Awake()
@@ -46,6 +47,11 @@ public class BossGameFeel : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void PlayChargeSquash(float duration)
     {
         if (_bossVisual == null) return;
@@ -62,7 +68,8 @@ public class BossGameFeel : MonoBehaviour
 
     public void PlayHitStop(float duration = 0.05f)
     {
-        StartCoroutine(HitStopRoutine(duration));
+        if (_hitStopCoroutine != null) StopCoroutine(_hitStopCoroutine);
+        _hitStopCoroutine = StartCoroutine(HitStopRoutine(duration));
     }
 
     public void PlayGhostRelayExplosion(System.Collections.Generic.List<BossGhostEffect> ghosts)
@@ -100,7 +107,7 @@ public class BossGameFeel : MonoBehaviour
 
         while (elapsed < duration)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             float t = _squashCurve.Evaluate(elapsed / duration);
             _bossVisual.localScale = Vector3.LerpUnclamped(startScale, targetScale, t);
             yield return null;
@@ -109,7 +116,7 @@ public class BossGameFeel : MonoBehaviour
         elapsed = 0f;
         while (elapsed < duration * 0.3f)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             float t = _squashCurve.Evaluate(elapsed / (duration * 0.3f));
             _bossVisual.localScale = Vector3.LerpUnclamped(targetScale, startScale, t);
             yield return null;
@@ -126,10 +133,11 @@ public class BossGameFeel : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < 0.1f)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             _bossVisual.localScale = Vector3.Lerp(originalScale * 1.3f, originalScale, elapsed / 0.1f);
             yield return null;
         }
+
         _bossVisual.localScale = originalScale;
     }
 
@@ -138,6 +146,7 @@ public class BossGameFeel : MonoBehaviour
         Time.timeScale = 0.05f;
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = 1f;
+        _hitStopCoroutine = null;
     }
 
     private IEnumerator GhostRelayRoutine(System.Collections.Generic.List<BossGhostEffect> ghosts)
@@ -155,6 +164,7 @@ public class BossGameFeel : MonoBehaviour
             {
                 float intensity = (i + 1) * part;
             }
+
             yield return relayWait;
         }
     }
@@ -194,6 +204,7 @@ public class BossGameFeel : MonoBehaviour
             _bossVisual.localScale = Vector3.Lerp(stretchScale, originalScale, elapsed / 0.15f);
             yield return null;
         }
+
         _bossVisual.localScale = originalScale;
     }
 
@@ -210,6 +221,7 @@ public class BossGameFeel : MonoBehaviour
             _bossVisual.localScale = Vector3.Lerp(squashedScale, originalScale, elapsed / 0.12f);
             yield return null;
         }
+
         _bossVisual.localScale = originalScale;
     }
 }

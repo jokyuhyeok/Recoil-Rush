@@ -396,7 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81dfeefd88503d9449942bbddf3786f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossGameFeel
-  _bossVisual: {fileID: 0}
+  _bossVisual: {fileID: 1762722423737500353}
   _squashCurve:
     serializedVersion: 2
     m_Curve:
