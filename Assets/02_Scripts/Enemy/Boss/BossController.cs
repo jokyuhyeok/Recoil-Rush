@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 
 /// <summary>
 /// 보스의 전체적인 상태, 물리, 이펙트, 패턴(명령) 큐를 관리하는 메인 컨트롤러입니다.
@@ -28,13 +29,11 @@ public class BossController : MonoBehaviour
 
     [Header("기본 세팅")]
     [SerializeField] private BossStatDataSO _stat;
-
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Material _flashMaterial;
 
     [Header("시각 효과 (VFX)")]
     [SerializeField] private Transform _vfxGroup;
-
     [SerializeField] private GameObject _idleSmokeEffect;
     [SerializeField] private GameObject _dashChargeEffect;
     [SerializeField] private GameObject _dashFireEffect;
@@ -43,11 +42,21 @@ public class BossController : MonoBehaviour
 
     [Header("레이저 및 특수 공격")]
     [SerializeField] private Transform[] _firePoints;
-
     [SerializeField] private Transform _laserFirePoint;
     [SerializeField] private BossLaserTest _rotatingLaserSkill;
     [SerializeField] private GameObject _redSphereEffect;
     [SerializeField] private Transform _centerAirPosition;
+
+    [Header("카메라 흔들림 발생기 (인스펙터 할당 필수)")]
+    [SerializeField] private CinemachineImpulseSource _lightShakeSource; // 피격, 약한 타격 (Dissipating 적용)
+    [SerializeField] private CinemachineImpulseSource _heavyShakeSource; // 쿵! 찍기, 충돌 (강하고 짧음)
+    [SerializeField] private CinemachineImpulseSource _earthquakeShakeSource; // 페이즈 전환, 사망 (Rumble, 길고 무거움)
+
+    [Header("카메라 흔들림 강도")]
+    [SerializeField] private float _hitShakeForce = 0.5f; // 피격 시
+    [SerializeField] private float _wallSlamForce = 2.0f; // 벽 충돌, 땅 찍기 시
+    [SerializeField] private float _phaseChangeForce = 1.5f; // 페이즈 전환 굉음
+    [SerializeField] private float _deathEarthquakeForce = 3.5f; // 사망 연출 시
 
     private Material _originalMaterial;
     private Coroutine _flashCoroutine;
@@ -143,6 +152,42 @@ public class BossController : MonoBehaviour
         IsHittingRightWall = false;
     }
 
+    // =========================================================
+    // 🌟 [추가] 외부 호출용 시네머신 흔들림 헬퍼 함수들
+    // =========================================================
+
+    public void PlayShakeLight(float forceOverride = -1f)
+    {
+        if (_lightShakeSource != null)
+        {
+            float force = forceOverride < 0 ? _hitShakeForce : forceOverride;
+            Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+            _lightShakeSource.GenerateImpulse(randomDir * force);
+        }
+    }
+
+    public void PlayShakeHeavy(float forceOverride = -1f)
+    {
+        if (_heavyShakeSource != null)
+        {
+            float force = forceOverride < 0 ? _wallSlamForce : forceOverride;
+            Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+            _heavyShakeSource.GenerateImpulse(randomDir * force);
+        }
+    }
+
+    public void PlayShakeEarthquake(float forceOverride = -1f)
+    {
+        if (_earthquakeShakeSource != null)
+        {
+            float force = forceOverride < 0 ? _phaseChangeForce : forceOverride;
+            Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+            _earthquakeShakeSource.GenerateImpulse(randomDir * force);
+        }
+    }
+
+    // =========================================================
+
     public void PlayBossSound(SoundEffectType type, bool isLoop = false)
     {
         if (_audioSource == null)
@@ -208,8 +253,17 @@ public class BossController : MonoBehaviour
     {
         StopAllCoroutines();
         ResetFlashMaterial();
-        _commandQueue.Clear();
-        Rigidbody.linearVelocity = Vector2.zero;
+
+        if (_commandQueue != null)
+        {
+            _commandQueue.Clear();
+        }
+
+        if (Rigidbody != null)
+        {
+            Rigidbody.linearVelocity = Vector2.zero;
+        }
+
         StopBossSound();
     }
 
@@ -226,6 +280,7 @@ public class BossController : MonoBehaviour
         }
 
         _flashCoroutine = StartCoroutine(HitFlashRoutine());
+        PlayShakeLight();
     }
 
     public void ResetWallCollision()
@@ -259,6 +314,8 @@ public class BossController : MonoBehaviour
         {
             laser.FireLaser(_stat.LaserWarningTime, _stat.LaserBeamTime);
         }
+
+        PlayShakeHeavy(_wallSlamForce * 0.8f);
     }
 
     public void SpawnGhost()
@@ -330,7 +387,7 @@ public class BossController : MonoBehaviour
                 GameFeel.PlayGlitchEffect(2.0f);
             }
 
-            CameraController.Instance.StartPerlinShake(2.0f, 6.0f, 0.3f);
+            PlayShakeEarthquake(_phaseChangeForce * 0.5f);
             PlayBossSoundOneShot(SoundEffectType.DASH_PREPARATION);
 
             Vector3 originalScale = transform.localScale;
@@ -353,7 +410,7 @@ public class BossController : MonoBehaviour
             _spriteRenderer.color = Color.white;
             transform.localScale = originalScale;
 
-            CameraController.Instance.StartPerlinShake(0.3f, 35.0f, 1.0f);
+            PlayShakeHeavy(_wallSlamForce * 1.5f);
             AudioManager.Instance.PlaySFX(SoundEffectType.BOSS_HIT);
         }
 
@@ -402,14 +459,24 @@ public class BossController : MonoBehaviour
         if (_rotatingLaserSkill != null) _rotatingLaserSkill.gameObject.SetActive(false);
 
         // 3. 물리력 초기화 및 초기 위치로 복귀
+        if (Rigidbody == null) return;
         Rigidbody.linearVelocity = Vector2.zero;
+
+        if (_stat == null) return;
         Rigidbody.gravityScale = _stat.HeavyGravity;
+
         LaserSequenceIndex = 0;
         transform.position = _initialPosition;
         _hasLandedOnSpawn = false;
 
         // 4. 애니메이션 초기화
-        Anim.Play("Idle");
+        if (Anim == null) return;
+
+        // 아직 애니메이터가 켜진 적이 없다면 Play를 무시하도록 처리
+        if (Anim.isActiveAndEnabled)
+        {
+            Anim.Play("Idle");
+        }
 
         // 5. 체력 원상복구
         BossHealth health = GetComponent<BossHealth>();
@@ -419,17 +486,13 @@ public class BossController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // =================================================================
-    // [신규 추가] 보스 사망 시 호출될 최후의 발악(보라색 폭주 + 늘줄늘줄) 코루틴
-    // 나중에 BossVFX로 옮기기 쉽게 빼두었습니다.
-    // =================================================================
     public IEnumerator PlayDeathVFX(float duration)
     {
         Rigidbody.linearVelocity = Vector2.zero;
         Rigidbody.gravityScale = 0f;
 
         if (GameFeel != null) GameFeel.PlayGlitchEffect(duration);
-        CameraController.Instance.StartPerlinShake(duration, 15.0f, 0.5f);
+        PlayShakeEarthquake(_deathEarthquakeForce);
         PlayBossSoundOneShot(SoundEffectType.DASH_PREPARATION);
 
         Color purpleColor = new Color(0.65f, 0f, 1f);

@@ -23,6 +23,7 @@ public class Cmd_MultiLaser : IBossCommand
         if (boss.HandSwirlEffect != null) boss.HandSwirlEffect.SetActive(true);
 
         boss.PlayBossSound(SoundEffectType.FIVE_TIMES_LASER_CHARGING, true);
+        boss.PlayShakeEarthquake(1.0f);
         yield return _startWait; // 캐싱된 대기 객체 사용
         boss.StopBossSound();
 

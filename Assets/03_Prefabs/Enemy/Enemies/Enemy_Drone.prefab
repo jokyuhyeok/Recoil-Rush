@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 5037494482051071521}
   - component: {fileID: 1049762484911895248}
   - component: {fileID: 642670842977815408}
+  - component: {fileID: 5909180385471894470}
   m_Layer: 7
   m_Name: Enemy_Drone
   m_TagString: Enemy
@@ -238,11 +239,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDrone
   currentState: 0
   _baseStatData: {fileID: 11400000, guid: 5acbb5d026eb20e4ebff5d8c3101518c, type: 2}
-  _cannonPrefab: {fileID: 3158174680353163776, guid: 37b2270972fafff43a2d1f891229da55, type: 3}
   _firePoint: {fileID: 8995027957226777765}
-  _fallingSparkObject: {fileID: 3667090793643366170}
-  _explosionPrefab: {fileID: 4046830469507457698, guid: 797540eb56db1474985d12184685de2f, type: 3}
   _chargeEffectObject: {fileID: 7924090901211446255}
+  _fallingSparkObject: {fileID: 3667090793643366170}
+--- !u!114 &5909180385471894470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4837926387951329651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 2
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 1
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 15
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1001 &6505849943723503036
 PrefabInstance:
   m_ObjectHideFlags: 0
