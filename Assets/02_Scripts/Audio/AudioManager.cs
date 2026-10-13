@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,6 @@ public class AudioManager : MonoBehaviour
 
     [Header("SFX Settings")]
     [SerializeField] private SoundEffectData[] _sfxDatas;
-
     [SerializeField] private int _initPoolSize = 10;
 
     private Dictionary<SoundEffectType, AudioClip> _sfxClips;
@@ -28,7 +28,6 @@ public class AudioManager : MonoBehaviour
 
     [Header("Death Audio")]
     [SerializeField] private SoundEffectType _deathSFXType;
-
     [SerializeField] private BackgroundMusicType _deathBGMType;
 
     private AudioSource _deathSFXSource;
@@ -310,7 +309,7 @@ public class AudioManager : MonoBehaviour
     {
         // 1. 사망 효과음
         if (_sfxClips.TryGetValue(
-                _deathSFXType, out AudioClip deathClip)
+            _deathSFXType, out AudioClip deathClip)
             && deathClip != null)
         {
             _deathSFXSource.Stop();
@@ -325,7 +324,7 @@ public class AudioManager : MonoBehaviour
 
         // 2. 사망 BGM 시작
         if (_bgmClips.TryGetValue(
-                _deathBGMType, out AudioClip deathBGM)
+            _deathBGMType, out AudioClip deathBGM)
             && deathBGM != null)
         {
             _bgmSource.clip = deathBGM;
@@ -380,17 +379,5 @@ public class AudioManager : MonoBehaviour
     {
         if (_instance == this)
             _instance = null;
-    }
-
-    // 보스 전용 스피커처럼 외부에서 오디오 클립(.wav) 데이터만 필요할 때 사용하는 함수
-    public AudioClip GetSfxClip(SoundEffectType type)
-    {
-        if (_sfxClips.TryGetValue(type, out AudioClip clip))
-        {
-            return clip;
-        }
-
-        Debug.LogWarning($"{type} 사운드가 AudioManager에 없음.");
-        return null;
     }
 }

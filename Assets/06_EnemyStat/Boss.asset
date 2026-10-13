@@ -12,29 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1852757fb612acf46b45cd46f7cc2e83, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: Assembly-CSharp::BossStatDataSO
-  MaxHp: 5
+  MaxHp: 10
   Phase2Threshold: 0.6
   Phase3Threshold: 0.3
   WaitTime: 1
-  DashSpeed: 40
+  DashSpeed: 30
   DashDuration: 1.5
   DashChargeTime: 1.5
   DashGhostInterval: 0.02
-  BackDashSpeed: 50
+  BackDashSpeed: 30
   BackDashDuration: 1.5
   BackDashChargeTime: 0.5
   BackDashGhostInterval: 0.05
   HeavyGravity: 5
   LeftBulletCount: 10
-  LeftStartAngle: -20
-  LeftEndAngle: 40
+  LeftStartAngle: -60
+  LeftEndAngle: 60
   LeftFireDelay: 0.1
   LeftBulletSpeed: 5
-  RightBulletCount: 8
-  RightStartAngle: 65
-  RightEndAngle: -15
-  RightFireDelay: 0.1
-  RightBulletSpeed: 9
+  RightBulletCount: 12
+  RightStartAngle: -45
+  RightEndAngle: 45
+  RightFireDelay: 0.05
+  RightBulletSpeed: 8
   MultiLaserOffsets:
   - 0
   - 4

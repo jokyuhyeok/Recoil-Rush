@@ -91,5 +91,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d96d122e056e1148ac86d6c0d5eb96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossRoomTrigger
-  _bossUIObject: {fileID: 8066004120942974995, guid: 446f0127905ccfe4dacf9b4bbbeb6a3a, type: 3}
-  _bossObject: {fileID: 6788299274323883459, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
+  _bossUIObject: {fileID: 0}
+  _bossObject: {fileID: 0}

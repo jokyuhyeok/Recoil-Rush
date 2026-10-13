@@ -16,7 +16,7 @@ MonoBehaviour:
   Speed: 1
   DetectRange: 5
   AttackRange: 4
-  AlarmTime: 2
+  AlarmTime: 1
   FireRate: 2
   ShootRecoilPower: 3
   MaxShootAngle: 45
