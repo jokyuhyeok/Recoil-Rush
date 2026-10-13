@@ -6,7 +6,7 @@ public class TrapResetManager : MonoBehaviour
     {
         if (RespawnManager.Instance != null)
         {
-            RespawnManager.Instance.OnRespawnEvent += ResetAllTraps;
+            RespawnManager.Instance.OnRespawnPlayerEvent += ResetAllTraps;
         }
     }
 
@@ -14,7 +14,7 @@ public class TrapResetManager : MonoBehaviour
     {
         if (RespawnManager.Instance != null)
         {
-            RespawnManager.Instance.OnRespawnEvent -= ResetAllTraps;
+            RespawnManager.Instance.OnRespawnPlayerEvent -= ResetAllTraps;
         }
     }
 

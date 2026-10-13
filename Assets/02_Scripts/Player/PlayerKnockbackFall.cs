@@ -40,7 +40,7 @@ public class PlayerKnockbackFall : MonoBehaviour
     {
         if (RespawnManager.Instance != null)
         {
-            RespawnManager.Instance.OnRespawnEvent
+            RespawnManager.Instance.OnRespawnPlayerEvent
                 += ResetKnockback;
         }
     }
@@ -50,7 +50,7 @@ public class PlayerKnockbackFall : MonoBehaviour
     {
         if (RespawnManager.Instance != null)
         {
-            RespawnManager.Instance.OnRespawnEvent
+            RespawnManager.Instance.OnRespawnPlayerEvent
                 -= ResetKnockback;
         }
     }

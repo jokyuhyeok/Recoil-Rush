@@ -40,7 +40,7 @@ public class EnemyPoolManager : MonoBehaviour
     {
         if (RespawnManager.Instance != null)
         {
-            RespawnManager.Instance.OnRespawnUIEvent += ResetEnemy;
+            RespawnManager.Instance.OnRespawnEvent += ResetEnemy;
         }
     }
 
@@ -48,7 +48,7 @@ public class EnemyPoolManager : MonoBehaviour
     {
         if (RespawnManager.Instance != null)
         {
-            RespawnManager.Instance.OnRespawnUIEvent -= ResetEnemy;
+            RespawnManager.Instance.OnRespawnEvent -= ResetEnemy;
         }
     }
 

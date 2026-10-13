@@ -48,11 +48,17 @@ public class StreetLightFall : MonoBehaviour, IResettable
 
         _triggered = true;
 
+        // 가로등 함정 작동 효과음
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(
+                SoundEffectType.STREETLIGHT_TRAP
+            );
+        }
+
         _fallCoroutine =
             StartCoroutine(FallRoutine());
     }
-
-
     private IEnumerator FallRoutine()
     {
         // 가로등 넘어지기 시작
@@ -83,6 +89,9 @@ public class StreetLightFall : MonoBehaviour, IResettable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (GameManager.Instance.IsCutscene)
+            return;
+
         PlayerKnockbackFall player =
             collision.GetComponentInParent<PlayerKnockbackFall>();
 
