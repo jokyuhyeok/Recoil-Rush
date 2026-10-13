@@ -18,16 +18,16 @@ public class SequentialSpikeTrap : MonoBehaviour
         while (RespawnManager.Instance == null)
             yield return null;
 
-        RespawnManager.Instance.OnRespawnEvent += OnRespawn;
+        RespawnManager.Instance.OnRespawnPlayerEvent += OnRespawnPlayer;
     }
 
     private void OnDestroy()
     {
         if (RespawnManager.Instance != null)
-            RespawnManager.Instance.OnRespawnEvent -= OnRespawn;
+            RespawnManager.Instance.OnRespawnPlayerEvent -= OnRespawnPlayer;
     }
 
-    private void OnRespawn(Vector3 respawnPosition)
+    private void OnRespawnPlayer(Vector3 respawnPosition)
     {
         ResetTrap();
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -22,6 +23,7 @@ public class PlayerAim : MonoBehaviour
 
     private Camera _camera;
     private VirtualMouse _virtualMouse;
+    private GameManager _gameManager;
 
 
     private void Awake()
@@ -36,29 +38,22 @@ public class PlayerAim : MonoBehaviour
         _playerSprite = _player.GetComponent<SpriteRenderer>();
     }
 
-    /*
-    // 플레이 중 OS 커서를 숨기고 창 안에 가둠
-    private void OnEnable()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    // 비활성화 시 커서를 다시 보여줌
-    private void OnDisable()
-    {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-    }
-    */
-
     private void Start()
     {
         _weapon = _player.CurrentWeapon;
+        _gameManager = GameManager.Instance;
+
+        if (_gameManager == null)
+            return;
+
+        _gameManager.OnCutsceneModeChanged += OnCutsceneModeChanged;
     }
 
     private void Update()
     {
+        if (_gameManager.IsCutscene)
+            return;
+
         Aim();
 
         if (Input.GetMouseButtonDown(0))
@@ -68,6 +63,11 @@ public class PlayerAim : MonoBehaviour
                 FireAimPoint();
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        _gameManager.OnCutsceneModeChanged -= OnCutsceneModeChanged;
     }
 
     private void Aim()
@@ -134,5 +134,15 @@ public class PlayerAim : MonoBehaviour
     public void ChangeWeapon(Weapon weapon)
     {
         _weapon = weapon;
+    }
+
+    private void OnCutsceneModeChanged(bool isCutscene)
+    {
+        if (isCutscene)
+        {
+            _aimPointSprite.sprite = _normalAimPoint;
+        }
+
+        _aimPointSprite.enabled = !isCutscene;
     }
 }

@@ -92,6 +92,9 @@ public class BossController : MonoBehaviour
 
     private void OnEnable()
     {
+        if (GameManager.Instance.IsCutscene)
+            return;
+
         SetPhase(1);
     }
 

@@ -56,8 +56,11 @@ public class BossRoomTrigger : MonoBehaviour
         }
     }
 
-    private void ResetBossRoom(Vector3 respawnPos)
+    private void ResetBossRoom()
     {
+        if (!_bossObject.activeInHierarchy)
+            return;
+
         Debug.Log("플레이어 부활 감지: 보스방을 초기화합니다.");
 
         // 1. 트리거 상태 초기화 (다시 밟을 수 있게)

@@ -18,28 +18,47 @@ public class FireShot : MonoBehaviour
     [SerializeField] private float _minYPower = 5f;
     [SerializeField] private float _maxYPower = 8f;
 
+    private GameManager _gameManager;
+
+
     private void Start()
     {
         StartCoroutine(FireRoutine());
+
+        if (GameManager.Instance == null)
+            return;
+
+        _gameManager = GameManager.Instance;
     }
 
     private IEnumerator FireRoutine()
     {
         while (true)
         {
-            float waitTime = Random.Range(
-                _minInterval,
-                _maxInterval
-            );
+            if (_gameManager.IsCutscene)
+            {
+                yield return null;
+            }
 
-            yield return new WaitForSeconds(waitTime);
+            else
+            {
+                float waitTime = Random.Range(
+                    _minInterval,
+                    _maxInterval
+                );
 
-            ShootFlame();
+                yield return new WaitForSeconds(waitTime);
+
+                ShootFlame();
+            }
         }
     }
 
     private void ShootFlame()
     {
+        if (_gameManager.IsCutscene)
+            return;
+
         GameObject flame = Instantiate(
             _flamePrefab,
             _firePoint.position,

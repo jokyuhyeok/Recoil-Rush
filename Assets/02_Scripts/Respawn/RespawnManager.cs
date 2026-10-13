@@ -6,10 +6,12 @@ public class RespawnManager : MonoBehaviour
     private static RespawnManager _instance;
     public static RespawnManager Instance => _instance;
 
-    public event Action<Vector3> OnRespawnEvent;
-    public event Action OnRespawnUIEvent;
+    public event Action<Vector3> OnRespawnPlayerEvent;
+    public event Action OnRespawnEvent;
 
     private Vector3 _respawnPosition;
+
+    private GameManager _gameManager;
 
 
     private void Awake()
@@ -24,12 +26,23 @@ public class RespawnManager : MonoBehaviour
         _respawnPosition = transform.position;
     }
 
+    private void Start()
+    {
+        if (GameManager.Instance == null)
+            return;
+
+        _gameManager = GameManager.Instance;
+    }
+
     private void Update()
     {
+        if (_gameManager.IsCutscene)
+            return;
+
         if (Input.GetKeyDown(KeyCode.R))
         {
-            OnRespawnEvent?.Invoke(_respawnPosition);
-            OnRespawnUIEvent?.Invoke();
+            OnRespawnPlayerEvent?.Invoke(_respawnPosition);
+            OnRespawnEvent?.Invoke();
         }
     }
 

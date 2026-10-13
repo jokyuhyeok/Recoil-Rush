@@ -50,6 +50,11 @@ public class AmmoUI : MonoBehaviour
                 break;
             }
         }
+
+        if (GameManager.Instance == null)
+            return;
+
+        GameManager.Instance.OnCutsceneModeChanged += OnCutsceneModeChanged;
     }
 
     private void OnDisable()
@@ -218,6 +223,16 @@ public class AmmoUI : MonoBehaviour
             {
                 _currentBullets[i].ResetBullet();
             }
+        }
+    }
+
+    private void OnCutsceneModeChanged(bool cutsceneMode)
+    {
+        _bulletContainer.gameObject.SetActive(!cutsceneMode);
+
+        if (!cutsceneMode)
+        {
+            RefreshAmmoState();
         }
     }
 }

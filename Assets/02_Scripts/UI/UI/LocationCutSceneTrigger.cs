@@ -26,6 +26,7 @@ public class LocationCutsceneTrigger : MonoBehaviour
             return;
 
         _isTriggered = true;
+        GameManager.Instance.SetCutsceneMode(true);
 
         // 튜토리얼 비활성화
         if (_tutorialPopup != null)

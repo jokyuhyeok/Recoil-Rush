@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class EnemyBulletChangeTrigger : MonoBehaviour
@@ -26,7 +25,7 @@ public class EnemyBulletChangeTrigger : MonoBehaviour
 
         if (_respawnManager != null)
         {
-            _respawnManager.OnRespawnEvent += OnRespawn;
+            _respawnManager.OnRespawnPlayerEvent += OnRespawnPlayer;
         }
     }
 
@@ -55,7 +54,7 @@ public class EnemyBulletChangeTrigger : MonoBehaviour
     }
 
     // 플레이어 리스폰 시 호출
-    private void OnRespawn(Vector3 respawnPosition)
+    private void OnRespawnPlayer(Vector3 respawnPosition)
     {
         ResetBullet();
     }
@@ -79,7 +78,7 @@ public class EnemyBulletChangeTrigger : MonoBehaviour
         // 이벤트 중복 등록 방지
         if (_respawnManager != null)
         {
-            _respawnManager.OnRespawnEvent -= OnRespawn;
+            _respawnManager.OnRespawnPlayerEvent -= OnRespawnPlayer;
             _respawnManager = null;
         }
 

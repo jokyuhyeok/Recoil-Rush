@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -32,9 +33,15 @@ public class BossHealthUI : MonoBehaviour
     [Tooltip("버티는 대기 시간이 지난 후 노란색 바가 줄어드는 속도")]
     [SerializeField] private float _delaySpeed = 0.4f;
 
+    [Header("체력 바 애니메이션 설정")]
+    [SerializeField] private float _expandTime = 1.5f;
+    [SerializeField] private float _moveTime = 1.2f;
+
     private float _targetFill = 1f;
     private float _delayHoldTimer = 0f;
     private Coroutine _bumpCoroutine;
+    private Coroutine _expandCoroutine;
+    private Coroutine _moveCoroutine;
 
     private Vector3 _originalScale;
     private Vector3 _originalPosition;
@@ -43,6 +50,16 @@ public class BossHealthUI : MonoBehaviour
     {
         _originalScale = transform.localScale;
         _originalPosition = transform.localPosition;
+    }
+
+    private void OnEnable()
+    {
+        if (_expandCoroutine != null)
+        {
+            StopCoroutine(_expandCoroutine);
+        }
+
+        _expandCoroutine = StartCoroutine(ExpandRoutine());
     }
 
     public void UpdateHealth(int currentHp, int maxHp)
@@ -60,7 +77,16 @@ public class BossHealthUI : MonoBehaviour
         {
             StopCoroutine(_bumpCoroutine);
         }
+
         _bumpCoroutine = StartCoroutine(BumpRoutine());
+
+        if (currentHp > 0)
+            return;
+
+        if (_moveCoroutine != null)
+            return;
+
+        _moveCoroutine = StartCoroutine(MoveRoutine());
     }
 
     private void Update()
@@ -106,6 +132,60 @@ public class BossHealthUI : MonoBehaviour
 
         transform.localPosition = _originalPosition;
         transform.localScale = _originalScale;
+    }
+
+    private IEnumerator ExpandRoutine()
+    {
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        Vector3 scale = rectTransform.localScale;
+        scale.x = 0f;
+        rectTransform.localScale = scale;
+
+        float timer = 0f;
+
+        while (timer < _expandTime)
+        {
+            timer += Time.unscaledDeltaTime;
+            float progress = Mathf.Clamp01(timer / _expandTime);
+
+            float easedProgress = Mathf.Sin(progress * Mathf.PI * 0.5f);
+
+            scale.x = easedProgress;
+            rectTransform.localScale = scale;
+
+            yield return null;
+        }
+
+        scale.x = 1f;
+        rectTransform.localScale = scale;
+
+        _expandCoroutine = null;
+    }
+
+    private IEnumerator MoveRoutine()
+    {
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        Vector2 startPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y);
+        Vector2 endPosition = new Vector2(rectTransform.anchoredPosition.x, 200f);
+
+        float timer = 0f;
+
+        while (timer < _moveTime)
+        {
+            timer += Time.unscaledDeltaTime;
+
+            float t = Mathf.Clamp01(timer / _moveTime);
+            float easedT = Mathf.Sin(t * Mathf.PI * 0.5f);
+
+            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, easedT);
+
+            yield return null;
+        }
+
+        rectTransform.anchoredPosition = endPosition;
+
+        _moveCoroutine = null;
+        gameObject.SetActive(false);
     }
 
     private void OnDisable()
