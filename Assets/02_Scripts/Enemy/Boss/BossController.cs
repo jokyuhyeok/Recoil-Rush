@@ -205,8 +205,17 @@ public class BossController : MonoBehaviour
     {
         StopAllCoroutines();
         ResetFlashMaterial();
-        _commandQueue.Clear();
-        Rigidbody.linearVelocity = Vector2.zero;
+
+        if (_commandQueue != null)
+        {
+            _commandQueue.Clear();
+        }
+
+        if (Rigidbody != null)
+        {
+            Rigidbody.linearVelocity = Vector2.zero;
+        }
+
         StopBossSound();
     }
 
@@ -399,14 +408,24 @@ public class BossController : MonoBehaviour
         if (_rotatingLaserSkill != null) _rotatingLaserSkill.gameObject.SetActive(false);
 
         // 3. 물리력 초기화 및 초기 위치로 복귀
+        if (Rigidbody == null) return;
         Rigidbody.linearVelocity = Vector2.zero;
+
+        if (_stat == null) return;
         Rigidbody.gravityScale = _stat.HeavyGravity;
+
         LaserSequenceIndex = 0;
         transform.position = _initialPosition;
         _hasLandedOnSpawn = false;
 
         // 4. 애니메이션 초기화
-        Anim.Play("Idle");
+        if (Anim == null) return;
+
+        // 아직 애니메이터가 켜진 적이 없다면 Play를 무시하도록 처리
+        if (Anim.isActiveAndEnabled)
+        {
+            Anim.Play("Idle");
+        }
 
         // 5. 체력 원상복구
         BossHealth health = GetComponent<BossHealth>();
@@ -416,10 +435,6 @@ public class BossController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // =================================================================
-    // [신규 추가] 보스 사망 시 호출될 최후의 발악(보라색 폭주 + 늘줄늘줄) 코루틴
-    // 나중에 BossVFX로 옮기기 쉽게 빼두었습니다.
-    // =================================================================
     public IEnumerator PlayDeathVFX(float duration)
     {
         Rigidbody.linearVelocity = Vector2.zero;
