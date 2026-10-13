@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6372122995192928143}
   - component: {fileID: 2528856048913902020}
   m_Layer: 0
-  m_Name: HItGlitchVolumn
+  m_Name: HitGlitchVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
