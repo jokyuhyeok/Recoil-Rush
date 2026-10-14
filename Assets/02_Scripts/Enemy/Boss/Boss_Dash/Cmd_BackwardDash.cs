@@ -68,7 +68,6 @@ public class Cmd_BackwardDash : IBossCommand
         GameObject.Destroy(spark, 0.4f);
 
         boss.PlayBossSound(SoundEffectType.DASH_BOOSTER, true);
-        boss.PlayShakeHeavy(1.5f);
 
         float timer = 0f;
         float ghostTimer = 0f;

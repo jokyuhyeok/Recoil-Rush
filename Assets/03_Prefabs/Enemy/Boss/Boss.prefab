@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 1528791186144689551}
   - component: {fileID: 90324089730873121}
   - component: {fileID: 6688626903228502571}
+  - component: {fileID: -6086210623854527350}
   - component: {fileID: -9056046370644596006}
   - component: {fileID: 2004181214574245676}
   - component: {fileID: 5669560832414490759}
@@ -334,28 +335,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossController
   _stat: {fileID: 11400000, guid: f7a2362c13c08d342b77ad7d32544fe7, type: 2}
-  _spriteRenderer: {fileID: 8764389557059062983}
-  _flashMaterial: {fileID: 2100000, guid: b0811a1e32dc2054f8dc74b9a0edc51e, type: 2}
-  _vfxGroup: {fileID: 7727587910080429962}
-  _idleSmokeEffect: {fileID: 8526065223123070815, guid: 0003816548d51724bb497f78414b307d, type: 3}
-  _dashChargeEffect: {fileID: 2352644068967379297}
-  _dashFireEffect: {fileID: 7226125380590200559}
-  _hitWallEffectPrefab: {fileID: 2054533921475329168, guid: 18c5a5f7c813ff24faa24718f4682011, type: 3}
-  _handSwirlEffect: {fileID: 2345604356229402526}
   _firePoints:
   - {fileID: 4042267712204740403}
   - {fileID: 9121998829106011764}
   _laserFirePoint: {fileID: 726706733528176045}
   _rotatingLaserSkill: {fileID: -9056046370644596006}
-  _redSphereEffect: {fileID: 3337297669749920003}
   _centerAirPosition: {fileID: 3309413868886134644, guid: 18c5a5f7c813ff24faa24718f4682011, type: 3}
-  _lightShakeSource: {fileID: -8117009332338496744}
-  _heavyShakeSource: {fileID: -618275684480134859}
-  _earthquakeShakeSource: {fileID: -7184792573340129130}
-  _hitShakeForce: 0.5
-  _wallSlamForce: 2
-  _phaseChangeForce: 1.5
-  _deathEarthquakeForce: 3.5
 --- !u!114 &6688626903228502571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,11 +354,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHealth
   _stat: {fileID: 11400000, guid: f7a2362c13c08d342b77ad7d32544fe7, type: 2}
-  _healthUI: {fileID: 0}
+  _healthUI: {fileID: 8160220669115418154, guid: ee881d222d0953e4d90a2eda85233e7e, type: 3}
   _controller: {fileID: 90324089730873121}
   _massiveExplosionPrefab: {fileID: 372007812672291482, guid: b945a7da370626b4e992b8170dc4245c, type: 3}
   _deathDuration: 3.5
   _clearCutsceneDirector: {fileID: 0}
+--- !u!114 &-6086210623854527350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788299274323883459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a559b6a6ad59f694a9c0f0b19be861a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossVFX
+  _vfxGroup: {fileID: 7727587910080429962}
+  IdleSmokeEffect: {fileID: 8526065223123070815, guid: 0003816548d51724bb497f78414b307d, type: 3}
+  DashChargeEffect: {fileID: 7332143042662049831, guid: 0bbfcaa9333bc064383e4e688ae975e1, type: 3}
+  DashFireEffect: {fileID: 2480342344208097743, guid: 02f57222d032608478b4625ffcec3813, type: 3}
+  HitWallEffectPrefab: {fileID: 2054533921475329168, guid: 18c5a5f7c813ff24faa24718f4682011, type: 3}
+  HandSwirlEffect: {fileID: 789629058853635104, guid: e5d9fc29ffaf45b4eafce46ce9f95fdb, type: 3}
+  RedSphereEffect: {fileID: 4689999793502652485, guid: 9f15f75368d310644b831f6be9c0f1d4, type: 3}
+  _spriteRenderer: {fileID: 8764389557059062983}
+  _flashMaterial: {fileID: 2100000, guid: b0811a1e32dc2054f8dc74b9a0edc51e, type: 2}
+  _lightShakeSource: {fileID: -8117009332338496744}
+  _heavyShakeSource: {fileID: -618275684480134859}
+  _earthquakeShakeSource: {fileID: -7184792573340129130}
+  _hitShakeForce: 0.5
+  _wallSlamForce: 2
+  _phaseChangeForce: 1.5
+  _deathEarthquakeForce: 3.5
 --- !u!114 &-9056046370644596006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,11 +781,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5d9fc29ffaf45b4eafce46ce9f95fdb, type: 3}
---- !u!1 &2345604356229402526 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 789629058853635104, guid: e5d9fc29ffaf45b4eafce46ce9f95fdb, type: 3}
-  m_PrefabInstance: {fileID: 3060215523291007934}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3954033346553430564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2064792329565784474, guid: e5d9fc29ffaf45b4eafce46ce9f95fdb, type: 3}
@@ -839,11 +847,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bbfcaa9333bc064383e4e688ae975e1, type: 3}
---- !u!1 &2352644068967379297 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7332143042662049831, guid: 0bbfcaa9333bc064383e4e688ae975e1, type: 3}
-  m_PrefabInstance: {fileID: 5001041155312572742}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5704779116661928905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 742027474567735951, guid: 0bbfcaa9333bc064383e4e688ae975e1, type: 3}
@@ -915,11 +918,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1233650336752723966, guid: 02f57222d032608478b4625ffcec3813, type: 3}
   m_PrefabInstance: {fileID: 5054068504737695520}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7226125380590200559 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2480342344208097743, guid: 02f57222d032608478b4625ffcec3813, type: 3}
-  m_PrefabInstance: {fileID: 5054068504737695520}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8018183572710971718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -984,11 +982,6 @@ PrefabInstance:
 --- !u!4 &2972915473909072587 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5046184037640805261, guid: 9f15f75368d310644b831f6be9c0f1d4, type: 3}
-  m_PrefabInstance: {fileID: 8018183572710971718}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3337297669749920003 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4689999793502652485, guid: 9f15f75368d310644b831f6be9c0f1d4, type: 3}
   m_PrefabInstance: {fileID: 8018183572710971718}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8078903236736357810

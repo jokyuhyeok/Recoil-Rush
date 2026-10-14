@@ -91,7 +91,6 @@ public class Cmd_ForwardDash : IBossCommand
 
                 boss.StopBossSound();
                 AudioManager.Instance.PlaySFX(SoundEffectType.DASH_CRASH);
-                boss.PlayShakeHeavy(3.0f); // 강한 진동
 
                 if (boss.GameFeel != null)
                 {
