@@ -73,6 +73,8 @@ public class BossController : MonoBehaviour
     private WaitForSeconds _hitFlashDelay = new WaitForSeconds(0.05f);
     private WaitForSeconds _phaseBlinkDelay = new WaitForSeconds(0.3f);
 
+    private GameObject _laserObject;
+
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
@@ -271,6 +273,11 @@ public class BossController : MonoBehaviour
             Rigidbody.linearVelocity = Vector2.zero;
         }
 
+        if (_laserObject != null)
+        {
+            Destroy(_laserObject);
+        }
+
         StopBossSound();
     }
 
@@ -314,8 +321,8 @@ public class BossController : MonoBehaviour
         LaserSequenceIndex++;
 
         Vector3 spawnPosition = _laserFirePoint.position + new Vector3(0, offsetY, 0);
-        GameObject laserObject = Instantiate(_stat.BossLaserPrefab, spawnPosition, Quaternion.identity);
-        BossLaser laser = laserObject.GetComponent<BossLaser>();
+        _laserObject = Instantiate(_stat.BossLaserPrefab, spawnPosition, Quaternion.identity);
+        BossLaser laser = _laserObject?.GetComponent<BossLaser>();
 
         if (laser != null)
         {
