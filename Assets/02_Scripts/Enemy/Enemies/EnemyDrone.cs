@@ -10,7 +10,6 @@ public class EnemyDrone : EnemyBase
 
     [Header("카메라 흔들림 강도")]
     [SerializeField] private float _knockbackShakeForce = 0.3f; // 피격 시
-
     [SerializeField] private float _deathShakeForce = 3.0f; // 사망 폭발 시
     [SerializeField] private float _shootShakeForce = 0.8f; // 사격 시
 
@@ -206,6 +205,18 @@ public class EnemyDrone : EnemyBase
 
             if (anim != null) anim.SetTrigger("Die");
             if (rb == null) return;
+
+            CancelCharge(); // 차징 중이라면 취소하고 소리도 끕니다.
+            AudioClip chargeClip = AudioManager.Instance.GetSfxClip(SoundEffectType.SHOOT_CHARGE);
+
+            if (chargeClip == null) return;
+
+            AudioSource[] sources = AudioManager.Instance.GetComponents<AudioSource>();
+            foreach (AudioSource source in sources)
+            {
+                if (!source.isPlaying || source.clip != chargeClip) continue;
+                source.Stop();
+            }
 
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.gravityScale = 2f;
