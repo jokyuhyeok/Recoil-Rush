@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine.Rendering;
 
 public class BossGameFeel : MonoBehaviour
@@ -15,9 +16,8 @@ public class BossGameFeel : MonoBehaviour
     [SerializeField] private float _ghostRelayInterval = 0.05f;
 
     [Header("포스트 프로세싱")]
-    [SerializeField] private GameObject _glitchVolumeObject;
+    [SerializeField] private CinemachineVolumeSettings _glitchVolumeSettings;
 
-    private Volume _glitchVolume;
     private Coroutine _glitchCoroutine;
     private Coroutine _hitStopCoroutine;
     private WaitForSecondsRealtime _glitchHoldWait = new WaitForSecondsRealtime(0.05f);
@@ -30,8 +30,10 @@ public class BossGameFeel : MonoBehaviour
 
     private void Awake()
     {
-        if (_glitchVolumeObject == null) _glitchVolumeObject = GameObject.Find("HitGlitchVolume");
-        if (_glitchVolumeObject != null) _glitchVolume = _glitchVolumeObject.GetComponent<Volume>();
+        if (_glitchVolumeSettings == null)
+        {
+            Debug.LogError("볼륨 설정 누락. 시네머신 볼륨 세팅 익스텐션을 연결해주세요.");
+        }
     }
 
     private void Start()
@@ -98,7 +100,7 @@ public class BossGameFeel : MonoBehaviour
 
     public void PlayGlitchEffect(float duration = 0.2f)
     {
-        if (_glitchVolume == null) return;
+        if (_glitchVolumeSettings == null) return;
         if (_glitchCoroutine != null) StopCoroutine(_glitchCoroutine);
         _glitchCoroutine = StartCoroutine(GlitchRoutine(duration));
     }
@@ -205,9 +207,9 @@ public class BossGameFeel : MonoBehaviour
 
     private IEnumerator GlitchRoutine(float duration)
     {
-        if (_glitchVolume == null) yield break;
+        if (_glitchVolumeSettings == null) yield break;
 
-        _glitchVolume.weight = 1f;
+        _glitchVolumeSettings.Weight = 1f;
         yield return _glitchHoldWait;
 
         float elapsed = 0f;
@@ -217,10 +219,10 @@ public class BossGameFeel : MonoBehaviour
         while (elapsed < fadeTime)
         {
             elapsed += Time.unscaledDeltaTime;
-            _glitchVolume.weight = Mathf.Lerp(1f, 0f, elapsed / fadeTime);
+            _glitchVolumeSettings.Weight = Mathf.Lerp(1f, 0f, elapsed / fadeTime);
             yield return null;
         }
 
-        _glitchVolume.weight = 0.001f;
+        _glitchVolumeSettings.Weight = 0.001f;
     }
 }
