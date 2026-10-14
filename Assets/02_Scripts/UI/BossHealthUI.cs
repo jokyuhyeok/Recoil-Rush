@@ -62,6 +62,15 @@ public class BossHealthUI : MonoBehaviour
         _expandCoroutine = StartCoroutine(ExpandRoutine());
     }
 
+    public void ResetHealth()
+    {
+        if (_mainBar == null || _delayBar == null)
+            return;
+
+        _mainBar.fillAmount = 1f;
+        _delayBar.fillAmount = 1f;
+    }
+
     public void UpdateHealth(int currentHp, int maxHp)
     {
         _targetFill = Mathf.Clamp01((float)currentHp / maxHp);
