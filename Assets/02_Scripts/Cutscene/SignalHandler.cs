@@ -6,4 +6,9 @@ public class SignalHandler : MonoBehaviour
     {
         GameManager.Instance?.SetCutsceneMode(isCutsceneMode);
     }
+
+    public void StartEndingBGM()
+    {
+        AudioManager.Instance.PlayBGM(BackgroundMusicType.ENDING);
+    }
 }

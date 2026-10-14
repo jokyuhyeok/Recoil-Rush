@@ -13,16 +13,18 @@ public class AudioManager : MonoBehaviour
 
     private Dictionary<BackgroundMusicType, AudioClip> _bgmClips;
     private AudioSource _bgmSource;
+    private Coroutine _bgmFadeCoroutine;
+
     private float _bgmVolume;
     public float BGMVolume => _bgmVolume;
 
     [Header("SFX Settings")]
     [SerializeField] private SoundEffectData[] _sfxDatas;
-
     [SerializeField] private int _initPoolSize = 10;
 
     private Dictionary<SoundEffectType, AudioClip> _sfxClips;
     private Queue<AudioSource> _audioSourcePool;
+
     private float _sfxVolume;
     public float SFXVolume => _sfxVolume;
 
@@ -36,7 +38,6 @@ public class AudioManager : MonoBehaviour
 
     private bool _isDeathAudioPlaying = false;
 
-
     // BGM 종류별 마지막 재생 위치
     private Dictionary<BackgroundMusicType, float> _bgmSavedTimes
         = new Dictionary<BackgroundMusicType, float>();
@@ -47,6 +48,7 @@ public class AudioManager : MonoBehaviour
     // 사망 중 BGM 변경 요청이 들어왔을 때 저장
     private BackgroundMusicType? _pendingBGMType;
     public bool IsDeathAudioPlaying => _isDeathAudioPlaying;
+
 
     private void Awake()
     {
@@ -155,6 +157,10 @@ public class AudioManager : MonoBehaviour
         if (audioClip == null)
             return;
 
+        // 같은 BGM이 이미 재생 중이면 유지
+        if (_currentBGMType == bgmType && _bgmSource.isPlaying)
+            return;
+
         // 사망 중에는 부활 후 사용할 음악만 변경
         if (_isDeathAudioPlaying)
         {
@@ -162,9 +168,12 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        // 같은 BGM이 이미 재생 중이면 유지
-        if (_currentBGMType == bgmType && _bgmSource.isPlaying)
-            return;
+        if (_bgmFadeCoroutine != null)
+        {
+            StopCoroutine(_bgmFadeCoroutine);
+            _bgmFadeCoroutine = null;
+            _bgmSource.volume = _bgmVolume;
+        }
 
         // 이전 BGM의 재생 위치 저장
         if (_currentBGMType.HasValue &&
@@ -204,10 +213,52 @@ public class AudioManager : MonoBehaviour
         );
     }
 
+    public void StopBGM()
+    {
+        if (_bgmFadeCoroutine != null)
+        {
+            StopCoroutine(_bgmFadeCoroutine);
+            _bgmFadeCoroutine = null;
+        }
+
+        if (!_bgmSource.isPlaying)
+            return;
+
+        _bgmFadeCoroutine = StartCoroutine(FadeOutBGM(1.2f));
+    }
+
     public void SetBGMVolume(float volume)
     {
         _bgmVolume = volume;
         _bgmSource.volume = volume;
+    }
+
+    private IEnumerator FadeOutBGM(float fadeTime)
+    {
+        float timer = 0f;
+        float startVolume = _bgmSource.volume;
+
+        while (timer < fadeTime)
+        {
+            timer += Time.unscaledDeltaTime;
+
+            float progress = Mathf.Clamp01(timer / fadeTime);
+            _bgmSource.volume = Mathf.Lerp(startVolume, 0f, progress);
+
+            yield return null;
+        }
+
+        _bgmSource.Stop();
+        _bgmSource.clip = null;
+        _bgmSource.volume = _bgmVolume;
+
+        if (_currentBGMType.HasValue)
+        {
+            _bgmSavedTimes.Remove(_currentBGMType.Value);
+        }
+
+        _currentBGMType = null;
+        _bgmFadeCoroutine = null;
     }
 
     // ==============================
