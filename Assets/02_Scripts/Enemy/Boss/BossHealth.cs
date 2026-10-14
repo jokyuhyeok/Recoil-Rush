@@ -168,7 +168,7 @@ public class BossHealth : MonoBehaviour, IDamageable
 
         if (_healthUI != null)
         {
-            _healthUI.UpdateHealth(_currentHp, _stat.MaxHp);
+            _healthUI.ResetHealth();
         }
     }
 }
