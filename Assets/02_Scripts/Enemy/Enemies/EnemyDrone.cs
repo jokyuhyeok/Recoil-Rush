@@ -233,8 +233,10 @@ public class EnemyDrone : EnemyBase
         {
             if (_impulseSource != null)
             {
-                Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
-                _impulseSource.GenerateImpulse(randomDir * _deathShakeForce);
+                // 랜덤 벡터를 빼고, X축과 Y축 모두에 최대 에너지를 1:1로 주입하여 
+                // 특정 방향이 아닌 전방위(상하좌우 대각선 전체)로 화면이 진동하도록 만듭니다.
+                Vector3 omniDir = new Vector3(1f, 1f, 0f).normalized;
+                _impulseSource.GenerateImpulse(omniDir * _deathShakeForce);
             }
 
             if (_droneStatDataSo.ExplosionPrefab == null)

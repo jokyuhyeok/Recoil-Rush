@@ -92,7 +92,7 @@ public class BossHealth : MonoBehaviour, IDamageable
             _controller.PlayBossSoundOneShot(SoundEffectType.DASH_PREPARATION);
 
             // 시각적 사망 연출은 VFX 컨트롤러로 위임
-            yield return StartCoroutine(_controller.VFX.PlayDeathVFX(_deathDuration));
+            yield return StartCoroutine(_controller.PlayDeathVFX(_deathDuration));
         }
         else
         {

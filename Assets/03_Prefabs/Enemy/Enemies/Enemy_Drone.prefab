@@ -242,6 +242,9 @@ MonoBehaviour:
   _firePoint: {fileID: 8995027957226777765}
   _chargeEffectObject: {fileID: 7924090901211446255}
   _fallingSparkObject: {fileID: 3667090793643366170}
+  _knockbackShakeForce: 0.3
+  _deathShakeForce: 2.5
+  _shootShakeForce: 0.8
 --- !u!114 &5909180385471894470
 MonoBehaviour:
   m_ObjectHideFlags: 0

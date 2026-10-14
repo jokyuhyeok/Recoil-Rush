@@ -39,7 +39,7 @@ public class Cmd_BackwardDash : IBossCommand
 
         Debug.Log($"<color=orange>보스: {_chargeTime}초 동안 후진 준비...</color>");
 
-        boss.PlayShakeEarthquake(0.3f);
+        boss.PlayShakeEarthquake(0.2f);
 
         if (boss.GameFeel != null)
         {
@@ -77,7 +77,7 @@ public class Cmd_BackwardDash : IBossCommand
             if ((directionX < 0 && boss.IsHittingLeftWall) || (directionX > 0 && boss.IsHittingRightWall))
             {
                 Debug.Log("<color=orange>보스: 등 뒤의 벽에 박았다!</color>");
-                boss.PlayShakeHeavy(2.5f);
+                boss.PlayShakeHeavy(0.5f);
 
                 boss.StopBossSound();
                 AudioManager.Instance.PlaySFX(SoundEffectType.BACKDASH_CRASH);
@@ -97,7 +97,6 @@ public class Cmd_BackwardDash : IBossCommand
             ghostTimer += Time.deltaTime;
             if (ghostTimer >= _ghostInterval)
             {
-                boss.PlayShakeLight(0.2f);
                 boss.SpawnGhost();
                 ghostTimer = 0f;
             }

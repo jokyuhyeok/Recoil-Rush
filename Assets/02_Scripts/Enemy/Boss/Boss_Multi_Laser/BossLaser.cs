@@ -10,16 +10,19 @@ public class BossLaser : MonoBehaviour
     [Header("레이저 관련 프리팹 (에디터에서 연결)")]
     [Tooltip("에너지가 모이는 구체 애니메이션 프리팹")]
     [SerializeField] private GameObject _chargeOrbectPrefab;
+
     [Tooltip("길이가 늘어나는 얇은 경고선 프리팹")]
     [SerializeField] private GameObject _warningLaserPrefab;
+
     [Tooltip("실제 데미지를 주는 굵은 레이저 프리팹")]
     [SerializeField] private GameObject _mainLaserPrefab;
+
     [SerializeField] private float _laserLength = 40f;
     [SerializeField, Range(0f, 1f)] private float _flashIntensity = 0.3f;
     [SerializeField] private float _flashDuration = 0.05f;
 
-    [SerializeField] private float _warningShakeForce = 0.3f; // 경고선 지이잉
-    [SerializeField] private float _fireShakeForce = 2.5f; // 발사 콰광!
+    [SerializeField] private float _warningShakeForce = 0.1f; // 경고선 지이잉
+    [SerializeField] private float _fireShakeForce = 0.8f; // 발사 콰광!
 
     private CinemachineImpulseSource _impulseSource;
 
@@ -34,6 +37,7 @@ public class BossLaser : MonoBehaviour
 
     // 메모리 최적화용 대기 객체
     private WaitForSeconds _flashWait;
+    private BossGameFeel _gameFeel;
 
     private void Awake()
     {
@@ -43,6 +47,7 @@ public class BossLaser : MonoBehaviour
 
         _flashWait = new WaitForSeconds(_flashDuration);
         _impulseSource = GetComponent<CinemachineImpulseSource>();
+        _gameFeel = FindFirstObjectByType<BossGameFeel>();
     }
 
     public void FireLaser(float warningTime, float beamTime)
