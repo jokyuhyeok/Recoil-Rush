@@ -82,6 +82,7 @@ public class BossHealth : MonoBehaviour, IDamageable
     private IEnumerator DeathRoutine()
     {
         AudioManager.Instance.PlaySFX(SoundEffectType.BOSS_DEATH);
+        AudioManager.Instance.StopBGM();
 
         if (_controller != null)
         {

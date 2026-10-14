@@ -23,12 +23,12 @@ public class FireShot : MonoBehaviour
 
     private void Start()
     {
+        if (GameManager.Instance != null)
+        {
+            _gameManager = GameManager.Instance;
+        }
+
         StartCoroutine(FireRoutine());
-
-        if (GameManager.Instance == null)
-            return;
-
-        _gameManager = GameManager.Instance;
     }
 
     private IEnumerator FireRoutine()
