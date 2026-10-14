@@ -32,6 +32,16 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        RespawnManager.Instance.OnRespawnEvent += ResetBullet;
+    }
+
+    private void OnDisable()
+    {
+        RespawnManager.Instance.OnRespawnEvent -= ResetBullet;
+    }
+
     private void FixedUpdate()
     {
         _previousPosition = _rigidbody.position;
@@ -141,5 +151,10 @@ public class Bullet : MonoBehaviour
                 player.AddRecoil(recoil);
             }
         }
+    }
+
+    private void ResetBullet()
+    {
+        Destroy(gameObject);
     }
 }
