@@ -101,10 +101,17 @@ public class BossController : MonoBehaviour
 
     private void OnEnable()
     {
+        RespawnManager.Instance.OnRespawnEvent += ResetBoss;
+
         if (GameManager.Instance.IsCutscene)
             return;
 
         SetPhase(1);
+    }
+
+    private void OnDisable()
+    {
+        RespawnManager.Instance.OnRespawnEvent -= ResetBoss;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -450,6 +457,9 @@ public class BossController : MonoBehaviour
 
     public void ResetBoss()
     {
+        if (!_spriteRenderer.enabled || GameManager.Instance.IsCutscene)
+            return;
+
         // 1. 모든 공격 및 사운드 정지
         StopAllAttacks();
 
@@ -484,8 +494,7 @@ public class BossController : MonoBehaviour
 
         if (_rotatingLaserSkill != null) _rotatingLaserSkill.enabled = true;
 
-        // 6. 보스를 꺼서 숨김 (플레이어가 다시 방에 들어오면 트리거가 켜줌 -> OnEnable 실행)
-        gameObject.SetActive(false);
+        SetPhase(1);
     }
 
     public IEnumerator PlayDeathVFX(float duration)
