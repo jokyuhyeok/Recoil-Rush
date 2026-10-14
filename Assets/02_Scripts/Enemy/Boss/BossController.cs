@@ -456,7 +456,7 @@ public class BossController : MonoBehaviour
         // 2. 켜져있던 이펙트 끄기
         if (_redSphereEffect != null) _redSphereEffect.SetActive(false);
         if (_handSwirlEffect != null) _handSwirlEffect.SetActive(false);
-        if (_rotatingLaserSkill != null) _rotatingLaserSkill.gameObject.SetActive(false);
+        if (_rotatingLaserSkill != null) _rotatingLaserSkill.enabled = false;
 
         // 3. 물리력 초기화 및 초기 위치로 복귀
         if (Rigidbody == null) return;
@@ -482,14 +482,33 @@ public class BossController : MonoBehaviour
         BossHealth health = GetComponent<BossHealth>();
         if (health != null) health.ResetHealth();
 
+        if (_rotatingLaserSkill != null) _rotatingLaserSkill.enabled = true;
+
         // 6. 보스를 꺼서 숨김 (플레이어가 다시 방에 들어오면 트리거가 켜줌 -> OnEnable 실행)
         gameObject.SetActive(false);
     }
 
     public IEnumerator PlayDeathVFX(float duration)
     {
-        Rigidbody.linearVelocity = Vector2.zero;
-        Rigidbody.gravityScale = 0f;
+        // 1. 모든 공격 및 사운드 정지
+        StopAllAttacks();
+
+        // 2. 켜져있던 이펙트 끄기
+        if (_redSphereEffect != null) _redSphereEffect.SetActive(false);
+        if (_handSwirlEffect != null) _handSwirlEffect.SetActive(false);
+        if (_rotatingLaserSkill != null) _rotatingLaserSkill.enabled = false;
+
+        // 3. 물리력 초기화
+        if (Rigidbody != null)
+        {
+            Rigidbody.linearVelocity = Vector2.zero;
+        }
+
+        if (_stat != null)
+        {
+            Rigidbody.gravityScale = _stat.HeavyGravity;
+        }
+
 
         if (GameFeel != null) GameFeel.PlayGlitchEffect(duration);
         PlayShakeEarthquake(_deathEarthquakeForce);
