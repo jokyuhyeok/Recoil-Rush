@@ -243,7 +243,7 @@ MonoBehaviour:
   _chargeEffectObject: {fileID: 7924090901211446255}
   _fallingSparkObject: {fileID: 3667090793643366170}
   _knockbackShakeForce: 0.3
-  _deathShakeForce: 2.5
+  _deathShakeForce: 4
   _shootShakeForce: 0.8
 --- !u!114 &5909180385471894470
 MonoBehaviour:
@@ -267,7 +267,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     ImpulseDuration: 0.2
-    ImpulseType: 1
+    ImpulseType: 0
     DissipationRate: 0.25
     RawSignal: {fileID: 0}
     AmplitudeGain: 1
@@ -295,7 +295,7 @@ MonoBehaviour:
     ImpactRadius: 100
     DirectionMode: 0
     DissipationMode: 2
-    DissipationDistance: 15
+    DissipationDistance: 50
     PropagationSpeed: 343
   DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1001 &6505849943723503036
