@@ -6095,7 +6095,7 @@ MonoBehaviour:
   - {fileID: 1074560874}
   - {fileID: 836604794}
   _appearTime: 0.5
-  _interval: 3.5
+  _interval: 2
   _lastDelay: 2
   _startScale: 0.85
   _continueText: {fileID: 1959609340}
