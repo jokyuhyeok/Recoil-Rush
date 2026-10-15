@@ -1494,6 +1494,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 218747472}
     - target: {fileID: 90324089730873121, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
+      propertyPath: _redSphereEffect
+      value: 
+      objectReference: {fileID: 1354551469}
+    - target: {fileID: 90324089730873121, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
       propertyPath: CenterAirPosition
       value: 
       objectReference: {fileID: 749531139}
@@ -30799,6 +30803,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5019961249087033880, guid: 77cfe00ba6a91aa458655af3dd75f362, type: 3}
   m_PrefabInstance: {fileID: 1352069039}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1354551469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3337297669749920003, guid: 7a048a27f46dacd4c98bcdf1dd957fd9, type: 3}
+  m_PrefabInstance: {fileID: 218747468}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1376041910
 GameObject:
