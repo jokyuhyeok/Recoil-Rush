@@ -73,7 +73,7 @@ public class Cmd_ForwardDash : IBossCommand
 
         boss.DashFireEffect.SetActive(true);
         boss.PlayBossSound(SoundEffectType.DASH_BOOSTER, true);
-        boss.PlayShakeHeavy(2.0f);
+        boss.PlayShakeHeavy(0.3f);
 
         float timer = 0f;
         float ghostTimer = 0f;
@@ -91,7 +91,6 @@ public class Cmd_ForwardDash : IBossCommand
 
                 boss.StopBossSound();
                 AudioManager.Instance.PlaySFX(SoundEffectType.DASH_CRASH);
-                boss.PlayShakeHeavy(3.0f); // 강한 진동
 
                 if (boss.GameFeel != null)
                 {
@@ -110,7 +109,6 @@ public class Cmd_ForwardDash : IBossCommand
             ghostTimer += Time.deltaTime;
             if (ghostTimer >= _ghostInterval)
             {
-                boss.PlayShakeLight(0.3f);
                 boss.SpawnGhost();
                 ghostTimer = 0f;
             }

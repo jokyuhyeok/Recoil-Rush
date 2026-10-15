@@ -109,6 +109,7 @@ public class BossLaserTest : MonoBehaviour
         if (_bossCache != null)
         {
             _bossCache.PlayBossSound(SoundEffectType.ROTATING_LASER_LOOP, true);
+            _bossCache.PlayShakeHeavy(2.0f);
         }
 
         _flashCoroutine = StartCoroutine(LaserFlashRoutine());
@@ -116,17 +117,6 @@ public class BossLaserTest : MonoBehaviour
 
         while (rotatedAngle < targetAngle)
         {
-            shakeTimer += Time.deltaTime;
-            if (shakeTimer >= 0.1f)
-            {
-                if (_bossCache != null)
-                {
-                    _bossCache.PlayShakeHeavy(0.8f);
-                }
-
-                shakeTimer = 0f;
-            }
-
             // Mathf.Min: 마지막 프레임에 목표 각도를 넘지 않도록 맞춤 / 더 낮은 값을 선택하기 때문(기억이 맞다면)
             rotatedAngle = Mathf.Min(rotatedAngle + _laserSpeed * Time.deltaTime, targetAngle);
 

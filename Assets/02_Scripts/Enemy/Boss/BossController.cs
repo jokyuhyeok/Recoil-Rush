@@ -328,8 +328,6 @@ public class BossController : MonoBehaviour
         {
             laser.FireLaser(_stat.LaserWarningTime, _stat.LaserBeamTime);
         }
-
-        PlayShakeHeavy(_wallSlamForce * 0.8f);
     }
 
     public void SpawnGhost()
@@ -467,6 +465,7 @@ public class BossController : MonoBehaviour
         if (!_spriteRenderer.enabled || GameManager.Instance.IsCutscene)
             return;
 
+        CinemachineImpulseManager.Instance.Clear();
         // 1. 모든 공격 및 사운드 정지
         StopAllAttacks();
 

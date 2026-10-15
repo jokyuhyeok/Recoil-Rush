@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class BossBullet : MonoBehaviour
 {
     [SerializeField] private GameObject _explosionPrefab;
-    [SerializeField] private float _explosionShakeForce = 0.8f;
+    [SerializeField] private float _explosionShakeForce = 0.4f;
 
     private Rigidbody2D _rb;
     private CinemachineImpulseSource _impulseSource;
