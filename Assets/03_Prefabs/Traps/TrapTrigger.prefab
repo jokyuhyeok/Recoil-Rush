@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5798202260457173010}
   - component: {fileID: 2483716079634338440}
   - component: {fileID: -3920978594244702400}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TrapTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

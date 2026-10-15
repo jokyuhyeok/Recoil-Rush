@@ -352,7 +352,7 @@ public class Player : MonoBehaviour
         if (_dieEffect != null)
         {
             _dieEffect.transform.SetParent(null);
-            _dieEffect.transform.position = transform.position;
+            _dieEffect.transform.position = transform.position + new Vector3(0f, 0.25f, 0f);
 
             _dieEffect.Stop(
                 true,

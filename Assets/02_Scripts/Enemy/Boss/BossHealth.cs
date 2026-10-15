@@ -123,6 +123,7 @@ public class BossHealth : MonoBehaviour, IDamageable
     {
         // 1. 사망 사운드 재생 (매니저 바구니 사용)
         AudioManager.Instance.PlaySFX(SoundEffectType.BOSS_DEATH);
+        AudioManager.Instance.StopBGM();
 
         // 컨트롤러에 새로 만든 보라색 폭주 코루틴을 실행하고 끝날 때까지 대기
         if (_controller != null)
@@ -167,7 +168,7 @@ public class BossHealth : MonoBehaviour, IDamageable
 
         if (_healthUI != null)
         {
-            _healthUI.UpdateHealth(_currentHp, _stat.MaxHp);
+            _healthUI.ResetHealth();
         }
     }
 }

@@ -27,7 +27,10 @@ public class ReloadUI : MonoBehaviour
     private void Update()
     {
         if (_gameManager.IsCutscene)
+        {
+            _reloadUIObject.SetActive(false);
             return;
+        }
 
         bool isReloading = _player.IsReloading;
 
