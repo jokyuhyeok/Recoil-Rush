@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2625037076571206623}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_LongAttack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,8 +40,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7845896963415464143}
-  m_Layer: 0
-  m_Name: Point_LongAttack3_1
+  m_Layer: 8
+  m_Name: Point_LongAttack3.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 482534062708634803}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_LongAttack5_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1527550737452213005}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Drone5_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 2381352305368415657}
   - component: {fileID: 6291087853780725779}
   - component: {fileID: 327317489857748808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnTrigger_Zone6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ Transform:
   m_GameObject: {fileID: 1470618438646260972}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.67738, y: -7.8416004, z: 0}
+  m_LocalPosition: {x: 3.69, y: -5.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -192,7 +192,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.6215591, y: 0.020874023}
+  m_Offset: {x: -0.6970763, y: 1.513073}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -202,7 +202,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6.538574, y: 1.626236}
+  m_Size: {x: 2.2868605, y: 6.2955475}
   m_EdgeRadius: 0
 --- !u!114 &327317489857748808
 MonoBehaviour:
@@ -228,7 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 46807249057676774}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_LongAttack4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8874794288396433522}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Drone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7930198122536902500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnTriggers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,18 +305,82 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2799223945157894907}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.75262, y: -13.3584, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.61738, y: -1.2584, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1524234666481591717}
   - {fileID: 389717073033047004}
   - {fileID: 3506319923300614224}
+  - {fileID: 5317387432209709357}
+  - {fileID: 4507316045211205668}
   - {fileID: 2810937060783011794}
   - {fileID: 5152320619775232684}
   - {fileID: 2381352305368415657}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2884651309881930723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4007552977764087982}
+  m_Layer: 8
+  m_Name: Point_Machinegun3-1.1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4007552977764087982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2884651309881930723}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.7, y: -4.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4507316045211205668}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2906644550870215529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2785327093189895714}
+  m_Layer: 8
+  m_Name: Point_Machinegun3-1.2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2785327093189895714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906644550870215529}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.7, y: -2.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5317387432209709357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3091392431764881584
 GameObject:
@@ -327,7 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7298166071954071988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Machinegun2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7098004800426802393}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Drone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +455,7 @@ GameObject:
   - component: {fileID: 5152320619775232684}
   - component: {fileID: 5914231589673750618}
   - component: {fileID: 9179828493220143818}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnTrigger_Zone5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,6 +554,37 @@ MonoBehaviour:
     SpawnPoint: {fileID: 8891652856844006992}
   - EnemyTag: Drone
     SpawnPoint: {fileID: 1527550737452213005}
+--- !u!1 &4089524967998248165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3263002942676987112}
+  m_Layer: 8
+  m_Name: Point_Drone3-1.2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3263002942676987112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4089524967998248165}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.1, y: -0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4507316045211205668}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4215709856609481197
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7275682857419951008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Drone3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8891652856844006992}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Drone5_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +658,7 @@ GameObject:
   - component: {fileID: 2810937060783011794}
   - component: {fileID: 8865423381341492006}
   - component: {fileID: 1178090898473882512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnTrigger_Zone4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -665,7 +760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8019925685808062349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Machinegun4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +793,7 @@ GameObject:
   - component: {fileID: 1524234666481591717}
   - component: {fileID: 7408529448162857227}
   - component: {fileID: 6743306541370984968}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnTrigger_Zone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +809,7 @@ Transform:
   m_GameObject: {fileID: 5533357834137255034}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.392621, y: 47.9284, z: 0}
+  m_LocalPosition: {x: 15.12, y: 47.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -757,7 +852,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.3925194, y: 0.02094078}
+  m_Offset: {x: 0.18919873, y: -0.057655334}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -767,7 +862,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.7850387, y: 1.0837593}
+  m_Size: {x: 0.62160254, y: 1.2409515}
   m_EdgeRadius: 0
 --- !u!114 &6743306541370984968
 MonoBehaviour:
@@ -797,7 +892,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2118901262712240326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_LongAttack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -828,7 +923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4221290840416371178}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Machinegun5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -859,7 +954,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5013508580961766372}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_LongAttack4_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -881,6 +976,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2810937060783011794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6657960107896845156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4528217563230169471}
+  m_Layer: 8
+  m_Name: Point_Machinegun3-1.2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4528217563230169471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6657960107896845156}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.7, y: -2.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4507316045211205668}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6917216346004819240
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +1016,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3854952049803011281}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_LongAttack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -912,6 +1038,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 389717073033047004}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7203763194438693970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4714161615963482652}
+  m_Layer: 8
+  m_Name: Point_Drone3-1.1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4714161615963482652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203763194438693970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -19.1, y: 1.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5317387432209709357}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7481474498711838047
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +1078,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2329320078948070465}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Machinegun3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -943,6 +1100,141 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3506319923300614224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7502297301595858420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4507316045211205668}
+  - component: {fileID: 8160299932151152603}
+  - component: {fileID: 5474421153863470835}
+  m_Layer: 8
+  m_Name: SpawnTrigger_Zone3-1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4507316045211205668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7502297301595858420}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 40.83, y: 31.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7933454376351485086}
+  - {fileID: 3263002942676987112}
+  - {fileID: 4528217563230169471}
+  - {fileID: 4007552977764087982}
+  m_Father: {fileID: 7930198122536902500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &8160299932151152603
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7502297301595858420}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.9194696, y: 0.020874977}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.1824946, y: 1.9491978}
+  m_EdgeRadius: 0
+--- !u!114 &5474421153863470835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7502297301595858420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d5c161d889aaa48836e8e0010ce6a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnTrigger
+  _spawnList:
+  - EnemyTag: Machinegun
+    SpawnPoint: {fileID: 4007552977764087982}
+  - EnemyTag: Machinegun
+    SpawnPoint: {fileID: 4528217563230169471}
+  - EnemyTag: Drone
+    SpawnPoint: {fileID: 7933454376351485086}
+  - EnemyTag: Drone
+    SpawnPoint: {fileID: 3263002942676987112}
+--- !u!1 &7670013338462165836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7933454376351485086}
+  m_Layer: 8
+  m_Name: Point_Drone3-1.1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7933454376351485086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7670013338462165836}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -19.1, y: 1.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4507316045211205668}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7678042864740742327
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,7 +1244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4586817370500658390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Machinegun4_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,6 +1266,110 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2810937060783011794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7808378058510890447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5317387432209709357}
+  - component: {fileID: 7951242363513224260}
+  - component: {fileID: 5249075412183243617}
+  m_Layer: 8
+  m_Name: SpawnTrigger_Zone3-1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5317387432209709357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808378058510890447}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 40.83, y: 31.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4714161615963482652}
+  - {fileID: 8331229529927611768}
+  - {fileID: 2785327093189895714}
+  - {fileID: 5306113343117532440}
+  m_Father: {fileID: 7930198122536902500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &7951242363513224260
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808378058510890447}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.9194696, y: 0.020874977}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.1824946, y: 1.9491978}
+  m_EdgeRadius: 0
+--- !u!114 &5249075412183243617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808378058510890447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d5c161d889aaa48836e8e0010ce6a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnTrigger
+  _spawnList:
+  - EnemyTag: Machinegun
+    SpawnPoint: {fileID: 5306113343117532440}
+  - EnemyTag: Machinegun
+    SpawnPoint: {fileID: 2785327093189895714}
+  - EnemyTag: Drone
+    SpawnPoint: {fileID: 4714161615963482652}
+  - EnemyTag: Drone
+    SpawnPoint: {fileID: 8331229529927611768}
 --- !u!1 &7817625506286887506
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,7 +1381,7 @@ GameObject:
   - component: {fileID: 3506319923300614224}
   - component: {fileID: 1949339098372030805}
   - component: {fileID: 1079244077578242186}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnTrigger_Zone3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1087,7 +1483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8378855446839922992}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_LongAttack2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1109,6 +1505,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 389717073033047004}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8203055484238536268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331229529927611768}
+  m_Layer: 8
+  m_Name: Point_Drone3-1.2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331229529927611768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8203055484238536268}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.1, y: -0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5317387432209709357}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8299162500562892108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,7 +1545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1873426342819587901}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Drone6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1134,7 +1561,7 @@ Transform:
   m_GameObject: {fileID: 8299162500562892108}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.92, y: 8.34, z: 0}
+  m_LocalPosition: {x: 19.43, y: 6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1149,7 +1576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6383234186329782469}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Drone5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1182,7 +1609,7 @@ GameObject:
   - component: {fileID: 389717073033047004}
   - component: {fileID: 7892238010613471883}
   - component: {fileID: 2321305802092471365}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnTrigger_Zone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1284,7 +1711,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4396931531753934774}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_LongAttack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1315,7 +1742,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7663776476112534982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Machinegun1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1336,4 +1763,35 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1524234666481591717}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9212556799517447656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5306113343117532440}
+  m_Layer: 8
+  m_Name: Point_Machinegun3-1.1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5306113343117532440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9212556799517447656}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.7, y: -4.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5317387432209709357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

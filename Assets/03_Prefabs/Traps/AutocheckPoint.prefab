@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1648863657420016367}
   - component: {fileID: 8486646221484425230}
   - component: {fileID: -5039178953262711681}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AutocheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
