@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.Cinemachine;
 
 /// <summary>
 /// 단일 레이저의 시각적 연출(경고선 늘어남 -> 번쩍임 -> 실제 레이저 발사)을 담당하는 클래스
@@ -9,16 +10,18 @@ public class BossLaser : MonoBehaviour
     [Header("레이저 관련 프리팹 (에디터에서 연결)")]
     [Tooltip("에너지가 모이는 구체 애니메이션 프리팹")]
     [SerializeField] private GameObject _chargeOrbectPrefab;
-
     [Tooltip("길이가 늘어나는 얇은 경고선 프리팹")]
     [SerializeField] private GameObject _warningLaserPrefab;
-
     [Tooltip("실제 데미지를 주는 굵은 레이저 프리팹")]
     [SerializeField] private GameObject _mainLaserPrefab;
-
     [SerializeField] private float _laserLength = 40f;
     [SerializeField, Range(0f, 1f)] private float _flashIntensity = 0.3f;
     [SerializeField] private float _flashDuration = 0.05f;
+
+    [SerializeField] private float _warningShakeForce = 0.3f; // 경고선 지이잉
+    [SerializeField] private float _fireShakeForce = 2.5f; // 발사 콰광!
+
+    private CinemachineImpulseSource _impulseSource;
 
     // 보스가 우측에 있으므로 기본 발사 방향은 왼쪽(-1)
     private float _direction = 1f;
@@ -39,6 +42,7 @@ public class BossLaser : MonoBehaviour
         _mainLaser = CreateLaserObject("MainLaser", _mainLaserPrefab);
 
         _flashWait = new WaitForSeconds(_flashDuration);
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     public void FireLaser(float warningTime, float beamTime)
@@ -61,7 +65,11 @@ public class BossLaser : MonoBehaviour
         // 1. 경고선이 뻗어나가는 순간 쭈와앙~ 사운드 재생
         AudioManager.Instance.PlaySFX(SoundEffectType.FIVE_TIMES_LASER_WARNING);
 
-        CameraController.Instance.StartShake(warningTime, 0.2f);
+        if (_impulseSource != null)
+        {
+            Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+            _impulseSource.GenerateImpulse(randomDir * _warningShakeForce);
+        }
 
         float timer = 0f;
         while (timer < warningTime)
@@ -93,7 +101,12 @@ public class BossLaser : MonoBehaviour
         // 2. 진짜 굵은 메인 레이저가 뿜어져 나오는 1프레임 순간 쩡! 사운드 재생
         AudioManager.Instance.PlaySFX(SoundEffectType.FIVE_TIMES_LASER_FIRE);
 
-        CameraController.Instance.StartPerlinShake(0.2f, 25f, 0.8f);
+        if (_impulseSource != null)
+        {
+            Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+            _impulseSource.GenerateImpulse(randomDir * _fireShakeForce);
+        }
+
         StartCoroutine(SingleFlashRoutine());
 
         float beamTimer = 0f;
@@ -130,6 +143,7 @@ public class BossLaser : MonoBehaviour
         {
             return;
         }
+
         laser.transform.localPosition = new Vector3(length * 0.5f * _direction, 0f, 0f);
 
         SpriteRenderer sr = laser.GetComponent<SpriteRenderer>();
